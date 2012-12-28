@@ -66,13 +66,13 @@ body {
                           <td align="center" background="img/bar_bg.gif"><table border="0" cellspacing="0" cellpadding="0">
                             <tr>
                             <!-- 주요실적 -->
-                              <td width="150" align="center" class="Text_gray4_12px_Bold"><a href="salesRecord_list.do" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('Image22','','img/m01_over.gif',1)"><img src="img/m01.gif" name="Image22" width="100" height="40" border="0"></a></td>
+                              <td width="150" align="center" class="Text_gray4_12px_Bold"><a href="modelRec.do" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('Image22','','img/m01_over.gif',1)"><img src="img/m01.gif" name="Image22" width="100" height="40" border="0"></a></td>
                             <!-- 판매점 -->                             
-                              <td width="150" align="center"><a href="salesInfo_list.do" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('Image24','','img/m02_over.gif',1)"><img src="img/m02.gif" name="Image24" width="100" height="40" border="0"></a></td>
+                              <td width="150" align="center"><a href="salesList.do" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('Image24','','img/m02_over.gif',1)"><img src="img/m02.gif" name="Image24" width="100" height="40" border="0"></a></td>
                             <!-- 게시판 -->
-                              <td width="150" align="center"><a href="notice_list.do" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('Image25','','img/m03_over.gif',1)"><img src="img/m03.gif" name="Image25" width="100" height="40" border="0"></a></td>
+                              <td width="150" align="center"><a href="noticeList.do" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('Image25','','img/m03_over.gif',1)"><img src="img/m03.gif" name="Image25" width="100" height="40" border="0"></a></td>
                             <!-- 모델정보 -->
-                              <td width="150" align="center"><a href="modelRegister_list.do" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('Image26','','img/m04_over.gif',1)"><img src="img/m04.gif" name="Image26" width="100" height="40" border="0"></a></td>
+                              <td width="150" align="center"><a href="modelList.do" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('Image26','','img/m04_over.gif',1)"><img src="img/m04.gif" name="Image26" width="100" height="40" border="0"></a></td>
                             </tr>
                           </table></td>
                           <td width="10"><img src="img/bar_right.gif" width="10" height="40"></td>

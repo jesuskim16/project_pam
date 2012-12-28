@@ -8,7 +8,7 @@
   </c:when>
   <c:when test="${brc_lev==2}">    
     <jsp:include page="/inc/top2.jsp"/>    
-    <jsp:include page="/inc/menu6.jsp"/>
+    <jsp:include page="/inc/menu5.jsp"/>
   </c:when>    
 </c:choose>
 
@@ -26,7 +26,7 @@
       <tr>
         <td bgcolor="#272727"><table width="100%" border="0" cellspacing="0" cellpadding="0">
             <tr>
-              <td width="97" class="Text_gray_14px"><img src="img/sub02_category1.gif" width="100" height="60"></td>
+              <td width="97" class="Text_gray_14px"><img src="img/sub05_category2.gif" width="100" height="60"></td>
               <td align="right">&nbsp;</td>
             </tr>
         </table></td>

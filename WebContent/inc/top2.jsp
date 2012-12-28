@@ -65,11 +65,11 @@ body {
                           <td align="center" background="img/bar_bg.gif"><table border="0" cellspacing="0" cellpadding="0">
                               <tr>
                               <!-- 고객정보 -->
-                                <td width="150" align="center" class="Text_gray4_12px_Bold"><a href="list.do" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('Image22','','img/m05_over.gif',1)"><img src="img/m05.gif" name="Image22" width="100" height="40" border="0"></a></td>
+                                <td width="150" align="center" class="Text_gray4_12px_Bold"><a href="clientList.do" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('Image22','','img/m05_over.gif',1)"><img src="img/m05.gif" name="Image22" width="100" height="40" border="0"></a></td>
                               <!-- 게시판 -->                           
-                                <td width="150" align="center"><a href="list.do" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('Image24','','img/m01_over.gif',1)"><img src="img/m01.gif" name="Image24" width="100" height="40" border="0"></a></td>
+                                <td width="150" align="center"><a href="noticeList.do" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('Image24','','img/m01_over.gif',1)"><img src="img/m01.gif" name="Image24" width="100" height="40" border="0"></a></td>
                               <!-- 모델정보 -->
-                                <td width="150" align="center"><a href="count.do" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('Image25','','img/m02_over.gif',1)"><img src="img/m02.gif" name="Image25" width="100" height="40" border="0"></a></td>
+                                <td width="150" align="center"><a href="modelList.do" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('Image25','','img/m02_over.gif',1)"><img src="img/m02.gif" name="Image25" width="100" height="40" border="0"></a></td>
                               </tr>
                           </table></td>
                           <td width="10"><img src="img/bar_right.gif" width="10" height="40"></td>
