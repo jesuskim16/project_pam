@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">    
+<sqlMap namespace="FreeBoard">
+  <typeAlias type="ITFree.PAM.Common.Model.Board.BoardDto" alias="fdto"/>
+  <typeAlias type="ITFree.PAM.Common.Model.Board.PageDto" alias="pagedto"/>
+  
+  <!-- 게시판 List 부분  (검색포함)-->
+  <select id="freeBoardList" resultClass="fdto" parameterClass="pagedto" >
+	SELECT B.*
+	FROM (SELECT  A.*,rownum as rnum
+		  FROM (SELECT row_number()over (ORDER BY seq ASC) as rown,seq,board_chk,title,content,readcount,rp_seq,
+				to_char(write_date , 'YYYY-MM-DD') as write_date,brc_id
+				FROM board
+				WHERE rp_seq = 0
+				<isEqual property="searchCondition" compareValue="title">
+				AND title like '%' || #searchKeyword# || '%'
+				</isEqual>
+				<isEqual property="searchCondition" compareValue="content">
+				AND content like '%' || #searchKeyword# || '%'
+				</isEqual>
+				<isEqual property="searchCondition" compareValue="brc_id">
+				AND brc_id like '%' || #searchKeyword# || '%'
+				</isEqual>
+				ORDER BY rown DESC ) A ) B
+	<![CDATA[
+	WHERE #startNum# <= rnum AND rnum <= #endNum#
+	]]>
+  </select>
+  <!-- 게시판 글쓰기 부분  -->
+  <insert id="freeBoardInsertAction" parameterClass="fdto">
+  INSERT INTO board(seq,board_chk,title,content,filename,brc_id)
+  VALUES(board_seq.nextval , 2, #title#, #content#, #filename#, #brc_id#)
+  </insert>
+  
+  <!-- 게시판 상세보기 부분  -->
+  <select id="freeBoardView" parameterClass="Long" resultClass="fdto">
+	SELECT b.seq,b.title, b.content, b.readcount, b.write_date, b.filename, brc_id, c.brc_name 
+	FROM board b join branch c
+	USING (brc_id)
+	WHERE b.seq = #seq#  
+  </select>
+  <!-- 게시판 조회수 증가 부분  -->
+  <update id="BoardReadCount" parameterClass="Long">
+  	UPDATE board SET
+  	readcount = readcount + 1
+  	WHERE seq = #seq#
+  </update>
+  
+  <!-- 게시판 다음글보기 부분  -->
+  <select id="Next_seq" parameterClass="Long" resultClass="Long">
+  	SELECT nvl(min(seq), #seq#) as next_seq
+ 	FROM BOARD
+ 	<![CDATA[
+	WHERE seq > #seq#
+	]]>
+  </select>
+  <!-- 게시판 이전글보기 부분  -->
+   <select id="Prev_seq" parameterClass="Long" resultClass="Long">
+    SELECT nvl(max(seq),#seq#) as prev_seq
+ 	FROM BOARD
+ 	<![CDATA[
+	WHERE seq < #seq#
+	]]>
+  </select>
+  
+  <!-- 게시판 수정 부분  -->
+  <update id="freeBoardUpdateAction" parameterClass="fdto" >
+  	UPDATE board 
+  	SET title = #title# , content = #content#, filename = #filename#
+  	WHERE seq = #seq#	
+  </update>
+  
+  <!-- 게시판 삭제 부분  -->
+  <delete id="freeBoardDelete" parameterClass="fdto">
+  	DELETE board
+  	WHERE seq = #seq#
+  </delete>
+  
+  <!-- 게시판 총 게시물 갯수 부분  (검색포함)-->
+  <select id="TotalCount" resultClass="Long" parameterClass="pagedto">
+  SELECT count(*) FROM board
+  	<isEqual property="searchCondition" compareValue="title">
+  		WHERE title like '%' || #searchKeyword# || '%'
+  	</isEqual>
+  	<isEqual property="searchCondition" compareValue="content">
+  		WHERE content like '%' || #searchKeyword# || '%'
+  	</isEqual>
+  	<isEqual property="searchCondition" compareValue="brc_id">
+  		WHERE brc_id like '%' || #searchKeyword# || '%'
+  	</isEqual>  	  	
+  </select>
+	
+</sqlMap>

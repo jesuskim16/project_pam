@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">    
+<sqlMap namespace="login">
+  <typeAlias type="ITFree.PAM.Common.Model.Login.LoginDto" alias="ldto"/>
+  <select resultClass="ldto" parameterClass="ldto" id="getLoginInfo"> 
+    SELECT 	brc_id, brc_name, brc_lev 
+    FROM 	branch 
+    WHERE 	brc_id=#brc_id# AND password=#password# 
+  </select>
+	
+</sqlMap>

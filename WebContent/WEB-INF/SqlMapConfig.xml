@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMapConfig      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map Config 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-config-2.dtd">
+
+<sqlMapConfig>
+	<settings 
+		cacheModelsEnabled="true" 
+		useStatementNamespaces="true"/>
+	<sqlMap resource="ITFree/PAM/ibatis/Common/Login/Login.xml" />
+	<sqlMap resource="ITFree/PAM/ibatis/Seller/Client/Client.xml" />
+	<sqlMap resource="ITFree/PAM/ibatis/Agent/SaleMgr/SaleMgr.xml"/>
+	<sqlMap resource="ITFree/PAM/ibatis/Common/Board/FreeBoard.xml" />
+</sqlMapConfig>
