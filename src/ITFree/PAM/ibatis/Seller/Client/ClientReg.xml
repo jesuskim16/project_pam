@@ -15,10 +15,8 @@
     SELECT	price_name, price
     FROM	phoneprice
   </select>
-  <insert id="setCustomInfo" parameterClass="cRegDto">
-<!--     INSERT INTO custominfo(seq, cust_name, cust_phone, cust_birth, cont_term, open_date, memo, write_ip, brc_id, price_name, model_code)	 -->
-<!--     	FROM (cust_seq.nextval, #cust_name#, #cust_phone#, #cust_birth#, #cont_term#, #open_date#, #memo#, #write_ip#, #brc_id#, #price_name#, #model_code#) -->
+  <insert id="clientInsertAct" parameterClass="cRegDto">
+    INSERT INTO custominfo(seq, cust_name, cust_phone, cust_birth, cont_term, open_date, memo, write_ip, brc_id, price_name, model_code)	
+    	VALUES (custom_seq.nextval, #cust_name#, #cust_phone#, #cust_birth#, #cont_term#, #open_date#, #memo#, #write_ip#, #brc_id#, #price_name#, #model_code#)
   </insert>
-	
-	
 </sqlMap>

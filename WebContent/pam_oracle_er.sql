@@ -166,6 +166,7 @@ INSERT INTO	BRANCH (            SEQ,    BRC_ID, ATTACH_ID, PASSWORD, BRC_NAME,  
 DELETE FROM branch;			    
 			 
 SELECT * FROM phonemodel;	
+SELECT * FROM custominfo;
 
 --make_comp(컬럼추가)
 ALTER TABLE phonemodel ADD(make_comp varchar2(50));

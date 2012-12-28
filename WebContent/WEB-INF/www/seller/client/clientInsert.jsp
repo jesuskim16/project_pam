@@ -72,7 +72,7 @@
                   <td class="bullet2"></td>
                   <td width="200" height="40" class="line_bg_bottom2 pl5 pr10 fb">모델명</td>
                   <td class="line_bg_bottom2 pl10">
-                    <select name="model_name" class="select_140">
+                    <select name="model_code" class="select_140">
                       <c:forEach items="${modelInfo}" var="mdto">
                         <option value="${mdto.model_code}">${mdto.model_name}</option>
                       </c:forEach>  

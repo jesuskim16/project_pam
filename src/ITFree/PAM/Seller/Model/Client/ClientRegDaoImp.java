@@ -25,8 +25,12 @@ public class ClientRegDaoImp implements ClientRegDao {
 	}
 
 	@Override
-	public boolean setCustomInfo(ClientRegDto cRegDto) {
-		return (Integer)sqlMapClientTemplate.insert("client.setCustomInfo",cRegDto)>0;
+	public boolean clientInsertAct(ClientRegDto cRegDto) {
+		try {
+			sqlMapClientTemplate.insert("client.clientInsertAct",cRegDto);
+			return true ;	
+		} catch (Exception e) {
+			return false;
+		}
 	}
-
 }
