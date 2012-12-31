@@ -18,9 +18,9 @@ body {
 	function MM_swapImgRestore() { //v3.0
 	  var i,x,a=document.MM_sr; for(i=0;a&&i<a.length&&(x=a[i])&&x.oSrc;i++) x.src=x.oSrc;
 	}
-	function MM_preloadImages() { //v3.0
-	  var d=document; if(d.images){ if(!d.MM_p) d.MM_p=new Array();
-	    var i,j=d.MM_p.length,a=MM_preloadImages.arguments; for(i=0; i<a.length; i++)
+	function MM_preloadimg() { //v3.0
+	  var d=document; if(d.img){ if(!d.MM_p) d.MM_p=new Array();
+	    var i,j=d.MM_p.length,a=MM_preloadimg.arguments; for(i=0; i<a.length; i++)
 	    if (a[i].indexOf("#")!=0){ d.MM_p[j]=new Image; d.MM_p[j++].src=a[i];}}
 	}
 
@@ -39,7 +39,7 @@ body {
 -->
 </script>
 </head>
-<body onLoad="MM_preloadImages('images/m01_over.gif','images/m02_over.gif','images/m03_over.gif','images/m04_over.gif','images/m05_over.gif')">
+<body onLoad="MM_preloadimg('img/m01_over.gif','img/m02_over.gif','img/m03_over.gif','img/m04_over.gif','img/m05_over.gif')">
   <tr>
     <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
       <tr>
