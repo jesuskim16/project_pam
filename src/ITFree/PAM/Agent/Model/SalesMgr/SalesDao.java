@@ -12,6 +12,8 @@ public interface SalesDao {
 
 	boolean salesInfo_delete(SalesDto salesDto);
 
+	boolean salesUpdate(SalesDto salesDto);
+
 
 
 }
