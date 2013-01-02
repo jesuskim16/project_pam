@@ -50,7 +50,7 @@ public class ClientRegAct {
 		
 		ModelAndView mav = new ModelAndView();
 		if(insert_result){			
-			mav.setViewName("/WEB-INF/www/seller/client/clientList.jsp");
+			mav.setViewName("redirect:clientList.do");
 			mav.addObject("title_name","PAM::고객정보");	
 		}else{
 			mav.setViewName("/WEB-INF/www/common/result.jsp");
