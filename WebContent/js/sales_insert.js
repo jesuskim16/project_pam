@@ -4,4 +4,5 @@ var openZipcode = function() {
 		"toolbar=no, location=no, status=no, menubar=no, scrolbar=yes" +
 		"resizeble=no, width=450, height=400");
 	
+	
 }
