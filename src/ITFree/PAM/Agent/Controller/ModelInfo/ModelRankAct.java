@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
-public class ModelRankAction {
+public class ModelRankAct {
 				
 			@RequestMapping("/modelRank_list.do")
 			protected ModelAndView modelRankList(HttpServletRequest requset,

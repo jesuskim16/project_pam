@@ -18,6 +18,8 @@
 		frm.action = 'clientInsertAct.do';
 		frm.submit();
 	}
+	
+
 </script>
 
 <form name="form" method="post">

@@ -1,23 +1,22 @@
-package ITFree.PAM.Agent.Controller.Business;
+package ITFree.PAM.Common.Controller.ModelInfo;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
-public class ModelRecordAction {	
-				
-		@RequestMapping("/modelRec.do")
-		protected ModelAndView modelRecord_List(HttpServletRequest requset,
+public class ModelInfoAct {
+		
+		@RequestMapping("/modelList.do")
+		protected ModelAndView modelRegisterList(HttpServletRequest requset,
 				HttpServletResponse response) throws Exception {
 			
 			ModelAndView mav = new ModelAndView();
-			mav.setViewName("/WEB-INF/www/agent/business/modelRec.jsp");
-			mav.addObject("title_name","PAM::모델별실적");
+			mav.setViewName("/WEB-INF/www/agent/model/modelRegister_list.jsp");
+			mav.addObject("title_name","PAM::모델정보");
 			return mav;
 		}
 }

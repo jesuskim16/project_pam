@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
-public class ModelRegisterAction {
+public class ModelRegisterAct {
 		
 		@RequestMapping("/modelRegister_insert.do")
 		protected ModelAndView ModelRegister_insert(HttpServletRequest requset,
