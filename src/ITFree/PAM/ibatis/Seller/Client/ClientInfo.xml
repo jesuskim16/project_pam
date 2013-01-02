@@ -6,7 +6,7 @@
 <sqlMap namespace="clientInfo">
   <typeAlias type="ITFree.PAM.Seller.Model.Client.ClientInfoDto" alias="ciDto"/>
   <select resultClass="ciDto" parameterClass="String" id="getClientInfo"> 
-    SELECT 	seq, cust_name, cust_phone, cust_birth, cont_term, open_date, memo, price_name, model_code 	
+    SELECT 	seq, cust_name, cust_phone, to_char(cust_birth,'YYYY-MM-DD') as cust_birth, cont_term, open_date, memo, price_name, model_code 	
     FROM	custominfo
     WHERE 	brc_id=#brc_id#
   </select>
