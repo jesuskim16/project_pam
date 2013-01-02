@@ -10,12 +10,12 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class SalesRecordAction {	
 			
-		@RequestMapping("/salesRecord_list.do")
+		@RequestMapping("/salesRec.do")
 		protected ModelAndView SalesRecord_List(HttpServletRequest requset,
 				HttpServletResponse response) throws Exception {
 			
 			ModelAndView mav = new ModelAndView();
-			mav.setViewName("/WEB-INF/www/agent/business/salesRecord_list.jsp");
+			mav.setViewName("/WEB-INF/www/agent/business/salesRec.jsp");
 			mav.addObject("title_name","PAM::판매점실적");
 			return mav;
 		}
