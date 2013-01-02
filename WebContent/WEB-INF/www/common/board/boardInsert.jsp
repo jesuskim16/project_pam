@@ -37,6 +37,7 @@ var frm = document.forms;
 </script> 
 <form name="forms" method="get" style="margin:0"  ENCTYPE="multipart/form-data"> 
                        	  <input type="hidden" name="brc_id" value="${brc_id}">
+                       	  <input type="hidden" name="write_ip" value="${write_ip}">
                           <td width="1"></td>
                           <td valign="top"><table width="100%" border="0" cellspacing="0" cellpadding="0">
                               <tr>

@@ -8,12 +8,15 @@
   <typeAlias type="ITFree.PAM.Common.Model.Board.PageDto" alias="pagedto"/>
   
   <!-- 게시판 List 부분  (검색포함)-->
-  <select id="freeBoardList" resultClass="fdto" parameterClass="pagedto" >
+  <select id="freeBoardList" resultClass="fdto" parameterClass="pagedto" >  
 	SELECT B.*
 	FROM (SELECT  A.*,rownum as rnum
 		  FROM (SELECT row_number()over (ORDER BY seq ASC) as rown,seq,board_chk,title,content,readcount,rp_seq,
-				to_char(write_date , 'YYYY-MM-DD') as write_date,brc_id
-				FROM board
+				to_char(write_date , 'YYYY-MM-DD') as write_date,brc_id,
+					 (select  count(*) as rp_cnt from board rp where 
+      				 exists(select * from board where rp.rp_seq=bd.seq)
+     				 )as rp_cnt
+				FROM board bd
 				WHERE rp_seq = 0
 				<isEqual property="searchCondition" compareValue="title">
 				AND title like '%' || #searchKeyword# || '%'
@@ -31,17 +34,45 @@
   </select>
   <!-- 게시판 글쓰기 부분  -->
   <insert id="freeBoardInsertAction" parameterClass="fdto">
-  INSERT INTO board(seq,board_chk,title,content,filename,brc_id)
-  VALUES(board_seq.nextval , 2, #title#, #content#, #filename#, #brc_id#)
+  INSERT INTO board(seq,board_chk,title,content,filename,brc_id, write_ip)
+  VALUES(board_seq.nextval , 2, #title#, #content#, #filename#, #brc_id#, #write_ip#)
   </insert>
   
   <!-- 게시판 상세보기 부분  -->
   <select id="freeBoardView" parameterClass="Long" resultClass="fdto">
-	SELECT b.seq,b.title, b.content, b.readcount, b.write_date, b.filename, brc_id, c.brc_name 
+	SELECT brc_id,b.seq,b.title, b.content, b.readcount, b.write_date, b.filename , c.brc_name , brc_id ,
+		   (SELECT LPAD(REGEXP_SUBSTR(write_ip, '[^.]+', 1, 1), 3, ' ') || '.' ||
+  				   LPAD(REGEXP_SUBSTR(write_ip, '[^.]+', 1, 2), 3, ' ') || '.' ||
+ 				   LPAD(REGEXP_SUBSTR(write_ip, '[^.]+', 1, 3), 3, ' ') || '.' || 'XXX' as write_ip
+				   FROM (SELECT write_ip FROM board WHERE seq = #seq# )
+		   ) as write_ip
 	FROM board b join branch c
 	USING (brc_id)
 	WHERE b.seq = #seq#  
   </select>
+  
+  <select id="getReply" parameterClass="Long" resultClass="fdto">
+  	SELECT brc_id, 
+  				<![CDATA[
+  				REPLACE(CONTENT, chr(13)||chr(10), '<br />') AS CONTENT ,
+  				write_date, write_ip, seq
+  				]]>
+  	FROM board
+  	WHERE rp_seq = #rp_seq#
+  	ORDER BY seq ASC
+  </select>
+  
+  <!-- 게시판 댓글 입력 부분  -->
+  <insert id="freeBoardReplyInsert" parameterClass="fdto">
+  	INSERT INTO board(seq, board_chk, title, content, brc_id, write_ip, rp_seq)
+  	VALUES(board_seq.nextval,2 ,'notitle' ,#content#, #brc_id#, #write_ip#, #seq#)
+  </insert>
+  
+  <delete id="freeBoardReplyDelete" parameterClass="Long">
+  	DELETE FROM board
+  	WHERE seq = #seq#
+  </delete>
+  
   <!-- 게시판 조회수 증가 부분  -->
   <update id="BoardReadCount" parameterClass="Long">
   	UPDATE board SET
@@ -54,7 +85,7 @@
   	SELECT nvl(min(seq), #seq#) as next_seq
  	FROM BOARD
  	<![CDATA[
-	WHERE seq > #seq#
+	WHERE seq > #seq# AND rp_seq = 0
 	]]>
   </select>
   <!-- 게시판 이전글보기 부분  -->
@@ -62,7 +93,7 @@
     SELECT nvl(max(seq),#seq#) as prev_seq
  	FROM BOARD
  	<![CDATA[
-	WHERE seq < #seq#
+	WHERE seq < #seq# AND rp_seq = 0
 	]]>
   </select>
   
@@ -70,13 +101,13 @@
   <update id="freeBoardUpdateAction" parameterClass="fdto" >
   	UPDATE board 
   	SET title = #title# , content = #content#, filename = #filename#
-  	WHERE seq = #seq#	
+  	WHERE seq = #seq# 
   </update>
   
   <!-- 게시판 삭제 부분  -->
   <delete id="freeBoardDelete" parameterClass="fdto">
   	DELETE board
-  	WHERE seq = #seq#
+  	WHERE seq = #seq# 
   </delete>
   
   <!-- 게시판 총 게시물 갯수 부분  (검색포함)-->

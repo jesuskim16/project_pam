@@ -22,5 +22,10 @@ public interface BoardDao {
 
 	List<BoardDto> freeBoardList(PageDto pageDto);
 
+	boolean freeBoardReplyInsert(BoardDto boardDto);
+
+	List<BoardDto> getReply(long seq);
+
+	boolean freeBoardReplyDelete(long seq);
 
 }

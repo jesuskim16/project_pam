@@ -75,8 +75,12 @@ var search = function(){
                                	
                                	<c:forEach items="${fbList }" var="fdto">
                                   <tr>
-                                    <td height="28" align="center" bgcolor="#FFFFFF" >${fdto.rown}</td>
-                                    <td height="28" bgcolor="#FFFFFF"><a href="${board_name}View.do?seq=${fdto.seq}">${fdto.title }</a></td>
+                                    <td height="28" align="center" bgcolor="#FFFFFF" >${fdto.rown}</td>                                    
+                                    <td height="28" bgcolor="#FFFFFF"><a href="${board_name}View.do?seq=${fdto.seq}&brc_id=${fdto.brc_id }">${fdto.title }
+                                    <c:if test="${fdto.rp_cnt != 0}">
+                                    [${fdto.rp_cnt}]
+                                    </c:if>
+                                    </a></td>                                    
                                     <td height="28" align="center" bgcolor="#FFFFFF">첨부</td>
                                     <td height="28" align="center" bgcolor="#FFFFFF">${fdto.brc_id }</td>
                                     <td height="28" align="center" bgcolor="#FFFFFF">${fdto.readcount }</td>

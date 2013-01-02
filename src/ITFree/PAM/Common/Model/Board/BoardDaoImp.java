@@ -36,6 +36,40 @@ public class BoardDaoImp implements BoardDao{
 	}
 	
 	@Override
+	public List<BoardDto> getReply(long seq) {
+		try {
+			return sqlMapClientTemplate.queryForList("FreeBoard.getReply", seq);
+		} catch (DataAccessException e) {		
+			e.printStackTrace();
+			return null;
+		}
+		
+	}
+	
+	@Override
+	public boolean freeBoardReplyDelete(long seq) {
+		try {
+			return sqlMapClientTemplate.delete("FreeBoard.freeBoardReplyDelete", seq) > 0;
+		} catch (DataAccessException e) {			
+			e.printStackTrace();
+			return false;
+		}
+		
+	}
+	
+	@Override
+	public boolean freeBoardReplyInsert(BoardDto boardDto) {
+		try {
+			sqlMapClientTemplate.insert("FreeBoard.freeBoardReplyInsert" , boardDto);
+			return true;
+		} catch (DataAccessException e) {
+			e.printStackTrace();
+			return false;
+		}
+		
+	}
+	
+	@Override
 	public void BoardReadCount(long seq) {
 		
 		sqlMapClientTemplate.update("FreeBoard.BoardReadCount", seq);

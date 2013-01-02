@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.servlet.jsp.tagext.PageData;
 
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -24,6 +25,8 @@ public class FreeboardAction {
 	
 		@Autowired
 		private BoardDao boardDao;
+		
+		private Logger log = Logger.getLogger(this.getClass());
 		
 		@RequestMapping("/freeBoardList.do")
 		protected ModelAndView freeBoardList(@ModelAttribute PageDto spageDto , HttpSession session) throws Exception {
@@ -57,21 +60,24 @@ public class FreeboardAction {
 		}
 		
 		@RequestMapping("/freeBoardView.do")
-		protected ModelAndView freeBoardView(long seq, HttpSession session) throws Exception {
-			
-			BoardDto boardDto = new BoardDto();
+		protected ModelAndView freeBoardView(@ModelAttribute BoardDto boardDto, HttpServletRequest request, HttpSession session) throws Exception {
+			String brc_id = boardDto.getBrc_id();
+			long seq = boardDto.getSeq();			
+			long rp_seq = seq;
 			boardDto = boardDao.freeBoardView(seq); // seq를 이용하여 게시판 상세보기 SQL 값 얻어옴
+			List<BoardDto> rList = boardDao.getReply(rp_seq);
 			//로그인한 사람(session id)과 글쓴 사람이 다를경우 조회수 증가를 하는 조건문
-			if(!session.getAttribute("brc_id").equals(boardDto.getBrc_id())){
-				boardDao.BoardReadCount(seq);
+			String sessionId = (String) session.getAttribute("brc_id");
+			String write_ip = request.getRemoteAddr(); //접속 아이피주소			
+			if(!sessionId.equals(brc_id)){
+					boardDao.BoardReadCount(seq);
 			}
+
 			//이전글 보기 seq를 얻어옴
 			boardDto.setPrev_seq(boardDao.Prev_seq(seq));
 			//다음글 보기 seq를 얻어옴
 			boardDto.setNext_seq(boardDao.Next_seq(seq));
-
-			
-			//request.getRemoteAddr() 접속 아이피주소 
+			boardDto.setContent(boardDto.getContent().replace("\n", "<br/>"));
 
 			ModelAndView mav = new ModelAndView();
 			mav.setViewName("/WEB-INF/www/common/board/boardView.jsp"); //이동주소
@@ -80,26 +86,80 @@ public class FreeboardAction {
 			mav.addObject("board_name","freeBoard"); //게시판이름
 			mav.addObject("brc_lev","1");		//레벨(1:대리점, 2:판매점)
 			mav.addObject("boardDto",boardDto);
+			mav.addObject("sessionId", sessionId);
+			mav.addObject("sessionIp", write_ip);
+			mav.addObject("rList",rList); //댓글 파라메터 전송
 			return mav;
 		}
 		
+		@RequestMapping("/freeBoardReplyInsert.do")
+		protected ModelAndView freeBoardReplyInsert(@ModelAttribute BoardDto boardDto){
+			long rp_seq = boardDto.getSeq();
+			boolean result = boardDao.freeBoardReplyInsert(boardDto);
+			ModelAndView mav = new ModelAndView();
+			if(result){
+				mav.setViewName("freeBoardView.do?rp_seq="+rp_seq); //이동주소
+			}else{
+				mav.setViewName("/WEB-INF/www/common/result.jsp");
+				mav.addObject("msg","댓글입력 실패입니다.");
+				mav.addObject("url","javascript:history.back();");
+			}			
+			mav.addObject("title_name","PAM::공지사항"); // 게시판 이름
+			mav.addObject("board_chk","2");             //게시판분류 (2: 자유게시판)
+			mav.addObject("board_name","freeBoard"); //게시판이름
+			mav.addObject("brc_lev","1");		//레벨(1:대리점, 2:판매점)
+			
+			return mav;
+		}
+		
+		@RequestMapping("freeBoardReplyDelete.do")
+		protected ModelAndView freeBoardReplyDelete(@ModelAttribute BoardDto boardDto, HttpSession session){
+			
+			ModelAndView mav = new ModelAndView();
+			long rp_seq = boardDto.getRp_seq();
+			if(session.getAttribute("brc_id").equals(boardDto.getBrc_id())){
+				boolean result = boardDao.freeBoardReplyDelete(rp_seq);
+				
+				if(result){
+					mav.setViewName("freeBoardView.do"); //이동주소
+				}else{
+					mav.setViewName("/WEB-INF/www/common/result.jsp");
+					mav.addObject("msg","댓글삭제 실패입니다.");
+					mav.addObject("url","javascript:history.back();");
+				}		
+			}else{
+				mav.setViewName("/WEB-INF/www/common/result.jsp");
+				mav.addObject("msg","댓글삭제 권한이없습니다.");
+				mav.addObject("url","javascript:history.back();");
+			}
+				
+			mav.addObject("title_name","PAM::공지사항"); // 게시판 이름
+			mav.addObject("board_chk","2");             //게시판분류 (2: 자유게시판)
+			mav.addObject("board_name","freeBoard"); //게시판이름
+			mav.addObject("brc_lev","1");		//레벨(1:대리점, 2:판매점)
+			
+			return mav;
+			
+		}
 		
 		@RequestMapping("/freeBoardInsert.do")
-		protected ModelAndView freeBoardInsert(HttpSession session) throws Exception {	
+		protected ModelAndView freeBoardInsert(HttpServletRequest request,HttpSession session) throws Exception {	
 			String brc_id = (String) session.getAttribute("brc_id");
+			String write_ip = request.getRemoteAddr(); //접속 아이피주소 
 			ModelAndView mav = new ModelAndView();
 			mav.setViewName("/WEB-INF/www/common/board/boardInsert.jsp");
 			mav.addObject("title_name","PAM::공지사항");
 			mav.addObject("board_chk","2");             //게시판분류 (2: 자유게시판)
 			mav.addObject("board_name","freeBoard"); //게시판이름
 			mav.addObject("brc_lev","1");		//레벨(1:대리점, 2:판매점)
-			mav.addObject("brc_id" , brc_id);
+			mav.addObject("brc_id" , brc_id);   //글쓰기 시 id를 DB에 삽입하기 위해 값을 넘김
+			mav.addObject("write_ip", write_ip);//글쓰기 시 ip를 DB에 사빕하기 위해 값을 넘김
 			return mav;
 		}
 		
 		@RequestMapping("/freeBoardInsertAction.do")
 		protected ModelAndView freeBoardInsertAction(@ModelAttribute BoardDto boardDto) throws Exception {
-			
+
 			boolean result = boardDao.freeBoardInsertAction(boardDto);
 			ModelAndView mav = new ModelAndView();
 			if(result){
@@ -117,23 +177,28 @@ public class FreeboardAction {
 		}
 
 		@RequestMapping("/freeBoardUpdate.do")
-		protected ModelAndView freeBoardUpdate(long seq) throws Exception {
-			BoardDto boardDto = new BoardDto();
-			boardDto = boardDao.freeBoardView(seq);
+		protected ModelAndView freeBoardUpdate(long seq, String brc_id, HttpSession session) throws Exception {
 			
 			ModelAndView mav = new ModelAndView();
-			mav.setViewName("/WEB-INF/www/common/board/boardUpdate.jsp");
-			mav.addObject("title_name","PAM::공지사항");
-			mav.addObject("board_chk","2");             //게시판분류 (2: 자유게시판)
-			mav.addObject("board_name","freeBoard"); //게시판이름
-			mav.addObject("brc_lev","1");		//레벨(1:대리점, 2:판매점)
-			mav.addObject("boardDto",boardDto);
+			if(session.getAttribute("brc_id").equals(brc_id)){
+				BoardDto boardDto = new BoardDto();
+				boardDto = boardDao.freeBoardView(seq);
+				mav.setViewName("/WEB-INF/www/common/board/boardUpdate.jsp");
+				mav.addObject("title_name","PAM::공지사항");
+				mav.addObject("board_chk","2");             //게시판분류 (2: 자유게시판)
+				mav.addObject("board_name","freeBoard"); //게시판이름
+				mav.addObject("brc_lev","1");		//레벨(1:대리점, 2:판매점)
+				mav.addObject("boardDto",boardDto);
+			}else{
+				mav.setViewName("/WEB-INF/www/common/result.jsp");
+				mav.addObject("msg" , "수정 권한이 없습니다.");
+				mav.addObject("url" ,"javascript:history.back();");
+			}			
 			return mav;
 		}
 		
 		@RequestMapping("/freeBoardUpdateAction.do")
-		protected ModelAndView freeBoardUpdateAction(@ModelAttribute BoardDto boardDto) throws Exception {			
-			
+		protected ModelAndView freeBoardUpdateAction(@ModelAttribute BoardDto boardDto) throws Exception {	
 			boolean result = boardDao.freeBoardUpdateAction(boardDto);
 			ModelAndView mav = new ModelAndView();
 			if(result){
@@ -147,19 +212,22 @@ public class FreeboardAction {
 		}
 		
 		@RequestMapping("/freeBoardDelete.do")
-		protected ModelAndView freeBoardDelete(@ModelAttribute BoardDto boardDto) throws Exception {
-			
-			boolean result = boardDao.freeBoardDelete(boardDto);
-			
+		protected ModelAndView freeBoardDelete(@ModelAttribute BoardDto boardDto, HttpSession session) throws Exception {
 			ModelAndView mav = new ModelAndView();
-			
-			if(result){
-				mav.setViewName("freeBoardList.do");
+			if(session.getAttribute("brc_id").equals(boardDto.getBrc_id())){
+				boolean result = boardDao.freeBoardDelete(boardDto);
+				if(result){
+					mav.setViewName("freeBoardList.do");
+				}else{
+					mav.setViewName("/WEB-INF/www/common/result.jsp");
+					mav.addObject("msg" , "삭제 실패입니다.");
+					mav.addObject("url" ,"javascript:history.back();");
+				}		
 			}else{
 				mav.setViewName("/WEB-INF/www/common/result.jsp");
-				mav.addObject("msg" , "삭제 실패입니다.");
+				mav.addObject("msg" , "권한이 없습니다.");
 				mav.addObject("url" ,"javascript:history.back();");
-			}			
+			}
 			return mav;
 		}		
 		

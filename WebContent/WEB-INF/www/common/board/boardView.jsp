@@ -13,14 +13,36 @@
 </c:choose>
 
 <script>
-function del_ok(seq){
-	var result = confirm("삭제를 하시면 복구가 힘듭니다. 삭제 하시겠습니까?");
-	if(result){
-			location.href = "${board_name}Delete.do?seq="+seq;
-	}else{
-		return;
-	}	
+var del_ok = function(brc_id){
+	var result = confirm("삭제를 하시면 복구가 힘듭니다. 삭제 하시겠습니까?");	
+		if(result){
+				location.href="${board_name}Delete.do?seq="+${boardDto.seq}+"&brc_id="+brc_id;
+		}else{
+			return;
+		}	
 }
+
+var replyDel = function(rp_seq , brc_id){
+	var result = confirm("댓글을 삭제하시겠습니까?");	
+		if(result){
+				location.href="${board_name}ReplyDelete.do?seq="+${boardDto.seq}+"&brc_id="+brc_id+"&rp_seq="+rp_seq;
+		}else{
+			return;
+		}	
+}
+
+function reply_insert(){
+
+	var rforms = document.rforms;
+		
+			if(rforms.content.value == ""){
+			alert("내용을 입력하세요");
+			rforms.content.focus();
+			return false;
+			}
+		
+		rforms.submit();
+	}
 </script>
                         <td width="1"></td>
                         <td valign="top"><table width="100%" border="0" cellspacing="0" cellpadding="0">
@@ -49,14 +71,15 @@ function del_ok(seq){
                                 </tr>
 <!-- {2 )----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->                                
 <!-- {3(첨부,등록자,등록일,조회----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->                                
-                                <tr>                                                               
+                                <tr>                                                             
                                   <td height="28" align="center" bgcolor="#FFFFFF"><table width="100%" border="0" cellspacing="0" cellpadding="0">
                                       <tr>
                                         <td width="20">&nbsp;</td>
                                         <td align="left">첨부파일: <span class="Text_blue_12px_unberline"><a href="" target="test.txt">${boardDto.filename }</a></span></td>
-                                        <td width="120">등록자: ${boardDto.brc_name }</td>
-                                        <td width="200">등록일: ${boardDto.write_date }</td>
-                                        <td width="120">조회: ${boardDto.readcount }</td>
+                                        <td width="120">등록자: ${boardDto.brc_name}</td>
+                                        <td width="120">IP: ${boardDto.write_ip}</td>
+                                        <td width="200">등록일: ${boardDto.write_date}</td>
+                                        <td width="120">조회: ${boardDto.readcount}</td>
                                       </tr>
                                   </table></td>            
                                 </tr>
@@ -69,39 +92,51 @@ function del_ok(seq){
                                       </tr>
                                   </table></td>
                                 </tr>
-<!-- {4 )----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->                                
+<!-- {댓글 리스트 뿌릴곳)----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->                                
+                             <td align="center" bgcolor="#FFFFFF">                              
+                                  <table width="100%" border="0" cellspacing="20" cellpadding="0">
+                                  <c:forEach items="${rList }" var="rdto">
+                                    <tr>
+                                      <td width="130" align="center"><b>${rdto.brc_id}</b></td>                                      
+                                      <td width="600" align=left>${rdto.content}</td>
+                                      <td  align="center">${rdto.write_date}</td>
+                                       <td  align="center">
+                                       		<a href="javascript:replyDel('${rdto.seq}','${rdto.brc_id}')">
+                                       			<img src="img/btn_del2.gif" width="54" height="25">
+                                       		</a>
+                                       </td>
+                                    </tr>
+                                  </c:forEach>
+                                  </table></td>                             
+<!-- {4 )----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->                             
                               </table></td>
-                            </tr>
-                            
+                            </tr>                            
                             <tr>
-                              <td height="30"></td>
+                              <td height="10"></td>
                             </tr>
+                            <form action="${board_name }ReplyInsert.do" method="post" name="rforms">
+                            <input type="hidden" name="seq" value="${boardDto.seq}">
                             <tr>
                               <td align="center"><table width="100%" border="0" cellspacing="0" cellpadding="0">
                                 <tr>
-                                  <td height="1"></td>
-                                </tr>
-                                <tr>
-                                  <td height="28" align="center" bgcolor="#FFFFFF"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                  <td align="center" bgcolor="#FFFFFF">
+                                  <table width="100%" border="0" cellspacing="5" cellpadding="0">
                                     <tr>
-                                      <td width="20">&nbsp;</td>
-                                      <td align="left">등록자: 홍길동</td>
-                                      <td align="right">등록일: 2012.12.21</td>
-                                    </tr>
-                                  </table></td> 
-                                <tr>
-                                  <td height="1"></td>
-                                </tr>
-                                <tr>
-                                  <td align="center" bgcolor="#FFFFFF"><table width="100%" border="0" cellspacing="20" cellpadding="0">
-                                    <tr>
-                                      <td height="60" align="left">댓글입니다</td>
+                                      <td width="130" align="center">
+                                      <input type="hidden" name="brc_id" value="${sessionId}">
+                                      		<b>${sessionId}</b>
+                                      </td>                                      
+                                      <td align="left">
+                                        <textarea rows="3" cols="110" name="content"></textarea>
+                                      </td>
+                                      <td width="100" align="center"><input type="button" value="댓글입력" onclick="javascript:reply_insert()"></td>
+                                      <input type="hidden" name="write_ip" value="${sessionIp}">
                                     </tr>
                                   </table></td>
                                 </tr>
                               </table></td>                              
                             </tr>
-                            
+                            </form>
                             <tr>
 <!-- {5(버튼----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->                               
                               <td height="50"><table width="100%" border="0" cellspacing="0" cellpadding="0">                               
@@ -109,7 +144,7 @@ function del_ok(seq){
                                   <td width="300" align="left"><table border="0" cellspacing="4" cellpadding="0">
                                       <tr>
                                         <td><a href="${board_name}List.do"><img src="img/btn_list.gif" width="81" height="25"></a></td>
-                                        <td><a href=""><img src="img/btn_write.gif" width="67" height="25"></a>&nbsp;</td>
+                                        <td><a href="${board_name}Insert.do"><img src="img/btn_write.gif" width="67" height="25"></a>&nbsp;</td>
                                       </tr>
                                   </table></td>
                                   <td align="center"><table border="0" cellspacing="4" cellpadding="0">
@@ -124,8 +159,8 @@ function del_ok(seq){
                                   </table></td>
                                   <td width="300" align="right"><table border="0" cellspacing="4" cellpadding="0">
                                       <tr>
-                                        <td><a href="${board_name}Update.do?seq=${boardDto.seq}"><img src="img/btn_edit.gif" width="54" height="25"></a>&nbsp;</td>
-                                        <td><a href="javascript:del_ok('${boardDto.seq }');"><img src="img/btn_del2.gif" width="54" height="25"></a>&nbsp;</td>
+                                        <td><a href="${board_name}Update.do?seq=${boardDto.seq}&brc_id=${boardDto.brc_id}"><img src="img/btn_edit.gif" width="54" height="25"></a>&nbsp;</td>
+                                        <td><a href='javascript:del_ok("${boardDto.brc_id}");'><img src="img/btn_del2.gif" width="54" height="25"></a>&nbsp;</td>
                                       </tr>
                                   </table></td>
                                 </tr>

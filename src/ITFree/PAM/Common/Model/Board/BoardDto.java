@@ -17,6 +17,7 @@ public class BoardDto {
 	private String brc_name;
 	private long prev_seq;
 	private long next_seq;
+	private int rp_cnt;
 	
 
 	
@@ -104,6 +105,12 @@ public class BoardDto {
 	public void setNext_seq(long next_seq) {
 		this.next_seq = next_seq;
 	}
+	public int getRp_cnt() {
+		return rp_cnt;
+	}
+	public void setRp_cnt(int rp_cnt) {
+		this.rp_cnt = rp_cnt;
+	}
 	@Override
 	public String toString() {
 		return "BoardDto [rown=" + rown + ", seq=" + seq + ", board_chk="
@@ -112,8 +119,10 @@ public class BoardDto {
 				+ ", write_date=" + write_date + ", write_ip=" + write_ip
 				+ ", filename=" + filename + ", brc_id=" + brc_id
 				+ ", brc_name=" + brc_name + ", prev_seq=" + prev_seq
-				+ ", next_seq=" + next_seq + "]";
+				+ ", next_seq=" + next_seq + ", rp_cnt=" + rp_cnt + "]";
 	}
+	
+	
 	
 	
 }
