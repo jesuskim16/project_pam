@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
-public class CommonAction {
+public class CommonAct {
 	private Logger log = Logger.getLogger(this.getClass());
 	
 	@RequestMapping("/main.do")

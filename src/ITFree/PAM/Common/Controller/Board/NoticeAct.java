@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
-public class NoticeAction {	
+public class NoticeAct {	
 		
 		@RequestMapping("/notice_list.do")
 		protected ModelAndView noticeList(HttpServletRequest requset,

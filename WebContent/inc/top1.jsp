@@ -66,7 +66,7 @@ body {
                           <td align="center" background="img/bar_bg.gif"><table border="0" cellspacing="0" cellpadding="0">
                             <tr>
                             <!-- 주요실적 -->
-                              <td width="150" align="center" class="Text_gray4_12px_Bold"><a href="modelRec.do" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('Image22','','img/m01_over.gif',1)"><img src="img/m01.gif" name="Image22" width="100" height="40" border="0"></a></td>
+                              <td width="150" align="center" class="Text_gray4_12px_Bold"><a href="salesRcd.do" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('Image22','','img/m01_over.gif',1)"><img src="img/m01.gif" name="Image22" width="100" height="40" border="0"></a></td>
                             <!-- 판매점 -->                             
                               <td width="150" align="center"><a href="salesList.do" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('Image24','','img/m02_over.gif',1)"><img src="img/m02.gif" name="Image24" width="100" height="40" border="0"></a></td>
                             <!-- 게시판 -->

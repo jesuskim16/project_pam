@@ -17,7 +17,7 @@ import ITFree.PAM.Common.Model.Login.LoginDto;
 
   
 @Controller
-public class LoginAction {
+public class LoginAct {
 	private Logger log = Logger.getLogger(this.getClass());
 	
 	@Autowired

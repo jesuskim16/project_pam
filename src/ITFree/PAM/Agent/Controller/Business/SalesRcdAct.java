@@ -8,9 +8,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
-public class SalesRecordAction {	
+public class SalesRcdAct {	
 			
-		@RequestMapping("/salesRec.do")
+		@RequestMapping("/salesRcd.do")
 		protected ModelAndView SalesRecord_List(HttpServletRequest requset,
 				HttpServletResponse response) throws Exception {
 			

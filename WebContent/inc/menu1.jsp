@@ -18,7 +18,7 @@
                                   <tr>
                                     <td width="14" align="center">&nbsp;</td>
                                     <td width="20" align="center"><img src="img/icon.dot.black.gif" width="9" height="10"></td>
-                                    <td class="Text_gray3_12px"><a href="salesList.do">판매점실적</a></td>
+                                    <td class="Text_gray3_12px"><a href="salesRcd.do">판매점실적</a></td>
                                   </tr>
                                 </table></td>
                               </tr>
@@ -30,7 +30,7 @@
                                   <tr>
                                     <td width="14" align="center">&nbsp;</td>
                                     <td width="20" align="center"><img src="img/icon.dot.black.gif" alt="" width="9" height="10"></td>
-                                    <td class="Text_gray3_12px"><a href="modelList.do">모델별실적</a></td>
+                                    <td class="Text_gray3_12px"><a href="modelRcd.do">모델별실적</a></td>
                                   </tr>
                                 </table></td>
                               </tr>

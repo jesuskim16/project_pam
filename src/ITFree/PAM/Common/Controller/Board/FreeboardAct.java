@@ -21,7 +21,7 @@ import ITFree.PAM.Common.Model.Board.BoardDto;
 import ITFree.PAM.Common.Model.Board.PageDto;
 
 @Controller
-public class FreeboardAction {
+public class FreeboardAct {
 	
 		@Autowired
 		private BoardDao boardDao;
