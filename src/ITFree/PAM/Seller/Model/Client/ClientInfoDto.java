@@ -1,7 +1,7 @@
 package ITFree.PAM.Seller.Model.Client;
 
 public class ClientInfoDto {
-	private String seq; 		
+	private int seq; 		
 	private String cust_name; 	
 	private String cust_phone;
 	private String cust_phone1;
@@ -11,14 +11,17 @@ public class ClientInfoDto {
 	private String cont_term;	
 	private String open_date;	
 	private String memo;
+	private String write_date;
+	private String write_ip;
 	private String brc_id; 		
 	private String price_name; 	
 	private String model_code;
 	
-	public String getSeq() {
+	
+	public int getSeq() {
 		return seq;
 	}
-	public void setSeq(String seq) {
+	public void setSeq(int seq) {
 		this.seq = seq;
 	}
 	public String getCust_name() {
@@ -32,6 +35,24 @@ public class ClientInfoDto {
 	}
 	public void setCust_phone(String cust_phone) {
 		this.cust_phone = cust_phone;
+	}
+	public String getCust_phone1() {
+		return cust_phone1;
+	}
+	public void setCust_phone1(String cust_phone1) {
+		this.cust_phone1 = cust_phone1;
+	}
+	public String getCust_phone2() {
+		return cust_phone2;
+	}
+	public void setCust_phone2(String cust_phone2) {
+		this.cust_phone2 = cust_phone2;
+	}
+	public String getCust_phone3() {
+		return cust_phone3;
+	}
+	public void setCust_phone3(String cust_phone3) {
+		this.cust_phone3 = cust_phone3;
 	}
 	public String getCust_birth() {
 		return cust_birth;
@@ -57,6 +78,18 @@ public class ClientInfoDto {
 	public void setMemo(String memo) {
 		this.memo = memo;
 	}
+	public String getWrite_date() {
+		return write_date;
+	}
+	public void setWrite_date(String write_date) {
+		this.write_date = write_date;
+	}
+	public String getWrite_ip() {
+		return write_ip;
+	}
+	public void setWrite_ip(String write_ip) {
+		this.write_ip = write_ip;
+	}
 	public String getBrc_id() {
 		return brc_id;
 	}
@@ -75,25 +108,6 @@ public class ClientInfoDto {
 	public void setModel_code(String model_code) {
 		this.model_code = model_code;
 	}
-	
-	public String getCust_phone1() {
-		return cust_phone1;
-	}
-	public void setCust_phone1(String cust_phone1) {
-		this.cust_phone1 = cust_phone1;
-	}
-	public String getCust_phone2() {
-		return cust_phone2;
-	}
-	public void setCust_phone2(String cust_phone2) {
-		this.cust_phone2 = cust_phone2;
-	}
-	public String getCust_phone3() {
-		return cust_phone3;
-	}
-	public void setCust_phone3(String cust_phone3) {
-		this.cust_phone3 = cust_phone3;
-	}
 	@Override
 	public String toString() {
 		return "ClientInfoDto [seq=" + seq + ", cust_name=" + cust_name
@@ -101,9 +115,8 @@ public class ClientInfoDto {
 				+ ", cust_phone2=" + cust_phone2 + ", cust_phone3="
 				+ cust_phone3 + ", cust_birth=" + cust_birth + ", cont_term="
 				+ cont_term + ", open_date=" + open_date + ", memo=" + memo
+				+ ", write_date=" + write_date + ", write_ip=" + write_ip
 				+ ", brc_id=" + brc_id + ", price_name=" + price_name
 				+ ", model_code=" + model_code + "]";
-	} 	
-	
-	
+	}
 }
