@@ -22,9 +22,10 @@ public class ClientInfoDaoImp implements ClientInfoDao {
 	@Override
 	public boolean clientUpdate(ClientInfoDto cIDto) {
 		try {
-			sqlMapClientTemplate.queryForObject("clientInfo.updateClient",cIDto);
+			sqlMapClientTemplate.update("clientInfo.updateClient",cIDto);
 			return true;	
 		} catch (Exception e) {
+			e.printStackTrace();
 			return false;
 		}
 		

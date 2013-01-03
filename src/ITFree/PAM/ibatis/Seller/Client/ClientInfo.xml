@@ -18,8 +18,7 @@
 	    cont_term	= #cont_term#,	
 	    open_date	= #open_date#,	
 	    price_name	= #price_name#,	
-	    model_code	= #model_code#,	
-	    memo		= #memo#
+	    model_code	= #model_code#
     WHERE 	seq 	= #seq#
     	AND	brc_id	= #brc_id#
   </update>

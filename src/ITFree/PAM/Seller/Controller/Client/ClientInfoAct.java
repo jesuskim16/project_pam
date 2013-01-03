@@ -44,11 +44,15 @@ public class ClientInfoAct {
 		return "/WEB-INF/www/seller/client/clientList.jsp";
 	}
 	@RequestMapping("/clientUpdate.do")
-	public String clientUpdate(Model model, HttpSession session, ClientInfoDto CIDto){
-		log.debug("--ClientUpdate"+CIDto);
+	public String clientUpdate(Model model, ClientInfoDto CIDto){
+		CIDto.setCust_phone(CIDto.getCust_phone1()+"-"+CIDto.getCust_phone2()+"-"+CIDto.getCust_phone3());
+		log.debug("--ClientUpdate_1"+CIDto);		
 		boolean update_result = clientInfoDao.clientUpdate(CIDto);
-		
-		return "redirect:clientList.do";		
+		if(update_result){
+			return "redirect:clientList.do";
+		}else{
+			return null;
+		}		
 	}
 
 }

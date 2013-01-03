@@ -4,6 +4,9 @@ public class ClientInfoDto {
 	private String seq; 		
 	private String cust_name; 	
 	private String cust_phone;
+	private String cust_phone1;
+	private String cust_phone2;
+	private String cust_phone3;
 	private String cust_birth;	
 	private String cont_term;	
 	private String open_date;	
@@ -73,13 +76,33 @@ public class ClientInfoDto {
 		this.model_code = model_code;
 	}
 	
+	public String getCust_phone1() {
+		return cust_phone1;
+	}
+	public void setCust_phone1(String cust_phone1) {
+		this.cust_phone1 = cust_phone1;
+	}
+	public String getCust_phone2() {
+		return cust_phone2;
+	}
+	public void setCust_phone2(String cust_phone2) {
+		this.cust_phone2 = cust_phone2;
+	}
+	public String getCust_phone3() {
+		return cust_phone3;
+	}
+	public void setCust_phone3(String cust_phone3) {
+		this.cust_phone3 = cust_phone3;
+	}
 	@Override
 	public String toString() {
 		return "ClientInfoDto [seq=" + seq + ", cust_name=" + cust_name
-				+ ", cust_phone=" + cust_phone + ", cust_birth=" + cust_birth
-				+ ", cont_term=" + cont_term + ", open_date=" + open_date
-				+ ", memo=" + memo + ", brc_id=" + brc_id + ", price_name="
-				+ price_name + ", model_code=" + model_code + "]";
+				+ ", cust_phone=" + cust_phone + ", cust_phone1=" + cust_phone1
+				+ ", cust_phone2=" + cust_phone2 + ", cust_phone3="
+				+ cust_phone3 + ", cust_birth=" + cust_birth + ", cont_term="
+				+ cont_term + ", open_date=" + open_date + ", memo=" + memo
+				+ ", brc_id=" + brc_id + ", price_name=" + price_name
+				+ ", model_code=" + model_code + "]";
 	} 	
 	
 	

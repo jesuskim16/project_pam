@@ -81,6 +81,8 @@
                                  </td>	                                    
                                </tr>
                              <form method="post" action="clientUpdate.do">
+                             <input type="hidden" name="brc_id" value="${brc_id}"/>
+                             <input type="hidden" name="seq" value="${client.seq}"/>
                                <tr id="layer2_${client.seq}" style="display:none;">
                                  <td align="center" bgcolor="#FFFFFF">${client.seq}</td>
                                  <td align="center" bgcolor="#FFFFFF"><input type="text" size="7" name="cust_name"  value="${client.cust_name}"/></td>
