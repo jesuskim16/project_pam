@@ -10,5 +10,17 @@
     FROM	custominfo
     WHERE 	brc_id=#brc_id#
   </select>
-
+  <update id="updateClient" parameterClass="ciDto"> 
+    UPDATE custominfo SET 
+	    cust_name	= #cust_name#,	 		
+	    cust_phone	= #cust_phone#,	
+	    cust_birth	= #cust_birth#,	
+	    cont_term	= #cont_term#,	
+	    open_date	= #open_date#,	
+	    price_name	= #price_name#,	
+	    model_code	= #model_code#,	
+	    memo		= #memo#
+    WHERE 	seq 	= #seq#
+    	AND	brc_id	= #brc_id#
+  </update>
 </sqlMap>

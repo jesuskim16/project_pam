@@ -16,8 +16,18 @@ public class ClientInfoDaoImp implements ClientInfoDao {
 
 	@Override
 	public List<ClientInfoDto> clientList(String brc_id) {
-		log.debug("--ClientInfoDaoImp_1"+brc_id);
 		return sqlMapClientTemplate.queryForList("clientInfo.getClientInfo",brc_id);
+	}
+
+	@Override
+	public boolean clientUpdate(ClientInfoDto cIDto) {
+		try {
+			sqlMapClientTemplate.queryForObject("clientInfo.updateClient",cIDto);
+			return true;	
+		} catch (Exception e) {
+			return false;
+		}
+		
 	}
 
 }

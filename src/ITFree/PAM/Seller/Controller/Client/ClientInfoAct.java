@@ -43,5 +43,12 @@ public class ClientInfoAct {
 		model.addAttribute("priceInfo",priceInfo);
 		return "/WEB-INF/www/seller/client/clientList.jsp";
 	}
+	@RequestMapping("/clientUpdate.do")
+	public String clientUpdate(Model model, HttpSession session, ClientInfoDto CIDto){
+		log.debug("--ClientUpdate"+CIDto);
+		boolean update_result = clientInfoDao.clientUpdate(CIDto);
+		
+		return "redirect:clientList.do";		
+	}
 
 }

@@ -6,4 +6,6 @@ public interface ClientInfoDao {
 
 	List<ClientInfoDto> clientList(String brc_id);
 
+	boolean clientUpdate(ClientInfoDto cIDto);
+
 }

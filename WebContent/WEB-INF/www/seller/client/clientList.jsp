@@ -80,24 +80,24 @@
                                    <input type="button" value="삭제"/>
                                  </td>	                                    
                                </tr>
-                             <form name="layer2_${client.seq}" get="post">
+                             <form method="post" action="clientUpdate.do">
                                <tr id="layer2_${client.seq}" style="display:none;">
                                  <td align="center" bgcolor="#FFFFFF">${client.seq}</td>
                                  <td align="center" bgcolor="#FFFFFF"><input type="text" size="7" name="cust_name"  value="${client.cust_name}"/></td>
                                  <td align="center" bgcolor="#FFFFFF"><input type="date" size="9" name="cust_birth"  value="${client.cust_birth}"/></td>
                                  <td align="center" bgcolor="#FFFFFF"><select name="model_code">
+                                 
                                    <c:forEach items="${modelInfo}" var="mdto">
                                      <c:choose>
                                        <c:when test="${client.model_code==mdto.model_code}">
-                                         <option value="${mdto.model_code}" selected="selected">
+                                         <option value="${mdto.model_code}" selected="selected">${mdto.model_name}</option>
                                        </c:when>
                                        <c:otherwise>
-                                         <option value="${mdto.model_code}">
+                                         <option value="${mdto.model_code}">${mdto.model_name}</option>
                                        </c:otherwise>
                                      </c:choose>
-                                           ${mdto.model_name}
-                                         </option>
                                    </c:forEach>
+                                   
                                  </select></td>                                 
                                  <td align="center" bgcolor="#FFFFFF">
                                  <c:set var="sphone" value="${fn:split(client.cust_phone,'-')}"/>
@@ -106,18 +106,18 @@
                                  </c:forEach>
                                  </td>							  
                                  <td align="center" bgcolor="#FFFFFF"><select name="price_name">
+                                 
                                    <c:forEach items="${priceInfo}" var="pdto">  
                                      <c:choose>
                                        <c:when test="${client.price_name==pdto.price_name}">
-                                         <option value="${pdto.price_name}" selected="selected">
+                                         <option value="${pdto.price_name}" selected="selected">${pdto.price_name}</option>
                                        </c:when>
                                        <c:otherwise>
-                                         <option value="${pdto.price_name}">
+                                         <option value="${pdto.price_name}">${pdto.price_name}</option>
                                        </c:otherwise>
-                                     </c:choose>
-                                           ${pdto.price_name}
-                                         </option>
+                                     </c:choose>                                           
                                    </c:forEach>  
+                                   
                                  </select></td>
                                  <td align="center" bgcolor="#FFFFFF"><input type="text" size="2" name="cont_term"  value="${client.cont_term}"/>개월</td>
                                  <td align="center" bgcolor="#FFFFFF"><input type="date" size="9" name="open_date"  value="${client.open_date}"/></td>
