@@ -38,12 +38,27 @@ function HiddenSeem(hidden,seem) {
 	document.getElementById(seem).style.display="table-row";
 	document.count.countvalue.value++;
 	}
-} 
+}
+
+//<!--  우편 번호 추가 -->
+
+var openZipcode = function(reg_seq) {
+	var url = "Zipcode.do";
+	document.count.sendseq.value = reg_seq;
+	open(url, "confirm", 
+		"toolbar=no, location=no, status=no, menubar=no, scrolbar=yes" +
+		"resizeble=no, width=450, height=400");
+	
+	
+}
 </script>
+
+
 
 <!-- 보이기/숨기기 개수제한 -->
 <form name="count">
 <input type="hidden" name="countvalue" value="0">
+<input type="hidden" name="sendseq" value="0">
 </form>
                         <td width="1"></td>
                         <td valign="top"><table width="100%" border="0" cellspacing="0" cellpadding="0">
@@ -66,7 +81,7 @@ function HiddenSeem(hidden,seem) {
                             <table width="100%" border="0" cellpadding="0" cellspacing="1" bgcolor="cccccc">
 <!-- {4(목록)----------------------------------------------------------------------------------------------------------------------------------->                            
                                <tr>
-                                 <th width="40" align="center" bgcolor="e2e2e2" >번호</th>
+                                 <th width="40" height="40" align="center" bgcolor="e2e2e2" >번호</th>
                                  <th align="center" bgcolor="e2e2e2">판매점명/아이디</th>
                                  <th align="center" bgcolor="e2e2e2">연락처</th>
                                  <th align="center" bgcolor="e2e2e2">주소</th>
@@ -97,22 +112,33 @@ function HiddenSeem(hidden,seem) {
                                  <td align="center" bgcolor="#FFFFFF" ><input type="button" onclick="javascript:HiddenSeem('hidden_${sdto.seq}','seem_${sdto.seq}')" value="수정"></td>
                                </tr>
                                
-                               <form action="salesUpdate.do" method="post">
+                               <form name="reg_${sdto.seq}" action="salesUpdate.do" method="post">
                                <tr id="seem_${sdto.seq}" style="display:none">
                                
-                                 <td height="28" align="center" bgcolor="#FFFFFF" >${sdto.seq}<input type="hidden" name="seq" value="${sdto.seq}"></td>
+                                 <td height="28" align="center" bgcolor="#FFFFFF" >${sdto.seq}
+                                 <input type="hidden" name="seq" value="${sdto.seq}"></td>
                                
-                                 <td align="left" bgcolor="#FFFFFF" ><input type="text" name="brc_name" value="${sdto.brc_name}" size="7"><input type="text" name="brc_id" value="${sdto.brc_id}" size="7"></td>
+                                 <td align="left" bgcolor="#FFFFFF" >
+                                 <input type="text" name="brc_name" value="${sdto.brc_name}" size="7">
+                                 <input type="text" name="brc_id" value="${sdto.brc_id}" size="7"></td>
                                
-                                 <td align="center" bgcolor="#FFFFFF" ><input type="text" name="brc_phone" value="${ sdto.brc_phone}" size="13"></td>
+                                 <td align="center" bgcolor="#FFFFFF" >
+                                 <input type="text" name="brc_phone" value="${ sdto.brc_phone}" size="13"></td>
                                
-                                 <td align="left" bgcolor="#FFFFFF" ><input type="text" name="brc_post" value="${ sdto.brc_post}"><input type="text" name="brc_addr1" value="${sdto.brc_addr1}"><input type="text" name="brc_addr2" value="${sdto.brc_addr2}"></td>
+                                 <td align="left" bgcolor="#FFFFFF" >
+                                 <input type="text" name="brc_post" value="${ sdto.brc_post}" size="3">
+                                 <input type="text" name="brc_addr1" value="${sdto.brc_addr1}" size="65"><br/>
+                                 <input type="text" name="brc_addr2" value="${sdto.brc_addr2}" size="57">
+                                 <input type="button" name="post" value="우편번호 검색" onclick="javascript:openZipcode('reg_${sdto.seq}');" /></td>
                                
-                                 <td align="left" bgcolor="#FFFFFF" ><input type="text" name="brc_boss" value="${ sdto.brc_boss}" size="5"></td>
+                                 <td align="left" bgcolor="#FFFFFF" >
+                                 <input type="text" name="brc_boss" value="${ sdto.brc_boss}" size="5"></td>
                                
-                                 <td align="center" bgcolor="#FFFFFF" ><input type="text" name="boss_phone" value="${ sdto.boss_phone}" size="10"></td>
+                                 <td align="center" bgcolor="#FFFFFF" >
+                                 <input type="text" name="boss_phone" value="${ sdto.boss_phone}" size="10"></td>
                                
-                                 <td align="center" bgcolor="#FFFFFF" ><input type="text" name="write_date" value="${ sdto.write_date}" size="7"></td>
+                                 <td align="center" bgcolor="#FFFFFF" >
+                                 <input type="text" name="write_date" value="${ sdto.write_date}" size="7"></td>
                                
                                  <td align="center" bgcolor="#FFFFFF" ><input type="submit" value="완료"></td>
                                </tr>

@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,16 +10,30 @@
 <body>
 <script type="text/javascript">
 	var setZipcode = function (zipcode1 , zipcode2, addr1) {
+		
+		if(opener.document.reg) {
 		opener.document.reg.brc_post1.value = zipcode1;
 		opener.document.reg.brc_post2.value = zipcode2;
 		opener.document.reg.brc_post.value = zipcode1+"-"+zipcode2;
 		opener.document.reg.brc_addr1.value = addr1;
-		self.close();		
+		} else {
+			var formname = opener.document.count.sendseq.value;
+			formname = eval("opener.document." + formname); 
+			
+			formname.brc_post.value = zipcode1+"-"+zipcode2;
+			formname.brc_addr1.value = addr1;
+		}
+		
+	
+	self.close();		
 	}
+	
+
 </script>
 
 
 <form action="ZipcodeAction.do" method="post" name="zip">
+
 <table border="1" cellpadding="5" cellspacing="0">
 	<tr	align="center">
 		<td colspan="2">
@@ -37,7 +51,7 @@
 		<c:forEach items="${list }" var="zdto">
 		<tr>
 			<td width="70" >			
-				<a href="javascript:." onclick="javascript:setZipcode(${zdto.zipcode1} , '${zdto.zipcode2}', '${zdto.addr1}');">
+				<a href="javascript:." onclick="javascript:setZipcode('${zdto.zipcode1}' , '${zdto.zipcode2}', '${zdto.addr1}');">
 				${zdto.zipcode1} - ${zdto.zipcode2}
 			</td>
 			<td>			
