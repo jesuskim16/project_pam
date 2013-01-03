@@ -33,6 +33,7 @@ public class SalesInfoAct {
 			mav.addObject("title_name","PAM::판매점정보");
 			mav.addObject("list", list);
 			return mav;
+			 
 		}
 		
 

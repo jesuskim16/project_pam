@@ -13,8 +13,7 @@
 		opener.document.reg.brc_post1.value = zipcode1;
 		opener.document.reg.brc_post2.value = zipcode2;
 		opener.document.reg.brc_post.value = zipcode1+"-"+zipcode2;
-		opener.document.reg.brc_addr1.value = addr1;		
-		
+		opener.document.reg.brc_addr1.value = addr1;
 		self.close();		
 	}
 </script>
