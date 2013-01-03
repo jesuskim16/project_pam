@@ -49,7 +49,7 @@ public class ClientInfoAct {
 		log.debug("--ClientUpdate_1"+CIDto);		
 		boolean update_result = clientInfoDao.clientUpdate(CIDto);
 		if(update_result){
-			return "redirect:clientList.do";
+			return "redirect:clientList.do"; 
 		}else{
 			return null;
 		}		
