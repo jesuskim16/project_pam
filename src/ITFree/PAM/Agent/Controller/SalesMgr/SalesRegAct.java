@@ -49,7 +49,7 @@ public class SalesRegAct {
 		salesDto.setBrc_post(salesDto.getBrc_post1() + "-" + salesDto.getBrc_post2());
 		
 		salesDto.setAttach_id((String) session.getAttribute("brc_id"));
-		salesDto.setBrc_lev(1);// 판매점레벨 수정
+		salesDto.setBrc_lev(2);// 판매점레벨 수정
 
 		boolean insert_result = salesDao.salesRegister_insertAction(salesDto);
 

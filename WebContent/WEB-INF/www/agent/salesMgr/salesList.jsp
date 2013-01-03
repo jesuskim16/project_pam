@@ -2,7 +2,12 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
+<jsp:include page="/inc/top1.jsp"/>    
+<jsp:include page="/inc/menu2.jsp"/>
+
 <script type="text/javascript">
+/*
+// CheckBox javascript
 function chkAll() 
 { 
  var check;
@@ -23,12 +28,16 @@ function chkAll()
        
   } 
  } 
+}
+*/
+
+//Div javascript
+function HiddenSeem(hidden,seem) {
+	document.getElementById(hidden).style.display="none";
+	document.getElementById(seem).style.display="table-row";
 } 
 
 </script>
-<form name="frmCheck">
-<jsp:include page="/inc/top1.jsp"/>    
-<jsp:include page="/inc/menu2.jsp"/>    
                         <td width="1"></td>
                         <td valign="top"><table width="100%" border="0" cellspacing="0" cellpadding="0">
                           <tr>
@@ -46,10 +55,10 @@ function chkAll()
                             <td height="1"></td>
                           </tr>                          
                           <tr>
-                            <td><table width="100%" border="0" cellpadding="0" cellspacing="1" bgcolor="cccccc">
+                            <td>
+                            <table width="100%" border="0" cellpadding="0" cellspacing="1" bgcolor="cccccc">
 <!-- {4(목록)----------------------------------------------------------------------------------------------------------------------------------->                            
                                <tr>
-                                 <th height="40" width="30" bgcolor="e2e2e2"><input type="checkbox" name="allcheckbtn" onclick="chkAll();"/></th>
                                  <th width="40" align="center" bgcolor="e2e2e2" >번호</th>
                                  <th align="center" bgcolor="e2e2e2">판매점명/아이디</th>
                                  <th align="center" bgcolor="e2e2e2">연락처</th>
@@ -57,22 +66,52 @@ function chkAll()
                                  <th align="center" bgcolor="e2e2e2">대표</th>
                                  <th align="center" bgcolor="e2e2e2">대표 연락처</th>						                                    
                                  <th align="center" bgcolor="e2e2e2">생성일</th>						                                    
+                                 <th align="center" bgcolor="e2e2e2"></th>
                                </tr>
 <!-- {4 )------------------------------------------------------------------------------------------------------------------------------------------>                                  
 <!-- {5(내용)------------------------------------------------------------------------------------------------------------------------------------>                             
                            		<c:forEach items="${list}" var="sdto">
-                           		
-                               <tr>
-                                 <td align="center" bgcolor="#FFFFFF" ><input type="checkbox" name="chk" /></td>
+                           		<tr id="hidden_${sdto.seq}" style="display:table-row">
+                                 
                                  <td height="28" align="center" bgcolor="#FFFFFF" >${ sdto.seq}</td>
-                                 <td align="left" bgcolor="#FFFFFF" >${ sdto.brc_name}</td>
+                                 
+                                 <td align="left" bgcolor="#FFFFFF" >${ sdto.brc_name}/${sdto.brc_id}</td>
+                                 
                                  <td align="center" bgcolor="#FFFFFF" >${ sdto.brc_phone}</td>
-                                 <td align="left" bgcolor="#FFFFFF" >${ sdto.brc_post}</td>
-                                 <td align="center" bgcolor="#FFFFFF" >${ sdto.brc_boss}</td>
-                                 <td align="center" bgcolor="#FFFFFF" >${ sdto.boss_phone}</td>						                                    
-                                 <td align="center" bgcolor="#FFFFFF" >${ sdto.write_date}</td>						                                    
-                               </tr> 
-                               </c:forEach>                  
+                                 
+                                 <td align="left" bgcolor="#FFFFFF" >${ sdto.brc_post} ${sdto.brc_addr1} ${sdto.brc_addr2}</td>
+                                 
+                                 <td align="left" bgcolor="#FFFFFF" >${ sdto.brc_boss}</td>
+                                 
+                                 <td align="center" bgcolor="#FFFFFF" >${ sdto.boss_phone}</td>
+                                 
+                                 <td align="center" bgcolor="#FFFFFF" >${ sdto.write_date}</td>
+                                 
+                                 <td align="center" bgcolor="#FFFFFF" ><input type="button" onclick="javascript:HiddenSeem('hidden_${sdto.seq}','seem_${sdto.seq}')" value="수정"></td>
+                               </tr>
+                               
+                               <form action="salesUpdate.do" method="post">
+                               <tr id="seem_${sdto.seq}" style="display:none">
+                               
+                                 <td height="28" align="center" bgcolor="#FFFFFF" >${sdto.seq}<input type="hidden" name="seq" value="${sdto.seq}"></td>
+                               
+                                 <td align="left" bgcolor="#FFFFFF" ><input type="text" name="brc_name" value="${sdto.brc_name}" size="7"><input type="text" name="brc_id" value="${sdto.brc_id}" size="7"></td>
+                               
+                                 <td align="center" bgcolor="#FFFFFF" ><input type="text" name="brc_phone" value="${ sdto.brc_phone}" size="13"></td>
+                               
+                                 <td align="left" bgcolor="#FFFFFF" ><input type="text" name="brc_post" value="${ sdto.brc_post}"><input type="text" name="brc_addr1" value="${sdto.brc_addr1}"><input type="text" name="brc_addr2" value="${sdto.brc_addr2}"></td>
+                               
+                                 <td align="left" bgcolor="#FFFFFF" ><input type="text" name="brc_boss" value="${ sdto.brc_boss}" size="5"></td>
+                               
+                                 <td align="center" bgcolor="#FFFFFF" ><input type="text" name="boss_phone" value="${ sdto.boss_phone}" size="10"></td>
+                               
+                                 <td align="center" bgcolor="#FFFFFF" ><input type="text" name="write_date" value="${ sdto.write_date}" size="7"></td>
+                               
+                                 <td align="center" bgcolor="#FFFFFF" ><input type="submit" value="완료"></td>
+                               </tr>
+                               </form>
+                               </c:forEach>
+                                                 
                             </table></td>
                           </tr>
                           <tr>
@@ -97,7 +136,5 @@ function chkAll()
                           </tr>
                         </table></td>
                         
-
-</form>
 <a href="salesInfo_delete.do?="><jsp:include page="/inc/bottom.jsp"/></a> 
                          
