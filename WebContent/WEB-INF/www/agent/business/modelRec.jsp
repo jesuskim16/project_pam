@@ -1,8 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <jsp:include page="/inc/top1.jsp"/>    
-<jsp:include page="/inc/menu1.jsp"/>   
-
+<jsp:include page="/inc/menu1.jsp"/>
+<script type="text/javascript" src="js/setDate.js"></script>
                 <td width="1"></td>
                 <td valign="top"><table width="100%" border="0" cellspacing="0" cellpadding="0">
                   <tr>
@@ -21,7 +21,7 @@
                       <tr>
                         <td align="center" bgcolor="#FFFFFF"><table width="100%" border="0" cellspacing="0" cellpadding="0">
 <!----- --------------------------------------------------------------------------------------------------------------------------------------------------->
-                          <form method="post" name="result_form" action="count.do" style="margin:0">
+                          <form method="get" name="result_form" action="count.do" style="margin:0">
                           <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
                             <tr bgcolor="cccccc">
                               <td height="10" colspan="2"></td>
@@ -30,14 +30,14 @@
                               <td width="50"></td>
                               <td height="25"><table border="0" cellspacing="0" cellpadding="0">
                                 <tr>
-                                  <td class="pr10"><a href="#"><img src="img/btn_01.gif" width="40" height="21"></a></td>
-                                  <td class="pr10"><a href="#"><img src="img/btn_02.gif" width="40" height="21"></a></td>
-                                  <td class="pr10"><a href="#"><img src="img/btn_03.gif" width="40" height="21"></a></td>
-                                  <td class="pr10"><a href="#"><img src="img/btn_04.gif" width="40" height="21"></a></td>
-                                  <td class="pr10"><a href="#"><img src="img/btn_05.gif" width="40" height="21"></a></td>
-                                  <td class="pr10"><a href="#"><img src="img/btn_06.gif" width="40" height="21"></a></td>
-                                  <td class="pr10"><a href="#"><img src="img/btn_07.gif" width="40" height="21"></a></td>
-                                  <td><a href="#"><img src="img/btn_08.gif" width="40" height="21"></a></td>
+                     <!-- 당일 -->  <td class="pr10"><a href="javascript:pageLoad();"><img src="img/btn_01.gif" width="40" height="21"></a></td>
+                     <!-- 전일 -->  <td class="pr10"><a href="javascript:m_yesterday();"><img src="img/btn_02.gif" width="40" height="21"></a></td>
+                     <!-- 7일 -->  <td class="pr10"><a href="javascript:m_week();"><img src="img/btn_03.gif" width="40" height="21"></a></td>
+                     <!-- 10일 --> <td class="pr10"><a href="javascript:m_tenDay();"><img src="img/btn_04.gif" width="40" height="21"></a></td>
+                     <!-- 15일 --> <td class="pr10"><a href="javascript:m_ftDay();"><img src="img/btn_05.gif" width="40" height="21"></a></td>
+                     <!-- 한달 -->  <td class="pr10"><a href="javascript:m_amonth();"><img src="img/btn_06.gif" width="40" height="21"></a></td>
+                     <!-- 3달 -->  <td class="pr10"><a href="javascript:m_tmonth();"><img src="img/btn_07.gif" width="40" height="21"></a></td>
+                     <!-- 6달 -->  <td><a href="javascript:m_smonth();"><img src="img/btn_08.gif" width="40" height="21"></a></td>
                                 </tr>
                               </table></td>
                             </tr>
@@ -45,12 +45,17 @@
                               <td width="50"></td>
                               <td height="40" class="line_bg_bottom1"><table width="500" border="0" cellspacing="0" cellpadding="0">
                                 <tr>
-                                  <td style="padding-left:5;"><input type="text" name="s_sdate" size="10"  value="2012-12-01" readonly class="result_form"></td>                                          
-                                  <td class="pr10"><img src="img/btn_calendar.gif" width="24" height="24" style="cursor:hand"></td>
-                                  <td class="pr10">~</td>
-                                  <td><input type="text" name="s_edate" size="10"  value="2012-12-31" readonly class="result_form"></td>                                           
-                                  <td class="pr10"><img src="img/btn_calendar.gif" width="24" height="24" align="absmiddle" style="cursor:hand"></td>                                          
-                                  <td><input type="image" src="img/btn_ok.gif"  width="40" height="21"></td>
+                                  <td><input type="date" name="s_sdate" size="10" />                                          
+                                  	  ~
+                                 	  <input type="date" name="s_edate" size="10" /></td>
+                                  <td width="80" valign="middle">모델 선택 : </td>                                           
+                                  <td valign="middle">                                   
+                                  	<select name="" id="">
+										<option value="">아이폰5</option>
+										<option value="">갤럭시S3</option>
+									</select>
+								  </td>
+								  <td valign="bottom"><input type="image" src="img/btn_ok.gif"  width="40" height="21"></td>
                                 </tr>
                               </table></td>
                             </tr>
@@ -90,10 +95,7 @@
 						                                  <tr>
 						                                    <th width="40"  height="50" align="center" bgcolor="aaaaaa">총계</th>
 						                                    <td height="28" align="center" bgcolor="#FFFFFF">
-						                                      <select>
-						                                        <option>아이폰5</option>
-						                                        <option>갤럭시S3</option>
-						                                      </select>
+
                                                             </td>						                                    
 						                                    <td height="28" align="center" bgcolor="#FFFFFF">2012.12.01<br>&nbsp;~2012.12.31</td>
 						                                    <td height="28" align="center" bgcolor="#FFFFFF">44 대</td>
