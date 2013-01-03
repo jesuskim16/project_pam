@@ -31,13 +31,20 @@ function chkAll()
 }
 */
 
-//Div javascript
+//보이기/숨기기 javascript
 function HiddenSeem(hidden,seem) {
+	if(document.count.countvalue.value == '0'){
 	document.getElementById(hidden).style.display="none";
 	document.getElementById(seem).style.display="table-row";
+	document.count.countvalue.value++;
+	}
 } 
-
 </script>
+
+<!-- 보이기/숨기기 개수제한 -->
+<form name="count">
+<input type="hidden" name="countvalue" value="0">
+</form>
                         <td width="1"></td>
                         <td valign="top"><table width="100%" border="0" cellspacing="0" cellpadding="0">
                           <tr>
