@@ -65,7 +65,7 @@ function reply_insert(){
                                 <tr>
                                   <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
                                     <tr>
-                                      <td height="30" align="center" bgcolor="e2e2e2" class="Text_gray2_12px_Bold">제목입니다.</td>
+                                      <td height="30" align="center" bgcolor="e2e2e2" class="Text_gray2_12px_Bold">${boardDto.title}</td>
                                     </tr>
                                   </table></td>
                                 </tr>
