@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.1.xsd">
+
+	<bean id="dataSource" 
+		class="org.springframework.jdbc.datasource.DriverManagerDataSource"
+		p:driverClassName="oracle.jdbc.OracleDriver"
+		p:url="jdbc:oracle:thin:@localhost:1521:xe"
+		p:username="oraclejava"
+		p:password="oraclejava"/>
+		
+		
+<!-- 	sqlMapClient를 생성한다. -->
+	<bean id="sqlMapClient" class="org.springframework.orm.ibatis.SqlMapClientFactoryBean" 
+		p:configLocation="/WEB-INF/SqlMapConfig.xml"
+		p:dataSource-ref="dataSource"
+	/>
+<!-- 	SqlpMapClientTemplate 를 생성. --> 
+	<bean id="SqlMapClientTemplate" class="org.springframework.orm.ibatis.SqlMapClientTemplate"
+		p:sqlMapClient-ref="sqlMapClient"
+	/>	
+	
+</beans>

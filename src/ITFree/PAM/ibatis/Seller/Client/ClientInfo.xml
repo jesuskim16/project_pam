@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">    
+<sqlMap namespace="clientInfo">
+  <typeAlias type="ITFree.PAM.Seller.Model.Client.ClientInfoDto" alias="ciDto"/>
+  <select resultClass="ciDto" parameterClass="String" id="getClientInfo"> 
+    SELECT 	seq, cust_name, cust_phone, to_char(cust_birth,'YYYY-MM-DD') as cust_birth, cont_term, open_date, memo, price_name, model_code 	
+    FROM	custominfo
+    WHERE 	brc_id=#brc_id#
+  </select>
+
+</sqlMap>
