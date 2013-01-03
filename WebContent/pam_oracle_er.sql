@@ -183,5 +183,13 @@ FROM   (SELECT A.* ,rownum as rnum
 WHERE 1<= rnum AND rnum <= 10
 
 
+		SELECT seq, brc_name, brc_id, brc_phone,
+		brc_addr1, brc_addr2, brc_post,
+		brc_boss, boss_phone, to_char(write_date, 'YYYY-MM-DD') AS write_date
+		FROM BRANCH
+		WHERE BRC_LEV='2'
+		ORDER BY seq ASC;
+
+		SELECT * FROM BRANCH;
 
 
