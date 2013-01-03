@@ -17,6 +17,7 @@ import sun.util.logging.resources.logging;
 import ITFree.PAM.Agent.Model.SalesMgr.SalesDao;
 import ITFree.PAM.Agent.Model.SalesMgr.SalesDto;
 import ITFree.PAM.Common.Model.ResultDto;
+import ITFree.PAM.Common.Model.Board.PageDto;
 
 
 @Controller
@@ -27,7 +28,7 @@ public class SalesInfoAct {
 	private SalesDao salesDao;
 	
 		@RequestMapping("/salesList.do")
-		protected ModelAndView salesList(SalesDto salesDto){
+		protected ModelAndView salesList(){
 			
 			List<SalesDto> list = salesDao.salesInfo_list();
 			
@@ -37,6 +38,8 @@ public class SalesInfoAct {
 			mav.addObject("list", list);
 			
 			return mav;
+			
+			
 		}
 		
 		@RequestMapping("/salesUpdate.do")

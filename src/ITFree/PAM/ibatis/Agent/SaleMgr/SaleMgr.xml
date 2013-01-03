@@ -7,6 +7,7 @@
 <sqlMap namespace="SaleMgr">
 	<typeAlias alias="sdto" type="ITFree.PAM.Agent.Model.SalesMgr.SalesDto" />
 	<typeAlias alias="zdto" type="ITFree.PAM.Agent.Model.SalesMgr.ZipcodeDto" />
+	<typeAlias type="ITFree.PAM.Common.Model.Board.PageDto" alias="pagedto"/>
 
 	<insert id="salesRegister_insertAction" parameterClass="sdto">
 		INSERT

@@ -2,6 +2,8 @@ package ITFree.PAM.Agent.Model.SalesMgr;
 
 import java.util.List;
 
+import ITFree.PAM.Common.Model.Board.PageDto;
+
 public interface SalesDao {
 
 	boolean salesRegister_insertAction(SalesDto salesDto);
@@ -13,6 +15,7 @@ public interface SalesDao {
 	boolean salesInfo_delete(SalesDto salesDto);
 
 	boolean salesUpdate(SalesDto salesDto);
+
 
 
 
