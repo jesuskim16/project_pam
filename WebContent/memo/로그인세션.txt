@@ -1,3 +1,0 @@
-brc_id    : 아이디
-brc_name  : 지점명
-brc_lev   : 레벨
