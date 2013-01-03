@@ -2,7 +2,9 @@
     pageEncoding="UTF-8"%>
 <jsp:include page="/inc/top1.jsp"/>    
 <jsp:include page="/inc/menu2.jsp"/> 
-<script type="text/javascript" src="js/sales_insert.js" ></script>
+<script type="text/javascript" src="js/sales_insert.js" >
+
+</script>
 
 
    <form method = "POST"  name="reg" action = "salesInsertAction.do">
@@ -69,8 +71,8 @@
                                           <td class="pl10 pt10 pb10 line_bg_bottom2"><table border="0" cellspacing="0" cellpadding="0">
                                             <tr>
                                               <td class="pb10 ">
-                                               <input name="brc_post1" type="text" class="input_gray3" size="5" onClick="MM_openBrWindow('/program/pop_post.asp','post','scrollbars=yes,width=418,height=370,top=300,left=400')" style="cursor:hand"> -
-                                               <input name="brc_post2" type="text" class="input_gray3" size="5" onClick="MM_openBrWindow('/program/pop_post.asp','post','scrollbars=yes,width=418,height=370,top=300,left=400')" style="cursor:hand">
+                                               <input name="brc_post1" type="text" class="input_gray3" size="5"> -
+                                               <input name="brc_post2" type="text" class="input_gray3" size="5">
                                                <input type="button" name="post" value="우편번호 검색" onclick="javascript:openZipcode();" />
                                                <input type="hidden" name="brc_post" />
                                             </tr>
@@ -79,7 +81,7 @@
                                             </tr>
                                             
                                             <tr>
-                                              <td><input name="brc_addr2" type="text" class="input_gray3" size="60" value=""></td>
+                                              <td class="pb5 "><input name="brc_addr2" type="text" class="input_gray3" size="60" value=""></td>
                                             </tr>
                                           </table></td>
                                         </tr>
