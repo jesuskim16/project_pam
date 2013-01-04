@@ -8,6 +8,8 @@ import org.springframework.dao.DataAccessException;
 import org.springframework.orm.ibatis.SqlMapClientTemplate;
 import org.springframework.stereotype.Repository;
 
+import ITFree.PAM.Agent.Model.SalesMgr.SalesDto;
+
 @Repository
 public class ClientInfoDaoImp implements ClientInfoDao {
 	private Logger log = Logger.getLogger(this.getClass());
@@ -32,6 +34,7 @@ public class ClientInfoDaoImp implements ClientInfoDao {
 		
 	}
 	
+	//모델별 실적 > 각 모델별 검색결과 및 모델정보를 List형식으로 뿌려주기 위한 메소드
 	@Override
 	public List<ClientInfoDto> modelRcdList(ClientInfoPageDto cIPdto) {		
 		try {
@@ -42,6 +45,7 @@ public class ClientInfoDaoImp implements ClientInfoDao {
 		}
 	}
 	
+	//모델별 실적 > 모델이름을 SELECT BOX에 뿌려주기 위한 메소드
 	@Override
 	public List<ClientInfoDto> getModelName() {		
 		try {
@@ -52,6 +56,7 @@ public class ClientInfoDaoImp implements ClientInfoDao {
 		}
 	}
 	
+	//모델별 실적 > 페이징 처리를 위한 게시물의 총 갯수 구하는 메소드
 	@Override
 	public long TotalCount(ClientInfoPageDto pageDto) {
 		
@@ -60,6 +65,18 @@ public class ClientInfoDaoImp implements ClientInfoDao {
 		} catch (Exception e) {
 			e.printStackTrace();
 			return 0;
+		}
+	}
+	
+	//판매점 실적 > 판매점 이름 SELECT BOX에 뿌려주기 위한 메소드
+	@Override
+	public List<SalesDto> getBranchName() {
+		
+		try {
+			return sqlMapClientTemplate.queryForList("salesRcd.getBranchName");
+		} catch (Exception e) {			
+			e.printStackTrace();
+			return null;
 		}
 	}
 

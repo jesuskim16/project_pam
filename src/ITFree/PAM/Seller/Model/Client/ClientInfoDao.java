@@ -2,6 +2,8 @@ package ITFree.PAM.Seller.Model.Client;
 
 import java.util.List;
 
+import ITFree.PAM.Agent.Model.SalesMgr.SalesDto;
+
 public interface ClientInfoDao {
 
 	List<ClientInfoDto> clientList(String brc_id);
@@ -13,5 +15,7 @@ public interface ClientInfoDao {
 	List<ClientInfoDto> getModelName();
 
 	long TotalCount(ClientInfoPageDto pageDto);
+
+	List<SalesDto> getBranchName();
 
 }
