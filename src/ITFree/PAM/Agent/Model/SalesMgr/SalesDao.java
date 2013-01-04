@@ -10,11 +10,15 @@ public interface SalesDao {
 
 	List<ZipcodeDto> searchZipcode(String dong);
 
-	List<SalesDto> salesInfo_list();
+	List<SalesDto> salesList(SalesPageDto p);
 
 	boolean salesUpdate(SalesDto salesDto);
 
 	boolean salesDelete(SalesDto salesDto);
+
+	int readCount();
+
+	
 
 
 

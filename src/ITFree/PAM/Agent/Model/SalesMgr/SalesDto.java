@@ -1,6 +1,7 @@
 package ITFree.PAM.Agent.Model.SalesMgr;
 
 public class SalesDto {
+	private long rnum;
 	private long seq;             //seq	             
 	private String brc_id;        //지점ID(PK)           
 	private String attach_id;     //관리점ID              
@@ -173,21 +174,30 @@ public class SalesDto {
 	public void setBrc_post2(String brc_post2) {
 		this.brc_post2 = brc_post2;
 	}
+
+	public long getRnum() {
+		return rnum;
+	}
+	public void setRnum(long rnum) {
+		this.rnum = rnum;
+	}
 	@Override
 	public String toString() {
-		return "SalesDto [seq=" + seq + ", brc_id=" + brc_id + ", attach_id="
-				+ attach_id + ", password=" + password + ", brc_name="
-				+ brc_name + ", brc_phone=" + brc_phone + ", brc_phone1="
-				+ brc_phone1 + ", brc_phone2=" + brc_phone2 + ", brc_phone3="
-				+ brc_phone3 + ", brc_addr1=" + brc_addr1 + ", brc_addr2="
-				+ brc_addr2 + ", brc_post1=" + brc_post1 + ", brc_post2="
-				+ brc_post2 + ", brc_post=" + brc_post + ", brc_boss="
-				+ brc_boss + ", boss_phone=" + boss_phone + ", boss_phone1="
-				+ boss_phone1 + ", boss_phone2=" + boss_phone2
-				+ ", boss_phone3=" + boss_phone3 + ", brc_lev=" + brc_lev
-				+ ", brc_state=" + brc_state + ", write_id=" + write_id
-				+ ", write_date=" + write_date + ", write_ip=" + write_ip + "]";
+		return "SalesDto [rnum=" + rnum + ", seq=" + seq + ", brc_id=" + brc_id
+				+ ", attach_id=" + attach_id + ", password=" + password
+				+ ", brc_name=" + brc_name + ", brc_phone=" + brc_phone
+				+ ", brc_phone1=" + brc_phone1 + ", brc_phone2=" + brc_phone2
+				+ ", brc_phone3=" + brc_phone3 + ", brc_addr1=" + brc_addr1
+				+ ", brc_addr2=" + brc_addr2 + ", brc_post1=" + brc_post1
+				+ ", brc_post2=" + brc_post2 + ", brc_post=" + brc_post
+				+ ", brc_boss=" + brc_boss + ", boss_phone=" + boss_phone
+				+ ", boss_phone1=" + boss_phone1 + ", boss_phone2="
+				+ boss_phone2 + ", boss_phone3=" + boss_phone3 + ", brc_lev="
+				+ brc_lev + ", brc_state=" + brc_state + ", write_id="
+				+ write_id + ", write_date=" + write_date + ", write_ip="
+				+ write_ip + "]";
 	}
 
+	
 	
 }

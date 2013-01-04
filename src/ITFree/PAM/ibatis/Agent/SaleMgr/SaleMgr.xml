@@ -7,7 +7,7 @@
 <sqlMap namespace="SaleMgr">
 	<typeAlias alias="sdto" type="ITFree.PAM.Agent.Model.SalesMgr.SalesDto" />
 	<typeAlias alias="zdto" type="ITFree.PAM.Agent.Model.SalesMgr.ZipcodeDto" />
-	<typeAlias type="ITFree.PAM.Common.Model.Board.PageDto" alias="pagedto"/>
+	<typeAlias alias="spdto" type="ITFree.PAM.Agent.Model.SalesMgr.SalesPageDto" />
 
 	<insert id="salesRegister_insertAction" parameterClass="sdto">
 		INSERT
@@ -32,13 +32,18 @@
 		WHERE dong like '%' || #dong# || '%'
 	</select>
 
-	<select id="salesInfo_list" resultClass="sdto">
-		SELECT seq, brc_name, brc_id, brc_phone,
-		brc_addr1, brc_addr2, brc_post,
-		brc_boss, boss_phone, to_char(write_date, 'YYYY-MM-DD') AS write_date
-		FROM BRANCH
-		WHERE BRC_LEV='2'
-		ORDER BY seq ASC
+	<select id="salesList" resultClass="sdto" parameterClass="spdto">
+	SELECT B.* 
+	FROM   (SELECT A.* ,rownum as rown
+		FROM (SELECT rownum as rnum, seq, brc_name, brc_id, brc_phone,
+				brc_addr1, brc_addr2, brc_post, brc_lev,
+				brc_boss, boss_phone, to_char(write_date, 'YYYY-MM-DD') AS write_date
+				FROM BRANCH
+				ORDER BY rownum DESC ) A ) B
+	<![CDATA[
+	WHERE #startNum# <= rown AND rown <= #endNum# AND BRC_LEV='2'
+	ORDER BY rnum DESC
+	]]>
 	</select>
 
 	<update id="salesUpdate" parameterClass="sdto">
@@ -54,7 +59,10 @@
 		WHERE seq = #seq#
 	</delete>
 
-
+	<select id="readCount" resultClass="int">
+	SELECT count(*)
+	FROM branch
+	</select>
 
 
 </sqlMap>

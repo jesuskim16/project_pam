@@ -47,8 +47,8 @@ public class SalesDaoImpl implements SalesDao {
 	}
 
 	@Override
-	public List<SalesDto> salesInfo_list() {
-		return sqlMapClientTemplate.queryForList("SaleMgr.salesInfo_list");
+	public List<SalesDto> salesList(SalesPageDto p) {
+		return sqlMapClientTemplate.queryForList("SaleMgr.salesList", p);
 	}
 
 	@Override
@@ -60,6 +60,11 @@ public class SalesDaoImpl implements SalesDao {
 			e.printStackTrace();
 			return false;
 		}
+	}
+
+	@Override
+	public int readCount() {
+		return (int) sqlMapClientTemplate.queryForObject("SaleMgr.readCount");
 	}
 
 

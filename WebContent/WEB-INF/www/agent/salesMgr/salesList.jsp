@@ -40,12 +40,14 @@ function listdelete(seq){
 
 	
 }
+
+
 </script>
 
 
 
 <!-- 보이기/숨기기 개수제한 -->
-<form name="count">
+<form name="count" method="post">
 <input type="hidden" name="countvalue" value="0">
 <input type="hidden" name="sendseq" value="0">
 </form>
@@ -82,9 +84,11 @@ function listdelete(seq){
 <!-- {4 )------------------------------------------------------------------------------------------------------------------------------------------>                                  
 <!-- {5(내용)------------------------------------------------------------------------------------------------------------------------------------>                             
                            		<c:forEach items="${list}" var="sdto">
+                           		
                            		<tr id="hidden_${sdto.seq}" style="display:table-row">
                                  
-                                 <td height="28" align="center" bgcolor="#FFFFFF" >${ sdto.seq}</td>
+                                 
+                                 <td height="28" align="center" bgcolor="#FFFFFF" >${ sdto.rnum}</td>
                                  
                                  <td align="left" bgcolor="#FFFFFF" >${ sdto.brc_name}/${sdto.brc_id}</td>
                                  
@@ -103,7 +107,6 @@ function listdelete(seq){
                                  	<input type="button" onclick="javascript:listdelete('${sdto.seq}')" value="삭제">
                                  </td>
                                </tr>
-                               
                                <form name="reg_${sdto.seq}" action="salesUpdate.do" method="post">
                                <tr id="seem_${sdto.seq}" style="display:none">
                                
@@ -134,7 +137,8 @@ function listdelete(seq){
                                
                                  <td align="center" bgcolor="#FFFFFF" >
                                  <input type="submit" value="완료">
-                                 <input type="button" value="취소" onclick="javascript:location.href='salesList.do'">
+                                 <input type="button" value="취소" onclick="javascript:location.href='salesList.do?pg=${page.pg}'">
+                                 
                                  </td>
                                  
                                </tr>
@@ -154,7 +158,7 @@ function listdelete(seq){
                                 <td align="center"><table border="0" cellspacing="0" cellpadding="0">
                                     <tr>
                                       <td>
-		                                  <jsp:include page="/inc/paging.jsp"/>    
+		                                 	${page.pHtml}  
 									  </td>
                                     </tr>
                                 </table></td>
