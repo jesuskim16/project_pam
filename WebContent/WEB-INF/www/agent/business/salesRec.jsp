@@ -1,9 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <jsp:include page="/inc/top1.jsp"/>    
-<jsp:include page="/inc/menu1.jsp"/>    
-
-                <td width="1"></td>
+<jsp:include page="/inc/menu1.jsp"/>
+<script type="text/javascript" src="js/setDate.js"></script>
+               <td width="1"></td>
                 <td valign="top"><table width="100%" border="0" cellspacing="0" cellpadding="0">
                   <tr>
                     <td bgcolor="#272727"><table width="100%" border="0" cellspacing="0" cellpadding="0">
@@ -30,14 +31,14 @@
                               <td width="50"></td>
                               <td height="25"><table border="0" cellspacing="0" cellpadding="0">
                                 <tr>
-                                  <td class="pr10"><a href="#"><img src="img/btn_01.gif" width="40" height="21"></a></td>
-                                  <td class="pr10"><a href="#"><img src="img/btn_02.gif" width="40" height="21"></a></td>
-                                  <td class="pr10"><a href="#"><img src="img/btn_03.gif" width="40" height="21"></a></td>
-                                  <td class="pr10"><a href="#"><img src="img/btn_04.gif" width="40" height="21"></a></td>
-                                  <td class="pr10"><a href="#"><img src="img/btn_05.gif" width="40" height="21"></a></td>
-                                  <td class="pr10"><a href="#"><img src="img/btn_06.gif" width="40" height="21"></a></td>
-                                  <td class="pr10"><a href="#"><img src="img/btn_07.gif" width="40" height="21"></a></td>
-                                  <td><a href="#"><img src="img/btn_08.gif" width="40" height="21"></a></td>
+                     <!-- 당일 -->  <td class="pr10"><a href="javascript:pageLoad();"><img src="img/btn_01.gif" width="40" height="21"></a></td>
+                     <!-- 전일 -->  <td class="pr10"><a href="javascript:m_yesterday();"><img src="img/btn_02.gif" width="40" height="21"></a></td>
+                     <!-- 7일 -->  <td class="pr10"><a href="javascript:m_week();"><img src="img/btn_03.gif" width="40" height="21"></a></td>
+                     <!-- 10일 --> <td class="pr10"><a href="javascript:m_tenDay();"><img src="img/btn_04.gif" width="40" height="21"></a></td>
+                     <!-- 15일 --> <td class="pr10"><a href="javascript:m_ftDay();"><img src="img/btn_05.gif" width="40" height="21"></a></td>
+                     <!-- 한달 -->  <td class="pr10"><a href="javascript:m_amonth();"><img src="img/btn_06.gif" width="40" height="21"></a></td>
+                     <!-- 3달 -->  <td class="pr10"><a href="javascript:m_tmonth();"><img src="img/btn_07.gif" width="40" height="21"></a></td>
+                     <!-- 6달 -->  <td><a href="javascript:m_smonth();"><img src="img/btn_08.gif" width="40" height="21"></a></td>
                                 </tr>
                               </table></td>
                             </tr>
@@ -45,11 +46,18 @@
                               <td width="50"></td>
                               <td height="40" class="line_bg_bottom1"><table width="500" border="0" cellspacing="0" cellpadding="0">
                                 <tr>
-                                  <td style="padding-left:5;"><input type="text" name="s_sdate" size="10"  value="2012-12-01" readonly class="result_form"></td>                                          
-                                  <td class="pr10"><img src="img/btn_calendar.gif" width="24" height="24" style="cursor:hand"></td>
-                                  <td class="pr10">~</td>
-                                  <td><input type="text" name="s_edate" size="10"  value="2012-12-31" readonly class="result_form"></td>                                           
-                                  <td class="pr10"><img src="img/btn_calendar.gif" width="24" height="24" align="absmiddle" style="cursor:hand"></td>                                          
+                                  <td>
+                                  <input type="date" name="s_sdate" size="10" />
+                                  ~                                 
+                                  <input type="date" name="s_edate" size="10" /></td>
+                                  <td width="80" valign="middle">지점 선택 : </td>
+                                  <td valign="middle">                                                                   
+                                  	<select name="model_code" id="">
+                                  		<c:forEach items="${BNList}" var="bndto">
+											<option value="" label="${bndto.brc_name}" />										
+										</c:forEach> 
+									</select>									
+								  </td>                                                                                    
                                   <td><input type="image" src="img/btn_ok.gif"  width="40" height="21"></td>
                                 </tr>
                               </table></td>

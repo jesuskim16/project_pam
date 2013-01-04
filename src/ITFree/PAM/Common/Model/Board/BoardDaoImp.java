@@ -135,7 +135,7 @@ public class BoardDaoImp implements BoardDao{
 	@Override
 	public long TotalCount(PageDto pageDto) {
 		try {
-			return (long) sqlMapClientTemplate.queryForObject("SaleMgr.TotalCount", pageDto);
+			return (long) sqlMapClientTemplate.queryForObject("FreeBoard.freeTotalCount", pageDto);
 		} catch (DataAccessException e) {
 			e.printStackTrace();
 			return 0;

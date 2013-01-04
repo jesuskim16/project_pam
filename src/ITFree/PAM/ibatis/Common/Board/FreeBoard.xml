@@ -111,7 +111,7 @@
   </delete>
   
   <!-- 게시판 총 게시물 갯수 부분  (검색포함)-->
-  <select id="TotalCount" resultClass="Long" parameterClass="pagedto">
+  <select id="freeTotalCount" resultClass="Long" parameterClass="pagedto">
   SELECT count(*) FROM board
   	<isEqual property="searchCondition" compareValue="title">
   		WHERE title like '%' || #searchKeyword# || '%'
