@@ -10,19 +10,19 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import ITFree.PAM.Agent.Model.SalesMgr.SalesDto;
-import ITFree.PAM.Seller.Model.Client.ClientInfoDao;
+import ITFree.PAM.Agent.Model.SalesRcd.SalesRcdDao;
+import ITFree.PAM.Agent.Model.SalesRcd.SalesRcdDto;
 
 @Controller
 public class SalesRcdAct {	
 	
 	@Autowired
-	private ClientInfoDao cIDao;
+	private SalesRcdDao SRDao;
 			
 		@RequestMapping("/salesRcd.do")
 		protected ModelAndView salesRcd() throws Exception {
 			
-			List<SalesDto> BNList = cIDao.getBranchName();
+			List<SalesRcdDto> BNList = SRDao.getBranchName();
 			
 			ModelAndView mav = new ModelAndView();
 			mav.setViewName("/WEB-INF/www/agent/business/salesRec.jsp");
@@ -30,4 +30,6 @@ public class SalesRcdAct {
 			mav.addObject("BNList" , BNList);
 			return mav;
 		}
+		
+
 }
