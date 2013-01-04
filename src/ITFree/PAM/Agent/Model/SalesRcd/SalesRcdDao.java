@@ -6,5 +6,9 @@ public interface SalesRcdDao {
 
 	List<SalesRcdDto> getBranchName();
 
+	long TotalCount(SalesRcdPageDto pageDto);
+
+	List<SalesRcdDto> salesRcdList(SalesRcdPageDto SRPDto);
+
 
 }

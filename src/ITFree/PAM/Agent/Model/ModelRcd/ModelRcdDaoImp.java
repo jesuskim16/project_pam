@@ -8,21 +8,17 @@ import org.springframework.dao.DataAccessException;
 import org.springframework.orm.ibatis.SqlMapClientTemplate;
 import org.springframework.stereotype.Repository;
 
-import ITFree.PAM.Agent.Model.SalesMgr.SalesDto;
-
 @Repository
-public class ModelRcdDaoImp implements ModelRcdDao {
-	private Logger log = Logger.getLogger(this.getClass());
-	
+public class ModelRcdDaoImp implements ModelRcdDao {	
 	
 	@Autowired
 	private SqlMapClientTemplate sqlMapClientTemplate;
 	
 	//모델별 실적 > 각 모델별 검색결과 및 모델정보를 List형식으로 뿌려주기 위한 메소드
 	@Override
-	public List<ModelRcdDto> modelRcdList(ModelRcdPageDto cIPdto) {		
+	public List<ModelRcdDto> modelRcdList(ModelRcdPageDto MRPdto) {		
 		try {
-			return sqlMapClientTemplate.queryForList("modelRcd.modelRcdList", cIPdto);
+			return sqlMapClientTemplate.queryForList("modelRcd.modelRcdList", MRPdto);
 		} catch (Exception e) {			
 			e.printStackTrace();
 			return null;

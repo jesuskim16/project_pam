@@ -18,11 +18,13 @@ public class ModelRcdAct {
 	
 		@RequestMapping("/modelRcd.do")
 		protected ModelAndView modelRcd(@ModelAttribute ModelRcdDto MRDto, @ModelAttribute ModelRcdPageDto pageDto) throws Exception {
+			
 			if(pageDto.getPg() == 0)pageDto.setPg(1);			
 			ModelRcdPageDto MRPdto = new ModelRcdPageDto(pageDto.getPg(), 
 					MRDao.TotalCount(pageDto),pageDto.getModel_code(),pageDto.getS_sdate(),pageDto.getS_edate());
 			List<ModelRcdDto> MList = MRDao.getModelName();
 			List<ModelRcdDto> mRList = MRDao.modelRcdList(MRPdto);
+			System.out.println(mRList);
 			ModelAndView mav = new ModelAndView();
 			mav.setViewName("/WEB-INF/www/agent/business/modelRec.jsp");
 			mav.addObject("title_name","PAM::모델별실적");

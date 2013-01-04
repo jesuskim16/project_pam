@@ -4,7 +4,7 @@
 <jsp:include page="/inc/top1.jsp"/>    
 <jsp:include page="/inc/menu1.jsp"/>
 <script type="text/javascript" src="js/setDate.js"></script>
-                <td width="1"></td>
+               <td width="1"></td>
                 <td valign="top"><table width="100%" border="0" cellspacing="0" cellpadding="0">
                   <tr>
                     <td bgcolor="#272727"><table width="100%" border="0" cellspacing="0" cellpadding="0">
@@ -46,16 +46,16 @@
                               <td width="50"></td>
                               <td height="40" class="line_bg_bottom1"><table width="500" border="0" cellspacing="0" cellpadding="0">
                                 <tr>
-                                  <td><input type="date" name="s_sdate" size="10" value="${cIDto.s_sdate}" />                                          
+                                  <td><input type="date" name="s_sdate" size="10" value="${MRPdto.s_sdate}" />                                          
                                   	  ~
-                                 	  <input type="date" name="s_edate" size="10" value="${cIDto.s_edate}" /></td>
+                                 	  <input type="date" name="s_edate" size="10" value="${MRPdto.s_edate}" /></td>
                                   <td width="80" valign="middle">모델 선택 : </td>                                           
                                   <td valign="middle">
                                                                    
                                   	<select name="model_code" id="">
                                   		<c:forEach items="${MList}" var="mdto">
 											<option value="${mdto.model_code}" label="${mdto.model_name}" 
-												<c:if test="${cIDto.model_code == mdto.model_code}">selected</c:if>
+												<c:if test="${MRPdto.model_code == mdto.model_code}">selected</c:if>
 											/>										
 										</c:forEach> 
 									</select>									
@@ -109,9 +109,9 @@
 														<c:when test="${!empty mRList}">
 						                                  <tr>
 						                                    <th width="40"  height="50" align="center" bgcolor="aaaaaa">총계</th>
-						                                    <td height="28" align="center" bgcolor="#FFFFFF">${cIDto.model_code}</td>						                                    
-						                                    <td height="28" align="center" bgcolor="#FFFFFF">${cIDto.s_sdate}<br>&nbsp;~${cIDto.s_edate}</td>
-						                                    <td height="28" align="center" bgcolor="#FFFFFF">${CIPdto.totalCount} 대</td>
+						                                    <td height="28" align="center" bgcolor="#FFFFFF">${MRPdto.model_code}</td>						                                    
+						                                    <td height="28" align="center" bgcolor="#FFFFFF">${MRPdto.s_sdate}<br>&nbsp;~${MRPdto.s_edate}</td>
+						                                    <td height="28" align="center" bgcolor="#FFFFFF">${MRPdto.totalCount} 대</td>
 						                                    <td height="28" align="center" bgcolor="#FFFFFF">825,000 원</td>						                                    
 						                                  </tr>
 						                                </c:when>
@@ -140,15 +140,15 @@
                             						   		<td colspan="7" height="28" align="center" bgcolor="#FFFFFF">검색값이 없습니다.</td>
                              						  	</tr>
                              						  	</c:if>
-						                               <c:forEach items="${mRList}" var="ciDto">  
+						                               <c:forEach items="${mRList}" var="mrDto">  
 						                                  <tr>						                                  
-						                                    <td height="28" align="center" bgcolor="#FFFFFF" >${ciDto.rown}</td>
-						                                    <td height="28" align="center" bgcolor="#FFFFFF" >${ciDto.cust_name}</td>
-						                                    <td height="28" align="center" bgcolor="#FFFFFF" >${ciDto.model_code}</td>
-						                                    <td height="28" align="center" bgcolor="#FFFFFF" >${ciDto.price_name}</td>
-						                                    <td height="28" align="center" bgcolor="#FFFFFF" >${ciDto.cont_term}</td>
+						                                    <td height="28" align="center" bgcolor="#FFFFFF" >${mrDto.rown}</td>
+						                                    <td height="28" align="center" bgcolor="#FFFFFF" >${mrDto.cust_name}</td>
+						                                    <td height="28" align="center" bgcolor="#FFFFFF" >${mrDto.model_code}</td>
+						                                    <td height="28" align="center" bgcolor="#FFFFFF" >${mrDto.price_name}</td>
+						                                    <td height="28" align="center" bgcolor="#FFFFFF" >${mrDto.cont_term}</td>
 						                                    <td height="28" align="center" bgcolor="#FFFFFF" >30,000원</td>
-						                                    <td height="28" align="center" bgcolor="#FFFFFF" >${ciDto.open_date}</td>						                                    
+						                                    <td height="28" align="center" bgcolor="#FFFFFF" >${mrDto.open_date}</td>						                                    
 						                                  </tr>
 						                               </c:forEach>     
 						                            </table></td>
@@ -175,7 +175,7 @@
 						                                <td align="center"><table border="0" cellspacing="0" cellpadding="0">
 						                                    <tr>
 						                                      <td>
-						                                      		${CIPdto.pHtml}
+						                                      		${MRPdto.pHtml}
 <%-- 								                                  <jsp:include page="/inc/paging.jsp"/>     --%>
 															  </td>
 						                                    </tr>

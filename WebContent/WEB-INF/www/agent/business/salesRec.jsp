@@ -22,7 +22,7 @@
                       <tr>
                         <td align="center" bgcolor="#FFFFFF"><table width="100%" border="0" cellspacing="0" cellpadding="0">
 <!----- --------------------------------------------------------------------------------------------------------------------------------------------------->
-                          <form method="post" name="result_form" action="count.do" style="margin:0">
+                          <form method="post" name="result_form" action="salesRcd.do" style="margin:0">
                           <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
                             <tr bgcolor="cccccc">
                               <td height="10" colspan="2"></td>
@@ -47,14 +47,16 @@
                               <td height="40" class="line_bg_bottom1"><table width="500" border="0" cellspacing="0" cellpadding="0">
                                 <tr>
                                   <td>
-                                  <input type="date" name="s_sdate" size="10" />
+                                  <input type="date" name="s_sdate" size="10" value="${SRPDto.s_sdate }" />
                                   ~                                 
-                                  <input type="date" name="s_edate" size="10" /></td>
+                                  <input type="date" name="s_edate" size="10" value="${SRPDto.s_edate }" /></td>
                                   <td width="80" valign="middle">지점 선택 : </td>
                                   <td valign="middle">                                                                   
-                                  	<select name="model_code" id="">
+                                  	<select name="brc_name" id="">
                                   		<c:forEach items="${BNList}" var="bndto">
-											<option value="" label="${bndto.brc_name}" />										
+											<option value="${bndto.brc_name}" label="${bndto.brc_name}"
+											<c:if test="${SRPDto.brc_name == bndto.brc_name}">selected</c:if>
+											 />										
 										</c:forEach> 
 									</select>									
 								  </td>                                                                                    
@@ -94,18 +96,26 @@
 						                                  </tr>
 <!-- {2 )------------------------------------------------------------------------------------------------------------------------------------------>                                  
 <!-- {3(집계내용)------------------------------------------------------------------------------------------------------------------------------------>                             
-						                               
+						                            <c:choose>
+														<c:when test="${empty SRList}">
 						                                  <tr>
 						                                    <th width="40"  height="50" align="center" bgcolor="aaaaaa">총계</th>
-						                                    <td height="28" align="center" bgcolor="#FFFFFF"> 
-						                                      <select>
-						                                        <option>구로점</option>
-						                                        <option>평택점</option>
-						                                      </select></td>						                                    
-						                                    <td height="28" align="center" bgcolor="#FFFFFF">2012.12.01<br>&nbsp;~2012.12.31</td>
-						                                    <td height="28" align="center" bgcolor="#FFFFFF">44 대</td>
+						                                    <td height="28" align="center" bgcolor="#FFFFFF">-</td>						                                    
+						                                    <td height="28" align="center" bgcolor="#FFFFFF">-</td>
+						                                    <td height="28" align="center" bgcolor="#FFFFFF">-</td>
+						                                    <td height="28" align="center" bgcolor="#FFFFFF">-</td>						                                    
+						                                  </tr>															
+														</c:when>
+														<c:when test="${!empty SRList}">
+						                                  <tr>
+						                                    <th width="40"  height="50" align="center" bgcolor="aaaaaa">총계</th>
+						                                    <td height="28" align="center" bgcolor="#FFFFFF">${SRPDto.brc_name}</td>						                                    
+						                                    <td height="28" align="center" bgcolor="#FFFFFF">${SRPDto.s_sdate}<br>&nbsp;~${SRPDto.s_edate}</td>
+						                                    <td height="28" align="center" bgcolor="#FFFFFF">${SRPDto.totalCount} 대</td>
 						                                    <td height="28" align="center" bgcolor="#FFFFFF">825,000 원</td>						                                    
-						                                  </tr>    
+						                                  </tr>
+						                                </c:when>
+												   </c:choose>        
 						                            </table></td>
 						                          </tr>		
 						                          <tr>
@@ -125,108 +135,22 @@
 						                                  </tr>
 <!-- {4 )------------------------------------------------------------------------------------------------------------------------------------------>                                  
 <!-- {5(내용)------------------------------------------------------------------------------------------------------------------------------------>                             
-						                               
+						                               	<c:if test="${empty SRList}">
+                               							<tr>
+                            						   		<td colspan="7" height="28" align="center" bgcolor="#FFFFFF">검색값이 없습니다.</td>
+                             						  	</tr>
+                             						  	</c:if>						                              
+						                              <c:forEach items="${SRList}" var="SRList"> 
 						                                  <tr>
-						                                    <td height="28" align="center" bgcolor="#FFFFFF" >1</td>
-						                                    <td height="28" align="center" bgcolor="#FFFFFF" >홍길동</td>
-						                                    <td height="28" align="center" bgcolor="#FFFFFF" >iphone5</td>
-						                                    <td height="28" align="center" bgcolor="#FFFFFF" >LTE 62요금제</td>
-						                                    <td height="28" align="center" bgcolor="#FFFFFF" >2년</td>
+						                                    <td height="28" align="center" bgcolor="#FFFFFF" >${SRList.rown}</td>
+						                                    <td height="28" align="center" bgcolor="#FFFFFF" >${SRList.cust_name}</td>
+						                                    <td height="28" align="center" bgcolor="#FFFFFF" >${SRList.model_code}</td>
+						                                    <td height="28" align="center" bgcolor="#FFFFFF" >${SRList.price_name}</td>
+						                                    <td height="28" align="center" bgcolor="#FFFFFF" >${SRList.cont_term}</td>
 						                                    <td height="28" align="center" bgcolor="#FFFFFF" >30,000원</td>
-						                                    <td height="28" align="center" bgcolor="#FFFFFF" >2012.12.21</td>						                                    
+						                                    <td height="28" align="center" bgcolor="#FFFFFF" >${SRList.open_date}</td>						                                    
 						                                  </tr> 
-<!-- {5 )------------------------------------------------------------------------------------------------------------------------------------------> 
-						                                  <tr>
-						                                    <td height="28" align="center" bgcolor="#FFFFFF" >2</td>
-						                                    <td height="28" align="center" bgcolor="#FFFFFF" >홍길동</td>
-						                                    <td height="28" align="center" bgcolor="#FFFFFF" >iphone5</td>
-						                                    <td height="28" align="center" bgcolor="#FFFFFF" >LTE 62요금제</td>
-						                                    <td height="28" align="center" bgcolor="#FFFFFF" >2년</td>
-						                                    <td height="28" align="center" bgcolor="#FFFFFF" >30,000원</td>
-						                                    <td height="28" align="center" bgcolor="#FFFFFF" >2012.12.21</td>						                                    
-						                                  </tr> 
-<!-- {5 )------------------------------------------------------------------------------------------------------------------------------------------>
-						                                  <tr>
-						                                    <td height="28" align="center" bgcolor="#FFFFFF" >3</td>
-						                                    <td height="28" align="center" bgcolor="#FFFFFF" >홍길동</td>
-						                                    <td height="28" align="center" bgcolor="#FFFFFF" >iphone5</td>
-						                                    <td height="28" align="center" bgcolor="#FFFFFF" >LTE 62요금제</td>
-						                                    <td height="28" align="center" bgcolor="#FFFFFF" >2년</td>
-						                                    <td height="28" align="center" bgcolor="#FFFFFF" >30,000원</td>
-						                                    <td height="28" align="center" bgcolor="#FFFFFF" >2012.12.21</td>						                                    
-						                                  </tr> 
-<!-- {5 )------------------------------------------------------------------------------------------------------------------------------------------>
-						                                  <tr>
-						                                    <td height="28" align="center" bgcolor="#FFFFFF" >4</td>
-						                                    <td height="28" align="center" bgcolor="#FFFFFF" >홍길동</td>
-						                                    <td height="28" align="center" bgcolor="#FFFFFF" >iphone5</td>
-						                                    <td height="28" align="center" bgcolor="#FFFFFF" >LTE 62요금제</td>
-						                                    <td height="28" align="center" bgcolor="#FFFFFF" >2년</td>
-						                                    <td height="28" align="center" bgcolor="#FFFFFF" >30,000원</td>
-						                                    <td height="28" align="center" bgcolor="#FFFFFF" >2012.12.21</td>						                                    
-						                                  </tr> 
-<!-- {5 )------------------------------------------------------------------------------------------------------------------------------------------>
-						                                  <tr>
-						                                    <td height="28" align="center" bgcolor="#FFFFFF" >5</td>
-						                                    <td height="28" align="center" bgcolor="#FFFFFF" >홍길동</td>
-						                                    <td height="28" align="center" bgcolor="#FFFFFF" >iphone5</td>
-						                                    <td height="28" align="center" bgcolor="#FFFFFF" >LTE 62요금제</td>
-						                                    <td height="28" align="center" bgcolor="#FFFFFF" >2년</td>
-						                                    <td height="28" align="center" bgcolor="#FFFFFF" >30,000원</td>
-						                                    <td height="28" align="center" bgcolor="#FFFFFF" >2012.12.21</td>						                                    
-						                                  </tr> 
-<!-- {5 )------------------------------------------------------------------------------------------------------------------------------------------>
-						                                  <tr>
-						                                    <td height="28" align="center" bgcolor="#FFFFFF" >6</td>
-						                                    <td height="28" align="center" bgcolor="#FFFFFF" >홍길동</td>
-						                                    <td height="28" align="center" bgcolor="#FFFFFF" >iphone5</td>
-						                                    <td height="28" align="center" bgcolor="#FFFFFF" >LTE 62요금제</td>
-						                                    <td height="28" align="center" bgcolor="#FFFFFF" >2년</td>
-						                                    <td height="28" align="center" bgcolor="#FFFFFF" >30,000원</td>
-						                                    <td height="28" align="center" bgcolor="#FFFFFF" >2012.12.21</td>						                                    
-						                                  </tr> 
-<!-- {5 )------------------------------------------------------------------------------------------------------------------------------------------>
-						                                  <tr>
-						                                    <td height="28" align="center" bgcolor="#FFFFFF" >7</td>
-						                                    <td height="28" align="center" bgcolor="#FFFFFF" >홍길동</td>
-						                                    <td height="28" align="center" bgcolor="#FFFFFF" >iphone5</td>
-						                                    <td height="28" align="center" bgcolor="#FFFFFF" >LTE 62요금제</td>
-						                                    <td height="28" align="center" bgcolor="#FFFFFF" >2년</td>
-						                                    <td height="28" align="center" bgcolor="#FFFFFF" >30,000원</td>
-						                                    <td height="28" align="center" bgcolor="#FFFFFF" >2012.12.21</td>						                                    
-						                                  </tr> 
-<!-- {5 )------------------------------------------------------------------------------------------------------------------------------------------>
-						                                  <tr>
-						                                    <td height="28" align="center" bgcolor="#FFFFFF" >8</td>
-						                                    <td height="28" align="center" bgcolor="#FFFFFF" >홍길동</td>
-						                                    <td height="28" align="center" bgcolor="#FFFFFF" >iphone5</td>
-						                                    <td height="28" align="center" bgcolor="#FFFFFF" >LTE 62요금제</td>
-						                                    <td height="28" align="center" bgcolor="#FFFFFF" >2년</td>
-						                                    <td height="28" align="center" bgcolor="#FFFFFF" >30,000원</td>
-						                                    <td height="28" align="center" bgcolor="#FFFFFF" >2012.12.21</td>						                                    
-						                                  </tr> 
-<!-- {5 )------------------------------------------------------------------------------------------------------------------------------------------>
-						                                  <tr>
-						                                    <td height="28" align="center" bgcolor="#FFFFFF" >9</td>
-						                                    <td height="28" align="center" bgcolor="#FFFFFF" >홍길동</td>
-						                                    <td height="28" align="center" bgcolor="#FFFFFF" >iphone5</td>
-						                                    <td height="28" align="center" bgcolor="#FFFFFF" >LTE 62요금제</td>
-						                                    <td height="28" align="center" bgcolor="#FFFFFF" >2년</td>
-						                                    <td height="28" align="center" bgcolor="#FFFFFF" >30,000원</td>
-						                                    <td height="28" align="center" bgcolor="#FFFFFF" >2012.12.21</td>						                                    
-						                                  </tr> 
-<!-- {5 )------------------------------------------------------------------------------------------------------------------------------------------>
-						                                  <tr>
-						                                    <td height="28" align="center" bgcolor="#FFFFFF" >10</td>
-						                                    <td height="28" align="center" bgcolor="#FFFFFF" >홍길동</td>
-						                                    <td height="28" align="center" bgcolor="#FFFFFF" >iphone5</td>
-						                                    <td height="28" align="center" bgcolor="#FFFFFF" >LTE 62요금제</td>
-						                                    <td height="28" align="center" bgcolor="#FFFFFF" >2년</td>
-						                                    <td height="28" align="center" bgcolor="#FFFFFF" >30,000원</td>
-						                                    <td height="28" align="center" bgcolor="#FFFFFF" >2012.12.21</td>						                                    
-						                                  </tr> 
-<!-- {5 )------------------------------------------------------------------------------------------------------------------------------------------>
-							                                    
+							                          </c:forEach>          
 						                            </table></td>
 						                          </tr>
                                               </table></td>
@@ -251,7 +175,7 @@
 						                                <td align="center"><table border="0" cellspacing="0" cellpadding="0">
 						                                    <tr>
 						                                      <td>
-								                                  <jsp:include page="/inc/paging.jsp"/>    
+								                                  ${SRPDto.pHtml}    
 															  </td>
 						                                    </tr>
 						                                </table></td>
