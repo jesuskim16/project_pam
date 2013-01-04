@@ -18,4 +18,6 @@ public interface ClientInfoDao {
 
 	List<SalesDto> getBranchName();
 
+	boolean clientDel(long seq);
+
 }

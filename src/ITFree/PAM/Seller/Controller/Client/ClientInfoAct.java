@@ -13,6 +13,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 
+import ITFree.PAM.Common.Model.ResultDto;
 import ITFree.PAM.Seller.Model.Client.ClientInfoDto;
 import ITFree.PAM.Seller.Model.Client.ClientInfoDao;
 import ITFree.PAM.Seller.Model.Client.ClientRegDao;
@@ -54,5 +55,18 @@ public class ClientInfoAct {
 			return null;
 		}		
 	}
-
+	@RequestMapping("/clientDel.do")
+	public String clientDel(Model model, long seq){
+		log.debug(seq);
+		boolean del_result = clientInfoDao.clientDel(seq);			
+		if(del_result){			
+			return "redirect:clientList.do";
+		}else{			
+			ResultDto result = new ResultDto();
+			result.setMsg("삭제가 실패하였습니다.");
+			result.setUrl("javascript:history.back()");
+			model.addAttribute("result",result);
+			return "/WEB-INF/www/result.jsp";		
+		}
+	}
 }

@@ -22,4 +22,8 @@
     WHERE 	seq 	= #seq#
     	AND	brc_id	= #brc_id#
   </update>
+  <delete id="clientDel" parameterClass="long">
+  	DELETE FROM	custominfo 
+  	WHERE 	seq = #seq#
+  </delete>
 </sqlMap>

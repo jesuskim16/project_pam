@@ -80,4 +80,15 @@ public class ClientInfoDaoImp implements ClientInfoDao {
 		}
 	}
 
+	@Override
+	public boolean clientDel(long seq) {
+		try {
+			sqlMapClientTemplate.delete("clientInfo.clientDel",seq);
+			return true;	
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		}
+	}
+
 }
