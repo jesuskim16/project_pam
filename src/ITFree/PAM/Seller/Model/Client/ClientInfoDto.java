@@ -1,6 +1,7 @@
 package ITFree.PAM.Seller.Model.Client;
 
 public class ClientInfoDto {
+	private int rown;
 	private int seq; 		
 	private String cust_name; 	
 	private String cust_phone;
@@ -16,6 +17,9 @@ public class ClientInfoDto {
 	private String brc_id; 		
 	private String price_name; 	
 	private String model_code;
+	private String s_sdate;
+	private String s_edate;
+	private String model_name;
 	
 	
 	public int getSeq() {
@@ -108,15 +112,43 @@ public class ClientInfoDto {
 	public void setModel_code(String model_code) {
 		this.model_code = model_code;
 	}
+	public String getS_sdate() {
+		return s_sdate;
+	}
+	public void setS_sdate(String s_sdate) {
+		this.s_sdate = s_sdate;
+	}
+	public String getS_edate() {
+		return s_edate;
+	}
+	public void setS_edate(String s_edate) {
+		this.s_edate = s_edate;
+	}
+	public String getModel_name() {
+		return model_name;
+	}
+	public void setModel_name(String model_name) {
+		this.model_name = model_name;
+	}
+
+	public int getRown() {
+		return rown;
+	}
+	public void setRown(int rown) {
+		this.rown = rown;
+	}
 	@Override
 	public String toString() {
-		return "ClientInfoDto [seq=" + seq + ", cust_name=" + cust_name
-				+ ", cust_phone=" + cust_phone + ", cust_phone1=" + cust_phone1
-				+ ", cust_phone2=" + cust_phone2 + ", cust_phone3="
-				+ cust_phone3 + ", cust_birth=" + cust_birth + ", cont_term="
-				+ cont_term + ", open_date=" + open_date + ", memo=" + memo
-				+ ", write_date=" + write_date + ", write_ip=" + write_ip
-				+ ", brc_id=" + brc_id + ", price_name=" + price_name
-				+ ", model_code=" + model_code + "]";
+		return "ClientInfoDto [rown=" + rown + ", seq=" + seq + ", cust_name="
+				+ cust_name + ", cust_phone=" + cust_phone + ", cust_phone1="
+				+ cust_phone1 + ", cust_phone2=" + cust_phone2
+				+ ", cust_phone3=" + cust_phone3 + ", cust_birth=" + cust_birth
+				+ ", cont_term=" + cont_term + ", open_date=" + open_date
+				+ ", memo=" + memo + ", write_date=" + write_date
+				+ ", write_ip=" + write_ip + ", brc_id=" + brc_id
+				+ ", price_name=" + price_name + ", model_code=" + model_code
+				+ ", s_sdate=" + s_sdate + ", s_edate=" + s_edate
+				+ ", model_name=" + model_name + "]";
 	}
+	
 }

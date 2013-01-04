@@ -174,17 +174,7 @@ ALTER TABLE phonemodel ADD(make_comp varchar2(50));
 DELETE FROM phonemodel;
 ALTER TABLE phonemodel MODIFY(make_comp	varchar2(50) not null);
 
-SELECT B.* 
-FROM   (SELECT A.* ,rownum as rnum
-    	FROM (	SELECT  rownum,seq,board_chk,title,content,readcount,rp_seq, to_char(write_date , 'YYYY-MM-DD') as write_date,brc_id
-       			FROM board
-       			ORDER BY rownum DESC
-       			) A 
-       	) B
-WHERE 1<= rnum AND rnum <= 10
-
-
-		SELECT seq, brc_name, brc_id, brc_phone,
+SELECT seq, brc_name, brc_id, brc_phone,
 		brc_addr1, brc_addr2, brc_post,
 		brc_boss, boss_phone, to_char(write_date, 'YYYY-MM-DD') AS write_date
 		FROM BRANCH
@@ -193,4 +183,32 @@ WHERE 1<= rnum AND rnum <= 10
 
 		SELECT * FROM BRANCH;
 
+select MODEL_NAME from PHONEMODEL
 
+	    SELECT 	count(*) as cnt
+    	FROM	custominfo
+    	WHERE '2013-01-01' <= open_date AND '2013-01-30' >= open_date AND model_code= 'iPhone5 32G'
+    	
+    	
+ insert into custominfo(seq,cust_name, cust_phone,cust_birth, cont_term, open_date, memo,write_ip,brc_id ,price_name, model_code)
+ values(custom_seq.nextval, '송태섭',' 010-1111-1111', '2013-01-09', '2013-01-01', '2013-01-03', '메모', '127.0.0.1',  'seller3', 'LTE커플52', 'iPhone5 32G')
+
+ 
+begin
+for i in 1..200 loop
+   insert into custominfo(seq,cust_name, cust_phone,cust_birth, cont_term, open_date, memo,write_ip,brc_id ,price_name, model_code)
+ 	values(custom_seq.nextval, '채치수',' 010-1111-1111', '2013-01-20', '2013-01-11', '2013-01-23', '메모', '127.0.0.1',  'seller3', 'LTE커플100', 'LG-F180S');
+end loop;
+end;
+
+	    SELECT 	seq, cust_name, model_code, price_name, cont_term, to_char(open_date,'YYYY-MM-DD') as open_date
+    	FROM	custominfo
+
+SELECT B.* 
+FROM   (SELECT A.* ,rownum as rnum
+    	FROM (	SELECT row_number()over (ORDER BY seq ASC) as rown,seq, cust_name, model_code, price_name, cont_term, to_char(open_date,'YYYY-MM-DD') as open_date
+       			FROM custominfo
+       			ORDER BY rownum DESC
+       			) A 
+       	) B
+WHERE 1<= rnum AND rnum <= 1000

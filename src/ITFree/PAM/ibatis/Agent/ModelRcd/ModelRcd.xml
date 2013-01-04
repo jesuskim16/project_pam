@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="modelRcd">
+	<typeAlias type="ITFree.PAM.Seller.Model.Client.ClientInfoDto" alias="ciDto"/>
+	<typeAlias type="ITFree.PAM.Seller.Model.Client.ClientInfoPageDto" alias="cipDto"/>
+	
+	<select id="modelRcdList" resultClass="ciDto" parameterClass="cipDto">
+		SELECT B.* 
+		FROM   (SELECT A.* ,rownum as rnum
+		    	FROM (	SELECT row_number()over (ORDER BY seq ASC) as rown,seq, cust_name, model_code, price_name, cont_term, to_char(open_date,'YYYY-MM-DD') as open_date
+		       			FROM custominfo
+		       			<![CDATA[
+		       			WHERE #s_sdate# <= open_date AND #s_edate# >= open_date AND model_code = #model_code#
+		       			]]> 
+		       			ORDER BY rownum DESC
+		       			) A 
+		       	) B
+		<![CDATA[ 	
+    	WHERE #startNum# <= rnum AND rnum <= #endNum#
+    	]]>
+	</select>
+
+	<select id="getModelName" resultClass="ciDto">
+		SELECT model_name , model_code
+		FROM phonemodel
+	</select>
+	
+	<select id="TotalCount" resultClass="Long" parameterClass="cipDto">
+	SELECT count(*)
+	FROM custominfo
+	<![CDATA[
+	WHERE #s_sdate# <= open_date AND #s_edate# >= open_date AND model_code = #model_code#
+	]]> 
+	</select>
+</sqlMap>

@@ -8,4 +8,10 @@ public interface ClientInfoDao {
 
 	boolean clientUpdate(ClientInfoDto cIDto);
 
+	List<ClientInfoDto> modelRcdList(ClientInfoPageDto cIPdto);
+
+	List<ClientInfoDto> getModelName();
+
+	long TotalCount(ClientInfoPageDto pageDto);
+
 }

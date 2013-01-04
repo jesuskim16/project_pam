@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataAccessException;
 import org.springframework.orm.ibatis.SqlMapClientTemplate;
 import org.springframework.stereotype.Repository;
 
@@ -29,6 +30,37 @@ public class ClientInfoDaoImp implements ClientInfoDao {
 			return false;
 		}
 		
+	}
+	
+	@Override
+	public List<ClientInfoDto> modelRcdList(ClientInfoPageDto cIPdto) {		
+		try {
+			return sqlMapClientTemplate.queryForList("modelRcd.modelRcdList", cIPdto);
+		} catch (Exception e) {			
+			e.printStackTrace();
+			return null;
+		}
+	}
+	
+	@Override
+	public List<ClientInfoDto> getModelName() {		
+		try {
+			return sqlMapClientTemplate.queryForList("modelRcd.getModelName");
+		} catch (DataAccessException e) {			
+			e.printStackTrace();
+			return null;
+		}
+	}
+	
+	@Override
+	public long TotalCount(ClientInfoPageDto pageDto) {
+		
+		try {
+			return (long) sqlMapClientTemplate.queryForObject("modelRcd.TotalCount", pageDto);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return 0;
+		}
 	}
 
 }
