@@ -47,7 +47,7 @@
                           
                             <td bgcolor="#272727"><table width="100%" border="0" cellspacing="0" cellpadding="0">
                               <tr>
-                                <td width="99" class="Text_gray_14px"><img src="img/sub05_category2.gif" width="99" height="60"></td>                               
+                                <td width="99" class="Text_gray_14px"><img src="img/sub05_category1.gif" width="99" height="60"></td>                               
                               </tr>
                             </table></td>
            
@@ -75,12 +75,12 @@
  							<c:forEach items="${ciList}" var="client"> 							     
                                <tr id="layer1_${client.seq}" style="display:table-row; *display:block">
                                  <td height="28" align="center" bgcolor="#FFFFFF" >${client.seq}</td>
-                                 <td align="center" bgcolor="#FFFFFF" >${client.cust_name}</td>
+                                 <td align="left" bgcolor="#FFFFFF" >&nbsp;${client.cust_name}</td>
                                  <td align="center" bgcolor="#FFFFFF" >${client.cust_birth}</td>
-                                 <td align="center" bgcolor="#FFFFFF" >${client.model_code}</td>
+                                 <td align="left" bgcolor="#FFFFFF" >&nbsp;${client.model_code}</td>
                                  <td align="center" bgcolor="#FFFFFF" >${client.cust_phone}</td>
-                                 <td align="center" bgcolor="#FFFFFF" >${client.price_name}</td>
-                                 <td align="center" bgcolor="#FFFFFF" >${client.cont_term}개월</td>						                                    
+                                 <td align="left" bgcolor="#FFFFFF" >&nbsp;${client.price_name}</td>
+                                 <td align="right" bgcolor="#FFFFFF" >${client.cont_term}개월&nbsp;</td>						                                    
                                  <td align="center" bgcolor="#FFFFFF" >${client.open_date}</td>					
                                  <td align="center" bgcolor="#FFFFFF">
                                    <input type="button" value="수정" onclick="javascript:cEdit('layer1_${client.seq}','layer2_${client.seq}');"/>

@@ -11,6 +11,7 @@
     <jsp:include page="/inc/menu5.jsp"/>
   </c:when>    
 </c:choose>
+<script type="text/javascript" src="js/httpRequest.js"></script>
 <script type="text/javascript">
 //common.js 
 //숫자체크
@@ -26,51 +27,43 @@ function checkNumber(tobj) {
 			} 
 		} 
 	}
-
 	if (!flag) {
 		alert("숫자만 입력가능합니다.");
 		tobj.value = "";
 		tobj.focus();
 	} 
 }
-//{{ 한글 확인 함수
-function isHangulChar(c) { 
-	if ( (c >= 0xAC00) && (c <= 0xD7AF) ) { 
-		return true;
+
+var searchRebate=function(){
+	var f = document.form;	
+	if (f.id.value == ''){
+		//alert('ID를 입력하세요.');
+		document.getElementById("regOk").innerHTML='';
+		f.existId.value=0;
+		f.id.focus();
+		return;
 	}
-	return false;
+	
+	var params = "id="+encodeURIComponent(f.id.value);
+	sendRequest("ajax/searchRebate.jsp",params, responseCanJoin, "GET");	
 }
-
-function isHangulString(s) { 
-	for (i=0; i<s.length; i++) { 
-		if ( !isHangulChar(s.charCodeAt(i)) ) return false;
-	}
-	return true;
-} 
-
-function isHangulJamo( c ) {
-	if ( (c >= 0x3130) && (c <= 0x318F) ) {
-		return true;
-	}
-	return false
-}
-
-function clearBlank(char_value) {
-	var re=/(\s)/g;
-	return char_value.replace(re,"");
-}
-
-function HangulStrChk(tbObj) {
-	str = tbObj.value;
-	if(!(isHangulString(clearBlank(str)))) {
-		alert('이름은 한글이어야만 합니다!');
-		tbObj.value = "";
-		tbObj.focus();
-		return false;
+var responseCanJoin = function(){	
+	var f=document.form;
+	
+	if(httpRequest.readyState==4){
+		if(httpRequest.status==200){			
+			if(httpRequest.responseText==1){				
+			  document.getElementById("regOk").innerHTML = f.id.value +"가 이미 존재합니다.";
+			  f.existId.value=1;
+			}else if(httpRequest.responseText==2){				
+			  document.getElementById("regOk").innerHTML = f.id.value +"는 사용할수 있는 ID입니다.";
+			  f.existId.value=2;	
+			}
+		}
 	}
 }
-// }} 한글 확인 함수
 </script>
+
 <script type="text/javascript">
 	var customInput = function() {
 		var frm = document.form;
@@ -178,7 +171,7 @@ function HangulStrChk(tbObj) {
                   <td class="bullet2"/>
                   <td width="200" height="40" class="line_bg_bottom2 pl5 pr10 fb">요금제</td>
                   <td class="line_bg_bottom2 pl10">
-                    <select name="price_name" class="select_140">
+                    <select name="price_name" class="select_140" onchange="javascript:searchRebate();">
                       <c:forEach items="${priceInfo}" var="pdto">
                         <option value="${pdto.price_name}">${pdto.price_name}</option>
                       </c:forEach>  
@@ -224,5 +217,5 @@ function HangulStrChk(tbObj) {
         </table></td>
       </tr>
     </table></td>
-</form>                      
+</form>
 <jsp:include page="/inc/bottom.jsp"/>                            

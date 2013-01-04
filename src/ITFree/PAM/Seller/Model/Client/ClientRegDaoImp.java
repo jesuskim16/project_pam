@@ -6,8 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.ibatis.SqlMapClientTemplate;
 import org.springframework.stereotype.Repository;
 
-
-
 @Repository
 public class ClientRegDaoImp implements ClientRegDao {
 	
@@ -33,4 +31,10 @@ public class ClientRegDaoImp implements ClientRegDao {
 			return false;
 		}
 	}
+
+	@Override
+	public Integer searchRebate(String model_code, String price_name) {		
+			return (Integer)sqlMapClientTemplate.queryForObject("client.searchRebate", model_code, price_name);			
+	}
+
 }
