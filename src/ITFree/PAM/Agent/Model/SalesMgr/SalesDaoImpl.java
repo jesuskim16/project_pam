@@ -34,19 +34,6 @@ public class SalesDaoImpl implements SalesDao {
 		return sqlMapClientTemplate.queryForList("SaleMgr.searchZipcode", dong);
 	}
 
-	
-
-	@Override
-	public boolean salesInfo_delete(SalesDto salesDto) {
-		try {
-			sqlMapClientTemplate.delete("SaleMgr.salesInfo_delete", salesDto);
-			return true;
-		} catch (Exception e) {
-			e.printStackTrace();
-			return false;
-		}	
-	}
-
 	@Override
 	public boolean salesUpdate(SalesDto salesDto) {
 		try {
@@ -62,6 +49,17 @@ public class SalesDaoImpl implements SalesDao {
 	@Override
 	public List<SalesDto> salesInfo_list() {
 		return sqlMapClientTemplate.queryForList("SaleMgr.salesInfo_list");
+	}
+
+	@Override
+	public boolean salesDelete(SalesDto salesDto) {
+		try {
+			sqlMapClientTemplate.delete("SaleMgr.salesDelete", salesDto);
+			return true;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		}
 	}
 
 

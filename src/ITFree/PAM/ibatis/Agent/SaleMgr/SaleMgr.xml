@@ -48,7 +48,11 @@
 		brc_boss=#brc_boss#, boss_phone=#boss_phone#, write_date=#write_date#
 		WHERE seq = #seq#
 	</update>
-
+	
+	<delete id="salesDelete" parameterClass="sdto" >
+		DELETE FROM branch
+		WHERE seq = #seq#
+	</delete>
 
 
 

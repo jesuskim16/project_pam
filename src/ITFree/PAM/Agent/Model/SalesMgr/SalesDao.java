@@ -12,9 +12,9 @@ public interface SalesDao {
 
 	List<SalesDto> salesInfo_list();
 
-	boolean salesInfo_delete(SalesDto salesDto);
-
 	boolean salesUpdate(SalesDto salesDto);
+
+	boolean salesDelete(SalesDto salesDto);
 
 
 

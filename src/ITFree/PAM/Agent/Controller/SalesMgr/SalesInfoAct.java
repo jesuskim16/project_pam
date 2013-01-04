@@ -43,13 +43,23 @@ public class SalesInfoAct {
 		}
 		
 		@RequestMapping("/salesUpdate.do")
-		protected ModelAndView salesUpdate(SalesDto salesDto, ModelAndView mav){
+		protected ModelAndView salesUpdate(SalesDto salesDto){
 			
 			boolean update = salesDao.salesUpdate(salesDto);
 			
 			return new ModelAndView("redirect:salesList.do");
+		}
+		
+		@RequestMapping("/salesDelete.do")
+		protected ModelAndView salesDelete(SalesDto salesDto){
+			
+			log.debug(salesDto);
+			
+			boolean delete = salesDao.salesDelete(salesDto);
 			
 			
+			
+			return new ModelAndView("redirect:salesList.do");
 		}
 		
 		
