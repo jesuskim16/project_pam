@@ -19,4 +19,9 @@
     INSERT INTO custominfo(seq, cust_name, cust_phone, cust_birth, cont_term, open_date, memo, write_ip, brc_id, price_name, model_code)	
     	VALUES (custom_seq.nextval, #cust_name#, #cust_phone#, #cust_birth#, #cont_term#, #open_date#, #memo#, #write_ip#, #brc_id#, #price_name#, #model_code#)
   </insert>
+  <select id="searchRebate" parameterClass="String" resultClass="Integer" >
+  	SELECT	#price_name#
+  	FROM 	rebate
+  	WHERE	model_code = #model_code#
+  </select>
 </sqlMap>
