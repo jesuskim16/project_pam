@@ -96,16 +96,26 @@
 						                                  </tr>
 <!-- {2 )------------------------------------------------------------------------------------------------------------------------------------------>                                  
 <!-- {3(집계내용)------------------------------------------------------------------------------------------------------------------------------------>                             
-						                               
+						                           <c:choose>
+														<c:when test="${empty mRList}">
 						                                  <tr>
 						                                    <th width="40"  height="50" align="center" bgcolor="aaaaaa">총계</th>
-						                                    <td height="28" align="center" bgcolor="#FFFFFF">${cIDto.model_code} 
-
-                                                            </td>						                                    
+						                                    <td height="28" align="center" bgcolor="#FFFFFF">-</td>						                                    
+						                                    <td height="28" align="center" bgcolor="#FFFFFF">-</td>
+						                                    <td height="28" align="center" bgcolor="#FFFFFF">-</td>
+						                                    <td height="28" align="center" bgcolor="#FFFFFF">-</td>						                                    
+						                                  </tr>															
+														</c:when>
+														<c:when test="${!empty mRList}">
+						                                  <tr>
+						                                    <th width="40"  height="50" align="center" bgcolor="aaaaaa">총계</th>
+						                                    <td height="28" align="center" bgcolor="#FFFFFF">${cIDto.model_code}</td>						                                    
 						                                    <td height="28" align="center" bgcolor="#FFFFFF">${cIDto.s_sdate}<br>&nbsp;~${cIDto.s_edate}</td>
 						                                    <td height="28" align="center" bgcolor="#FFFFFF">${CIPdto.totalCount} 대</td>
 						                                    <td height="28" align="center" bgcolor="#FFFFFF">825,000 원</td>						                                    
-						                                  </tr>    
+						                                  </tr>
+						                                </c:when>
+												   </c:choose>    
 						                            </table></td>
 						                          </tr>		
 						                          <tr>
@@ -125,6 +135,11 @@
 						                                  </tr>
 <!-- {4 )------------------------------------------------------------------------------------------------------------------------------------------>                                  
 <!-- {5(내용)------------------------------------------------------------------------------------------------------------------------------------>                             
+						                               	<c:if test="${empty mRList}">
+                               							<tr>
+                            						   		<td colspan="7" height="28" align="center" bgcolor="#FFFFFF">검색값이 없습니다.</td>
+                             						  	</tr>
+                             						  	</c:if>
 						                               <c:forEach items="${mRList}" var="ciDto">  
 						                                  <tr>						                                  
 						                                    <td height="28" align="center" bgcolor="#FFFFFF" >${ciDto.rown}</td>
