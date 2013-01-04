@@ -4,8 +4,11 @@ import java.util.List;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataAccessException;
 import org.springframework.orm.ibatis.SqlMapClientTemplate;
 import org.springframework.stereotype.Repository;
+
+import ITFree.PAM.Common.Model.Board.PageDto;
 
 
 @Repository
@@ -32,22 +35,6 @@ public class SalesDaoImpl implements SalesDao {
 	}
 
 	@Override
-	public List<SalesDto> salesInfo_list() {
-		return sqlMapClientTemplate.queryForList("SaleMgr.salesInfo_list");
-	}
-
-	@Override
-	public boolean salesInfo_delete(SalesDto salesDto) {
-		try {
-			sqlMapClientTemplate.delete("SaleMgr.salesInfo_delete", salesDto);
-			return true;
-		} catch (Exception e) {
-			e.printStackTrace();
-			return false;
-		}	
-	}
-
-	@Override
 	public boolean salesUpdate(SalesDto salesDto) {
 		try {
 			sqlMapClientTemplate.update("SaleMgr.salesUpdate", salesDto);
@@ -58,6 +45,29 @@ public class SalesDaoImpl implements SalesDao {
 		}
 		
 	}
+
+	@Override
+	public List<SalesDto> salesInfo_list() {
+		return sqlMapClientTemplate.queryForList("SaleMgr.salesInfo_list");
+	}
+
+	@Override
+	public boolean salesDelete(SalesDto salesDto) {
+		try {
+			sqlMapClientTemplate.delete("SaleMgr.salesDelete", salesDto);
+			return true;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		}
+	}
+
+
+
+
+		
+	
+
 
 
 

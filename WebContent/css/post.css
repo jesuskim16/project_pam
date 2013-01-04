@@ -1,0 +1,1223 @@
+/* */
+body,td {margin:0; padding:0; font-size:12px; color:#555555;line-height:14px;font-family:"dotum" }
+
+
+
+.fixed {table-layout:fixed;}
+table { border-spacing:0px; border-collapse:collapse; } 
+
+
+/*   */
+.Text_all_12px {color:#555555; font-size:12px; font-family:dotum; text-decoration: underline;}
+
+.s_Text_gray_Bold {color:#6F6F6F; font-size:12px; font-family:"dotum";font-weight:bold}
+.s_Text_gray_12px {color:#6F6F6F;font-size:12px; font-family:"dotum"}
+.s_Text_gray_12px_Bold {color:#6F6F6F; font-size:12px; font-family:"dotum"; font-weight:bold}
+.s_Text_gray_12px_Bold_underline {color:#6F6F6F; font-size:12px; font-family:"dotum"; font-weight:bold; text-decoration: underline;}
+.s_Text_gray_11px {color:#6F6F6F; font-size:11px; font-family:"dotum"}
+.s_Text_gray_11px_letter{color:#6F6F6F; font-size:11px; font-family:"dotum";  letter-spacing:-1px }
+.s_Text_gray_11px_letter_height{color:#6F6F6F; font-size:11px; font-family:"dotum";  letter-spacing:-1px; line-height:15px; }
+.s_Text_gray_11px_Bold {color:#6F6F6F; font-size:11px; font-family:"dotum"; font-weight:bold}
+.s_Text_gray_11px_Bold_underline {color:#6F6F6F; font-size:11px; font-family:"dotum"; font-weight:bold; text-decoration: underline;}
+
+.s_Text_gray2_Bold {color:#636363;font-size:12px; font-family:"dotum"; font-weight:bold}
+.s_Text_gray2_12px {color:#636363;font-size:12px; font-family:"dotum"}
+.s_Text_gray2_12px_letter {color:#636363;font-size:12px; font-family:"dotum";  letter-spacing:-1px}
+.s_Text_gray2_12px_Bold {color:#636363; font-size:12px; font-family:"dotum"; font-weight:bold}
+.s_Text_gray2_12px_Bold_underline {color:#636363; font-size:12px; font-family:"dotum"; font-weight:bold; text-decoration: underline;}
+.s_Text_gray2_11px {color:#636363; font-size:11px; font-family:"dotum"}
+.s_Text_gray2_11px_height{color:#636363; font-size:11px; font-family:"dotum"; line-height:15px;}
+.s_Text_gray2_11px_letter{color:#636363; font-size:11px; font-family:"dotum";  letter-spacing:-1px }
+.s_Text_gray2_11px_Bold {color:#636363; font-size:11px; font-family:"dotum"; font-weight:bold}
+.s_Text_gray2_11px_Bold_underline {color:#636363; font-size:11px; font-family:"dotum"; font-weight:bold; text-decoration: underline;}
+
+.s_Text_gray2_11px{color:#555555; font-size:11px; font-family:"dotum" }
+.s_Text_gray2_11px_letter{color:#555555; font-size:11px; font-family:"dotum";  letter-spacing:-1px }
+
+.s_Text_gray21_11px_bold {color:#363636; font-size:11px; font-family:"dotum"; font-weight:bold }
+.s_Text_gray21_11px_letter{color:#363636; font-size:11px; font-family:"dotum";  letter-spacing:-1px  }
+.s_Text_gray21_11px{color:#363636; font-size:11px; font-family:"dotum" }
+.s_Text_gray21_12px{color:#363636; font-size:12px; font-family:"dotum" }
+.s_Text_gray21_12px_letter{color:#363636; font-size:12px; font-family:"dotum";  letter-spacing:-1px  }
+.s_Text_gray21_12px_bold {color:#363636; font-size:12px; font-family:"dotum"; font-weight:bold }
+
+
+
+
+
+.s_Text_blue_12px_Bold_letter {color:#28558E; font-size:12px; font-family:"dotum"; font-weight:bold;  letter-spacing:-1px }
+   
+.s_Text_blue2_11px{color:#4B70A1; font-size:11px; font-family:"dotum"}
+.s_Text_blue2_11px_letter{color:#4B70A1; font-size:11px; font-family:"dotum";  letter-spacing:-1px }
+.s_Text_blue2_11px_letter_Bold {color:#4B70A1; font-size:11px; font-family:"dotum";  letter-spacing:-1px; font-weight:bold }
+
+.s_Text_blue3_11px{color:#0F1D58; font-size:11px; font-family:"dotum"}
+.s_Text_blue3_11px_height{color:#0F1D58; font-size:11px; font-family:"dotum"; line-height:14px;}
+.s_Text_blue3_11px_Bold_letter {color:#0F1D58; font-size:11px; font-family:"dotum"; font-weight:bold;  letter-spacing:-1px }
+
+
+.s_Text_blue4_11px{color:#174195; font-size:11px; font-family:"dotum"}
+.s_Text_blue4_11px_height{color:#174195; font-size:11px; font-family:"dotum"; line-height:14px;}
+.s_Text_blue4_11px_Bold_letter {color:#174195; font-size:11px; font-family:"dotum"; font-weight:bold;  letter-spacing:-1px }
+
+.s_Text_blue5_11px{color:#607FA6; font-size:11px; font-family:"dotum"}
+.s_Text_blue5_11px_height{color:#607FA6; font-size:11px; font-family:"dotum"; line-height:14px;}
+.s_Text_blue5_11px_Bold_letter {color:#607FA6; font-size:11px; font-family:"dotum"; font-weight:bold;  letter-spacing:-1px }
+
+.s_Text_pink_11px{color:#E338C3; font-size:11px; font-family:"dotum"}
+.s_Text_pink_11px_letter{color:#E338C3; font-size:11px; font-family:"dotum";  letter-spacing:-1px }
+.s_Text_pink_11px_letter_Bold {color:#E338C3; font-size:11px; font-family:"dotum";  letter-spacing:-1px; font-weight:bold }
+
+
+
+.Text_gray_Bold {color:#999999; font-weight:bold}
+.Text_gray_12px {color:#999999;}
+.Text_gray_12px_Bold {color:#999999; font-size:12px; font-family:"dotum"; font-weight:bold}
+.Text_gray_12px_Bold_underline {color:#999999; font-size:12px; font-family:"dotum"; font-weight:bold; text-decoration: underline;}
+.Text_gray_11px {color:#999999; font-size:11px; font-family:"dotum"}
+.Text_gray_11px_Bold {color:#999999; font-size:11px; font-family:"dotum"; font-weight:bold}
+.Text_gray_11px_Bold_underline {color:#999999; font-size:11px; font-family:"dotum"; font-weight:bold; text-decoration: underline;}
+.Text_gray_14px {color:#999999; font-size:14px; font-family:"dotum"}
+.Text_gray_18px {color:#999999; font-size:18px; font-family:"dotum";font-weight:bold }
+
+.Text_gray2_10px {color:#999999; font-size:9px;}
+.Text_gray2_Bold {color:#494949; font-weight:bold}
+.Text_gray2_12px {color:#494949; font-size:12px; font-family:"dotum" }
+.Text_gray2_12px_Bold {color:#494949;font-size:12px; font-family:"dotum"; font-weight:bold }
+.Text_gray2_12px_height {color:#494949;font-size:12px; font-family:"dotum"; line-height:14px;}
+.Text_gray2_12px_Bold_height {color:#494949;font-size:12px; font-family:"dotum"; line-height:14px; font-weight:bold}
+.Text_gray2_12px_Bold_linethrough {color:#494949; font-size:12px; font-family:dotum; text-decoration: line-through; font-weight:bold}
+.Text_gray2_11px {color:#494949; font-size:11px;}
+.Text_gray2_11px_Bold  {color:#494949; font-size:11px; font-weight:bold }
+.Text_gray2_11px_height {color:#494949; font-size:11px;  line-height:14px;}
+.Text_gray2_11px_height2 {color:#494949; font-size:11px;  line-height:12px;}
+.Text_gray2_11px_height3 {color:#494949; font-size:11px; line-height:13px;}
+.Text_gray2_14px {color:#494949; font-size:14px; font-family:"dotum"}
+.Text_gray2_14px_Bold {color:#494949; font-size:14px; font-family:"dotum"; font-weight:bold}
+.Text_gray2_18px {color:#494949; font-size:18px; font-family:"dotum";font-weight:bold }
+
+.Text_gray3_Bold {color:#838383; font-weight:bold}
+.Text_gray3_12px {color:#838383; }
+.Text_gray3_12px_Bold {color:#838383;font-size:12px; font-family:"dotum"; font-weight:bold }
+.Text_gray3_11px {color:#838383; font-size:11px; font-family:"dotum"}
+.Text_gray3_11px_letter {color:#838383; font-size:11px; font-family:"dotum";  letter-spacing:-1px }
+.Text_gray3_11px_Bold  {color:#838383; font-size:11px; font-family:"dotum";font-weight:bold }
+.Text_gray3_11px_height {color:#838383; font-size:11px; font-family:"dotum"; line-height:14px;}
+.Text_gray3_14px {color:#838383; font-size:14px; font-family:"dotum"}
+.Text_gray3_18px {color:#838383; font-size:18px; font-family:"dotum";font-weight:bold }
+
+.Text_brown_Bold {color:#8C7C64; font-weight:bold}
+.Text_brown_12px {color:#8C7C64; }
+.Text_brown_12px_Bold {color:#8C7C64;font-size:12px; font-weight:bold }
+.Text_brown_11px {color:#8C7C64; font-size:11px;}
+.Text_brown_11px_Bold  {color:#8C7C64; font-size:11px;font-weight:bold }
+.Text_brown_11px_height {color:#8C7C64; font-size:11px; line-height:14px;}
+.Text_brown_14px {color:#8C7C64; font-size:14px; font-family:"dotum"}
+.Text_brown_18px {color:#8C7C64; font-size:18px; font-family:"dotum";font-weight:bold }
+
+.Text_gray4_Bold {color:#E0E0E0; font-weight:bold}
+.Text_gray4_12px {color:#E0E0E0; }
+.Text_gray4_12px_Bold {color:#E0E0E0;font-size:12px; font-family:"dotum"; font-weight:bold }
+.Text_gray4_11px {color:#E0E0E0; font-size:11px; font-family:"dotum"}
+.Text_gray4_11px_height {color:#E0E0E0; font-size:11px; font-family:"dotum"; line-height:14px;}
+.Text_gray4_11px_Bold  {color:#E0E0E0; font-size:11px; font-family:"dotum";font-weight:bold }
+.Text_gray4_14px {color:#E0E0E0; font-size:14px; font-family:"dotum"}
+.Text_gray4_14px_Bold {color:#E0E0E0; font-size:14px; font-family:"dotum"; font-weight:bold}
+.Text_gray4_18px {color:#E0E0E0; font-size:18px; font-family:"dotum";font-weight:bold }
+
+.Text_gray5_Bold {color:#C5C5C5; font-weight:bold}
+.Text_gray5_12px {color:#C5C5C5; }
+.Text_gray5_12px_Bold {color:#C5C5C5;font-size:12px; font-family:"dotum"; font-weight:bold }
+.Text_gray5_11px {color:#C5C5C5; font-size:11px; font-family:"dotum"}
+.Text_gray5_11px_height {color:#C5C5C5; font-size:11px; font-family:"dotum"; line-height:14px;}
+.Text_gray5_11px_Bold  {color:#C5C5C5; font-size:11px; font-family:"dotum";font-weight:bold }
+.Text_gray5_14px {color:#C5C5C5; font-size:14px; font-family:"dotum"}
+.Text_gray5_14px_Bold {color:#C5C5C5; font-size:14px; font-family:"dotum"; font-weight:bold}
+.Text_gray5_18px {color:#C5C5C5; font-size:18px; font-family:"dotum";font-weight:bold }
+
+.Text_brown_Bold {color:#B47C40; font-weight:bold}
+.Text_brown_12px {color:#B47C40; }
+.Text_brown_12px_Bold {color:#B47C40;font-size:12px; font-family:"dotum"; font-weight:bold }
+.Text_brown_11px {color:#B47C40; font-size:11px; font-family:"dotum"}
+.Text_brown_11px_height {color:#B47C40; font-size:11px; font-family:"dotum"; line-height:14px;}
+.Text_brown_11px_Bold  {color:#B47C40; font-size:11px; font-family:"dotum";font-weight:bold }
+.Text_brown_14px {color:#B47C40; font-size:14px; font-family:"dotum"}
+.Text_brown_14px_Bold {color:#B47C40; font-size:14px; font-family:"dotum"; font-weight:bold}
+.Text_brown_18px {color:#B47C40; font-size:18px; font-family:"dotum";font-weight:bold }
+
+.Text_blue_Bold {color:#276CD3; font-weight:bold}
+.Text_blue_12px {color:#276CD3;}
+.Text_blue_12px_bold {color:#276CD3; font-size:12px; font-family:"dotum";font-weight:bold }
+.Text_blue_12px_unberline {color:#276CD3; font-size:12px; font-family:"dotum"; text-decoration: underline;}
+.Text_blue_11px {color:#276CD3; font-size:11px; font-family:"dotum"}
+.Text_blue_11px_height {color:#276CD3; font-size:11px; font-family:"dotum"; line-height:14px;}
+.Text_blue_11px_unberline {color:#276CD3; font-size:11px; font-family:"dotum"; text-decoration: underline;}
+.Text_blue_11px_bold_unberline {color:#276CD3; font-size:11px; font-family:"dotum"; text-decoration: underline; font-weight:bold;}
+.Text_blue_11px_Bold {color:#276CD3; font-size:11px; font-family:"dotum";font-weight:bold }
+.Text_blue_14px {color:#276CD3; font-size:14px; font-family:"dotum"}
+.Text_blue_15px_Bold {color:#276CD3; font-size:15px; font-family:"dotum"; font-weight:bold}
+.Text_blue_16px_Bold {color:#276CD3; font-size:16px; font-family:"dotum"; font-weight:bold}
+.Text_blue_18px {color:#276CD3; font-size:18px; font-family:"dotum";font-weight:bold; line-height:25px;}
+
+.Text_yellow_Bold {color:#FFE400; font-weight:bold}
+.Text_yellow_12px {color: #FFE400;}
+.Text_yellow_12px_linethrough {color:#FFE400; font-size:12px; font-family:dotum; text-decoration: line-through;}
+.Text_yellow_12px_bold {color:#FFE400; font-size:12px; font-family:"dotum"; font-weight:bold }
+.Text_yellow_11px {color:#FFE400; font-size:11px; font-family:"dotum"}
+.Text_yellow_11px_Bold  {color:#FFE400; font-size:11px; font-family:"dotum";font-weight:bold }
+.Text_yellow_13px {color:#FFE400; font-size:13px; font-family:"dotum"}
+.Text_yellow_13px_bold {color:#FFE400; font-size:13px; font-family:"dotum"; font-weight:bold }
+.Text_yellow_14px {color:#FFE400; font-size:14px; font-family:"dotum"}
+.Text_yellow_14px_bold {color:#FFE400; font-size:14px; font-family:"dotum"; font-weight:bold }
+.Text_yellow_15px {color:#FFE400; font-size:15px; font-family:"dotum"}
+.Text_yellow_15px_bold {color:#FFE400; font-size:15px; font-family:"dotum"; font-weight:bold }
+.Text_yellow_18px {color:#FFE400; font-size:18px; font-family:"dotum";font-weight:bold; line-height:25px; }
+
+.Text_yellow2_Bold {color:#E4FF00; font-weight:bold}
+.Text_yellow2_12px {color: #E4FF00;}
+.Text_yellow2_12px_linethrough {color:#E4FF00; font-size:12px; font-family:dotum; text-decoration: line-through;}
+.Text_yellow2_12px_bold_unberline {color:#E4FF00; font-size:12px; font-family:"dotum"; text-decoration: underline; font-weight:bold;}
+.Text_yellow2_12px_bold {color:#E4FF00; font-size:12px; font-family:"dotum"; font-weight:bold }
+.Text_yellow2_11px {color:#E4FF00; font-size:11px; font-family:"dotum"}
+.Text_yellow2_11px_Bold  {color:#E4FF00; font-size:11px; font-family:"dotum";font-weight:bold }
+.Text_yellow2_14px {color:#E4FF00; font-size:14px; font-family:"dotum"}
+.Text_yellow2_18px {color:#E4FF00; font-size:18px; font-family:"dotum";font-weight:bold; line-height:25px; }
+
+.Text_yellow3_Bold {color:#FFF799; font-weight:bold}
+.Text_yellow3_12px {color: #FFF799;}
+.Text_yellow3_12px_linethrough {color:#FFF799; font-size:12px; font-family:dotum; text-decoration: line-through;}
+.Text_yellow3_12px_bold_unberline {color:#FFF799; font-size:12px; font-family:"dotum"; text-decoration: underline; font-weight:bold;}
+.Text_yellow3_12px_bold {color:#FFF799; font-size:12px; font-family:"dotum"; font-weight:bold }
+.Text_yellow3_11px {color:#FFF799; font-size:11px; font-family:"dotum"}
+.Text_yellow3_11px_Bold  {color:#FFF799; font-size:11px; font-family:"dotum";font-weight:bold }
+.Text_yellow3_14px {color:#FFF799; font-size:14px; font-family:"dotum"}
+.Text_yellow3_18px {color:#FFF799; font-size:18px; font-family:"dotum";font-weight:bold; line-height:25px; }
+
+.Text_red_Bold {color:#F80000; font-weight:bold}
+.Text_red_12px {color: #F80000;}
+.Text_red_12px_linethrough {color:#F80000; font-size:12px; font-family:dotum; text-decoration: line-through;}
+.Text_red_12px_bold {color:#F80000; font-size:12px; font-family:"dotum"; font-weight:bold }
+.Text_red_11px {color:#F80000; font-size:11px; font-family:"dotum"}
+.Text_red_11px_Bold  {color:#F80000; font-size:11px; font-family:"dotum";font-weight:bold }
+.Text_red_14px {color:#F80000; font-size:14px; font-family:"dotum"}
+.Text_red_18px {color:#F80000; font-size:18px; font-family:"dotum";font-weight:bold; line-height:25px; }
+
+
+.Text_red2_Bold {color:#A80000; font-weight:bold}
+.Text_red2_12px {color: #A80000;}
+.Text_red2_12px_linethrough {color:#A80000; font-size:12px; font-family:dotum; text-decoration: line-through;}
+.Text_red2_12px_bold {color:#A80000; font-size:12px; font-family:"dotum"; font-weight:bold }
+.Text_red2_11px {color:#A80000; font-size:11px; font-family:"dotum"}
+.Text_red2_11px_Bold  {color:#A80000; font-size:11px; font-family:"dotum";font-weight:bold }
+.Text_red2_14px {color:#A80000; font-size:14px; font-family:"dotum"}
+.Text_red2_15px_Bold  {color:#A80000; font-size:15px; font-family:"dotum";font-weight:bold }
+.Text_red2_16px_Bold  {color:#A80000; font-size:16px; font-family:"dotum";font-weight:bold }
+.Text_red2_18px {color:#A80000; font-size:18px; font-family:"dotum";font-weight:bold; line-height:25px; }
+
+
+.Text_orange_Bold {color:#FF6000; font-weight:bold}
+.Text_orange_12px {color:#FF6000;}
+.Text_orange_12px_bold {color:#FF6000; font-size:12px; font-family:"dotum"; font-weight:bold }
+.Text_orange_12px_bold_underline {color:#FF6000; font-size:12px; font-family:"dotum"; font-weight:bold; text-decoration: underline; }
+.Text_orange_12px_bold_underline2 {color:#FF6000; font-size:11px; font-family:"dotum"; text-decoration: underline; }
+.Text_orange_13px {color:#FF6000; font-size:13px; font-family:"dotum";}
+.Text_orange_13px_bold {color:#FF6000; font-size:13px; font-family:"dotum"; font-weight:bold }
+.Text_orange_11px {color:#FF6000; font-size:11px; font-family:"dotum"}
+.Text_orange_11px_letter {color:#FF6000; font-size:11px; font-family:"dotum";  letter-spacing:-1px }
+.Text_orange_11px_bold {color:#FF6000; font-size:11px; font-family:"dotum"; font-weight:bold }
+.Text_orange_14px {color:#FF6000; font-size:14px; font-family:"dotum"}
+.Text_orange_14px_bold {color:#FF6000; font-size:14px; font-family:"dotum"; font-weight:bold }
+.Text_orange_18px {color:#FF6000; font-size:18px; font-family:"dotum";font-weight:bold; line-height:25px; }
+.Text_orange_Tag18px {color:#ffffff; font-size:18px; font-family:"dotum";font-weight:bold; line-height:30px; background:#F57400}
+
+.Text_orange2_12px {color:#FF8A00;}
+.Text_orange2_12px_bold {color:#FF8A00; font-size:12px; font-family:"dotum"; font-weight:bold }
+.Text_orange2_11px {color:#FF8A00; font-size:11px; font-family:"dotum"}
+.Text_orange2_11px_letter {color:#FF8A00; font-size:11px; font-family:"dotum";  letter-spacing:-1px}
+.Text_orange2_11px_bold {color:#FF8A00; font-size:11px; font-family:"dotum"; font-weight:bold }
+
+.Text_deeporange_Bold {color:#FF3B00; font-weight:bold}
+.Text_deeporange_12px {color:#FF3B00;}
+.Text_deeporange_12px_bold {color:#FF3B00; font-size:12px; font-family:"dotum"; font-weight:bold }
+.Text_deeporange_11px {color:#FF3B00; font-size:11px; font-family:"dotum"}
+.Text_deeporange_11px_height{color:#FF3B00; font-size:11px; font-family:"dotum"; line-height:15px;}
+.Text_deeporange_11px_bold {color:#FF3B00; font-size:11px; font-family:"dotum"; font-weight:bold }
+.Text_deeporange_14px {color:#FF3B00; font-size:14px; font-family:"dotum"}
+.Text_deeporange_18px {color:#FF3B00; font-size:18px; font-family:"dotum";font-weight:bold ; line-height:25px;}
+
+.Text_green_Bold {color:#42A401; font-weight:bold}
+.Text_green_12px {color:#42A401;}
+.Text_green_11px {color:#42A401; font-size:11px; font-family:"dotum"}
+.Text_green_11px_Bold {color:#42A401; font-size:11px; font-family:"dotum";font-weight:bold}
+.Text_green2_11px_Bold {color:#1B8356; font-size:11px; font-family:"dotum";font-weight:bold }
+.Text_green_14px {color:#42A401; font-size:14px; font-family:"dotum"}
+.Text_green_18px {color:#42A401; font-size:18px; font-family:"dotum";font-weight:bold ; line-height:25px;}
+
+.Text_green2_Bold {color:#1B8356; font-weight:bold}
+.Text_green2_12px {color:#1B8356;}
+.Text_green2_11px {color:#1B8356; font-size:11px; font-family:"dotum"}
+.Text_green2_11px_Bold {color:#1B8356; font-size:11px; font-family:"dotum";font-weight:bold }
+.Text_green2_14px {color:#1B8356; font-size:14px; font-family:"dotum"}
+.Text_green2_18px {color:#1B8356; font-size:18px; font-family:"dotum";font-weight:bold ; line-height:25px;}
+
+.Text_green3_Bold {color:#00A646; font-weight:bold}
+.Text_green3_12px {color:#00A646;}
+.Text_green3_12px_Bold {color:#00A646; font-size:12px; font-family:"dotum";font-weight:bold }
+.Text_green3_11px {color:#00A646; font-size:11px; font-family:"dotum"}
+.Text_green3_11px_Bold {color:#00A646; font-size:11px; font-family:"dotum";font-weight:bold }
+.Text_green3_14px {color:#00A646; font-size:14px; font-family:"dotum"}
+.Text_green3_18px {color:#00A646; font-size:18px; font-family:"dotum";font-weight:bold ; line-height:25px;}
+
+.Text_green4_Bold {color:#85CE7C; font-weight:bold}
+.Text_green4_12px {color:#85CE7C;}
+.Text_green4_11px {color:#85CE7C; font-size:11px; font-family:"dotum"}
+.Text_green4_11px_Bold {color:#85CE7C; font-size:11px; font-family:"dotum";font-weight:bold }
+.Text_green4_14px {color:#85CE7C; font-size:14px; font-family:"dotum"}
+.Text_green4_18px {color:#85CE7C; font-size:18px; font-family:"dotum";font-weight:bold ; line-height:25px;}
+
+.Text_green5_Bold {color:#425D08; font-weight:bold}
+.Text_green5_12px {color:#425D08;}
+.Text_green5_11px {color:#425D08; font-size:11px; font-family:"dotum"}
+.Text_green5_11px_Bold {color:#425D08; font-size:11px; font-family:"dotum";font-weight:bold }
+.Text_green5_14px {color:#425D08; font-size:14px; font-family:"dotum"}
+.Text_green5_18px {color:#425D08; font-size:18px; font-family:"dotum";font-weight:bold ; line-height:25px;}
+
+.Text_green6_Bold {color:#015E12; font-weight:bold}
+.Text_green6_12px {color:#015E12;}
+.Text_green6_12px_Bold {color:#015E12; font-size:12px; font-family:"dotum";font-weight:bold }
+.Text_green6_11px {color:#015E12; font-size:11px; font-family:"dotum"}
+.Text_green6_11px_Bold {color:#015E12; font-size:11px; font-family:"dotum";font-weight:bold }
+.Text_green6_14px {color:#015E12; font-size:14px; font-family:"dotum"}
+.Text_green6_18px {color:#015E12; font-size:18px; font-family:"dotum";font-weight:bold ; line-height:25px;}
+
+.Text_green7_Bold {color:#72FF00; font-weight:bold}
+.Text_green7_12px {color:#72FF00;}
+.Text_green7_12px_Bold {color:#72FF00; font-size:12px; font-family:"dotum";font-weight:bold }
+.Text_green7_11px {color:#72FF00; font-size:11px; font-family:"dotum"}
+.Text_green7_11px_Bold {color:#72FF00; font-size:11px; font-family:"dotum";font-weight:bold }
+.Text_green7_14px {color:#72FF00; font-size:14px; font-family:"dotum"}
+.Text_green7_18px {color:#72FF00; font-size:18px; font-family:"dotum";font-weight:bold ; line-height:25px;}
+
+.Text_green8_Bold {color:#00A217; font-weight:bold}
+.Text_green8_12px {color:#00A217;}
+.Text_green8_12px_Bold {color:#00A217; font-size:12px; font-family:"dotum";font-weight:bold }
+.Text_green8_11px {color:#00A217; font-size:11px; font-family:"dotum"}
+.Text_green8_11px_Bold {color:#00A217; font-size:11px; font-family:"dotum";font-weight:bold }
+.Text_green8_14px {color:#00A217; font-size:14px; font-family:"dotum"}
+.Text_green8_18px {color:#00A217; font-size:18px; font-family:"dotum";font-weight:bold ; line-height:25px;}
+
+.Text_green9_Bold {color:#029B96; font-weight:bold}
+.Text_green9_12px {color:#029B96;}
+.Text_green9_12px_Bold {color:#029B96; font-size:12px; font-family:"dotum";font-weight:bold }
+.Text_green9_11px {color:#029B96; font-size:11px; font-family:"dotum"}
+.Text_green9_11px_Bold {color:#029B96; font-size:11px; font-family:"dotum";font-weight:bold }
+.Text_green9_14px {color:#029B96; font-size:14px; font-family:"dotum"}
+.Text_green9_18px {color:#029B96; font-size:18px; font-family:"dotum";font-weight:bold ; line-height:25px;}
+
+.Text_green20_11px_Bold {color:#288C00; font-size:11px; font-family:"dotum";font-weight:bold }
+
+
+.Text_purple_Bold {color:#D061DA; font-weight:bold}
+.Text_purple_Bold2 {color:#822482; font-weight:bold}
+.Text_purple_12px {color:#D061DA;}
+.Text_purple_11px {color:#D061DA; font-size:11px; font-family:"dotum"}
+.Text_purple_14px {color:#D061DA; font-size:14px; font-family:"dotum"}
+.Text_purple_15px {color:#D061DA; font-size:15px; font-family:"dotum"}
+.Text_purple_15px_bold {color:#D061DA; font-size:15px; font-family:"dotum"; font-weight:bold}
+.Text_purple_18px {color:#D061DA; font-size:18px; font-family:"dotum";font-weight:bold ; line-height:25px;}
+
+.Text_purple2_12px {color:#C162C4;}
+.Text_purple2_11px_Bold {color:#C162C4; font-size:11px; font-family:"dotum";font-weight:bold }
+.Text_purple2_11px {color:#C162C4; font-size:11px; font-family:"dotum"}
+.Text_purple2_14px {color:#C162C4; font-size:14px; font-family:"dotum"}
+.Text_purple2_18px {color:#C162C4; font-size:18px; font-family:"dotum";font-weight:bold ; line-height:25px;}
+
+.Text_purple3_12px {color:#8D1C9C;}
+.Text_purple3_12px_Bold {color:#8D1C9C; font-size:12px; font-family:"dotum";font-weight:bold }
+.Text_purple3_11px_Bold {color:#8D1C9C; font-size:11px; font-family:"dotum";font-weight:bold }
+.Text_purple3_11px {color:#8D1C9C; font-size:11px; font-family:"dotum"}
+.Text_purple3_14px {color:#8D1C9C; font-size:14px; font-family:"dotum"}
+.Text_purple3_18px {color:#8D1C9C; font-size:18px; font-family:"dotum";font-weight:bold ; line-height:25px;}
+
+.Text_purple4_12px {color:#6537B9;}
+.Text_purple4_12px_Bold {color:#6537B9; font-size:12px; font-family:"dotum";font-weight:bold }
+.Text_purple4_11px_Bold {color:#6537B9; font-size:11px; font-family:"dotum";font-weight:bold }
+.Text_purple4_11px {color:#6537B9; font-size:11px; font-family:"dotum"}
+.Text_purple4_14px {color:#6537B9; font-size:14px; font-family:"dotum"}
+.Text_purple4_18px {color:#6537B9; font-size:18px; font-family:"dotum";font-weight:bold ; line-height:25px;}
+
+.Text_purple5_12px {color:#3D377D;}
+.Text_purple5_12px_Bold {color:#3D377D; font-size:12px; font-family:"dotum";font-weight:bold }
+.Text_purple5_11px_Bold {color:#3D377D; font-size:11px; font-family:"dotum";font-weight:bold }
+.Text_purple5_11px {color:#3D377D; font-size:11px; font-family:"dotum"}
+.Text_purple5_14px {color:#3D377D; font-size:14px; font-family:"dotum"}
+.Text_purple5_18px {color:#3D377D; font-size:18px; font-family:"dotum";font-weight:bold ; line-height:25px;}
+
+.Text_purple6_12px_Bold {color:#8600C5; font-size:12px; font-family:"dotum";font-weight:bold }
+.Text_purple6_14px_Bold {color:#8600C5; font-size:14px; font-family:"dotum";font-weight:bold }
+
+.Text_pink_Bold {color:#ED145A; font-weight:bold}
+.Text_pink_12px {color:#ED145A;}
+.Text_pink_11px {color:#ED145A; font-size:11px; font-family:"dotum"}
+.Text_pink_14px {color:#ED145A; font-size:14px; font-family:"dotum"}
+.Text_pink_18px {color:#ED145A; font-size:18px; font-family:"dotum";font-weight:bold ; line-height:25px;}
+
+.Text_deepblue_Bold {color:#004A80; font-weight:bold}
+.Text_deepblue_12px {color:#004A80;}
+.Text_deepblue_12px_bold {color:#004A80; font-size:12px; font-family:"dotum"; font-weight:bold}
+.Text_deepblue_11px {color:#004A80; font-size:11px; font-family:"dotum"}
+.Text_deepblue_11px_bold {color:#004A80; font-size:11px; font-family:"dotum";font-weight:bold}
+.Text_deepblue_14px {color:#004A80; font-size:14px; font-family:"dotum"}
+.Text_deepblue_18px {color:#004A80; font-size:18px; font-family:"dotum";font-weight:bold; line-height:25px; }
+
+.Text_blue2_Bold {color:#024396; font-size:12px; font-family:"dotum" font-weight:bold}
+.Text_blue2_12px {color:#024396; font-size:12px; font-family:"dotum"}
+.Text_blue2_12px_bold {color:#024396; font-size:12px; font-family:"dotum"; font-weight:bold}
+.Text_blue2_12px_line {color:#024396; font-size:12px; font-family:"dotum"; text-decoration: underline;}
+.Text_blue2_11px {color:#024396; font-size:11px; font-family:"dotum"}
+.Text_blue2_11px_bold {color:#024396; font-size:11px; font-family:"dotum"; font-weight:bold}
+.Text_blue2_11px_line {color:#024396; font-size:11px; font-family:"dotum"; text-decoration: underline;}
+.Text_blue2_14px {color:#024396; font-size:14px; font-family:"dotum"}
+.Text_blue2_18px {color:#024396; font-size:18px; font-family:"dotum";font-weight:bold; line-height:25px; }
+
+.Text_blue3_Bold {color:#087AA5; font-weight:bold}
+.Text_blue3_12px {color:#087AA5;}
+.Text_blue3_12px_Bold {color:#087AA5; font-weight:bold }
+.Text_blue3_11px {color:#087AA5; font-size:11px; font-family:"dotum"}
+.Text_blue3_11px_Bold {color:#087AA5; font-size:11px; font-family:"dotum";font-weight:bold }
+.Text_blue3_14px {color:#087AA5; font-size:14px; font-family:"dotum"}
+.Text_blue3_14px_Bold {color:#087AA5; font-weight:bold; font-size:14px; font-family:"dotum"}
+.Text_blue3_18px {color:#087AA5; font-size:18px; font-family:"dotum";font-weight:bold ; line-height:25px;}
+
+.Text_blue4_Bold {color:#556F9B; font-weight:bold}
+.Text_blue4_12px {color:#556F9B;}
+.Text_blue4_12px_Bold {color:#556F9B; font-weight:bold }
+.Text_blue4_11px {color:#556F9B; font-size:11px; font-family:"dotum"}
+.Text_blue4_11px_Bold {color:#556F9B; font-size:11px; font-family:"dotum";font-weight:bold }
+.Text_blue4_14px {color:#556F9B; font-size:14px; font-family:"dotum"}
+.Text_blue4_14px_Bold {color:#556F9B; font-weight:bold; font-size:14px; font-family:"dotum"}
+.Text_blue4_18px {color:#556F9B; font-size:18px; font-family:"dotum";font-weight:bold ; line-height:25px;}
+
+.Text_blue5_Bold {color:#67E0FF; font-weight:bold}
+.Text_blue5_12px {color:#67E0FF;}
+.Text_blue5_12px_Bold {color:#67E0FF; font-weight:bold }
+.Text_blue5_11px {color:#67E0FF; font-size:11px; font-family:"dotum"}
+.Text_blue5_11px_Bold {color:#67E0FF; font-size:11px; font-family:"dotum";font-weight:bold }
+.Text_blue5_14px {color:#67E0FF; font-size:14px; font-family:"dotum"}
+.Text_blue5_14px_Bold {color:#67E0FF; font-weight:bold; font-size:14px; font-family:"dotum"}
+.Text_blue5_18px {color:#67E0FF; font-size:18px; font-family:"dotum";font-weight:bold ; line-height:25px;}
+
+.Text_blue8_Bold {color:#46CBC0; font-weight:bold}
+.Text_blue8_12px {color:#46CBC0;}
+.Text_blue8_12px_Bold {color:#46CBC0; font-weight:bold }
+.Text_blue8_11px {color:#46CBC0; font-size:11px; font-family:"dotum"}
+.Text_blue8_11px_letter {color:#46CBC0; font-size:11px; font-family:"dotum";  letter-spacing:-1px }
+.Text_blue8_11px_Bold {color:#46CBC0; font-size:11px; font-family:"dotum";font-weight:bold }
+.Text_blue8_14px {color:#46CBC0; font-size:14px; font-family:"dotum"}
+.Text_blue8_14px_Bold {color:#46CBC0; font-weight:bold; font-size:14px; font-family:"dotum"}
+.Text_blue8_18px {color:#46CBC0; font-size:18px; font-family:"dotum";font-weight:bold ; line-height:25px;}
+
+
+.Text_blue6_Bold {color:#59BDFF; font-weight:bold}
+.Text_blue6_12px {color:#59BDFF;}
+.Text_blue6_12px_Bold {color:#59BDFF; font-weight:bold }
+.Text_blue6_11px {color:#59BDFF; font-size:11px; font-family:"dotum"}
+.Text_blue6_11px_Bold {color:#59BDFF; font-size:11px; font-family:"dotum";font-weight:bold }
+.Text_blue6_14px {color:#59BDFF; font-size:14px; font-family:"dotum"}
+.Text_blue6_14px_Bold {color:#59BDFF; font-weight:bold; font-size:14px; font-family:"dotum"}
+.Text_blue6_18px {color:#59BDFF; font-size:18px; font-family:"dotum";font-weight:bold ; line-height:25px;}
+
+.Text_blue7_Bold {color:#6679D7; font-weight:bold}
+.Text_blue7_12px {color:#6679D7;}
+.Text_blue7_12px_Bold {color:#6679D7; font-weight:bold }
+.Text_blue7_11px {color:#6679D7; font-size:11px; font-family:"dotum"}
+.Text_blue7_11px_Bold {color:#6679D7; font-size:11px; font-family:"dotum";font-weight:bold }
+.Text_blue7_14px {color:#6679D7; font-size:14px; font-family:"dotum"}
+.Text_blue7_14px_Bold {color:#6679D7; font-weight:bold; font-size:14px; font-family:"dotum"}
+.Text_blue7_18px {color:#6679D7; font-size:18px; font-family:"dotum";font-weight:bold ; line-height:25px;}
+
+.Text_blue0_11px_Bold {color:#00A58B; font-size:11px; font-family:"dotum";font-weight:bold }
+
+.Text_blue20_11px_letter {color:#6C8675; font-size:11px; font-family:"dotum";  letter-spacing:-1px }
+.Text_blue20_9px_letter {color:#6C8675; font-size:9px; font-family:"dotum";  letter-spacing:-1px }
+
+
+
+.Text_black_Bold {color:#000000; font-weight:bold}
+.Text_black_12px {color:#000000;}
+.Text_black_12px_bold {color:#000000; font-size:12px; font-family:"dotum"; font-weight:bold}
+.Text_black_11px {color:#000000; font-size:11px;}
+.Text_black_11px_underline {color:#000000; font-size:11px; text-decoration: underline;}
+.Text_black_11px_bold {color:#000000; font-size:11px;  font-weight:bold}
+.Text_black_14px {color:#000000; font-size:14px; font-family:"dotum"}
+.Text_black_14px_Bold {color:#000000; font-size:14px; font-family:"dotum"; font-weight:bold }
+.Text_black_16px_Bold {color:#000000; font-size:16px; font-family:"dotum"; font-weight:bold }
+.Text_black_18px {color:#000000; font-size:18px; font-family:"dotum";font-weight:bold; line-height:25px; }
+
+.Text_white_Bold {color:#FFFFFF; font-weight:bold}
+.Text_white_12px {color:#FFFFFF; font-family:"dotum"}
+.Text_white_12px_bold {color:#FFFFFF; font-size:12px; font-family:"dotum"; font-weight:bold}
+.Text_white_11px {color:#FFFFFF; font-size:11px; font-family:"dotum"}
+.Text_white_11px_letter {color:#FFFFFF; font-size:11px; font-family:"dotum";  letter-spacing:-1px }
+
+.Text_white_11px_bold {color:#FFFFFF; font-size:11px; font-family:"dotum"; font-weight:bold }
+.Text_white_11px_height {color:#FFFFFF;font-size:11px; font-family:"dotum"; line-height:14px;}
+.Text_white_13px {color:#FFFFFF; font-size:13px; font-family:"dotum"}
+.Text_white_13px_bold {color:#FFFFFF; font-size:13px; font-family:"dotum"; font-weight:bold }
+.Text_white_14px {color:#FFFFFF; font-size:14px; font-family:"dotum"}
+.Text_white_14px_bold {color:#FFFFFF; font-size:14px; font-family:"dotum"; font-weight:bold }
+.Text_white_15px {color:#FFFFFF; font-size:15px; font-family:"dotum"}
+.Text_white_15px_bold {color:#FFFFFF; font-size:15px; font-family:"dotum"; font-weight:bold }
+.Text_white_18px {color:#FFFFFF; font-size:18px; font-family:"dotum";font-weight:bold; line-height:25px; }
+
+
+.Text_pink_Bold {color:#FF2A4F; font-weight:bold}
+.Text_pink_12px {color:#FF2A4F; font-family:"dotum"}
+.Text_pink_12px_bold {color:#FF2A4F; font-size:12px; font-family:"dotum"; font-weight:bold}
+.Text_pink_11px {color:#FF2A4F; font-size:11px; font-family:"dotum"}
+.Text_pink_11px_bold {color:#FF2A4F; font-size:11px; font-family:"dotum"; font-weight:bold }
+.Text_pink_11px_height {color:#FF2A4F;font-size:11px; font-family:"dotum"; line-height:14px;}
+.Text_pink_14px {color:#FF2A4F; font-size:14px; font-family:"dotum"}
+.Text_pink_16px_bold {color:#FF2A4F; font-size:16px; font-family:"dotum"; font-weight:bold}
+.Text_pink_18px {color:#FF2A4F; font-size:18px; font-family:"dotum";font-weight:bold; line-height:25px; }
+
+.Text_pink2_Bold {color:#CF3348; font-weight:bold}
+.Text_pink2_12px {color:#CF3348; font-family:"dotum"}
+.Text_pink2_12px_bold {color:#CF3348; font-size:12px; font-family:"dotum"; font-weight:bold}
+.Text_pink2_11px {color:#CF3348; font-size:11px; font-family:"dotum"}
+.Text_pink2_11px_bold {color:#CF3348; font-size:11px; font-family:"dotum"; font-weight:bold }
+.Text_pink2_11px_height {color:#CF3348;font-size:11px; font-family:"dotum"; line-height:14px;}
+.Text_pink2_14px {color:#CF3348; font-size:14px; font-family:"dotum"}
+.Text_pink2_16px_bold {color:#CF3348; font-size:16px; font-family:"dotum"; font-weight:bold}
+.Text_pink2_18px {color:#CF3348; font-size:18px; font-family:"dotum";font-weight:bold; line-height:25px; }
+
+
+.Text_pink3_Bold {color:#FF5454; font-weight:bold}
+.Text_pink3_12px {color:#FF5454; font-family:"dotum"}
+.Text_pink3_12px_bold {color:#FF5454; font-size:12px; font-family:"dotum"; font-weight:bold}
+.Text_pink3_11px {color:#FF5454; font-size:11px; font-family:"dotum"}
+.Text_pink3_11px_bold {color:#FF5454; font-size:11px; font-family:"dotum"; font-weight:bold }
+.Text_pink3_11px_height {color:#FF5454;font-size:11px; font-family:"dotum"; line-height:14px;}
+.Text_pink3_14px {color:#FF5454; font-size:14px; font-family:"dotum"}
+.Text_pink3_16px_bold {color:#FF5454; font-size:16px; font-family:"dotum"; font-weight:bold}
+.Text_pink3_18px {color:#FF5454; font-size:18px; font-family:"dotum";font-weight:bold; line-height:25px; }
+
+.Text_pink4_Bold {color:#BD3A89; font-weight:bold}
+.Text_pink4_12px {color:#BD3A89; font-family:"dotum"}
+.Text_pink4_12px_bold {color:#BD3A89; font-size:12px; font-family:"dotum"; font-weight:bold}
+.Text_pink4_11px {color:#BD3A89; font-size:11px; font-family:"dotum"}
+.Text_pink4_11px_bold {color:#BD3A89; font-size:11px; font-family:"dotum"; font-weight:bold }
+.Text_pink4_11px_height {color:#BD3A89;font-size:11px; font-family:"dotum"; line-height:14px;}
+.Text_pink4_14px {color:#BD3A89; font-size:14px; font-family:"dotum"}
+.Text_pink4_16px_bold {color:#BD3A89; font-size:16px; font-family:"dotum"; font-weight:bold}
+.Text_pink4_18px {color:#BD3A89; font-size:18px; font-family:"dotum";font-weight:bold; line-height:25px; }
+
+/* link */
+a { selector-dummy : expression(this.hideFocus=true);}
+
+a:link      { color:#555555; text-decoration:none; }
+a:visited   { color:#555555; text-decoration:none; }
+a:active    { color:#555555; text-decoration:none; }
+a:hover     { color:#000000; text-decoration:none; }
+
+a.A_Tag_1:link {text-decoration:none; color:#757575; line-height:25px}
+a.A_Tag_1:visited {text-decoration:none;color:#757575; line-height:25px}
+a.A_Tag_1:active {text-decoration:none;color:#757575; line-height:25px}
+a.A_Tag_1:hover { color:#FFEA00; text-decoration:none; background:#000000; line-height:25px} 
+
+a.A_Tag_2:link {text-decoration:none; font-size:17px; color:#F5AC11; font-weight:bold; line-height:25px}
+a.A_Tag_2:visited {text-decoration:none; font-size:17px;color:#F5AC11; font-weight:bold; line-height:25px}
+a.A_Tag_2:active {text-decoration:none; font-size:17px;color:#F5AC11; font-weight:bold; line-height:25px}
+a.A_Tag_2:hover { color:#FFEA00; font-size:17px; text-decoration:none; font-weight:bold; background:#000000; line-height:25px} 
+
+a.A_Tag_3:link {text-decoration:none;color:#ffffff; font-size:20px; font-weight:bold; line-height:25px; background:#FFAC35; line-height:25px}
+a.A_Tag_3:visited {text-decoration:none;color:#ffffff; font-size:20px; font-weight:bold; line-height:25px; background:#FFAC35; line-height:25px}
+a.A_Tag_3:active {text-decoration:none;color:#ffffff; font-size:20px; font-weight:bold; line-height:25px; background:#FFAC35; line-height:25px}
+a.A_Tag_3:hover { color:#FFEA00; text-decoration:none; font-size:20px; background:#000000; line-height:25px} 
+
+a.A_Tag_4:link {text-decoration:none; font-weight:bold; font-size:13px; color:#FF3B00; line-height:25px}
+a.A_Tag_4:visited {text-decoration:none; font-weight:bold; font-size:13px;color:#FF3B00; line-height:25px}
+a.A_Tag_4:active {text-decoration:none; font-weight:bold; font-size:13px;color:#FF3B00; line-height:25px}
+a.A_Tag_4:hover { color:#FFEA00; font-size:13px; font-weight:bold; text-decoration:none; background:#000000; line-height:25px} 
+
+a.A_Tag_5:link {text-decoration:none; color:#6DBB04; font-weight:bold; line-height:25px}
+a.A_Tag_5:visited {text-decoration:none;color:#6DBB04; line-height:25px}
+a.A_Tag_5:active {text-decoration:none;color:#6DBB04; line-height:25px}
+a.A_Tag_5:hover { color:#F6FF00; font-weight:bold; text-decoration:none; background:#075709; line-height:25px}
+
+a.A_Tag_6:link {text-decoration:none; line-height:25px}
+a.A_Tag_6:visited {text-decoration:none; line-height:25px}
+a.A_Tag_6:active {text-decoration:none; line-height:25px}
+a.A_Tag_6:hover { color:#075709; font-weight:bold; text-decoration:underline; background:#FFFFFF; line-height:25px}
+
+a.A_gray:link {text-decoration:none;color:#555555;}
+a.A_gray:visited {text-decoration:none;color:#555555;}
+a.A_gray:active {text-decoration:none;color:#555555;font-weight:bold}
+a.A_gray:hover {text-decoration:none;color:#CC0223;} 
+
+
+a.A_gray2:link {text-decoration:underline;color:#555555;}
+a.A_gray2:visited {text-decoration:underline;color:#555555;}
+a.A_gray2:active {text-decoration:underline;color:#555555;}
+a.A_gray2:hover {text-decoration:underline;color:#555555;} 
+
+a.A_gray-Orange:link {text-decoration:none;color:#555555;}
+a.A_gray-Orange:visited {text-decoration:none;color:#555555;}
+a.A_gray-Orange:active {text-decoration:none;color:#555555;}
+a.A_gray-Orange:hover {text-decoration:none;color:#FF6000;} 
+
+a.A_gray-yellow:link {text-decoration:none;color:#E0E0E0;}
+a.A_gray-yellow:visited {text-decoration:none;color:#E0E0E0;}
+a.A_gray-yellow:active {text-decoration:none;color:#FFE400;}
+a.A_gray-yellow:hover {text-decoration:none;color:#FFE400;} 
+
+a.A_gray-white:link {text-decoration:none;color:#838383;}
+a.A_gray-white:visited {text-decoration:none;color:#838383;}
+a.A_gray-white:active {text-decoration:none;color:#FFFFFF;}
+a.A_gray-white:hover {text-decoration:none;color:#FFFFFF;} 
+
+a.A_Sgray:link {font-size:11px; letter-spacing:-1px; text-decoration:none; color:#555555;}
+a.A_Sgray:visited {font-size:11px; letter-spacing:-1px; text-decoration:none; color:#555555;}
+a.A_Sgray:active {font-size:11px; letter-spacing:-1px; text-decoration:none; color:#555555;}
+a.A_Sgray:hover {font-size:11px; letter-spacing:-1px; text-decoration:underline;color:#555555;} 
+
+a.A_blue_line:link {font-size: 12px; color: #276CD3;font-weight:bold; text-decoration:none;}
+a.A_blue_line:visited {font-size: 12px;color: #276CD3;font-weight:bold; text-decoration:none;}
+a.A_blue_line:active {font-size: 12px;color: #276CD3;font-weight:bold; text-decoration:none;}
+a.A_blue_line:hover {font-size: 12px;color: #276CD3;font-weight:bold; text-decoration:underline;}
+
+a.A_Sblue_line:link {font-size: 11px; color:#276CD3; text-decoration:none;}
+a.A_Sblue_line:visited {font-size: 11px; color:#276CD3; text-decoration:none;}
+a.A_Sblue_line:active {font-size: 11px; color:#276CD3; text-decoration:none;}
+a.A_Sblue_line:hover {font-size: 11px; color: #276CD3; text-decoration:underline;}
+
+a.A_gray-red:link {text-decoration:none;color:#555555;}
+a.A_gray-red:visited {text-decoration:none;color:#555555;}
+a.A_gray-red:active {text-decoration:none;color:#555555;}
+a.A_gray-red:hover {text-decoration:underline;color:#FF0000;}
+
+a.A_gray-orange2:link {text-decoration:none;color:#C7C7C7;}
+a.A_gray-orange2:visited {text-decoration:none;color:#C7C7C7;}
+a.A_gray-orange2:active {text-decoration:none;color:#FF6000;}
+a.A_gray-orange2:hover {color:#FF6000;}
+
+a.A_gray-gray:link {text-decoration:none;color:#838383;}
+a.A_gray-gray:visited {text-decoration:none;color:#838383;}
+a.A_gray-gray:active {text-decoration:none;color:#EOEOEO;}
+a.A_gray-gray:hover {color:#EOEOEO;}
+
+a.A_purple_line:link {font-size: 12px; color: #D061DA;text-decoration:none;}
+a.A_purple_line:visited {font-size: 12px;color: #D061DA;text-decoration:none;}
+a.A_purple_line:active {font-size: 12px;color: #D061DA;text-decoration:none;}
+a.A_purple_line:hover {font-size: 12px;color: #D061DA;text-decoration:underline;}
+
+a.A_pink_line:link {font-size: 12px; color: #ED145A;text-decoration:none;}
+a.A_pink_line:visited {font-size: 12px;color: #ED145A;text-decoration:none;}
+a.A_pink_line:active {font-size: 12px;color: #ED145A;text-decoration:none;}
+a.A_pink_line:hover {font-size: 12px;color: #ED145A;text-decoration:underline;}
+
+a.A_orange_line:link {font-size: 12px; color: #FF6600;text-decoration:none;}
+a.A_orange_line:visited {font-size: 12px;color: #FF6600;text-decoration:none;}
+a.A_orange_line:active {font-size: 12px;color: #FF6600;text-decoration:none;}
+a.A_orange_line:hover {font-size: 12px;color: #FF6000;text-decoration:underline;}
+
+a.A_white_line:link {font-size: 12px; color: #FFFFFF;text-decoration:none;}
+a.A_white_line:visited {font-size: 12px;color: #FFFFFF;text-decoration:none;}
+a.A_white_line:active {font-size: 12px;color: #FFFFFF;text-decoration:none;}
+a.A_white_line:hover {font-size: 12px;color: #FFFFFF;text-decoration:underline;}
+
+a.A_Gray-White:link {font-size: 12px; color: #555555;text-decoration:none;}
+a.A_Gray-White:visited {font-size: 12px;color: #555555;text-decoration:none;}
+a.A_Gray-White:active {font-size: 12px;color: #555555;text-decoration:none;}
+a.A_Gray-White:hover {font-size: 12px;color: #FFFFFF;text-decoration:none;}
+
+/* common */
+div,ul,li,dl,ol,dt,dd,h1,h2,h3,h4,h5,h6  {
+    margin:0;
+    padding:0;
+    font-family:dotum;
+    font-size:12px;
+}
+
+
+/* */
+img { border: none;}
+
+
+/* form */
+.form {display : inline;}
+.input { font-size:12px; 
+		font-family:dotum; 
+		vertical-align: middle; 
+		margin:0px; 
+		background-color:#f5f5f5;
+		border-bottom: 1px solid #dddddd;
+		border-top: 1px solid #c8c8c8; 
+		border-left: 1px solid #dddddd; 
+		border-right: 1px solid #c8c8c8;
+		}
+.input_none { font-size:11px; 
+  font-family:dotum; 
+  vertical-align: middle; 
+  margin:0px; 
+  background-color:#ffffff;
+  border-bottom: 0px;
+  border-top: 0px; 
+  border-left: 0px ; 
+  border-right: 0px ;
+  color:#FF0000;
+  }
+.input_none2 { font-size:11px; 
+  font-family:dotum; 
+  vertical-align:middle; 
+  margin:0px; 
+  background-color:#ffffff;
+  border-bottom: 0px;
+  border-top: 0px; 
+  border-left: 0px ; 
+  border-right: 0px ;
+  
+  }
+.input_none3 { font-size:12px; 
+  font-family:dotum; 
+  vertical-align:middle; 
+  margin:0px; 
+  background-color:#ffffff;
+  border-bottom: 0px;
+  border-top: 0px; 
+  border-left: 0px ; 
+  border-right: 0px ;
+ }
+ .input_none4 { font-size:12px; 
+  font-family:dotum; 
+  vertical-align:middle; 
+  margin:0px; 
+  background-color:#ffffff;
+  border-bottom: 1px solid #eeeeee;
+  border-top: 1px solid #dddddd;
+  border-left: 1px solid #dddddd;
+  border-right: 1px solid  #eeeeee;
+  
+  }
+  .input_none5 { font-size:11px; color:#575757;
+  font-family:dotum; 
+  vertical-align:middle; 
+  margin:0px; 
+  background-color:#ffffff;
+  border-bottom: 1px solid #CECECE;
+  border-top: 1px solid #CECECE;
+  border-left: 1px solid #CECECE;
+  border-right: 1px solid  #CECECE;
+  
+ }
+ .input_gray5_01 { font-size:12px; 
+			font-family:dotum;
+			height: 22;
+			color: #636363; 
+			vertical-align: middle;  
+			border:#AFAFAF 1px solid; 
+			background-color: EAEAEA;
+			}
+ .select {
+	font-size:12px;
+	font-family:dotum;
+	margin:0px;
+	border:#cccccc 1px solid;
+	background-color:ffffff;
+	color: #8F8F8F;
+	2C8BDE
+}
+
+.select_140 {
+ font-size:12px;
+ font-family:dotum;
+ margin:0px;
+ border:#cccccc 1px solid;
+ background-color:ffffff;
+ color: #8F8F8F;
+ width:140px;
+}
+.menu_select {
+	font-size:11px;
+	font-family:dotum;
+	margin:0px;
+	background-color:#ffffff;
+
+			}
+.menu_select2 {
+	font-size:12px;
+	font-color:#7F7F7F;
+	font-family:dotum;
+	margin:0px;
+	background-color:#ffffff;
+
+			}
+
+.input_gray { font-size:12px; 
+			font-family:dotum; 
+			color:#555555;
+			vertical-align: middle;
+			margin:0px;
+			border:#dddddd 1px solid; 
+			background-color: ffffff;
+			}
+			
+.input_orange { font-size:12px; 
+			font-family:dotum; 
+			color:#555555;
+			vertical-align: middle;
+			margin:0px;
+			border:#FF6600 1px solid; 
+			background-color: ffffff;
+			}
+			
+.input_gray_pad { font-size:12px; 
+			font-family:dotum; 
+			vertical-valign: middle; 
+			margin:0px;
+			height:22px;
+			border:#dddddd 1px solid; 
+			background-color: ffffff;
+			}			
+.input_gray1 {
+	font-size:12px;
+	font-family:dotum;
+	vertical-align: middle;
+	margin:auto;
+	border:1px solid #bdbdbd;
+	background-color: #bdbdbd;
+	color: #333333;
+			}
+			
+.input_gray2 { font-size:12px; 
+			font-family:dotum; 
+			vertical-align: middle;  
+			border:#CCCCCC 1px solid; 
+			background-color: ffffff;
+			}
+			
+.input_gray3 { font-size:12px; 
+			font-family:dotum;
+			color: #999999; 
+			vertical-align: middle;  
+			border:#CCCCCC 1px solid; 
+			background-color: ffffff;
+			}
+.input_gray4 { font-size:12px; 
+			font-family:dotum;
+			color: #464646; 
+			vertical-align: middle;  
+			border:#A0A0A0 1px solid; 
+			background-color: ffffff;
+			}
+.input_gray5 { font-size:12px; 
+			font-family:dotum;
+			color: #464646; 
+			vertical-align: middle;  
+			border:#CDCDCD 1px solid; 
+			background-color: ffffff;
+		
+			}
+.input_gray6 { font-size:12px; 
+			font-family:dotum;
+			color: #464646; 
+			vertical-align: middle;  
+			border:#B2B2B2 1px solid; 
+			background-color: ffffff;
+			}
+.input_gray7 { font-size:12px; 
+			font-family:dotum;
+			color: #464646; 
+			vertical-align: 18px;
+			margin: 8px;  
+			border:#CDCDCD 1px solid; 
+			background-color: ffffff;
+			padding: 10px 10px 10px 10px;
+		
+			}
+.input_gray8 { font-size:12px; 
+			font-family:dotum;
+			color: #464646; 
+			vertical-align: 18px;
+			margin: 4px;  
+			border:#CDCDCD 1px solid; 
+			background-color: ffffff;
+			padding: 10px 10px 10px 10px;
+		
+			}
+.input_blue1 { font-size:12px; 
+			font-family:dotum;
+			color: #626262; 
+			vertical-align: middle;
+			border:#AEBEC9 1px solid; 
+			background-color: ffffff;
+			height: 15px;
+		
+			}
+			
+.input_new1 { font-size:11px; 
+			font-family:dotum;
+			color: #C1FFF8; 
+			vertical-align: middle;
+			border:#435959 1px solid; 
+			background-color: 435959;
+			height: 13px;
+		
+			}
+			
+.input_big_gray1 { font-size:12px; 
+			font-family:dotum; 
+			color:#555555;			vertical-align: middle;  
+			border:#CCCCCC 1px solid; 
+			background-color: ffffff;
+			height: 17px;
+			}
+			
+.inputmulti_white1 { font-size:11px; 
+			font-family:dotum;
+			color: #858585; 
+			vertical-align: middle;  
+			border:#ffffff 1px solid; 
+			background-color: ffffff;
+			}
+.inputmulti_gray1 { font-size:11px; 
+			font-family:dotum;  letter-spacing:-1px ;
+			color:#888888;
+			vertical-align: middle;
+			margin:0px;
+			border:#D2D2D2 1px solid; 
+			background-color: ffffff;
+			}
+			
+.inputmulti_gray2 { font-size:12px; 
+			font-family:dotum; 
+			color:#848484;
+			height: 22;
+			vertical-align: middle;
+			margin:0px;
+			border:#CCCCCC 1px solid; 
+			background-color: ffffff;
+			}
+.inputmulti_gray3 { font-size:12px; 
+			font-family:dotum; 
+			color:#848484;
+			height: 20;
+			vertical-align: middle;
+			margin:0px;
+			border:#A0A0A0 1px solid; 
+			background-color: ffffff;
+			}
+.inputmulti_gray10 { font-size:12px; 
+			font-family:dotum; 
+			color:#848484;
+			height: 24;
+			vertical-align: middle;
+			margin:0px;
+			border:#A0A0A0 1px solid; 
+			background-color: ffffff;
+			}
+.inputmulti_green1 { font-size:12px; 
+			font-family:dotum; 
+			color:#447300;
+			height: 22;
+			vertical-align: middle;
+			margin:0px;
+			border:#C9C6A4 1px solid; 
+			background-color: EDF5CE;
+			}
+			
+.inputmulti_gray4 { font-size:12px; 
+			font-family:dotum; 
+			color:#6D6D6D;
+			height: 22;
+			vertical-align: middle;
+			margin:0px;
+			border:#C2C2C2 1px solid; 
+			background-color: F4F4F4;
+			}
+ .freeinput_gray1{ font-size:12px; 
+			font-family:dotum;
+			height: 20;
+			color: #000000; 
+			vertical-align: middle;  
+			border:#AFAFAF 1px solid; 
+			background-color: EAEAEA;
+			}
+.freeinput_white1 { font-size:12px; 
+			font-family:dotum;
+		    height: 22;
+			color: #700000; 
+			vertical-align: middle;  
+			border:#ffffff 1px solid; 
+			background-color: ffffff;
+			}
+				
+	.freeinput_gray2 { font-size:12px; 
+			font-family:dotum;font-weight:bold;
+		    height: 22;
+			color: #0052B7	; 
+			vertical-align: middle;  
+			border:#E7E7E7 1px solid; 
+			background-color: E7E7E7;
+			}
+.freeinput_white2 {
+	font-size:12px;
+	font-family:dotum;
+	height: 16;
+	color: #878787;
+	vertical-align: middle;
+	border:#ffffff 1px solid;
+	background-color: ffffff;
+			}
+.freeinput_blue1 { font-size:12px; 
+			font-family:dotum;
+		    height: 22;
+			color: #004780; 
+			vertical-align: middle;  
+			border:#8AA4B9 1px solid; 
+			background-color: ffffff;
+			}
+.input_bg_white {font-size: 11px;
+	        color: #797979;
+	        background-color: #ffffff;
+	        border: 1px solid #ffffff;
+			}
+.radio { margin:-4px 3px -1px -2px; vertical-align: middle; }
+.check { margin:-2px 3px -1px -2px; vertical-align: middle; }
+
+.input_checking { font-size:12px; 
+   font-family:dotum; 
+   color:#999999;
+  
+   vertical-align: middle;
+   margin:0px;
+   border:#dddddd 1px solid; 
+   background-color: f7f7f7;
+   }   
+
+.Text_brown3_Bold {color:#251108; font-weight:bold}
+.Text_brown3_12px {color:#251108;}
+.Text_brown3_12px_Bold {color:#251108; font-size:12px; font-family:"dotum"; font-weight:bold}
+.Text_brown3_12px_Bold_underline {color:#251108; font-size:12px; font-family:"dotum"; font-weight:bold; text-decoration: underline;}
+.Text_brown3_11px {color:#251108; font-size:11px; font-family:"dotum"}
+.Text_brown3_11px_Bold {color:#251108; font-size:11px; font-family:"dotum"; font-weight:bold}
+.Text_brown3_11px_Bold_underline {color:#251108; font-size:11px; font-family:"dotum"; font-weight:bold; text-decoration: underline;}
+.Text_brown3_14px {color:#251108; font-size:14px; font-family:"dotum"}
+.Text_brown3_18px {color:#251108; font-size:18px; font-family:"dotum";font-weight:bold }
+
+
+
+.Text_brown4_Bold {color:#DBC274; font-weight:bold}
+.Text_brown4_12px {color:#DBC274;}
+.Text_brown4_12px_Bold {color:#DBC274; font-size:12px; font-family:"dotum"; font-weight:bold}
+.Text_brown4_12px_Bold_underline {color:#DBC274; font-size:12px; font-family:"dotum"; font-weight:bold; text-decoration: underline;}
+.Text_brown4_11px {color:#DBC274; font-size:11px; font-family:"dotum"}
+.Text_brown4_11px_Bold {color:#DBC274; font-size:11px; font-family:"dotum"; font-weight:bold}
+.Text_brown4_11px_Bold_underline {color:#DBC274; font-size:11px; font-family:"dotum"; font-weight:bold; text-decoration: underline;}
+.Text_brown4_14px {color:#DBC274; font-size:14px; font-family:"dotum"}
+
+.Text_brown4_18px {color:#DBC274; font-size:18px; font-family:"dotum";font-weight:bold } 
+
+
+
+
+.textB0B0B0 {
+	font-size: 12px;
+	color: #474747;
+	border: 1px solid #B0B0B0;
+}
+.text7F4400 {
+	font-size: 12px;
+	color: #7F4400;
+	text-decoration: none;
+	letter-spacing: -1px;
+}
+.textCA510E {
+	font-size: 12px;
+	color: #CA510E;
+	text-decoration: none;
+}
+.text898989 {
+	font-size: 12px;
+	color: #898989;
+	text-decoration: none;
+	letter-spacing: -1px;
+}
+.textCA510E {
+	font-size: 12px;
+	color: #CA510E;
+	text-decoration: none;
+	letter-spacing: -1px;
+}
+.text66666611 {
+	font-size: 11px;
+	color: #666666;
+	text-decoration: none;
+	font-family: "??";
+}
+.textD38E1711 {
+	font-size: 11px;
+	color: #D38E17;
+	text-decoration: none;
+}
+.text8154D211 {
+	font-size: 11px;
+	color: #8154D2;
+	text-decoration: none;
+}
+.textE0454511 {
+	font-size: 11px;
+	color: #E04545;
+	text-decoration: none;
+}
+.textEE7A41 {
+	font-size: 12px;
+	color: #EE7A41;
+	text-decoration: none;
+}
+.text464646big {
+	font-size: 14px;
+	color: #464646;
+	text-decoration: none;
+	letter-spacing: -1px;
+}
+.textFFFFFFbig {
+	font-size: 20px;
+	color: #FFFFFF;
+	text-decoration: none;
+}
+.textE54F10 {
+	font-size: 14px;
+	color: #E54F10;
+	text-decoration: none;
+}
+.text4E4E4E {
+	font-size: 12px;
+	color: #4E4E4E;
+	text-decoration: none;
+	letter-spacing: -1px;
+}
+.textDE662C {
+	font-size: 12px;
+	color: #DE662C;
+	text-decoration: none;
+}
+.text464646 {
+	font-size: 12px;
+	color: #464646;
+	text-decoration: none;
+}
+.formC5C5C5 {
+	font-size: 12px;
+	text-decoration: none;
+	border: 1px solid #C5C5C5;
+	height: 22px;
+	color: #666666;
+}
+.textAFAFAF11 {
+	font-size: 11px;
+	color: #AFAFAF;
+	text-decoration: none;
+}
+.text7B7B7B {
+	font-size: 12px;
+	color: #4B4B4B;
+	text-decoration: none;
+}
+.text898989 {
+	font-size: 12px;
+	color: #333333;
+	text-decoration: none;
+}
+.textBE5729 {
+	font-size: 12px;
+	color: #BE5729;
+	text-decoration: none;
+}
+.text878787 {
+	font-size: 11px;
+	color: #878787;
+	text-decoration: none;
+}
+.text6A6A6A {
+	font-size: 12px;
+	color: #666666;
+	text-decoration: none;
+}
+.text808080 {
+	font-size: 12px;
+	color: #808080;
+	text-decoration: none;
+}
+.formFFFFFF {
+	border: 1px solid #FFFFFF;
+	font-size: 12px;
+	color: #666666;
+}
+.text6D6D6D {
+	font-size: 12px;
+	color: #6D6D6D;
+	text-decoration: none;
+}
+.textE54F10 {
+	font-size: 12px;
+	color: #E54F10;
+	text-decoration: none;
+}
+.text09827E {
+	font-size: 12px;
+	color: #09827E;
+	text-decoration: none;
+}
+.textC47918 {
+	font-size: 12px;
+	color: #C47918;
+	text-decoration: none;
+}
+.textB23737 {
+	font-size: 12px;
+	color: #B23737;
+	text-decoration: none;
+}
+.textAB2554 {
+	font-size: 12px;
+	color: #AB2554;
+	text-decoration: none;
+	letter-spacing: -1px;
+}
+.text8D25AB {
+	font-size: 12px;
+	color: #8D25AB;
+	text-decoration: none;
+	letter-spacing: -1px;
+}
+.text2554AB {
+	font-size: 12px;
+	color: #2554AB;
+	text-decoration: none;
+	letter-spacing: -1px;
+}
+.textCA6710 {
+	font-size: 12px;
+	color: #CA6710;
+	text-decoration: none;
+	letter-spacing: -1px;
+}
+.text2D9818 {
+	font-size: 12px;
+	color: #2D9818;
+	text-decoration: none;
+	letter-spacing: -1px;
+}
+.text259DAB {
+	font-size: 12px;
+	color: #259DAB;
+	text-decoration: none;
+	letter-spacing: -1px;
+}
+.formwhiteb {
+	font-size: 12px;
+	font-weight: bold;
+	color: #333333;
+	border: 1px solid #FFFFFF;
+}
