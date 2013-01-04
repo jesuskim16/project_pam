@@ -31,11 +31,9 @@ public class FreeboardAct {
 		@RequestMapping("/freeBoardList.do")
 		protected ModelAndView freeBoardList(@ModelAttribute PageDto spageDto , HttpSession session) throws Exception {
 			//spageDto는 Web에서 parameter를 받기위한 객체로 사용			
-			
+			System.out.println(spageDto);
 			//처음 자유게시판에 진입할때 현재페이지를 1로 초기화
-			if(spageDto.getPg() == 0){
-				spageDto.setPg(1);
-			}
+			if(spageDto.getPg() == 0)spageDto.setPg(1);
 			
 			//생성자에 4개의 값을 넘김
 			//spageDto.getPg() : 페이지정보를 넘김 pg값 (이동할 페이지)

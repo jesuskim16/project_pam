@@ -51,12 +51,12 @@ public class PageDto {
 		long startPage = ((pg-1) / blockSize) * blockSize + 1; //시작 페이지값 계산
 		long endPage = ((pg-1) / blockSize) * blockSize + blockSize; // 끝 페이지값 계산
 		String search = "&searchCondition=" + searchCondition +"&searchKeyword="+ searchKeyword ; //get방식으로 검색값을 넘겨주기 위해 분리한 변수
-		
+		String UrlName = "freeBoardList.do";
 		if(pageCount < endPage) endPage = pageCount; //끝 페이지가 총 페이지랑 안맞을 경우 10개 단위의 페이징으로 표시하지 않기 위해 값을 할당하는 것
 		
 		//총 페이징 갯수가 10개 이상일때, 10개 이상 페이지 이동을 했을때 뒤로가기 아이콘을 표시하며, 10개 단위의 이동을 위한 페이지 이동버튼
 		if(startPage != 1){
-			pageHtml.append("<td width='18' align='left'><a href='freeboardList.do?pg="+(startPage-1)+search+"'>" +
+			pageHtml.append("<td width='18' align='left'><a href='"+UrlName+"?pg="+(startPage-1)+search+"'>" +
 							"<img src='img/arrow_left.gif' width='21' height='21' " +
 							"</td><td width='10'>&nbsp;</td>" +
 							"<td class='Text_gray2_11px'>");
@@ -66,7 +66,7 @@ public class PageDto {
 		for(long p = startPage; p <= endPage; p++){
 			//현재 페이지가 아닐때(즉 다른페이지로 넘어가야 할 때 링크를 설정해줌. 검색설정값도 함께)
 			if(p != pg){
-				pageHtml.append("<font class='style2'><a href='freeboardList.do?pg=" + p + search + "'>" + 
+				pageHtml.append("<font class='style2'><a href='"+UrlName+"?pg=" + p + search + "'>" + 
 								+ p + "</a></font>&nbsp;");
 			// 현재 보고있는 페이지 일경우 	
 			}else{
@@ -77,7 +77,7 @@ public class PageDto {
 		//총 페이징 갯수가 10개 이상일때, 앞으로가기 아이콘을 표시하며, 10개 단위의 이동을 위한 페이지 이동버튼
 		if(endPage != pageCount){
 			pageHtml.append("<td width='10'>&nbsp;</td>" +
-							"<td width='18' align='right'><a href='freeboardList.do?pg="+(endPage+1)+search+"'>"  +
+							"<td width='18' align='right'><a href='"+UrlName+"?pg="+(endPage+1)+search+"'>"  +
 							"<img src='img/arrow_right.gif' width='21' height='21' " +
 							" ></a></td>");
 		}

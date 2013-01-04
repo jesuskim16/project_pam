@@ -28,7 +28,6 @@ public class ModelRcdAct {
 			if(pageDto.getPg() == 0)pageDto.setPg(1);			
 			ClientInfoPageDto CIPdto = new ClientInfoPageDto(pageDto.getPg(), 
 					  cIDao.TotalCount(pageDto),pageDto.getModel_code(),pageDto.getS_sdate(),pageDto.getS_edate());
-			System.out.println(CIPdto);
 			List<ClientInfoDto> MList = cIDao.getModelName();
 			List<ClientInfoDto> mRList = cIDao.modelRcdList(CIPdto);
 			ModelAndView mav = new ModelAndView();
