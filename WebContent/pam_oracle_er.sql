@@ -59,7 +59,7 @@ CREATE TABLE BRANCH								--[지점]
 	PASSWORD 	VARCHAR2(20) 	NOT NULL,			--비밀번호
 	BRC_NAME 	VARCHAR2(30) 	NOT NULL,			--지점명
 	BRC_PHONE 	VARCHAR2(20),						--지점전화번호
-	BRC_ADDR1 	VARCHAR2(50),						--지점주소1
+	BRC_ADDR1 	VARCHAR2(200),						--지점주소1
 	BRC_ADDR2 	VARCHAR2(50),						--지점주소2
 	BRC_POST 	VARCHAR2(8),						--우편번호
 	BRC_BOSS 	VARCHAR2(20) 	NOT NULL,			--대표이름
@@ -161,8 +161,11 @@ ALTER TABLE CUSTOMINFO			--고객정보에 요금제(PRICE_NAME)참조
 
 INSERT INTO	BRANCH (            SEQ,    BRC_ID, ATTACH_ID, PASSWORD, BRC_NAME,        BRC_PHONE, BRC_ADDR1, BRC_ADDR2,  BRC_POST, BRC_BOSS,     BOSS_PHONE, BRC_LEV, WRITE_ID, WRITE_IP )
 			 VALUES(BRC_SEQ.nextval,'manager1',  'MGR_ID',   '1111',  '대리점1', '02-1234-5678',    '서울시',    '구로구', '123-456',   '김대표', '010-5678-1234',       1,  'ADMIN', '127.0.0.1' );
-INSERT INTO	BRANCH (            SEQ,    BRC_ID, ATTACH_ID, PASSWORD, BRC_NAME,        BRC_PHONE, BRC_ADDR1, BRC_ADDR2,  BRC_POST, BRC_BOSS,     BOSS_PHONE, BRC_LEV,   WRITE_ID, WRITE_IP )
-			 VALUES(BRC_SEQ.nextval, 'seller1','manager1',   '1111',  '판매점1', '02-1234-5678',    '서울시',    '구로구', '123-456',   '김대표', '010-5678-1234',       2,  'manger1', '127.0.0.1' );
+			 
+INSERT INTO	BRANCH (SEQ, BRC_ID, ATTACH_ID, PASSWORD, BRC_NAME, BRC_PHONE, BRC_ADDR1, BRC_ADDR2,  BRC_POST, BRC_BOSS, BOSS_PHONE, BRC_LEV, WRITE_ID, WRITE_IP )
+VALUES(BRC_SEQ.nextval, 'seller16','manager1', '1111',  '판매점1', '02-1234-5678', '서울시', '구로구', '123-456', '김대표', '010-5678-1234', 2, 'manger1', '127.0.0.1');
+
+
 			 
 DELETE FROM branch;			    
 			 
@@ -176,21 +179,32 @@ ALTER TABLE phonemodel MODIFY(make_comp	varchar2(50) not null);
 
 SELECT B.* 
 FROM   (SELECT A.* ,rownum as rnum
-    	FROM (	SELECT  rownum,seq,board_chk,title,content,readcount,rp_seq, to_char(write_date , 'YYYY-MM-DD') as write_date,brc_id
-       			FROM board
-       			ORDER BY rownum DESC
+    	FROM (SELECT rownum, seq, brc_name, brc_id, brc_phone,
+			  brc_addr1, brc_addr2, brc_post,brc_lev,
+			  brc_boss, boss_phone, to_char(write_date, 'YYYY-MM-DD') AS write_date
+			  FROM BRANCH
+			  ORDER BY rownum DESC
        			) A 
        	) B
-WHERE 1<= rnum AND rnum <= 10
+WHERE 11 <= rnum AND rnum <= 20 AND BRC_LEV = 2
+ORDER BY rownum DESC;
 
 
-		SELECT seq, brc_name, brc_id, brc_phone,
+SELECT rownum, seq, brc_name, brc_id, brc_phone,
 		brc_addr1, brc_addr2, brc_post,
 		brc_boss, boss_phone, to_char(write_date, 'YYYY-MM-DD') AS write_date
-		FROM BRANCH
-		WHERE BRC_LEV='2'
-		ORDER BY seq ASC;
+FROM BRANCH
+ORDER BY rownum DESC;
 
-		SELECT * FROM BRANCH;
+
+
+SELECT seq, brc_name, brc_id, brc_phone,
+		brc_addr1, brc_addr2, brc_post,
+		brc_boss, boss_phone, to_char(write_date, 'YYYY-MM-DD') AS write_date
+FROM BRANCH
+WHERE BRC_LEV='2'
+ORDER BY seq ASC;
+
+SELECT * FROM BRANCH;
 
 
