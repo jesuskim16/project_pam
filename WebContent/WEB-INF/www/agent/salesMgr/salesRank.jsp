@@ -6,58 +6,57 @@
                         <td valign="top"><table width="100%" border="0" cellspacing="0" cellpadding="0">
                           <tr>
 <!-- 상단 1 ------------------------------------------------------------------------------------------------------------------------------------>
-                            <td bgcolor="#272727"><table width="100%" border="0" cellspacing="0" cellpadding="0">
-                              <tr>
-                                <td width="99" class="Text_gray_14px"><img src="img/sub02_category3.gif" width="99" height="60"></td>
-                                <td align="right"></td>
-                              </tr>
-	                          <tr>
-	                            <td height="1"></td>
-	                          </tr>
-	                          <tr>
-	                          	<td><table width="100%" border="0" cellpadding="0" cellspacing="1" bgcolor="cccccc">	                          	                         
-	                          <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
-	                            <tr bgcolor="cccccc">
-	                              <td height="10" colspan="2"></td>
-	                            </tr>
-	                            <tr bgcolor="cccccc">
-	                              <td width="50"></td>
-	                              <td height="25"><table border="0" cellspacing="0" cellpadding="0">
-	                                <tr>
-	                                  <td class="pr10"><a href="#"><img src="img/btn_01.gif" width="40" height="21"></a></td>
-	                                  <td class="pr10"><a href="#"><img src="img/btn_02.gif" width="40" height="21"></a></td>
-	                                  <td class="pr10"><a href="#"><img src="img/btn_03.gif" width="40" height="21"></a></td>
-	                                  <td class="pr10"><a href="#"><img src="img/btn_04.gif" width="40" height="21"></a></td>
-	                                  <td class="pr10"><a href="#"><img src="img/btn_05.gif" width="40" height="21"></a></td>
-	                                  <td class="pr10"><a href="#"><img src="img/btn_06.gif" width="40" height="21"></a></td>
-	                                  <td class="pr10"><a href="#"><img src="img/btn_07.gif" width="40" height="21"></a></td>
-	                                  <td><a href="#"><img src="img/btn_08.gif" width="40" height="21"></a></td>
-	                                </tr>
-	                              </table></td>
-	                            </tr>
-	                            <tr bgcolor="cccccc">
-	                              <td width="50"></td>
-	                              <td height="40" class="line_bg_bottom1"><table width="500" border="0" cellspacing="0" cellpadding="0">
-	                                <tr>
-	                                  <td style="padding-left:5;"><input type="text" name="s_sdate" size="10"  value="2012-12-01" readonly class="result_form"></td>                                          
-	                                  <td class="pr10"><img src="img/btn_calendar.gif" width="24" height="24" style="cursor:hand"></td>
-	                                  <td class="pr10">~</td>
-	                                  <td><input type="text" name="s_edate" size="10"  value="2012-12-31" readonly class="result_form"></td>                                           
-	                                  <td class="pr10"><img src="img/btn_calendar.gif" width="24" height="24" align="absmiddle" style="cursor:hand"></td>                                          
-	                                  <td><input type="image" src="img/btn_ok.gif"  width="40" height="21"></td>
-	                                </tr>
-	                              </table></td>
-	                            </tr>
-	                            <tr bgcolor="cccccc">
-	                              <td height="10" colspan="2"></td>
-	                            </tr>
-	                            <tr bgcolor="#272727">
-	                              <td height="1" colspan="2"></td>
-	                            </tr>                            
-	                          </table></td>                                                   
-							  	</table></td>
-							  	</tr>
-<!-- 상단 1 ------------------------------------------------------------------------------------------------------------------------------------>
+                          <form method="post" name="result_form" action="salesRank.do" style="margin:0">
+                          <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
+                            <tr bgcolor="cccccc">
+                              <td height="10" colspan="2"></td>
+                            </tr>
+                            <tr bgcolor="cccccc">
+                              <td width="50"></td>
+                              <td height="25"><table border="0" cellspacing="0" cellpadding="0">
+                                <tr>
+                     <!-- 당일 -->  <td class="pr10"><a href="javascript:pageLoad();"><img src="img/btn_01.gif" width="40" height="21"></a></td>
+                     <!-- 전일 -->  <td class="pr10"><a href="javascript:m_yesterday();"><img src="img/btn_02.gif" width="40" height="21"></a></td>
+                     <!-- 7일 -->  <td class="pr10"><a href="javascript:m_week();"><img src="img/btn_03.gif" width="40" height="21"></a></td>
+                     <!-- 10일 --> <td class="pr10"><a href="javascript:m_tenDay();"><img src="img/btn_04.gif" width="40" height="21"></a></td>
+                     <!-- 15일 --> <td class="pr10"><a href="javascript:m_ftDay();"><img src="img/btn_05.gif" width="40" height="21"></a></td>
+                     <!-- 한달 -->  <td class="pr10"><a href="javascript:m_amonth();"><img src="img/btn_06.gif" width="40" height="21"></a></td>
+                     <!-- 3달 -->  <td class="pr10"><a href="javascript:m_tmonth();"><img src="img/btn_07.gif" width="40" height="21"></a></td>
+                     <!-- 6달 -->  <td><a href="javascript:m_smonth();"><img src="img/btn_08.gif" width="40" height="21"></a></td>
+                                </tr>
+                              </table></td>
+                            </tr>
+                            <tr bgcolor="cccccc">
+                              <td width="50"></td>
+                              <td height="40" class="line_bg_bottom1"><table width="500" border="0" cellspacing="0" cellpadding="0">
+                                <tr>
+                                  <td>
+                                  <input type="date" name="s_sdate" size="10" value="${SRPDto.s_sdate }" />
+                                  ~                                 
+                                  <input type="date" name="s_edate" size="10" value="${SRPDto.s_edate }" /></td>
+                                  <td width="80" valign="middle">지점 선택 : </td>
+                                  <td valign="middle">                                                                   
+                                  	<select name="brc_name" id="">
+                                  		<c:forEach items="${BNList}" var="bndto">
+											<option value="${bndto.brc_name}" label="${bndto.brc_name}"
+											<c:if test="${SRPDto.brc_name == bndto.brc_name}">selected</c:if>
+											 />
+										</c:forEach> 
+									</select>									
+								  </td>                                                                                    
+                                  <td><input type="image" src="img/btn_ok.gif"  width="40" height="21"></td>
+                                </tr>
+                              </table></td>
+                            </tr>
+                            <tr bgcolor="cccccc">
+                              <td height="10" colspan="2"></td>
+                            </tr>
+                            <tr bgcolor="#272727">
+                              <td height="1" colspan="2"></td>
+                            </tr>                            
+                          </table></td>                                                   
+                          </form> 
+<!----- --------------------------------------------------------------------------------------------------------------------------------------------------->
 	                          <tr>
 	                            <td height="100" bgcolor="FFFFFFF"><table width="100%" border="0" cellspacing="0" cellpadding="0">
 	                          	  <tr>

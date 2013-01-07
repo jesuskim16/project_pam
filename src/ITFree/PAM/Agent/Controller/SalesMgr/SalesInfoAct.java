@@ -32,6 +32,8 @@ public class SalesInfoAct {
 			SalesPageDto p = new SalesPageDto(spDto.getPg(), salesDao.readCount());			
 			List<SalesDto> list = salesDao.salesList(p);
 			
+			
+			
 			ModelAndView mav = new ModelAndView();
 			
 			mav.setViewName("/WEB-INF/www/agent/salesMgr/salesList.jsp");
