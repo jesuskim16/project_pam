@@ -1,8 +1,7 @@
-package ITFree.PAM.Agent.Model.ModelRcd;
+package ITFree.PAM.Agent.Model.SalesRcd;
 
-public class ModelRcdPageDto {
-
-	private String model_code;
+public class SalesRcdPageDto {
+	private String brc_name;
 	private String s_sdate;
 	private String s_edate;	
 	
@@ -21,15 +20,15 @@ public class ModelRcdPageDto {
 	private String pHtml; // HTML문자열을 저장할 변수
 	
 	//기본 생성자(DI주입을 위해 꼭 생성해야함)
-	public ModelRcdPageDto() {
+	public SalesRcdPageDto() {
 		// TODO Auto-generated constructor stub
 	}
 	
-	public ModelRcdPageDto(long pg, long totalCount , String model_code, String s_sdate, String s_edate) {
+	public SalesRcdPageDto(long pg, long totalCount , String brc_name, String s_sdate, String s_edate) {
 		//넘어온  parameter값을 각 변수에 할당
 		this.pg = pg;
 		this.totalCount = totalCount;
-		this.model_code = model_code;
+		this.brc_name = brc_name;
 		this.s_sdate = s_sdate;
 		this.s_edate = s_edate;
 		
@@ -42,7 +41,8 @@ public class ModelRcdPageDto {
 	
 	//HTML처리하는 메소드
 	private String getPageHtml() {
-		String search = "&s_sdate=" + s_sdate + "&s_edate=" + s_edate + "&model_code=" + model_code;
+		String search = "&s_sdate=" + s_sdate + "&s_edate=" + s_edate + "&brc_name=" + brc_name;
+		String UrlName = "salesRcd.do";
 		StringBuffer pageHtml = new StringBuffer(); //긴 문자열 저장을 위한 스트링버퍼 사용
 		long startPage = ((pg-1) / blockSize) * blockSize + 1; //시작 페이지값 계산
 		long endPage = ((pg-1) / blockSize) * blockSize + blockSize; // 끝 페이지값 계산
@@ -51,7 +51,7 @@ public class ModelRcdPageDto {
 		
 		//총 페이징 갯수가 10개 이상일때, 10개 이상 페이지 이동을 했을때 뒤로가기 아이콘을 표시하며, 10개 단위의 이동을 위한 페이지 이동버튼
 		if(startPage != 1){
-			pageHtml.append("<td width='18' align='left'><a href='modelRcd.do?pg="+(startPage-1)+search+"'>" +
+			pageHtml.append("<td width='18' align='left'><a href='"+UrlName+"?pg="+(startPage-1)+search+"'>" +
 							"<img src='img/arrow_left.gif' width='21' height='21' " +
 							"</td><td width='10'>&nbsp;</td>" +
 							"<td class='Text_gray2_11px'>");
@@ -61,7 +61,7 @@ public class ModelRcdPageDto {
 		for(long p = startPage; p <= endPage; p++){
 			//현재 페이지가 아닐때(즉 다른페이지로 넘어가야 할 때 링크를 설정해줌. 검색설정값도 함께)
 			if(p != pg){
-				pageHtml.append("<font class='style2'><a href='modelRcd.do?pg=" + p+search+ "'>" + 
+				pageHtml.append("<font class='style2'><a href='"+UrlName+"?pg=" + p+search+ "'>" + 
 								+ p + "</a></font>&nbsp;");
 			// 현재 보고있는 페이지 일경우 	
 			}else{
@@ -72,7 +72,7 @@ public class ModelRcdPageDto {
 		//총 페이징 갯수가 10개 이상일때, 앞으로가기 아이콘을 표시하며, 10개 단위의 이동을 위한 페이지 이동버튼
 		if(endPage != pageCount){
 			pageHtml.append("<td width='10'>&nbsp;</td>" +
-							"<td width='18' align='right'><a href='modelRcd.do?pg="+(endPage+1)+search+"'>"  +
+							"<td width='18' align='right'><a href='"+UrlName+"?pg="+(endPage+1)+search+"'>"  +
 							"<img src='img/arrow_right.gif' width='21' height='21' " +
 							" ></a></td>");
 		}
@@ -80,13 +80,13 @@ public class ModelRcdPageDto {
 		//모든 HTML값 설정이 끝난 뒤 모든 문자열을 리턴~
 		return pageHtml.toString();
 	}
-
-	public String getModel_code() {
-		return model_code;
+	
+	public String getBrc_name() {
+		return brc_name;
 	}
-
-	public void setModel_code(String model_code) {
-		this.model_code = model_code;
+	
+	public void setBrc_name(String brc_name) {
+		this.brc_name = brc_name;
 	}
 
 	public String getS_sdate() {
@@ -171,13 +171,13 @@ public class ModelRcdPageDto {
 
 	@Override
 	public String toString() {
-		return "ModelRcdPageDto [model_code=" + model_code + ", s_sdate="
-				+ s_sdate + ", s_edate=" + s_edate + ", pg=" + pg
-				+ ", totalCount=" + totalCount + ", pageCount=" + pageCount
-				+ ", startNum=" + startNum + ", endNum=" + endNum
-				+ ", pageSize=" + pageSize + ", blockSize=" + blockSize
-				+ ", pHtml=" + pHtml + "]";
+		return "SalesRcdPageDto [brc_name=" + brc_name + ", s_sdate=" + s_sdate
+				+ ", s_edate=" + s_edate + ", pg=" + pg + ", totalCount="
+				+ totalCount + ", pageCount=" + pageCount + ", startNum="
+				+ startNum + ", endNum=" + endNum + ", pageSize=" + pageSize
+				+ ", blockSize=" + blockSize + ", pHtml=" + pHtml + "]";
 	}
+
 	
-	
+
 }

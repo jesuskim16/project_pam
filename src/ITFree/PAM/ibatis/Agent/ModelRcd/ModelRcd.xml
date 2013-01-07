@@ -5,10 +5,10 @@
     "http://ibatis.apache.org/dtd/sql-map-2.dtd">
 
 <sqlMap namespace="modelRcd">
-	<typeAlias type="ITFree.PAM.Seller.Model.Client.ClientInfoDto" alias="ciDto"/>
-	<typeAlias type="ITFree.PAM.Seller.Model.Client.ClientInfoPageDto" alias="cipDto"/>
+	<typeAlias type="ITFree.PAM.Agent.Model.ModelRcd.ModelRcdDto" alias="mrDto"/>
+	<typeAlias type="ITFree.PAM.Agent.Model.ModelRcd.ModelRcdPageDto" alias="mrpDto"/>
 	
-	<select id="modelRcdList" resultClass="ciDto" parameterClass="cipDto">
+	<select id="modelRcdList" resultClass="mrDto" parameterClass="mrpDto">
 		SELECT B.* 
 		FROM   (SELECT A.* ,rownum as rnum
 		    	FROM (	SELECT row_number()over (ORDER BY seq ASC) as rown,seq, cust_name, model_code, price_name, cont_term, to_char(open_date,'YYYY-MM-DD') as open_date
@@ -24,12 +24,12 @@
     	]]>
 	</select>
 
-	<select id="getModelName" resultClass="ciDto">
+	<select id="getModelName" resultClass="mrDto">
 		SELECT model_name , model_code
 		FROM phonemodel
 	</select>
 	
-	<select id="TotalCount" resultClass="Long" parameterClass="cipDto">
+	<select id="TotalCount" resultClass="Long" parameterClass="mrpDto">
 	SELECT count(*)
 	FROM custominfo
 	<![CDATA[
