@@ -1,0 +1,106 @@
+A:active
+{
+    COLOR: #000000;
+    TEXT-DECORATION: none
+}
+A:link
+{
+    COLOR: #000000;
+    TEXT-DECORATION: none
+}
+A:visited
+{
+    COLOR: #000000;
+    TEXT-DECORATION: none
+}
+
+td{
+	font-family:"dotum";
+	font-size:8pt;
+}
+
+a.b:link {color:#0F0F0F } 
+a.b:active {color:#0F0F0F } 
+a.b:visited {color:#0F0F0F } 
+a.b:hover {color:#0F0F0F } 
+a.b{text-decoration: none}
+
+a.style1:link {color:#FFFFFF } 
+a.style1:active {color:#FFFFFF } 
+a.style1:visited {color:#FFFFFF } 
+a.style1:hover {color:#FFFFFF } 
+a.style1{text-decoration: none}
+
+a.style2:link {color:#000000 } 
+a.style2:active {color:#000000 } 
+a.style2:visited {color:#000000 } 
+a.style2:hover {color:#000000 } 
+a.style2{text-decoration: none}
+
+a.style3:link {color:#cccccc } 
+a.style3:active {color:#cccccc } 
+a.style3:visited {color:#cccccc } 
+a.style3:hover {color:#cccccc } 
+a.style3{text-decoration: none}
+
+a.style4:link {color:#ff0000 } 
+a.style4:active {color:#ff0000 } 
+a.style4:visited {color:#ff0000 } 
+a.style4:hover {color:#ff0000 } 
+a.style4{text-decoration: none}
+
+a.style5:link {color:blue } 
+a.style5:active {color:blue } 
+a.style5:visited {color:blue } 
+a.style5:hover {color:blue } 
+a.style5{text-decoration: none}
+
+a.style6:link {color:green } 
+a.style6:active {color:green } 
+a.style6:visited {color:green } 
+a.style6:hover {color:green } 
+a.style6{text-decoration: none}
+
+a.style7:link {color:#ff0000;bold; } 
+a.style7:active {color:#ff0000;bold; } 
+a.style7:visited {color:#ff0000;bold; } 
+a.style7:hover {color:#ff0000;bold; } 
+a.style7{text-decoration: none}
+
+
+.select_box{
+	font-family:"dotum";
+	font-size:8pt;
+	BACKGROUND-COLOR:#FFEEFF;
+}
+.input_box_100
+{
+    BORDER-RIGHT: #bfbfbf 1px solid;
+    BORDER-TOP: #bfbfbf 1px solid;
+    FONT-SIZE: 11px;
+    BORDER-LEFT: #bfbfbf 1px solid;
+    WIDTH: 100px;
+    COLOR: black;
+    BORDER-BOTTOM: #bfbfbf 1px solid
+}
+
+.input_box_40
+{
+    BORDER-RIGHT: #bfbfbf 1px solid;
+    BORDER-TOP: #bfbfbf 1px solid;
+    FONT-SIZE: 11px;
+    BORDER-LEFT: #bfbfbf 1px solid;
+    WIDTH: 40px;
+    COLOR: black;
+    BORDER-BOTTOM: #bfbfbf 1px solid
+}
+
+.input_box_free
+{
+    BORDER-RIGHT: #bfbfbf 1px solid;
+    BORDER-TOP: #bfbfbf 1px solid;
+    FONT-SIZE: 11px;
+    BORDER-LEFT: #bfbfbf 1px solid;
+    COLOR: black;
+    BORDER-BOTTOM: #bfbfbf 1px solid
+}
