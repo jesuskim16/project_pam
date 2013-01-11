@@ -5,7 +5,6 @@
 <jsp:include page="/inc/menu4.jsp"/>   
 <script type="text/javascript" src="js/setDate.js"></script>
 <script type="text/javascript" src="js/jquery-1.8.3.min.js"></script>
-<script type="text/javascript" src="js/ajaxtest.js"></script>
 
                         <td width="1"></td>
                         <td valign="top"><table width="100%" border="0" cellspacing="0" cellpadding="0">
@@ -13,7 +12,7 @@
 <!-- {1(상단----------------------------------------------------------------------------------------------------------------------------------------->
                            <td bgcolor="#272727"><table width="100%" border="0" cellspacing="0" cellpadding="0">
                               <tr>
-                                <td width="99" class="Text_gray_14px"><img src="img/sub04_category2.gif" width="99" height="60"></td>                               
+                                <td width="99" class="Text_gray_14px"><img src="img/sub04_category2.gif" width="100" height="60"></td>                               
                               </tr>
                             </table></td>
                     	</tr>
@@ -52,9 +51,7 @@
                                 </tr>
                               </table></td>
                             </tr>
-                            <tr bgcolor="cccccc">
-                              <td height="10" colspan="2"></td>
-                            </tr>
+                            
                             <tr bgcolor="#272727">
                               <td height="1" colspan="2"></td>
                             </tr>                            
@@ -62,10 +59,13 @@
                           </form>                     
 <!-- {1 )------------------------------------------------------------------------------------------------------------------------------------------>                            
                             </tr>
+                         
                           <tr>
-                            <td height="1"></td>
-                          </tr>                          
-                          <tr>
+                            <td><table width="100%" border="0" cellpadding="0" cellspacing="1" bgcolor="ffffff">
+                              <tr>
+                              <td width="30%">
+                              
+                              </td>  
                             <td><table width="100%" border="0" cellpadding="0" cellspacing="1" bgcolor="cccccc">
 <!-- {4(목록)----------------------------------------------------------------------------------------------------------------------------------->                            
                                <tr>
@@ -90,13 +90,13 @@
 
 <!-- {5 )------------------------------------------------------------------------------------------------------------------------------------------>                  
                             </table></td>
-                            <td width="300">&nbsp;</td>
+                            </tr></table></td>                          
                           </tr>
                           <tr>
                             <td height="50"><table width="100%" border="0" cellpadding="0" cellspacing="0">
 <!-- {4(PAGING)------------------------------------------------------------------------------------------------------------------------------------>                              
                               <tr>                          		                                       
-                                <td width="200">&nbsp;</td>
+                                <td width="30%" b>&nbsp;</td>
                                 <td align="center"><table border="0" cellspacing="0" cellpadding="0">
                                     <tr>
                                       <td>
