@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <jsp:include page="/inc/top1.jsp"/>    
 <jsp:include page="/inc/menu4.jsp"/>   
 <script type="text/javascript" src="js/setDate.js"></script>
@@ -78,16 +78,16 @@
                                </tr>
 <!-- {4 )------------------------------------------------------------------------------------------------------------------------------------------>                                  
 <!-- {5(내용)------------------------------------------------------------------------------------------------------------------------------------>                             
-                            
+                            <c:forEach items="${MIRList}" var="MIRdto">
                                <tr>
-                                 <td align="center" bgcolor="#FFFFFF" >1</td>
-                                 <td align="center" bgcolor="#FFFFFF" >50대</td>  
-                                 <td height="40" align="center" bgcolor="#FFFFFF" ><img src="upload/iphon.jpg" alt="" height="40"/></td>
-                                 <td align="center" bgcolor="#FFFFFF" >iPhone5 16G<br/>[아이폰5]</td>
-                                 <td align="center" bgcolor="#FFFFFF" >애플</td>         
-                                 <td align="center" bgcolor="#FFFFFF" >2012.12.07</td>                                					                                    
+                                 <td align="center" bgcolor="#FFFFFF" >${MIRdto.rown}</td>
+                                 <td align="center" bgcolor="#FFFFFF" >${MIRdto.cnt }</td>  
+                                 <td height="40" align="center" bgcolor="#FFFFFF" ><img src="upload/model/${MIRdto.filename }" alt="" height="40"/></td>
+                                 <td align="center" bgcolor="#FFFFFF" >${MIRdto.model_code}<br/>${MIRdto.model_name}</td>
+                                 <td align="center" bgcolor="#FFFFFF" >${MIRdto.make_comp}</td>         
+                                 <td align="center" bgcolor="#FFFFFF" >${MIRdto.open_date}</td>                                					                                    
                                </tr> 
-
+							</c:forEach>
 <!-- {5 )------------------------------------------------------------------------------------------------------------------------------------------>                  
                             </table></td>
                             </tr></table></td>                          
@@ -100,7 +100,7 @@
                                 <td align="center"><table border="0" cellspacing="0" cellpadding="0">
                                     <tr>
                                       <td>
-		                                  <jsp:include page="/inc/paging.jsp"/>    
+		                                  ${MIRPDto.pHtml}   
 									  </td>
                                     </tr>
                                 </table></td>                                

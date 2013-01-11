@@ -37,6 +37,27 @@ public class ModelInfoDaoImpl implements ModelInfoDao{
 			return 0;
 		}
 	}
+	
+	@Override
+	public List<ModelInfoDto> modelRank(ModelInfoRankPageDto mIRPDto) {
+		try {
+			return sqlMapClientTemplate.queryForList("ModelInfo.modelRank", mIRPDto);
+		} catch (DataAccessException e) {			
+			e.printStackTrace();
+			return null;
+		}
+	}
+	
+	@Override
+	public long ModelInfoRankTotalCount() {
+		
+		try {
+			return (long) sqlMapClientTemplate.queryForObject("ModelInfo.ModelInfoRankTotalCount");
+		} catch (DataAccessException e) {			
+			e.printStackTrace();
+			return 0;
+		}
+	}
 
 }  
 

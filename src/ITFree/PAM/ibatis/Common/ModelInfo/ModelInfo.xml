@@ -7,6 +7,7 @@
 	
 	<typeAlias alias="midto" type="ITFree.PAM.Common.Model.ModelInfo.ModelInfoDto"/>
 	<typeAlias alias="mipdto" type="ITFree.PAM.Common.Model.ModelInfo.ModelInfoPageDto"/>
+	<typeAlias alias="mirpdto" type="ITFree.PAM.Common.Model.ModelInfo.ModelInfoRankPageDto"/>
 	
 	<select id="modelList" parameterClass="mipdto" resultClass="midto">
 	SELECT B.*  	 
@@ -22,6 +23,28 @@
 	<select id="ModelInfoTotalCount" resultClass="Long">
 	SELECT count(*)
 	FROM phonemodel
+	</select>
+	
+	<select id="modelRank" parameterClass="mirpdto" resultClass="midto">
+	SELECT B.*
+	FROM(SELECT rownum as rown, A.* , rownum as rnum
+		 FROM (SELECT count(*) as cnt, MODEL_NAME, filename, c.MODEL_CODE, p.make_comp, to_char(p.open_date, 'YYYY-MM-DD') as open_date
+		  	   FROM PHONEMODEL p join CUSTOMINFO c
+		 	   ON   p.MODEL_CODE = c.MODEL_CODE
+		 	   GROUP BY MODEL_NAME,filename, c.MODEL_CODE, p.make_comp, p.open_date
+		 	   ORDER BY cnt DESC) A ) B
+	<![CDATA[
+	WHERE #startNum# <= rnum AND rnum <= #endNum#
+	]]> 	
+	</select>
+	
+	<select id="ModelInfoRankTotalCount" resultClass="Long">
+	SELECT count(*) 
+	FROM (SELECT count(*) as cnt, MODEL_NAME, filename, c.MODEL_CODE, p.make_comp, to_char(p.open_date, 'YYYY-MM-DD') as open_date
+		  FROM PHONEMODEL p join CUSTOMINFO c
+		  ON   p.MODEL_CODE = c.MODEL_CODE
+		  GROUP BY MODEL_NAME,filename, c.MODEL_CODE, p.make_comp, p.open_date
+		  ORDER BY cnt DESC) A
 	</select>
 
 	

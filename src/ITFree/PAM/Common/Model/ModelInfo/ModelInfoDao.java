@@ -8,4 +8,8 @@ public interface ModelInfoDao {
 
 	long ModelInfoTotalCount();
 
+	long ModelInfoRankTotalCount();
+
+	List<ModelInfoDto> modelRank(ModelInfoRankPageDto mIRPDto);
+
 }

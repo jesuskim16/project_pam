@@ -4,6 +4,7 @@ public class ModelInfoDto {
 	
 		private long rown;
 		private long seq;
+		private long cnt;
 		private String model_code; 	
 		private String model_name; 	
 		private String filename; 	
@@ -96,5 +97,11 @@ public class ModelInfoDto {
 					+ write_ip + ", make_comp=" + make_comp + ", state_chk="
 					+ state_chk + ", s_sdate=" + s_sdate + ", s_edate="
 					+ s_edate + "]";
+		}
+		public long getCnt() {
+			return cnt;
+		}
+		public void setCnt(long cnt) {
+			this.cnt = cnt;
 		}		
 }

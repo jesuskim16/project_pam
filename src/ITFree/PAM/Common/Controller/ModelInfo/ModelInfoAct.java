@@ -11,6 +11,7 @@ import org.springframework.web.servlet.ModelAndView;
 import ITFree.PAM.Common.Model.ModelInfo.ModelInfoDao;
 import ITFree.PAM.Common.Model.ModelInfo.ModelInfoPageDto;
 import ITFree.PAM.Common.Model.ModelInfo.ModelInfoDto;
+import ITFree.PAM.Common.Model.ModelInfo.ModelInfoRankPageDto;
 
 @Controller
 public class ModelInfoAct {
@@ -32,11 +33,15 @@ public class ModelInfoAct {
 		}
 		
 		@RequestMapping("/modelRank.do")
-		protected ModelAndView modelRank(@ModelAttribute ModelInfoDto MIDto) throws Exception {
+		protected ModelAndView modelRank(@ModelAttribute ModelInfoRankPageDto pageRDto) throws Exception {
+			if(pageRDto.getPg() == 0)pageRDto.setPg(1);
+			ModelInfoRankPageDto MIRPDto = new ModelInfoRankPageDto(pageRDto.getPg() , MIDao.ModelInfoRankTotalCount());
+			List<ModelInfoDto> MIRList = MIDao.modelRank(MIRPDto);
 			ModelAndView mav = new ModelAndView();
 			mav.setViewName("/WEB-INF/www/common/modelInfo/modelRank.jsp");			
 			mav.addObject("title_name","PAM::모델정보");
-			mav.addObject("MIDto", MIDto);
+			mav.addObject("MIRList", MIRList);
+			mav.addObject("MIRPDto", MIRPDto);
 			return mav;
 		}		
 }
