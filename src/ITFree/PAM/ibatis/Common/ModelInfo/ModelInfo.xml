@@ -31,6 +31,9 @@
 		 FROM (SELECT count(*) as cnt, MODEL_NAME, filename, c.MODEL_CODE, p.make_comp, to_char(p.open_date, 'YYYY-MM-DD') as open_date
 		  	   FROM PHONEMODEL p join CUSTOMINFO c
 		 	   ON   p.MODEL_CODE = c.MODEL_CODE
+		 	   <![CDATA[ 
+			   WHERE #s_sdate# <= p.open_date AND p.open_date <= #s_edate#
+			   ]]>	 
 		 	   GROUP BY MODEL_NAME,filename, c.MODEL_CODE, p.make_comp, p.open_date
 		 	   ORDER BY cnt DESC) A ) B
 	<![CDATA[
@@ -38,13 +41,16 @@
 	]]> 	
 	</select>
 	
-	<select id="ModelInfoRankTotalCount" resultClass="Long">
+	<select id="ModelInfoRankTotalCount" parameterClass="mirpdto" resultClass="Long">
 	SELECT count(*) 
 	FROM (SELECT count(*) as cnt, MODEL_NAME, filename, c.MODEL_CODE, p.make_comp, to_char(p.open_date, 'YYYY-MM-DD') as open_date
 		  FROM PHONEMODEL p join CUSTOMINFO c
 		  ON   p.MODEL_CODE = c.MODEL_CODE
 		  GROUP BY MODEL_NAME,filename, c.MODEL_CODE, p.make_comp, p.open_date
 		  ORDER BY cnt DESC) A
+	<![CDATA[ 
+	WHERE #s_sdate# <= open_date AND open_date <= #s_edate#
+	]]>	  
 	</select>
 
 	

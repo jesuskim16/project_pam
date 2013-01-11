@@ -5,6 +5,11 @@
 <jsp:include page="/inc/menu4.jsp"/>   
 <script type="text/javascript" src="js/setDate.js"></script>
 <script type="text/javascript" src="js/jquery-1.8.3.min.js"></script>
+<script type="text/javascript" src="js/jquery.enumerable.js"></script>
+<script type="text/javascript" src="js/jquery.tufte-graph.js"></script>
+<script type="text/javascript" src="js/raphael.js"></script>
+<script type="text/javascript" src="js/setChart.js"></script>
+<link rel="stylesheet" href="css/tufte-graph.css" type="text/css" media="screen" charset="utf-8" />
 
                         <td width="1"></td>
                         <td valign="top"><table width="100%" border="0" cellspacing="0" cellpadding="0">
@@ -17,7 +22,7 @@
                             </table></td>
                     	</tr>
                     	<tr>
-                          <form method="post" name="result_form" action="" style="margin:0">
+                          <form method="get" name="result_form" action="modelRank.do" style="margin:0">
                           <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
                             <tr bgcolor="cccccc">
                               <td height="10" colspan="2"></td>
@@ -41,9 +46,9 @@
                               <td width="50"></td>
                               <td height="40" class="line_bg_bottom1"><table width="500" border="0" cellspacing="0" cellpadding="0">
                                 <tr>
-                                  <td><input type="date" name="s_sdate" id="s_sdate" size="10" value="" onchange="ajaxTest();" />                                          
+                                  <td><input type="date" name="s_sdate" id="s_sdate" size="10" value="${MIRPDto.s_sdate}" />                                          
                                   	  ~
-                                 	  <input type="date" name="s_edate" id="s_edate" size="10" value=""  />
+                                 	  <input type="date" name="s_edate" id="s_edate" size="10" value="${MIRPDto.s_edate}" />
                                  <div id="test">
                                  </div>  
                                   </td>                               
@@ -58,17 +63,23 @@
                           </table></td>                                                   
                           </form>                     
 <!-- {1 )------------------------------------------------------------------------------------------------------------------------------------------>                            
-                            </tr>
-                         
+                            </tr>                         
                           <tr>
                             <td><table width="100%" border="0" cellpadding="0" cellspacing="1" bgcolor="ffffff">
                               <tr>
-                              <td width="30%">
-                              
+                              <td width="30%" align="center">
+                               <c:if test="${!empty MIRList}">                              	
+							      <table id='data-table-1' >
+							        <tr><td></td><td></td></tr>
+							        <c:forEach items="${MIRList}" var="MIRdto">
+							        <tr><td class="Text_white_1px">${MIRdto.model_name}</td><td class="Text_white_1px">${MIRdto.cnt}</td></tr>
+							        </c:forEach>   
+							      </table>							    
+							   </c:if>
                               </td>  
-                            <td><table width="100%" border="0" cellpadding="0" cellspacing="1" bgcolor="cccccc">
+                            <td valign="top"><table width="100%" border="0" cellpadding="0" cellspacing="1" bgcolor="cccccc">
 <!-- {4(목록)----------------------------------------------------------------------------------------------------------------------------------->                            
-                               <tr>
+                               <tr >
                                  <th height="30" width="30" bgcolor="e2e2e2">순위</th>
                                  <th align="center" bgcolor="e2e2e2">판매대수</th>
                                  <th width="100" align="center" bgcolor="e2e2e2">이미지</th>
@@ -78,10 +89,15 @@
                                </tr>
 <!-- {4 )------------------------------------------------------------------------------------------------------------------------------------------>                                  
 <!-- {5(내용)------------------------------------------------------------------------------------------------------------------------------------>                             
+                            <c:if test="${empty MIRList}">
+                              <tr>
+                                 <th height="30" width="30" bgcolor="ffffff" colspan="6">검색값이 없습니다.</th>    
+                               </tr>                            
+                            </c:if>
                             <c:forEach items="${MIRList}" var="MIRdto">
                                <tr>
                                  <td align="center" bgcolor="#FFFFFF" >${MIRdto.rown}</td>
-                                 <td align="center" bgcolor="#FFFFFF" >${MIRdto.cnt }</td>  
+                                 <td align="center" bgcolor="#FFFFFF" >${MIRdto.cnt}</td>  
                                  <td height="40" align="center" bgcolor="#FFFFFF" ><img src="upload/model/${MIRdto.filename }" alt="" height="40"/></td>
                                  <td align="center" bgcolor="#FFFFFF" >${MIRdto.model_code}<br/>${MIRdto.model_name}</td>
                                  <td align="center" bgcolor="#FFFFFF" >${MIRdto.make_comp}</td>         
@@ -90,10 +106,11 @@
 							</c:forEach>
 <!-- {5 )------------------------------------------------------------------------------------------------------------------------------------------>                  
                             </table></td>
-                            </tr></table></td>                          
                           </tr>
+                        </table></td>                          
+                      </tr>
                           <tr>
-                            <td height="50"><table width="100%" border="0" cellpadding="0" cellspacing="0">
+                            <td height="30"><table width="100%" border="0" cellpadding="0" cellspacing="0">
 <!-- {4(PAGING)------------------------------------------------------------------------------------------------------------------------------------>                              
                               <tr>                          		                                       
                                 <td width="30%" b>&nbsp;</td>
@@ -102,14 +119,10 @@
                                       <td>
 		                                  ${MIRPDto.pHtml}   
 									  </td>
-                                    </tr>
-                                </table></td>                                
-                              </tr>
-<!-- {4 )-------------------------------------------------------------------------------------------------------------------------------------------->                               
-                            </table></td>
+                                    </tr></table></td>                                
+                              </tr><!-- {4 )-------------------------------------------------------------------------------------------------------------------------------------------->                               
+                            </table>                                                
+                            </td>
                           </tr>
-                        </table></td>
-                        
-
-                        
+                        </table></td>                     
 <jsp:include page="/inc/bottom.jsp"/>                            

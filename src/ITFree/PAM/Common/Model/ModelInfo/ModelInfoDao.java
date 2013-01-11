@@ -8,7 +8,7 @@ public interface ModelInfoDao {
 
 	long ModelInfoTotalCount();
 
-	long ModelInfoRankTotalCount();
+	long ModelInfoRankTotalCount(ModelInfoRankPageDto pageRDto);
 
 	List<ModelInfoDto> modelRank(ModelInfoRankPageDto mIRPDto);
 

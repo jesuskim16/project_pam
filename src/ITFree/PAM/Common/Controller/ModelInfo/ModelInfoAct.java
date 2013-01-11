@@ -35,7 +35,10 @@ public class ModelInfoAct {
 		@RequestMapping("/modelRank.do")
 		protected ModelAndView modelRank(@ModelAttribute ModelInfoRankPageDto pageRDto) throws Exception {
 			if(pageRDto.getPg() == 0)pageRDto.setPg(1);
-			ModelInfoRankPageDto MIRPDto = new ModelInfoRankPageDto(pageRDto.getPg() , MIDao.ModelInfoRankTotalCount());
+			ModelInfoRankPageDto MIRPDto = new ModelInfoRankPageDto(pageRDto.getPg() , MIDao.ModelInfoRankTotalCount(pageRDto),
+								pageRDto.getS_sdate(), pageRDto.getS_edate());
+			MIRPDto.setS_sdate(pageRDto.getS_sdate());
+			MIRPDto.setS_edate(pageRDto.getS_edate());
 			List<ModelInfoDto> MIRList = MIDao.modelRank(MIRPDto);
 			ModelAndView mav = new ModelAndView();
 			mav.setViewName("/WEB-INF/www/common/modelInfo/modelRank.jsp");			

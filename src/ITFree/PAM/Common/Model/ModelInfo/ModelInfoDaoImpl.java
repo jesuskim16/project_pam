@@ -49,10 +49,10 @@ public class ModelInfoDaoImpl implements ModelInfoDao{
 	}
 	
 	@Override
-	public long ModelInfoRankTotalCount() {
+	public long ModelInfoRankTotalCount(ModelInfoRankPageDto pageRDto) {
 		
 		try {
-			return (long) sqlMapClientTemplate.queryForObject("ModelInfo.ModelInfoRankTotalCount");
+			return (long) sqlMapClientTemplate.queryForObject("ModelInfo.ModelInfoRankTotalCount", pageRDto);
 		} catch (DataAccessException e) {			
 			e.printStackTrace();
 			return 0;

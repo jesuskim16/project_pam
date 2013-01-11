@@ -24,7 +24,6 @@ public class ModelRcdAct {
 					MRDao.TotalCount(pageDto),pageDto.getModel_code(),pageDto.getS_sdate(),pageDto.getS_edate());
 			List<ModelRcdDto> MList = MRDao.getModelName();
 			List<ModelRcdDto> mRList = MRDao.modelRcdList(MRPdto);
-			System.out.println(mRList);
 			ModelAndView mav = new ModelAndView();
 			mav.setViewName("/WEB-INF/www/agent/business/modelRec.jsp");
 			mav.addObject("title_name","PAM::모델별실적");
