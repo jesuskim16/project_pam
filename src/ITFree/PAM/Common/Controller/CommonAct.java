@@ -28,4 +28,8 @@ public class CommonAct {
 		mav.addObject("brc_lev",level);
 		return mav;
 	}
+	@RequestMapping("/admMain.do")
+	public String admMain(){
+		return "/WEB-INF/www/admin/main.jsp";
+	}
 }
