@@ -1,8 +1,8 @@
 package ITFree.PAM.Seller.Model.Client;
 
 public class ClientInfoDto {
-	private int rown;
-	private int seq; 		
+	private long rowA;
+	private long seq; 		
 	private String cust_name; 	
 	private String cust_phone;
 	private String cust_phone1;
@@ -22,12 +22,8 @@ public class ClientInfoDto {
 	private String model_name;
 	
 	
-	public int getSeq() {
-		return seq;
-	}
-	public void setSeq(int seq) {
-		this.seq = seq;
-	}
+
+
 	public String getCust_name() {
 		return cust_name;
 	}
@@ -130,16 +126,21 @@ public class ClientInfoDto {
 	public void setModel_name(String model_name) {
 		this.model_name = model_name;
 	}
-
-	public int getRown() {
-		return rown;
+	public long getRowA() {
+		return rowA;
 	}
-	public void setRown(int rown) {
-		this.rown = rown;
+	public void setRowA(long rowA) {
+		this.rowA = rowA;
+	}
+	public long getSeq() {
+		return seq;
+	}
+	public void setSeq(long seq) {
+		this.seq = seq;
 	}
 	@Override
 	public String toString() {
-		return "ClientInfoDto [rown=" + rown + ", seq=" + seq + ", cust_name="
+		return "ClientInfoDto [rowA=" + rowA + ", seq=" + seq + ", cust_name="
 				+ cust_name + ", cust_phone=" + cust_phone + ", cust_phone1="
 				+ cust_phone1 + ", cust_phone2=" + cust_phone2
 				+ ", cust_phone3=" + cust_phone3 + ", cust_birth=" + cust_birth

@@ -18,8 +18,9 @@ public class ClientInfoDaoImp implements ClientInfoDao {
 	private SqlMapClientTemplate sqlMapClientTemplate;
 
 	@Override
-	public List<ClientInfoDto> clientList(String brc_id) {
-		return sqlMapClientTemplate.queryForList("clientInfo.getClientInfo",brc_id);
+	public List<ClientInfoDto> clientList(CustPageDto p) {
+		log.debug("---clientList_2"+p);
+		return sqlMapClientTemplate.queryForList("clientInfo.getClientInfo", p);
 	}
 
 	@Override
@@ -30,8 +31,7 @@ public class ClientInfoDaoImp implements ClientInfoDao {
 		} catch (Exception e) {
 			e.printStackTrace();
 			return false;
-		}
-		
+		}		
 	}
 
 	@Override
@@ -44,4 +44,10 @@ public class ClientInfoDaoImp implements ClientInfoDao {
 			return false;
 		}
 	}
+
+	@Override
+	public int readCount(String brc_id) {
+		return (int) sqlMapClientTemplate.queryForObject("clientInfo.readCount",brc_id);
+	}
+	
 }

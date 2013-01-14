@@ -67,14 +67,15 @@
                                  <th width="170" align="center" bgcolor="e2e2e2">연락처</th>						                                    
                                  <th align="center" bgcolor="e2e2e2">요금제</th>
                                  <th align="60" "center" bgcolor="e2e2e2">약정기간</th>		
-                                 <th align="center" bgcolor="e2e2e2">상품가입일</th>
+                                 <th align="center" bgcolor="e2e2e2">개통일</th>
                                  <th width="100" align="center" bgcolor="e2e2e2"></th>                                    					                                    
                                </tr>
 <!-- {4 )------------------------------------------------------------------------------------------------------------------------------------------>                                  
-<!-- {5(내용)------------------------------------------------------------------------------------------------------------------------------------>							
+<!-- {5(내용)------------------------------------------------------------------------------------------------------------------------------------>
+						    <c:if test="${empty ciList}"><tr><td colspan="9" height="300" bgcolor="#ffffff" align="center"><h1>등록된 고객정보가 없습니다.</h1></td></tr></c:if>
  							<c:forEach items="${ciList}" var="client"> 							     
-                               <tr id="layer1_${client.seq}" style="display:table-row; *display:block">
-                                 <td height="28" align="center" bgcolor="#FFFFFF" >${client.seq}</td>
+                               <tr id="layer1_${client.seq}" style="display:table-row; *display:block;">
+                                 <td height="28" align="center" bgcolor="#FFFFFF" >${client.rowA}</td>
                                  <td align="left" bgcolor="#FFFFFF" >&nbsp;${client.cust_name}</td>
                                  <td align="center" bgcolor="#FFFFFF" >${client.cust_birth}</td>
                                  <td align="left" bgcolor="#FFFFFF" >&nbsp;${client.model_code}</td>
@@ -166,14 +167,25 @@
                           <tr>
                             <td height="50"><table width="100%" border="0" cellpadding="0" cellspacing="0">
 <!-- {4(PAGING)------------------------------------------------------------------------------------------------------------------------------------>                              
-                              <tr>                            
-<!-- 		                        <a href="#"><img src="img/btn_edit.gif"></a>&nbsp;		                         -->
-<!-- 		                        <a href="#"><img src="img/btn_del2.gif"></a>		                        		                                        -->
+                              <tr>
                                 <td width="200">&nbsp;</td>
                                 <td align="center"><table border="0" cellspacing="0" cellpadding="0">
                                     <tr>
                                       <td>
-		                                  <jsp:include page="/inc/paging.jsp"/>    
+                                      <c:set var="pageUrl" value="clientList.do"/>                                      
+                                      <c:if test="${paging.startPage!=1}">
+                                        <a href="${pageUrl}?pg=${paging.startPage-10}">
+                                          <img src='img/arrow_left.gif' width='21' height='21'>
+                                        </a>&nbsp;
+                                      </c:if>                                      
+                                        <c:forEach begin="${paging.startPage}" end="${paging.endPage}" varStatus="p">                                                                   
+                                          <a href="${pageUrl}?pg=${paging.startPage+p.count-1}">${paging.startPage+p.count-1}</a>&nbsp;                                        
+                                        </c:forEach> 
+                                      <c:if test="${(paging.startPage+paging.pageSize)<=paging.pageCount}">
+                                        <a href="${pageUrl}?pg=${paging.startPage+10}">
+                                          <img src='img/arrow_right.gif' width='21' height='21'>
+                                        </a>
+                                      </c:if>
 									  </td>
                                     </tr>
                                 </table></td>

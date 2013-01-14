@@ -33,35 +33,35 @@ function checkNumber(tobj) {
 		tobj.focus();
 	} 
 }
-
-var searchRebate=function(){
-	var f = document.form;	
-	if (f.id.value == ''){
-		//alert('ID를 입력하세요.');
-		document.getElementById("regOk").innerHTML='';
-		f.existId.value=0;
-		f.id.focus();
-		return;
-	}
+//*ajax
+// var searchRebate=function(){
+// 	var f = document.form;	
+// 	if (f.id.value == ''){
+// 		//alert('ID를 입력하세요.');
+// 		document.getElementById("regOk").innerHTML='';
+// 		f.existId.value=0;
+// 		f.id.focus();
+// 		return;
+// 	}
+// 	var params = "model_code="+encodeURIComponent(f.model_code.value)+"&price_name="+encodeURIComponent(f.price_name.value);
+// 	sendRequest("ajax/searchRebate.jsp",params, responseCanJoin, "GET");	
+// }
+// var responseCanJoin = function(){	
+// 	var f=document.form;
 	
-	var params = "id="+encodeURIComponent(f.id.value);
-	sendRequest("ajax/searchRebate.jsp",params, responseCanJoin, "GET");	
-}
-var responseCanJoin = function(){	
-	var f=document.form;
-	
-	if(httpRequest.readyState==4){
-		if(httpRequest.status==200){			
-			if(httpRequest.responseText==1){				
-			  document.getElementById("regOk").innerHTML = f.id.value +"가 이미 존재합니다.";
-			  f.existId.value=1;
-			}else if(httpRequest.responseText==2){				
-			  document.getElementById("regOk").innerHTML = f.id.value +"는 사용할수 있는 ID입니다.";
-			  f.existId.value=2;	
-			}
-		}
-	}
-}
+// 	if(httpRequest.readyState==4){
+// 		if(httpRequest.status==200){			
+// // 			if(httpRequest.responseText==1){				
+// // 			  document.getElementById("regOk").innerHTML = f.id.value +"가 이미 존재합니다.";
+// // 			  f.existId.value=1;
+// // 			}else if(httpRequest.responseText==2){				
+// // 			  document.getElementById("regOk").innerHTML = f.id.value +"는 사용할수 있는 ID입니다.";
+// // 			  f.existId.value=2;	
+// // 			}
+// 			document.getElementById("regOk").innerHTML =httpRequest.responseText+"=리베이트";
+// 		}
+// 	}
+// }
 </script>
 
 <script type="text/javascript">
@@ -107,7 +107,7 @@ var responseCanJoin = function(){
 	
 
 </script>
-
+<!-- <div id="regOk"></div> //ajax-->
 <form name="form" method="post">
     <td width="1"></td>
     <td valign="top"><table width="100%" border="0" cellspacing="0" cellpadding="0">
@@ -171,7 +171,7 @@ var responseCanJoin = function(){
                   <td class="bullet2"/>
                   <td width="200" height="40" class="line_bg_bottom2 pl5 pr10 fb">요금제</td>
                   <td class="line_bg_bottom2 pl10">
-                    <select name="price_name" class="select_140" onchange="javascript:searchRebate();">
+                    <select name="price_name" class="select_140">
                       <c:forEach items="${priceInfo}" var="pdto">
                         <option value="${pdto.price_name}">${pdto.price_name}</option>
                       </c:forEach>  
