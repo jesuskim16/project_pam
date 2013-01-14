@@ -8,17 +8,17 @@ public class AdmBoardAct {
 
 	@RequestMapping("admNoticeList.do")
 	public String admNoticeList(){		
-		return "/WEB-INF/www/admin/list.jsp";		
+		return "/WEB-INF/www/admin/board/list.jsp";		
 	}
 	
 	@RequestMapping("admNoticeView.do")
 	public String admNoticeView(){		
-		return "/WEB-INF/www/admin/view.jsp";		
+		return "/WEB-INF/www/admin/board/view.jsp";		
 	}
 	
 	@RequestMapping("admNoticeInsert.do")
 	public String admNoticeInsert(){		
-		return "/WEB-INF/www/admin/insert.jsp";		
+		return "/WEB-INF/www/admin/board/insert.jsp";		
 	}
 	
 }
