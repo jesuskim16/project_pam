@@ -56,23 +56,23 @@ CREATE TABLE BOARD
 SELECT * FROM BRANCH;
 CREATE TABLE BRANCH
 (
-	SEQ NUMBER NOT NULL UNIQUE,
-	BRC_ID VARCHAR2(20) NOT NULL,
-	ATTACH_ID VARCHAR2(20),
-	PASSWORD VARCHAR2(20) NOT NULL,
-	BRC_NAME VARCHAR2(30) NOT NULL,
-	BRC_PHONE VARCHAR2(20),
-	BRC_ADDR1 VARCHAR2(200),
-	BRC_ADDR2 VARCHAR2(200),
-	BRC_POST VARCHAR2(8),
-	BRC_BOSS VARCHAR2(20) NOT NULL,
-	BOSS_PHONE VARCHAR2(20),
-	BRC_LEV NUMBER(2) DEFAULT 0,
-	BRC_STATE NUMBER(2) DEFAULT 0,
-	WRITE_ID VARCHAR2(20),
-	WRITE_DATE DATE DEFAULT SYSDATE,
-	WRITE_IP VARCHAR2(20),
-	PRIMARY KEY (BRC_ID)
+	SEQ NUMBER NOT NULL UNIQUE,			--SEQ
+	BRC_ID VARCHAR2(20) NOT NULL, 		--판매점 ID
+	ATTACH_ID VARCHAR2(20),				--대리점 ID
+	PASSWORD VARCHAR2(20) NOT NULL,		--패스워드
+	BRC_NAME VARCHAR2(30) NOT NULL,		--판매점 이름
+	BRC_PHONE VARCHAR2(20),				--판매점 전화번호
+	BRC_ADDR1 VARCHAR2(200),			--판매점 주소
+	BRC_ADDR2 VARCHAR2(200),			--판매점 상세 주소
+	BRC_POST VARCHAR2(8),				--우편번호
+	BRC_BOSS VARCHAR2(20) NOT NULL,		--대표자 이름
+	BOSS_PHONE VARCHAR2(20),			--대표자 전화번호
+	BRC_LEV NUMBER(2) DEFAULT 0,		--레벨(1: 대리점, 2:판매점)
+	BRC_STATE NUMBER(2) DEFAULT 0,		--상태
+	WRITE_ID VARCHAR2(20),				--작성자 ID
+	WRITE_DATE DATE DEFAULT SYSDATE,	--작성일
+	WRITE_IP VARCHAR2(20),				--작성자 IP
+	PRIMARY KEY (BRC_ID)		
 );
 
 
@@ -86,21 +86,53 @@ CREATE TABLE BRANCHLOG
 );
 
 SELECT * FROM CUSTOMINFO;
+SELECT * FROM BRANCH;
+SELECT * FROM REBATE;
+
+
+	SELECT  b.brc_name, count(c.brc_id) AS salesnumber, sum(c.rebate) AS salesrebate 
+	FROM CUSTOMINFO c join BRANCH b 
+	on c.brc_id=b.brc_id
+	GROUP BY b.brc_name
+	union 
+	SELECT  b.brc_name, count(c.brc_id) AS salesnumber, sum(c.rebate) AS salesrebate, 
+	(SELECT rownum FROM BRANCH WHERE BRC_LEV='2')
+	FROM CUSTOMINFO c join BRANCH b 
+	on c.brc_id=b.brc_id
+	GROUP BY b.brc_name, rownum
+	ORDER BY salesnumber DESC;
+	 
+	
+	
+	
+ 	
+ 		SELECT count(c.brc_id) AS salesnumber, b.brc_name
+	FROM CUSTOMINFO c join BRANCH b
+	on c.brc_id=b.brc_id
+ 	GROUP BY b.brc_name;
+	
+	
+SELECT * FROM CUSTOMINFO;
+SELECT * from BRANCH;
+ 	
+INSERT INTO CUSTOMINFO(SEQ, CUST_NAME, CUST_PHONE, CONT_TERM, OPEN_DATE, MEMO, WRITE_IP, BRC_ID, PRICE_NAME, MODEL_CODE, REBATE, CUST_BIRTH)
+VALUES(CUSTOM_SEQ.nextval, '박종규', '010-2045-7378', '24', '2012-01-07', '메모', '127.0.0.1', 'seller3', 'LTE42', 'SHV-E210S_32G', '30000', '1994-03-30');
+
 CREATE TABLE CUSTOMINFO
 (
 	SEQ NUMBER NOT NULL,
-	CUST_NAME VARCHAR2(20),
-	CUST_PHONE VARCHAR2(20),
-	CONT_TERM VARCHAR2(20) NOT NULL,
-	OPEN_DATE DATE NOT NULL,
-	MEMO VARCHAR2(4000),
-	WRITE_DATE DATE DEFAULT SYSDATE,
-	WRITE_IP VARCHAR2(20),
-	BRC_ID VARCHAR2(20) NOT NULL,
-	PRICE_NAME VARCHAR2(50) NOT NULL,
-	MODEL_CODE VARCHAR2(50) NOT NULL,
-	REBATE number(8) NOT NULL,
-	CUST_BIRTH DATE NOT NULL,
+	CUST_NAME VARCHAR2(20),				--고객 이름
+	CUST_PHONE VARCHAR2(20),			--고객 번호
+	CONT_TERM VARCHAR2(20) NOT NULL,	--약정 기간
+	OPEN_DATE DATE NOT NULL,			--개통일
+	MEMO VARCHAR2(4000),				--메모
+	WRITE_DATE DATE DEFAULT SYSDATE,	--작성일 
+	WRITE_IP VARCHAR2(20),				--작성 IP
+	BRC_ID VARCHAR2(20) NOT NULL,		--판매점 ID
+	PRICE_NAME VARCHAR2(50) NOT NULL,	--요금제 
+	MODEL_CODE VARCHAR2(50) NOT NULL,	--모델 코드
+	REBATE number(8) NOT NULL,			--요금제
+	CUST_BIRTH DATE NOT NULL,			--주민번호
 	PRIMARY KEY (SEQ)
 );
 
@@ -187,6 +219,55 @@ ALTER TABLE CUSTOMINFO
 ;
 
 select * from rebate;
+SELECT * FROM BRANCH;
 
+SELECT B.* 
+	FROM   (SELECT A.* ,rownum as rown
+		FROM (SELECT rownum as rnum, seq, brc_name, brc_id, brc_phone,
+				brc_addr1, brc_addr2, brc_post, brc_lev,
+				brc_boss, boss_phone, to_char(write_date, 'YYYY-MM-DD') AS write_date
+				FROM BRANCH
+				WHERE attach_id='manager1' AND BRC_LEV='2'
+				ORDER BY rownum DESC ) A ) B
+	WHERE 0 <= rown AND rown <= 10 
+	ORDER BY rnum DESC;
 
-
+	SELECT * FROM CUSTOMINFO;
+	
+	SELECT b.brc_name, count(c.brc_id) AS salesnumber, sum(c.rebate) AS salesrebate, 
+	FROM CUSTOMINFO c join BRANCH b 
+	on c.brc_id=b.brc_id
+	GROUP BY b.brc_name, c.write_date
+	ORDER BY salesnumber DESC;
+	
+		
+	SELECT b.brc_name, count(c.brc_id) AS salesnumber, sum(c.rebate) AS salesrebate
+	FROM CUSTOMINFO c join BRANCH b 
+	ON c.brc_id=b.brc_id
+	WHERE '2012-07-09' <= C.WRITE_DATE AND C.WRITE_DATE <= '2013-10-09'
+	GROUP BY  b.brc_name 	
+	ORDER BY salesrebate DESC;
+	
+	(SELECT to_char(WRITE_DATE, 'yyyy-dd-mm') AS WRITE_DATE FROM CUSTOMINFO;)
+	
+	SELECT b.brc_name, count(c.brc_id) AS salesnumber, sum(c.rebate) AS salesrebate
+	FROM CUSTOMINFO c join BRANCH b 
+	on c.brc_id=b.brc_id
+	GROUP BY b.brc_name
+	ORDER BY salesrebate DESC;
+	
+	SELECT b.brc_name, count(c.brc_id) AS salesnumber, sum(c.rebate) AS salesrebate
+	FROM CUSTOMINFO c join BRANCH b 
+	on c.brc_id=b.brc_id
+	WHERE '2012-07-09' <= c.write_date AND c.write_date <= '2013-10-09'
+	GROUP BY b.brc_name
+	ORDER BY salesrebate DESC;
+	
+	SELECT b.brc_name, count(c.brc_id) AS salesnumber, sum(c.rebate) AS salesrebate
+	FROM CUSTOMINFO c join BRANCH b 
+	on c.brc_id=b.brc_id
+	WHERE 2012-07-09 <= c.write_date AND c.write_date <= 2013-10-09
+	GROUP BY b.brc_name
+	ORDER BY salesrebate DESC;
+	
+	 
