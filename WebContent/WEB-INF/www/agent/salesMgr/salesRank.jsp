@@ -1,12 +1,38 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <jsp:include page="/inc/top1.jsp"/>    
 <jsp:include page="/inc/menu2.jsp"/>  
+<script type="text/javascript" src="js/setDate.js"></script>
+<script type="text/javascript">
+
+
+
+//차트 
+function RankChart(count, brc_name, salesnumber, salesrebate){
+	document.result_form.count.value = count;
+	document.result_form.brc_name.value = brc_name;
+	document.result_form.salesnumber.value = salesnumber;
+	document.result_form.salesrebate.value = salesrebate;
+	document.result_form.action="salesRank.do";
+	document.result_form.submit();
+}
+
+</script>
+
+
+
                         <td width="1"></td>
                         <td valign="top"><table width="100%" border="0" cellspacing="0" cellpadding="0">
                           <tr>
 <!-- 상단 1 ------------------------------------------------------------------------------------------------------------------------------------>
-                          <form method="post" name="result_form" action="salesRank.do" style="margin:0">
+                          <form name="result_form" method="post" style="margin:0">
+                          <input type="text" name="count">
+                          
+	<input type="text" name="brc_name">
+	<input type="text" name="salesnumber">
+	<input type="text" name="salesrebate">
+	
                           <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
                             <tr bgcolor="cccccc">
                               <td height="10" colspan="2"></td>
@@ -31,20 +57,21 @@
                               <td height="40" class="line_bg_bottom1"><table width="500" border="0" cellspacing="0" cellpadding="0">
                                 <tr>
                                   <td>
-                                  <input type="date" name="s_sdate" size="10" value="${SRPDto.s_sdate }" />
+                                  <input type="date" name="s_sdate" size="10" value="${page.s_sdate}" />
                                   ~                                 
-                                  <input type="date" name="s_edate" size="10" value="${SRPDto.s_edate }" /></td>
-                                  <td width="80" valign="middle">지점 선택 : </td>
-                                  <td valign="middle">                                                                   
-                                  	<select name="brc_name" id="">
-                                  		<c:forEach items="${BNList}" var="bndto">
-											<option value="${bndto.brc_name}" label="${bndto.brc_name}"
-											<c:if test="${SRPDto.brc_name == bndto.brc_name}">selected</c:if>
-											 />
-										</c:forEach> 
-									</select>									
-								  </td>                                                                                    
-                                  <td><input type="image" src="img/btn_ok.gif"  width="40" height="21"></td>
+                                  <input type="date" name="s_edate" size="10" value="${page.s_edate}" />
+                                  
+                                  </td>
+                                  <td valign="middle">
+                                  <select name="SalesRankSelectBox" >
+                                  	<option value="1" >판매 개수 순위</option>
+                                  	<option value="2"  
+                                  	<c:if test="${SRSB == 2}"> selected="selected"</c:if>
+                                  	
+                                  	>판매 수익 순위</option>
+                                  </select>
+                                  <input type="submit" value="확인">
+                                  </td>                                                                                    
                                 </tr>
                               </table></td>
                             </tr>
@@ -54,14 +81,18 @@
                             <tr bgcolor="#272727">
                               <td height="1" colspan="2"></td>
                             </tr>                            
-                          </table></td>                                                   
-                          </form> 
+                          </table></td>
+                          </form>                                                    
 <!----- --------------------------------------------------------------------------------------------------------------------------------------------------->
 	                          <tr>
 	                            <td height="100" bgcolor="FFFFFFF"><table width="100%" border="0" cellspacing="0" cellpadding="0">
 	                          	  <tr>
 <!-- 그래프 -------------------------------------------------------------------------------------------------------------------------------------->
-	                          	  	<td width="100"><img src="upload/Chart.jpg" height="300"/></td>	 
+	                          	  	
+	                          	  	<td width="100">
+	                          	  	<img src="${chart}" >
+	                          	  	</td>
+	                          	  	
 	                          	  	<td><table width="100%" border="0" cellspacing="0" cellpadding="0">
 <!-- 그래프 -------------------------------------------------------------------------------------------------------------------------------------->	                          	  	
 <!-- 리스트 -------------------------------------------------------------------------------------------------------------------------------------->	                          	  	
@@ -72,81 +103,39 @@
 		                          	  	<th align="center" bgcolor="e2e2e2">수익</th>
 		                          	  	<th></th>
 	                          	  	  </tr>
+	                          	  	  <c:if test="${empty list}">
 	                          	  	  <tr>
-	                          	  	    <td align="center" bgcolor="#FFFFFF" >1</td>
-	                          	  	  	<td align="center" bgcolor="#FFFFFF" >서울점</td>
-	                          	  	  	<td align="center" bgcolor="#FFFFFF" >100 대</td>
-	                          	  	  	<td align="center" bgcolor="#FFFFFF" >1000 만원</td>
+	                          	  	  	<td colspan="4" align="center" bgcolor="#FFFFFF" >검색값이 없습니다.</td>
 	                          	  	  </tr>
-	                          	  	  <tr>
-	                          	  	    <td align="center" bgcolor="#FFFFFF" >2</td>
-	                          	  	  	<td align="center" bgcolor="#FFFFFF" >구로점</td>
-	                          	  	  	<td align="center" bgcolor="#FFFFFF" >92 대</td>
-	                          	  	  	<td align="center" bgcolor="#FFFFFF" >920 만원</td>
+	                          	  	  </c:if>
+	                          	  	  
+	                          	  	  <c:forEach items="${list}" var="rkdto" varStatus="Rank">
+	                          	  	  <tr onclick="javascript:RankChart('${Rank.count}','${rkdto.brc_name}', '${rkdto.salesnumber}', '${rkdto.salesrebate}', '${SPDto.s_edate }', '${SPDto.s_sdate }')">
+	                          	  	    <td align="center" bgcolor="#FFFFFF" >${Rank.count}</td>
+	                          	  	  	<td align="center" bgcolor="#FFFFFF" >${rkdto.brc_name}</a></td>
+	                          	  	  	<td align="center" bgcolor="#FFFFFF" >${rkdto.salesnumber} 대</td>
+	                          	  	  	<td align="center" bgcolor="#FFFFFF" >${rkdto.salesrebate} 만원</td>
 	                          	  	  </tr>
-	                          	  	  <tr>
-	                          	  	    <td align="center" bgcolor="#FFFFFF" >3</td>
-	                          	  	  	<td align="center" bgcolor="#FFFFFF" >서현점</td>
-	                          	  	  	<td align="center" bgcolor="#FFFFFF" >86 대</td>
-	                          	  	  	<td align="center" bgcolor="#FFFFFF" >869 만원</td>
-	                          	  	  </tr>
-	                          	  	  <tr>
-	                          	  	    <td align="center" bgcolor="#FFFFFF" >4</td>
-	                          	  	  	<td align="center" bgcolor="#FFFFFF" >가산점</td>
-	                          	  	  	<td align="center" bgcolor="#FFFFFF" >74 대</td>
-	                          	  	  	<td align="center" bgcolor="#FFFFFF" >740 만원</td>
-	                          	  	  </tr>
-	                          	  	  <tr>
-	                          	  	    <td align="center" bgcolor="#FFFFFF" >5</td>
-	                          	  	  	<td align="center" bgcolor="#FFFFFF" >용산점</td>
-	                          	  	  	<td align="center" bgcolor="#FFFFFF" >63 대</td>
-	                          	  	  	<td align="center" bgcolor="#FFFFFF" >630 만원</td>
-	                          	  	  </tr>
-	                          	  	  <tr>
-	                          	  	    <td align="center" bgcolor="#FFFFFF" >6</td>
-	                          	  	  	<td align="center" bgcolor="#FFFFFF" >연신내점</td>
-	                          	  	  	<td align="center" bgcolor="#FFFFFF" >60 대</td>
-	                          	  	  	<td align="center" bgcolor="#FFFFFF" >600 만원</td>
-	                          	  	  </tr>
-	                          	  	  <tr>
-	                          	  	    <td align="center" bgcolor="#FFFFFF" >7</td>
-	                          	  	  	<td align="center" bgcolor="#FFFFFF" >불광점</td>
-	                          	  	  	<td align="center" bgcolor="#FFFFFF" >53 대</td>
-	                          	  	  	<td align="center" bgcolor="#FFFFFF" >530 만원</td>
-	                          	  	  </tr>
-	                          	  	  <tr>
-	                          	  	    <td align="center" bgcolor="#FFFFFF" >8</td>
-	                          	  	  	<td align="center" bgcolor="#FFFFFF" >원당점</td>
-	                          	  	  	<td align="center" bgcolor="#FFFFFF" >43 대</td>
-	                          	  	  	<td align="center" bgcolor="#FFFFFF" >430 만원</td>
-	                          	  	  </tr>
-	                          	  	  <tr>
-	                          	  	    <td align="center" bgcolor="#FFFFFF" >9</td>
-	                          	  	  	<td align="center" bgcolor="#FFFFFF" >복정점</td>
-	                          	  	  	<td align="center" bgcolor="#FFFFFF" >32 대</td>
-	                          	  	  	<td align="center" bgcolor="#FFFFFF" >320 만원</td>
-	                          	  	  </tr>
-	                          	  	  <tr>
-	                          	  	    <td align="center" bgcolor="#FFFFFF" >10</td>
-	                          	  	  	<td align="center" bgcolor="#FFFFFF" >강남점</td>
-	                          	  	  	<td align="center" bgcolor="#FFFFFF" >31 대</td>
-	                          	  	  	<td align="center" bgcolor="#FFFFFF" >312 만원</td>
-	                          	  	  </tr>
-<!-- {4(PAGING)------------------------------------------------------------------------------------------------------------------------------------>
-	                          	  	  <tr>
-	                          	  	  	<td></td>
-	                          	  	  	<td></td>
-	                          	  	  	<td align="center" bgcolor="#FFFFFF" ><jsp:include page="/inc/paging.jsp"/></td>
-	                          	  	  	<td></td>
-	                          	  	  </tr>
-<!-- {4 )-------------------------------------------------------------------------------------------------------------------------------------------->	                          	  	  
+	                          	  	  </c:forEach>
+	                          	  	  
+<!-- {4(PAGING)------------------------------------------------------------------------------------------------------------------------------------>                              
+                              <tr>                            
+		                       <td width="200">&nbsp;</td>
+                                <td align="center"><table border="0" cellspacing="0" s_edate="0">
+                                    <tr>
+                                      <td colspan="4" align="center">
+		                                 	${page.pHtml}  
+									  </td>
+                                    </tr>
+                                </table></td>
+                                <td width="200">&nbsp;</td>
+                              </tr>
+<!-- {4 )-------------------------------------------------------------------------------------------------------------------------------------------->                               	                          	  	  
 								  </table></td>
 	                          	  </tr>
 	                          	  
 	                            </table></td>
-	                          </tr>      	                        
-                              
+	                          </tr>      	                                                      
                             </table></td>
-                          </tr>
-                        </table></td>                        
-<jsp:include page="/inc/bottom.jsp"/>                            
+
+                        <jsp:include page="/inc/bottom.jsp"/>                         

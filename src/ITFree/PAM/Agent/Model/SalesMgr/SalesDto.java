@@ -1,6 +1,7 @@
 package ITFree.PAM.Agent.Model.SalesMgr;
 
 public class SalesDto {
+	//BRANCH
 	private long rnum;
 	private long seq;             //seq	             
 	private String brc_id;        //지점ID(PK)           
@@ -11,14 +12,11 @@ public class SalesDto {
 	private String brc_phone1;
 	private String brc_phone2;
 	private String brc_phone3;
-	
 	private String brc_addr1;     //지점주소1              
 	private String brc_addr2;     //지점주소2
-	
 	private String brc_post1;
 	private String brc_post2;
 	private String brc_post;      //우편번호 
-
 	private String brc_boss;      //대표이름               
 	private String boss_phone;    //대표연락처
 	private String boss_phone1;
@@ -29,6 +27,13 @@ public class SalesDto {
 	private String write_id;      //생성자ID              
 	private String write_date;    //생성일                
 	private String write_ip;      //생성자IP 
+	
+	//CUSTOMINFO
+	private String salesnumber;
+	private String salesrebate;
+	
+	
+	
 	public long getSeq() {
 		return seq;
 	}
@@ -181,6 +186,19 @@ public class SalesDto {
 	public void setRnum(long rnum) {
 		this.rnum = rnum;
 	}
+	public String getSalesnumber() {
+		return salesnumber;
+	}
+	public void setSalesnumber(String salesnumber) {
+		this.salesnumber = salesnumber;
+	}
+	public String getSalesrebate() {
+		return salesrebate;
+	}
+	public void setSalesrebate(String salesrebate) {
+		this.salesrebate = salesrebate;
+	}
+
 	@Override
 	public String toString() {
 		return "SalesDto [rnum=" + rnum + ", seq=" + seq + ", brc_id=" + brc_id
@@ -195,9 +213,19 @@ public class SalesDto {
 				+ boss_phone2 + ", boss_phone3=" + boss_phone3 + ", brc_lev="
 				+ brc_lev + ", brc_state=" + brc_state + ", write_id="
 				+ write_id + ", write_date=" + write_date + ", write_ip="
-				+ write_ip + "]";
+				+ write_ip + ", salesnumber=" + salesnumber + ", salesrebate="
+				+ salesrebate +  "]";
 	}
+	
 
+	
+
+	
+	
+	
+	
+	
+	
 	
 	
 }

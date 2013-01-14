@@ -8,6 +8,8 @@ import org.springframework.dao.DataAccessException;
 import org.springframework.orm.ibatis.SqlMapClientTemplate;
 import org.springframework.stereotype.Repository;
 
+import ITFree.PAM.Agent.Model.SalesRcd.SalesRcdDto;
+import ITFree.PAM.Agent.Model.SalesRcd.SalesRcdPageDto;
 import ITFree.PAM.Common.Model.Board.PageDto;
 
 
@@ -18,10 +20,11 @@ public class SalesDaoImpl implements SalesDao {
 	@Autowired
 	private SqlMapClientTemplate sqlMapClientTemplate;
 
+	//판매점 등록
 	@Override
-	public boolean salesRegister_insertAction(SalesDto salesDto) {
+	public boolean salesInsertAction(SalesDto salesDto) {
 		try {
-			sqlMapClientTemplate.insert("SaleMgr.salesRegister_insertAction", salesDto);
+			sqlMapClientTemplate.insert("SaleMgr.salesInsertAction", salesDto);
 			return true;
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -33,7 +36,9 @@ public class SalesDaoImpl implements SalesDao {
 	public List<ZipcodeDto> searchZipcode(String dong) {
 		return sqlMapClientTemplate.queryForList("SaleMgr.searchZipcode", dong);
 	}
+	//-----------------------------------------------------------------------------
 
+	//판매점 정보
 	@Override
 	public boolean salesUpdate(SalesDto salesDto) {
 		try {
@@ -63,9 +68,29 @@ public class SalesDaoImpl implements SalesDao {
 	}
 
 	@Override
-	public int readCount() {
+	public long TotalCount(SalesPageDto pageDto) {
 		return (int) sqlMapClientTemplate.queryForObject("SaleMgr.readCount");
 	}
+	//-----------------------------------------------------------------------------
+	
+	
+	//판매점  순위
+	@Override
+	public List<SalesDto> salesRankList(SalesPageDto pageDto, String SalesRankSelectBox) {
+		try {
+			if(SalesRankSelectBox.equals("1")){
+				return sqlMapClientTemplate.queryForList("SaleMgr.salesRankListNumber", pageDto);
+			} else if(SalesRankSelectBox.equals("2")) {
+				return sqlMapClientTemplate.queryForList("SaleMgr.salesRankListRebate", pageDto);
+			} 
+		} catch (Exception e) {			
+			e.printStackTrace();
+			
+		}
+		return null;
+		
+	}
+	//----------------------------------------------------------------------------------------
 
 
 

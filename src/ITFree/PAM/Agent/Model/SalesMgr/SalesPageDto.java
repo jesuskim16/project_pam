@@ -1,6 +1,10 @@
 package ITFree.PAM.Agent.Model.SalesMgr;
 
 public class SalesPageDto {
+	private String brc_name;
+	private String s_sdate;
+	private String s_edate;	
+	private String attach_id;
 	
 	private long pg; //현재 페이지
 	
@@ -17,15 +21,19 @@ public class SalesPageDto {
 	private String pHtml; // HTML문자열을 저장할 변수
 	
 	
+	
+	
 	//기본 생성자(DI주입을 위해 꼭 생성해야함)
 	public SalesPageDto() {
 		// TODO Auto-generated constructor stub
 	}
 	
-	public SalesPageDto(long pg, long totalCount) {
+	public SalesPageDto(long pg, long totalCount , String brc_name, String s_sdate, String s_edate) {
 		//넘어온  parameter값을 각 변수에 할당
 		this.pg = pg;
 		this.totalCount = totalCount;
+		this.s_sdate = s_sdate;
+		this.s_edate = s_edate;
 
 		
 		startNum = (pg - 1) * pageSize + 1; // 시작 페이징 값을 계산
@@ -39,8 +47,8 @@ public class SalesPageDto {
 	private String getPageHtml() {
 		
 		String UrlName = "salesList.do";
-		
 		StringBuffer pageHtml = new StringBuffer(); //긴 문자열 저장을 위한 스트링버퍼 사용
+		
 		long startPage = ((pg-1) / blockSize) * blockSize + 1; //시작 페이지값 계산
 		long endPage = ((pg-1) / blockSize) * blockSize + blockSize; // 끝 페이지값 계산
 
@@ -78,47 +86,75 @@ public class SalesPageDto {
 		//모든 HTML값 설정이 끝난 뒤 모든 문자열을 리턴~
 		return pageHtml.toString();
 	}
-	
+
+	public String getS_sdate() {
+		return s_sdate;
+	}
+
+	public void setS_sdate(String s_sdate) {
+		this.s_sdate = s_sdate;
+	}
+
+	public String getS_edate() {
+		return s_edate;
+	}
+
+	public void setS_edate(String s_edate) {
+		this.s_edate = s_edate;
+	}
 
 	public long getPg() {
 		return pg;
 	}
+
 	public void setPg(long pg) {
 		this.pg = pg;
 	}
+
 	public long getTotalCount() {
 		return totalCount;
 	}
+
 	public void setTotalCount(long totalCount) {
 		this.totalCount = totalCount;
 	}
+
 	public long getPageCount() {
 		return pageCount;
 	}
+
 	public void setPageCount(long pageCount) {
 		this.pageCount = pageCount;
 	}
+
 	public long getStartNum() {
 		return startNum;
 	}
+
 	public void setStartNum(long startNum) {
 		this.startNum = startNum;
 	}
+
 	public long getEndNum() {
 		return endNum;
 	}
+
 	public void setEndNum(long endNum) {
 		this.endNum = endNum;
 	}
+
 	public int getPageSize() {
 		return pageSize;
 	}
+
 	public void setPageSize(int pageSize) {
 		this.pageSize = pageSize;
 	}
+
 	public int getBlockSize() {
 		return blockSize;
 	}
+
 	public void setBlockSize(int blockSize) {
 		this.blockSize = blockSize;
 	}
@@ -131,14 +167,45 @@ public class SalesPageDto {
 		this.pHtml = pHtml;
 	}
 
-	@Override
-	public String toString() {
-		return "SalesPageDto [pg=" + pg + ", totalCount=" + totalCount
-				+ ", pageCount=" + pageCount + ", startNum=" + startNum
-				+ ", endNum=" + endNum + ", pageSize=" + pageSize
-				+ ", blockSize=" + blockSize + ", pHtml=" + pHtml + "]";
+	public String getAttach_id() {
+		return attach_id;
 	}
 
+	public void setAttach_id(String attach_id) {
+		this.attach_id = attach_id;
+	}
+
+	public String getBrc_name() {
+		return brc_name;
+	}
+
+	public void setBrc_name(String brc_name) {
+		this.brc_name = brc_name;
+	}
+
+	@Override
+	public String toString() {
+		return "SalesPageDto [brc_name=" + brc_name + ", s_sdate=" + s_sdate
+				+ ", s_edate=" + s_edate + ", attach_id=" + attach_id + ", pg="
+				+ pg + ", totalCount=" + totalCount + ", pageCount="
+				+ pageCount + ", startNum=" + startNum + ", endNum=" + endNum
+				+ ", pageSize=" + pageSize + ", blockSize=" + blockSize
+				+ ", pHtml=" + pHtml + "]";
+	}
+
+	
+
+	
+	
+
+
+
+
+	
+
+	
+	
+	
 
 	
 }

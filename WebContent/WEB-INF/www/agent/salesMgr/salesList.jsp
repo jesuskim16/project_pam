@@ -37,8 +37,6 @@ function listdelete(seq){
 	} else {
 		
 	}
-
-	
 }
 
 
@@ -121,9 +119,9 @@ function listdelete(seq){
                                  <input type="text" name="brc_phone" value="${ sdto.brc_phone}" size="13"></td>
                                
                                  <td align="left" bgcolor="#FFFFFF" >
-                                 <input type="text" name="brc_post" value="${ sdto.brc_post}" size="6">
+                                 <input type="text" name="brc_post" value="${ sdto.brc_post}" size="4">
                                  <input type="text" name="brc_addr1" value="${sdto.brc_addr1}" size="60"><br/>
-                                 <input type="text" name="brc_addr2" value="${sdto.brc_addr2}" size="55">
+                                 <input type="text" name="brc_addr2" value="${sdto.brc_addr2}" size="53">
                                  <input type="button" name="post" value="우편번호 검색" onclick="javascript:openZipcode('reg_${sdto.seq}');" /></td>
                                
                                  <td align="left" bgcolor="#FFFFFF" >
@@ -152,9 +150,7 @@ function listdelete(seq){
                             
 <!-- {4(PAGING)------------------------------------------------------------------------------------------------------------------------------------>                              
                               <tr>                            
-		                        		                        
-		                        		                        		                                       
-                                <td width="200">&nbsp;</td>
+		                        <td width="200">&nbsp;</td>
                                 <td align="center"><table border="0" cellspacing="0" cellpadding="0">
                                     <tr>
                                       <td>
@@ -162,12 +158,12 @@ function listdelete(seq){
 									  </td>
                                     </tr>
                                 </table></td>
-                                <td width="200">&nbsp;</td>
+                                <td width=​"15" valign=​"top" background=​"img/box_left.jpg"></td>
                               </tr>
 <!-- {4 )-------------------------------------------------------------------------------------------------------------------------------------------->                               
                             </table></td>
                           </tr>
                         </table></td>
                         
-
+<jsp:include page="/inc/bottom.jsp"/>  
                          

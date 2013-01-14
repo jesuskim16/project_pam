@@ -2,6 +2,8 @@ package ITFree.PAM.Agent.Controller.SalesMgr;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -25,14 +27,14 @@ public class SalesInfoAct {
 	private SalesDao salesDao;
 	
 		@RequestMapping("/salesList.do")
-		protected ModelAndView salesList(@ModelAttribute SalesPageDto spDto){
-			if(spDto.getPg() == 0) spDto.setPg(1); 
+		protected ModelAndView salesList(@ModelAttribute SalesPageDto pageDto, HttpSession session){
+			if(pageDto.getPg() == 0) pageDto.setPg(1); 
 			
+			SalesPageDto SPDto = new SalesPageDto(pageDto.getPg(), salesDao.TotalCount(pageDto), null, null, null);
 			
-			SalesPageDto p = new SalesPageDto(spDto.getPg(), salesDao.readCount());			
-			List<SalesDto> list = salesDao.salesList(p);
+			SPDto.setAttach_id((String) session.getAttribute("brc_id"));
 			
-			
+			List<SalesDto> list = salesDao.salesList(SPDto);
 			
 			ModelAndView mav = new ModelAndView();
 			
@@ -40,11 +42,9 @@ public class SalesInfoAct {
 			
 			mav.addObject("title_name","PAM::판매점정보");
 			mav.addObject("list", list);
-			mav.addObject("page",p);
+			mav.addObject("page",SPDto);
 			
 			return mav;
-			
-			
 		}
 		
 		@RequestMapping("/salesUpdate.do")

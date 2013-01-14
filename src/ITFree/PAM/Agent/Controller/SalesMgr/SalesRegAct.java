@@ -29,17 +29,18 @@ public class SalesRegAct {
 	private Logger log = Logger.getLogger(this.getClass());
 
 	@RequestMapping("/salesInsert.do")
-	protected ModelAndView salesRegisterInsert(HttpServletRequest requset,
+	protected ModelAndView salesInsert(HttpServletRequest requset,
 			HttpServletResponse response) throws Exception {
 
 		ModelAndView mav = new ModelAndView();
+		
 		mav.setViewName("/WEB-INF/www/agent/salesMgr/salesInsert.jsp");
 		mav.addObject("title_name", "PAM::판매점등록");
 		return mav;
 	}
 
 	@RequestMapping("/salesInsertAction.do")
-	protected ModelAndView salesRegister_insertAction(
+	protected ModelAndView salesInsertAction(
 			@ModelAttribute SalesDto salesDto, HttpSession session) throws Exception {
 
 		salesDto.setBrc_phone(salesDto.getBrc_phone1() + "-"
@@ -50,8 +51,8 @@ public class SalesRegAct {
 		
 		salesDto.setAttach_id((String) session.getAttribute("brc_id"));
 		salesDto.setBrc_lev(2);// 판매점레벨 수정
-
-		boolean insert_result = salesDao.salesRegister_insertAction(salesDto);
+		
+		boolean insert_result = salesDao.salesInsertAction(salesDto);
 
 		ModelAndView mav = new ModelAndView();
 
