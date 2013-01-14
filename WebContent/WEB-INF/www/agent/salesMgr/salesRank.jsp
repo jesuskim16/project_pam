@@ -28,10 +28,7 @@ function RankChart(count, brc_name, salesnumber, salesrebate){
 <!-- 상단 1 ------------------------------------------------------------------------------------------------------------------------------------>
                           <form name="result_form" method="post" style="margin:0">
                           <input type="text" name="count">
-                          
-	<input type="text" name="brc_name">
-	<input type="text" name="salesnumber">
-	<input type="text" name="salesrebate">
+
 	
                           <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
                             <tr bgcolor="cccccc">
@@ -88,11 +85,11 @@ function RankChart(count, brc_name, salesnumber, salesrebate){
 	                            <td height="100" bgcolor="FFFFFFF"><table width="100%" border="0" cellspacing="0" cellpadding="0">
 	                          	  <tr>
 <!-- 그래프 -------------------------------------------------------------------------------------------------------------------------------------->
-	                          	  	
+	                          	  	<c:if test="${empty chart}">
 	                          	  	<td width="100">
 	                          	  	<img src="${chart}" >
 	                          	  	</td>
-	                          	  	
+	                          	  	</c:if>
 	                          	  	<td><table width="100%" border="0" cellspacing="0" cellpadding="0">
 <!-- 그래프 -------------------------------------------------------------------------------------------------------------------------------------->	                          	  	
 <!-- 리스트 -------------------------------------------------------------------------------------------------------------------------------------->	                          	  	
@@ -110,7 +107,7 @@ function RankChart(count, brc_name, salesnumber, salesrebate){
 	                          	  	  </c:if>
 	                          	  	  
 	                          	  	  <c:forEach items="${list}" var="rkdto" varStatus="Rank">
-	                          	  	  <tr onclick="javascript:RankChart('${Rank.count}','${rkdto.brc_name}', '${rkdto.salesnumber}', '${rkdto.salesrebate}', '${SPDto.s_edate }', '${SPDto.s_sdate }')">
+	                          	  	  
 	                          	  	    <td align="center" bgcolor="#FFFFFF" >${Rank.count}</td>
 	                          	  	  	<td align="center" bgcolor="#FFFFFF" >${rkdto.brc_name}</a></td>
 	                          	  	  	<td align="center" bgcolor="#FFFFFF" >${rkdto.salesnumber} 대</td>
