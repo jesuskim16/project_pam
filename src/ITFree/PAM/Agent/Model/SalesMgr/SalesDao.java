@@ -2,10 +2,6 @@ package ITFree.PAM.Agent.Model.SalesMgr;
 
 import java.util.List;
 
-import ITFree.PAM.Agent.Model.SalesRcd.SalesRcdDto;
-import ITFree.PAM.Agent.Model.SalesRcd.SalesRcdPageDto;
-import ITFree.PAM.Common.Model.Board.PageDto;
-
 public interface SalesDao {
 
 	//판매점 등록

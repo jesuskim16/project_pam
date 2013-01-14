@@ -16,4 +16,5 @@
 	<sqlMap resource="ITFree/PAM/ibatis/Agent/ModelRcd/ModelRcd.xml" />
 	<sqlMap resource="ITFree/PAM/ibatis/Agent/SalesRcd/SalesRcd.xml"/>
 	<sqlMap resource="ITFree/PAM/ibatis/Common/ModelInfo/ModelInfo.xml"/>
+	<sqlMap resource="ITFree/PAM/ibatis/Admin/AdmClient.xml"/>
 </sqlMapConfig>

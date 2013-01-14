@@ -1,4 +1,5 @@
 
+
 /* Drop Tables */
 
 DROP TABLE BOARD;
@@ -53,7 +54,6 @@ CREATE TABLE BOARD
 	PRIMARY KEY (SEQ)
 );
 
-SELECT * FROM BRANCH;
 CREATE TABLE BRANCH
 (
 	SEQ NUMBER NOT NULL UNIQUE,			--SEQ
@@ -86,8 +86,6 @@ CREATE TABLE BRANCHLOG
 );
 
 SELECT * FROM CUSTOMINFO;
-SELECT * FROM BRANCH;
-SELECT * FROM REBATE;
 
 
 	SELECT  b.brc_name, count(c.brc_id) AS salesnumber, sum(c.rebate) AS salesrebate 
