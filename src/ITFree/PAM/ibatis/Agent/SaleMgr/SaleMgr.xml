@@ -72,7 +72,7 @@
 	
 	<!-- 판매점 순위 -->
 	<select id="salesRankListNumber" resultClass="sdto" parameterClass="spdto">
-	SELECT b.brc_name, count(c.brc_id) AS salesnumber, sum(c.rebate) AS salesrebate
+	SELECT b.brc_name, count(c.brc_id) AS salesnumber, sum(floor(c.rebate / 10000)) AS salesrebate
 	FROM CUSTOMINFO c join BRANCH b 
 	on c.brc_id=b.brc_id
 	<![CDATA[
@@ -83,7 +83,7 @@
 	</select>
 	
 	<select id="salesRankListRebate" resultClass="sdto" parameterClass="spdto">
-	SELECT b.brc_name, count(c.brc_id) AS salesnumber, sum(floor(c.rebate) / 10000) AS salesrebate
+	SELECT b.brc_name, count(c.brc_id) AS salesnumber, sum(floor(c.rebate / 10000)) AS salesrebate
 	FROM CUSTOMINFO c join BRANCH b 
 	on c.brc_id=b.brc_id
 	<![CDATA[

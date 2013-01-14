@@ -32,20 +32,17 @@ public class SalesRankAct {
 
 	@Autowired
 	private SalesDao salesDao;
-	private int ChartListSize;
 	
-	String[] ChartName = new String[10];
+	private int ChartListSize; //List Size
+	String[] ChartName = new String[10]; // List brc_name 판매점 이름
+	private String ChartSalesRankSelectBox; //Select Value 1 And 2  
+	private int[][] ChartSalesNumber; //SalesNumber 판매개수
+	private int[][] ChartSalesRebate; //SalesRebate 판매수익
 	
-	private String ChartSalesRankSelectBox;
-	private int[][] ChartSalesNumber; 
-	private int[][] ChartSalesRebate;
-	private String ChartSubjectR;
-
-
 	@RequestMapping("/salesRank.do")
 	protected ModelAndView salesRank(@ModelAttribute SalesPageDto pageDto,
 			SalesDto salesDto, ModelAndView mav, String SalesRankSelectBox,
-			String brc_name, String salesnumber, String salesrebate)
+			String brc_name, String salesnumber, String salesrebate, String hidden)
 			throws Exception {
 
 		if (pageDto.getPg() == 0)
@@ -53,20 +50,22 @@ public class SalesRankAct {
 		SalesPageDto SPDto = new SalesPageDto(pageDto.getPg(),
 				salesDao.TotalCount(pageDto), pageDto.getBrc_name(),
 				pageDto.getS_sdate(), pageDto.getS_edate());
-
+		
 		List<SalesDto> list = salesDao.salesRankList(SPDto, SalesRankSelectBox);
+		hidden = "none"; //Chart Hidden Value
 		
-		
+		//Chart Size 
 		if (!(list == null)) {
-			ChartListSize =  list.size();
-			ChartSalesRankSelectBox = SalesRankSelectBox;
+			hidden = "block"; //Chart Seem Value
+			ChartListSize =  list.size(); //Chart Value Size 
+			ChartSalesRankSelectBox = SalesRankSelectBox; //Chart Sales number, rebate CheckBox Value 1 And 2 
 			ChartSalesNumber = new int[ChartListSize][1];
 			ChartSalesRebate = new int[ChartListSize][1];
-					
+			//Chart Value Add
 			for (int i = 0; i < list.size(); i++) {
-				ChartName[i] = list.get(i).getBrc_name();
-				ChartSalesNumber[i][0] = Integer.parseInt(list.get(i).getSalesnumber());
-				ChartSalesRebate[i][0] = Integer.parseInt(list.get(i).getSalesrebate());
+				ChartName[i] = list.get(i).getBrc_name(); //brc_name
+				ChartSalesNumber[i][0] = Integer.parseInt(list.get(i).getSalesnumber()); //SalesNumber  
+				ChartSalesRebate[i][0] = Integer.parseInt(list.get(i).getSalesrebate()); //SalesRebate
 			}
 
 		}
@@ -77,16 +76,18 @@ public class SalesRankAct {
 		mav.addObject("page", SPDto);
 		mav.addObject("chart", "barChartCreator.do");
 		mav.addObject("SRSB", SalesRankSelectBox);
+		mav.addObject("hidden", hidden);
 		return mav;
 	}
 	
-
+	
 	@RequestMapping("/barChartCreator.do")
 	protected void barChartCreator(HttpServletResponse response)
 			throws ServletException, IOException {
 		response.setContentType("image/png");
 		OutputStream out = response.getOutputStream();
-
+		
+		//Chart Image Size / output, Chart , width, height /
 		try {
 			JFreeChart chart = createbarChart();
 			ChartUtilities.writeChartAsPNG(out, chart, 500, 340);
@@ -104,8 +105,10 @@ public class SalesRankAct {
 	private JFreeChart createbarChart() {
 			DefaultCategoryDataset data = new DefaultCategoryDataset();
 			
+			//Chart X Line name  
 			String[] subject = {""};
 			
+			//Chart SalesNumber , SalesRebate SelectBox Value IF 
 			if(ChartSalesRankSelectBox.equals("2")){
 				for(int row=0; row < ChartSalesRebate.length; row++) {
 					for(int col=0; col < ChartSalesRebate[row].length; col++) {
@@ -121,10 +124,11 @@ public class SalesRankAct {
 				}
 			}
 			
-			
+			//Chart Type /createBarChart3D/
 			JFreeChart chart = 
 				ChartFactory.createBarChart3D("","", "", data,PlotOrientation.VERTICAL, true, false, false);
 			
+			//Chart Font /돋움, BOLD, 15/
 			chart.getTitle().setFont(new Font("돋움", Font.BOLD, 15));
 			chart.getLegend().setItemFont(new Font("돋움", Font.BOLD, 15));
 			

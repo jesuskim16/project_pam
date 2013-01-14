@@ -6,30 +6,23 @@
 <script type="text/javascript" src="js/setDate.js"></script>
 <script type="text/javascript">
 
-
-
 //차트 
-function RankChart(count, brc_name, salesnumber, salesrebate){
-	document.result_form.count.value = count;
-	document.result_form.brc_name.value = brc_name;
-	document.result_form.salesnumber.value = salesnumber;
-	document.result_form.salesrebate.value = salesrebate;
+function RankForm(charthidden){
+	//document.getElementById(charthidden).style.display="block";
 	document.result_form.action="salesRank.do";
 	document.result_form.submit();
+	
 }
 
 </script>
 
 
-
+<form name="result_form" method="post" style="margin:0">
                         <td width="1"></td>
                         <td valign="top"><table width="100%" border="0" cellspacing="0" cellpadding="0">
                           <tr>
 <!-- 상단 1 ------------------------------------------------------------------------------------------------------------------------------------>
-                          <form name="result_form" method="post" style="margin:0">
-                          <input type="text" name="count">
-
-	
+                          
                           <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
                             <tr bgcolor="cccccc">
                               <td height="10" colspan="2"></td>
@@ -62,12 +55,11 @@ function RankChart(count, brc_name, salesnumber, salesrebate){
                                   <td valign="middle">
                                   <select name="SalesRankSelectBox" >
                                   	<option value="1" >판매 개수 순위</option>
-                                  	<option value="2"  
+                                  	<option value="2" 
                                   	<c:if test="${SRSB == 2}"> selected="selected"</c:if>
-                                  	
                                   	>판매 수익 순위</option>
                                   </select>
-                                  <input type="submit" value="확인">
+                                  <input type="button" value="확인" onclick="javascript:RankForm('charthidden')">
                                   </td>                                                                                    
                                 </tr>
                               </table></td>
@@ -79,17 +71,15 @@ function RankChart(count, brc_name, salesnumber, salesrebate){
                               <td height="1" colspan="2"></td>
                             </tr>                            
                           </table></td>
-                          </form>                                                    
+							</tr>                                                
 <!----- --------------------------------------------------------------------------------------------------------------------------------------------------->
 	                          <tr>
 	                            <td height="100" bgcolor="FFFFFFF"><table width="100%" border="0" cellspacing="0" cellpadding="0">
 	                          	  <tr>
 <!-- 그래프 -------------------------------------------------------------------------------------------------------------------------------------->
-	                          	  	<c:if test="${empty chart}">
-	                          	  	<td width="100">
+	                          	  	<td id="charthidden" width="100" style="display:${hidden}">
 	                          	  	<img src="${chart}" >
 	                          	  	</td>
-	                          	  	</c:if>
 	                          	  	<td><table width="100%" border="0" cellspacing="0" cellpadding="0">
 <!-- 그래프 -------------------------------------------------------------------------------------------------------------------------------------->	                          	  	
 <!-- 리스트 -------------------------------------------------------------------------------------------------------------------------------------->	                          	  	
@@ -107,7 +97,7 @@ function RankChart(count, brc_name, salesnumber, salesrebate){
 	                          	  	  </c:if>
 	                          	  	  
 	                          	  	  <c:forEach items="${list}" var="rkdto" varStatus="Rank">
-	                          	  	  
+	                          	  	  <tr>
 	                          	  	    <td align="center" bgcolor="#FFFFFF" >${Rank.count}</td>
 	                          	  	  	<td align="center" bgcolor="#FFFFFF" >${rkdto.brc_name}</a></td>
 	                          	  	  	<td align="center" bgcolor="#FFFFFF" >${rkdto.salesnumber} 대</td>
@@ -134,5 +124,6 @@ function RankChart(count, brc_name, salesnumber, salesrebate){
 	                            </table></td>
 	                          </tr>      	                                                      
                             </table></td>
+</form>
 
                         <jsp:include page="/inc/bottom.jsp"/>                         
