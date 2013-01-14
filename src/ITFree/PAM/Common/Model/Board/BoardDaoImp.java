@@ -13,12 +13,12 @@ public class BoardDaoImp implements BoardDao{
 	@Autowired
 	private SqlMapClientTemplate sqlMapClientTemplate;
 	
+	//자유게시판
 	@Override
 	public List<BoardDto> freeBoardList(PageDto pageDto) {
 		try {
 			return sqlMapClientTemplate.queryForList("FreeBoard.freeBoardList", pageDto);
 		} catch (DataAccessException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 			return null;
 		}
@@ -70,35 +70,6 @@ public class BoardDaoImp implements BoardDao{
 	}
 	
 	@Override
-	public void BoardReadCount(long seq) {
-		
-		sqlMapClientTemplate.update("FreeBoard.BoardReadCount", seq);
-		
-	}
-	
-	@Override
-	public long Next_seq(long seq) {
-		
-		try {
-			return (long) sqlMapClientTemplate.queryForObject("FreeBoard.Next_seq",seq);
-		} catch (DataAccessException e) {
-			e.printStackTrace();
-			return 0;
-		}
-	}
-	
-	@Override
-	public long Prev_seq(long seq) {
-		
-		try {
-			return (long) sqlMapClientTemplate.queryForObject("FreeBoard.Prev_seq",seq);
-		} catch (DataAccessException e) {			
-			e.printStackTrace();
-			return 0;
-		}
-	}
-	
-	@Override
 	public boolean freeBoardUpdateAction(BoardDto boardDto) {
 		
 		try {
@@ -131,6 +102,38 @@ public class BoardDaoImp implements BoardDao{
 		}		
 	}
 	
+	//단가표
+	
+	
+	
+	@Override
+	public void BoardReadCount(long seq) {
+		
+		sqlMapClientTemplate.update("FreeBoard.BoardReadCount", seq);
+		
+	}
+	
+	@Override
+	public long Next_seq(long seq) {
+		
+		try {
+			return (long) sqlMapClientTemplate.queryForObject("FreeBoard.Next_seq",seq);
+		} catch (DataAccessException e) {
+			e.printStackTrace();
+			return 0;
+		}
+	}
+	
+	@Override
+	public long Prev_seq(long seq) {
+		
+		try {
+			return (long) sqlMapClientTemplate.queryForObject("FreeBoard.Prev_seq",seq);
+		} catch (DataAccessException e) {			
+			e.printStackTrace();
+			return 0;
+		}
+	}
 	
 	@Override
 	public long TotalCount(PageDto pageDto) {

@@ -23,5 +23,4 @@
 	<bean id="SqlMapClientTemplate" class="org.springframework.orm.ibatis.SqlMapClientTemplate"
 		p:sqlMapClient-ref="sqlMapClient"
 	/>	
-	
 </beans>
