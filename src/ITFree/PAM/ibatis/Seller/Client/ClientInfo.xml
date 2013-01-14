@@ -5,10 +5,22 @@
     "http://ibatis.apache.org/dtd/sql-map-2.dtd">    
 <sqlMap namespace="clientInfo">
   <typeAlias type="ITFree.PAM.Seller.Model.Client.ClientInfoDto" alias="ciDto"/>
-  <select resultClass="ciDto" parameterClass="String" id="getClientInfo"> 
-    SELECT 	seq, cust_name, cust_phone, to_char(cust_birth,'YYYY-MM-DD') as cust_birth, cont_term, to_char(open_date,'YYYY-MM-DD') as open_date, memo, price_name, model_code 	
-    FROM	custominfo
-    WHERE 	brc_id=#brc_id#
+  <typeAlias type="ITFree.PAM.Seller.Model.Client.CustPageDto" alias="cpDto"/>
+  <select resultClass="ciDto" parameterClass="cpDto" id="getClientInfo"> 
+	SELECT 	B.*
+	FROM(SELECT 	A.*, rownum as rowB
+		 FROM(SELECT  	row_number()over (ORDER BY seq ASC) as rowA,
+		 				seq, cust_name, cust_phone,
+		 				to_char(cust_birth,'YYYY-MM-DD') as cust_birth, cont_term, 
+		 				to_char(open_date,'YYYY-MM-DD') as open_date, memo, price_name, model_code       
+			  FROM 		custominfo        
+			  WHERE  	brc_id=#brc_id#			
+			  ORDER BY 	rowA 	DESC
+			  )A
+		 )B
+	<![CDATA[	 
+	WHERE 	#startNum# <= rowB AND rowB <= #endNum#
+	]]>	
   </select>
   <update id="updateClient" parameterClass="ciDto"> 
     UPDATE custominfo SET 
@@ -18,12 +30,18 @@
 	    cont_term	= #cont_term#,	
 	    open_date	= #open_date#,	
 	    price_name	= #price_name#,	
-	    model_code	= #model_code#
-    WHERE 	seq 	= #seq#
+	    model_code	= #model_code#	
+    WHERE seq 	= #seq#
     	AND	brc_id	= #brc_id#
+    	
   </update>
   <delete id="clientDel" parameterClass="long">
   	DELETE FROM	custominfo 
   	WHERE 	seq = #seq#
   </delete>
+  <select id="readCount" parameterClass="String" resultClass="int">
+	SELECT count(*)
+	FROM custominfo
+	WHERE brc_id=#brc_id#
+	</select>
 </sqlMap>
