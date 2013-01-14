@@ -26,6 +26,6 @@ public interface BoardDao {
 
 	List<BoardDto> getReply(long seq);
 
-	boolean freeBoardReplyDelete(long seq);
+	boolean freeBoardReplyDelete(long seq);	
 
 }

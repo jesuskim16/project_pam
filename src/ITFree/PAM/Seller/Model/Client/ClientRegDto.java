@@ -17,6 +17,8 @@ public class ClientRegDto {
 	private String price_name;
 	private String model_code;
 	
+	private int rebate;
+	
 	public String getCust_name() {
 		return cust_name;
 	}
@@ -77,8 +79,12 @@ public class ClientRegDto {
 	public void setModel_code(String model_code) {
 		this.model_code = model_code;
 	}
-	
-	
+	public int getRebate() {
+		return rebate;
+	}
+	public void setRebate(int rebate) {
+		this.rebate = rebate;
+	}
 	public String getCust_phone1() {
 		return cust_phone1;
 	}
@@ -106,9 +112,6 @@ public class ClientRegDto {
 				+ cont_term + ", open_date=" + open_date + ", memo=" + memo
 				+ ", write_ip=" + write_ip + ", brc_id=" + brc_id
 				+ ", price_name=" + price_name + ", model_code=" + model_code
-				+ "]";
+				+ ", rebate=" + rebate + "]";
 	}
-	
-	
-	
 }

@@ -25,17 +25,20 @@ var frm = document.forms;
 		return false;
 	}
 	
+	<c:choose><c:when test="${board_chk==3}"/><c:otherwise>   
 		if(frm.content.value == ""){
 		alert("내용을 입력하세요");
 		frm.contents.focus();
 		return false;
 	}
+	</c:otherwise></c:choose>	
 	
 	frm.action = "${board_name}InsertAction.do";
 	frm.submit();
 }
-</script> 
-<form name="forms" method="get" style="margin:0"  ENCTYPE="multipart/form-data"> 
+</script>
+
+<form name="forms" method="post" style="margin:0"  ENCTYPE="multipart/form-data"> 
                        	  <input type="hidden" name="brc_id" value="${brc_id}">
                        	  <input type="hidden" name="write_ip" value="${write_ip}">
                           <td width="1"></td>
@@ -89,7 +92,7 @@ var frm = document.forms;
                                             <td width="10" style="height: 70px">&nbsp;</td>
                                             <td style="height: 70px"><table width="100%" border="0" cellpadding="0" cellspacing="1" bgcolor="cfcfcf">
                                                 <tr>  
-                                                     <td bgcolor="#FFFFFF"><input type="file" name="file1" id="textfield" align="absmiddle" onclick="return textfield_onclick()"></td>
+                                                     <td bgcolor="#FFFFFF"><input type="file" name="filename" id="filename" align="absmiddle" onclick="return textfield_onclick()"></td>
                                                      <!--<td bgcolor="#FFFFFF"><input type="text" name="file1_name" size="20" align="absmiddle"></td>-->
                                                 </tr>
                                             </table></td>
@@ -100,7 +103,10 @@ var frm = document.forms;
                                       </table></td>
                                     </tr>
 <!-- {3 )----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->  
-<!-- {4(내용)----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->                                    
+<!-- {4(내용)----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
+                                <c:choose>
+                                  <c:when test="${board_chk==3}"/>
+                                  <c:otherwise>                                                        
                                     <tr>
                                       <td height="36" align="center" bgcolor="#FFFFFF"><table width="100%" border="0" cellspacing="5" cellpadding="0">
                                           <tr>
@@ -129,6 +135,8 @@ var frm = document.forms;
                                           </tr>
                                       </table></td>
                                     </tr>
+                                  </c:otherwise>
+                                </c:choose>   
 <!-- {4 )-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------> 
                                 </table></td>
                               </tr>
@@ -149,7 +157,6 @@ var frm = document.forms;
                                 </table></td>
                               </tr>
                           </table></td>
-                          
 </form>     
 
 <jsp:include page="/inc/bottom.jsp"/>      

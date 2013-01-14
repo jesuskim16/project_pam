@@ -1,5 +1,7 @@
 package ITFree.PAM.Common.Model.Board;
 
+import org.springframework.web.multipart.commons.CommonsMultipartFile;
+
 public class BoardDto {
 	
 	
@@ -11,13 +13,13 @@ public class BoardDto {
 	private long readcount; 	
 	private long rp_seq; 		
 	private String write_date; 	
-	private String write_ip; 	
-	private String filename;
+	private String write_ip;
 	private String brc_id;
 	private String brc_name;
 	private long prev_seq;
 	private long next_seq;
 	private int rp_cnt;
+	private CommonsMultipartFile filename;
 	
 
 	
@@ -80,13 +82,7 @@ public class BoardDto {
 	}
 	public void setBrc_name(String brc_name) {
 		this.brc_name = brc_name;
-	}
-	public String getFilename() {
-		return filename;
-	}
-	public void setFilename(String filename) {
-		this.filename = filename;
-	}
+	}	
 	public long getRown() {
 		return rown;
 	}
@@ -110,6 +106,13 @@ public class BoardDto {
 	}
 	public void setRp_cnt(int rp_cnt) {
 		this.rp_cnt = rp_cnt;
+	}
+	
+	public CommonsMultipartFile getFilename() {
+		return filename;
+	}
+	public void setFilename(CommonsMultipartFile filename) {
+		this.filename = filename;
 	}
 	@Override
 	public String toString() {

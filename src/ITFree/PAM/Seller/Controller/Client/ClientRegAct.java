@@ -42,14 +42,21 @@ public class ClientRegAct {
 	
 	@RequestMapping("/clientInsertAct.do")
 	protected ModelAndView clientInsertAction(@ModelAttribute ClientRegDto cRegDto, Model model, HttpSession session, HttpServletRequest request) {
-		cRegDto.setWrite_ip(request.getRemoteAddr());
-		cRegDto.setCust_phone(cRegDto.getCust_phone1()+"-"+cRegDto.getCust_phone2()+"-"+cRegDto.getCust_phone3());
-		cRegDto.setBrc_id((String) session.getAttribute("brc_id"));
+		
+		cRegDto.setWrite_ip(request.getRemoteAddr());//IP
+		cRegDto.setCust_phone(cRegDto.getCust_phone1()+"-"+cRegDto.getCust_phone2()+"-"+cRegDto.getCust_phone3());//전화번호 통합
+		cRegDto.setBrc_id((String) session.getAttribute("brc_id"));//판매점ID(세션)
+		
+		//리베이트값
+		String price_name = cRegDto.getPrice_name();
+		String model_code = cRegDto.getModel_code();
+		int rebate = cRegDao.searchRebate(model_code, price_name);
+		cRegDto.setRebate(rebate);		
 		log.debug("--clientInsertAct"+cRegDto);
 		boolean insert_result = cRegDao.clientInsertAct(cRegDto);
 		
 		ModelAndView mav = new ModelAndView();
-		if(insert_result){			
+		if(insert_result){
 			mav.setViewName("redirect:clientList.do");
 			mav.addObject("title_name","PAM::고객정보");	
 		}else{
@@ -57,7 +64,14 @@ public class ClientRegAct {
 			mav.addObject("msg","고객정보입력이 실패하였습니다, 관리자에게 문의하세요.");
 			mav.addObject("url","javascript:history.back();");
 		}
-		return mav ;
+		return mav;
 	}
-
+//	@RequestMapping("/clientRebateAjax.do")
+//	protected ModelAndView clientRebateAjax(@ModelAttribute String model_code, String price_name){
+//		int rebate = cRegDao.searchRebate(model_code, price_name);
+//		ModelAndView mav = new ModelAndView();
+//		mav.setViewName("/ajax/searchRebate.jsp");
+//		mav.addObject("rebate",rebate);
+//		return mav;		
+//	}
 }
