@@ -2,12 +2,107 @@
     pageEncoding="UTF-8"%>
 <jsp:include page="/inc/top1.jsp"/>    
 <jsp:include page="/inc/menu2.jsp"/> 
-<script type="text/javascript" src="js/sales_insert.js" >
+<script type="text/javascript" src="js/sales_insert.js" ></script>
+
+<script type="text/javascript">
+	var customInput = function() {
+		var frm = document.reg;
+		
+		if(frm.brc_id.value == ""){
+			alert("아이디를 입력하세요");
+			frm.brc_id.focus();
+			return false;
+		}
+		if(frm.brc_id.value.length < 2){
+			alert("아이디를 2자 이상 입력하세요");
+			frm.brc_id.focus();
+			return false;
+		}
+		
+		if(frm.password.value == ""){
+			alert("비밀번호를 입력하세요");
+			frm.password.focus();
+			return false;
+		}
+		if(frm.password.value.length < 2){
+			alert("비밀번호를 2자 이상 입력하세요");
+			frm.password.focus();
+			return false;
+		}
+		if(frm.password_check.value == ""){
+			alert("비밀번호 확인를 입력하세요");
+			frm.password_check.focus();
+			return false;
+		}
+		if(frm.password_check.value.length < 2){
+			alert("비밀번호 확인를 2자 이상 입력하세요");
+			frm.password_check.focus();
+			return false;
+		}
+		
+		if(frm.brc_name.value == ""){
+			alert("판매점명을 입력하세요");
+			frm.brc_name.focus();
+			return false;
+		}
+		if(frm.brc_name.value.length < 2){
+			alert("판매점명을 2자 이상 입력하세요");
+			frm.brc_name.focus();
+			return false;
+		}
+		
+		if ((frm.brc_phone2.value.length < 3) || (frm.brc_phone2.value == ""))
+		{
+			alert("핸드폰번호 앞번호를 입력해 주세요.");
+			frm.brc_phone2.focus();
+			return false;
+		}
+		if ((frm.brc_phone3.value.length < 4) || (frm.brc_phone3.value == ""))
+		{
+			alert("핸드폰번호 뒷번호를 입력해 주세요.");
+			frm.brc_phone3.focus();
+			return false;
+		}
+		
+		if(frm.brc_addr2.value == ""){
+			alert("판매점주소을 입력하세요");
+			frm.brc_addr2.focus();
+			return false;
+		}
+		
+		if(frm.brc_boss.value == ""){
+			alert("대표자를  입력하세요");
+			frm.brc_boss.focus();
+			return false;
+		}
+		if(frm.brc_boss.value.length < 2){
+			alert("대표자를 2자 이상 입력하세요");
+			frm.brc_boss.focus();
+			return false;
+		}
+		
+		if ((frm.boss_phone2.value.length < 3) || (frm.brc_phone2.value == ""))
+		{
+			alert("대표자연락처 앞번호를 입력해 주세요.");
+			frm.boss_phone2.focus();
+			return false;
+		}
+		if ((frm.boss_phone3.value.length < 4) || (frm.brc_phone3.value == ""))
+		{
+			alert("대표자연락처 뒷번호를 입력해 주세요.");
+			frm.boss_phone3.focus();
+			return false;
+		}
+		
+		frm.action = 'salesInsertAction.do';
+		frm.submit();
+	}
+	
 
 </script>
 
 
-   <form method = "POST"  name="reg" action = "salesInsertAction.do">
+   <form method = "POST"  name="reg">
                           <td width="1"></td>
                           <td valign="top"><table width="100%" border="0" cellspacing="0" cellpadding="0">
                               <tr>
@@ -32,7 +127,7 @@
                                         <tr>
                                           <td class="bullet2"></td>
                                           <td width="200" height="40" class="line_bg_bottom2 pl5 pr10 fb">아이디</td>
-                                          <td class="line_bg_bottom2 pl10"><input name="brc_id" type="text" class="input_gray3" size="15" value="" onchange="HangulStrChk(document.forms.username);"></td>
+                                          <td class="line_bg_bottom2 pl10"><input name="brc_id" type="text" class="input_gray3" size="15" style="ime-mode:disabled;"  onchange="HangulStrChk(document.forms.username);"></td>
                                         </tr>
                                         <tr>
                                           <td class="bullet2"></td>
@@ -55,13 +150,17 @@
                                           <td class="line_bg_bottom2 pl10"><table border="0" cellspacing="0" cellpadding="0">
                                             <tr>
                                               <td><select name="brc_phone1" class="select_140_2" >
-	                                            <option>02</option>
-	                                            <option>031</option>
+	                                            <option>02</option><option>031</option><option>032</option>
+	                                            <option>033</option><option>041</option><option>042</option>
+	                                            <option>043</option><option>051</option><option>052</option>
+	                                            <option>053</option><option>054</option><option>055</option>
+	                                            <option>061</option><option>062</option><option>063</option>
+	                                            <option>064</option><option>070</option>
 	                                          </select></td>
                                               <td class="pl5 pr5">-</td>
-                                              <td><input name="brc_phone2" type="text" class="input_gray3" size="4" value=""></td>
+                                              <td><input name="brc_phone2" type="text" class="input_gray3" size="4" maxlength="4" style="ime-mode:disabled;"></td>
                                               <td class="pl5 pr5">-</td>
-                                              <td><input name="brc_phone3" type="text" class="input_gray3" size="4" value=""></td>
+                                              <td><input name="brc_phone3" type="text" class="input_gray3" size="4" maxlength="4" style="ime-mode:disabled;"></td>
                                             </tr>
                                           </table></td>                                        
                                         </tr>                                        
@@ -71,13 +170,13 @@
                                           <td class="pl10 pt10 pb10 line_bg_bottom2"><table border="0" cellspacing="0" cellpadding="0">
                                             <tr>
                                               <td class="pb10 ">
-                                               <input name="brc_post1" type="text" class="input_gray3" size="5"> -
-                                               <input name="brc_post2" type="text" class="input_gray3" size="5">
+                                               <input name="brc_post1" type="text" class="input_gray3" size="5" readonly="readonly"> -
+                                               <input name="brc_post2" type="text" class="input_gray3" size="5" readonly="readonly">
                                                <input type="button" name="post" value="우편번호 검색" onclick="javascript:openZipcode();" />
                                                <input type="hidden" name="brc_post" />
                                             </tr>
                                             <tr>                                              
-                                              <td class="pb5 "><input name="brc_addr1" id="address1" type="text" class="input_gray3" size="60" value=""></td>
+                                              <td class="pb5 "><input name="brc_addr1" id="address1" type="text" class="input_gray3" size="60" readonly="readonly"></td>
                                             </tr>
                                             
                                             <tr>
@@ -96,13 +195,13 @@
                                           <td class="line_bg_bottom2 pl10"><table border="0" cellspacing="0" cellpadding="0">
                                             <tr>
                                               <td><select name="boss_phone1" class="select_140_2">
-	                                            <option>010</option>
-	                                            <option>011</option>
+	                                            <option>010</option><option>011</option><option>016</option>
+	                                            <option>017</option><option>018</option><option>019</option>
 	                                          </select></td>
                                               <td class="pl5 pr5">-</td>
-                                              <td><input name="boss_phone2" type="text" class="input_gray3" size="4" value=""></td>
+                                              <td><input name="boss_phone2" type="text" class="input_gray3" size="4" maxlength="4" style="ime-mode:disabled;"></td>
                                               <td class="pl5 pr5">-</td>
-                                              <td><input name="boss_phone3" type="text" class="input_gray3" size="4" value=""></td>
+                                              <td><input name="boss_phone3" type="text" class="input_gray3" size="4" maxlength="4" style="ime-mode:disabled;"></td>
                                             </tr>
                                           </table></td>
                                         </tr>
@@ -110,9 +209,10 @@
                                     </tr>
                                 </table></td>
                                 <tr><!-- 확인 버튼 -->
-                                  <td align="center"><input type="image" src="img/btn_enter.gif"></td>
+                                  <td align="center"><input type="image" src="img/btn_enter.gif" onclick="javascript:customInput();"></td>
 								</tr>
                               </tr>
                           </table></td>
   </form> 
 <jsp:include page="/inc/bottom.jsp"/>       
+

@@ -41,7 +41,8 @@ public class SalesRegAct {
 
 	@RequestMapping("/salesInsertAction.do")
 	protected ModelAndView salesInsertAction(
-			@ModelAttribute SalesDto salesDto, HttpSession session) throws Exception {
+			@ModelAttribute SalesDto salesDto, HttpSession session,
+			ModelAndView mav,ResultDto result) throws Exception {
 
 		salesDto.setBrc_phone(salesDto.getBrc_phone1() + "-"
 				+ salesDto.getBrc_phone2() + "-" + salesDto.getBrc_phone3());
@@ -53,10 +54,6 @@ public class SalesRegAct {
 		salesDto.setBrc_lev(2);// 판매점레벨 수정
 		
 		boolean insert_result = salesDao.salesInsertAction(salesDto);
-
-		ModelAndView mav = new ModelAndView();
-
-		ResultDto result = new ResultDto();
 
 		if (insert_result) {
 			result.setMsg("판매점정보가 입력되었습니다.");
