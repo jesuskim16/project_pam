@@ -99,29 +99,29 @@ function listdelete(seq){
                                <tr id="seem_${sdto.seq}" style="display:none">
                                
                                  <td height="28" align="center" bgcolor="#FFFFFF" >${sdto.seq}
-                                 <input type="hidden" name="seq" value="${sdto.seq}"></td>
+                                 <input type="hidden" name="seq" value="${sdto.seq}" class="input_gray3"></td>
                                
                                  <td align="left" bgcolor="#FFFFFF" >
-                                 <input type="text" name="brc_name" value="${sdto.brc_name}" size="7">
-                                 <input type="text" name="brc_id" value="${sdto.brc_id}" size="7"></td>
+                                 <input type="text" name="brc_name" value="${sdto.brc_name}" size="7" class="input_gray3">
+                                 <input type="text" name="brc_id" value="${sdto.brc_id}" size="7" class="input_gray3"></td>
                                
                                  <td align="center" bgcolor="#FFFFFF" >
-                                 <input type="text" name="brc_phone" value="${ sdto.brc_phone}" size="13"></td>
+                                 <input type="text" name="brc_phone" value="${ sdto.brc_phone}" size="13" class="input_gray3"></td>
                                
                                  <td align="left" bgcolor="#FFFFFF" >
-                                 <input type="text" name="brc_post" value="${ sdto.brc_post}" size="4">
-                                 <input type="text" name="brc_addr1" value="${sdto.brc_addr1}" size="60"><br/>
-                                 <input type="text" name="brc_addr2" value="${sdto.brc_addr2}" size="53">
+                                 <input type="text" name="brc_post" value="${ sdto.brc_post}" size="4" class="input_gray3">
+                                 <input type="text" name="brc_addr1" value="${sdto.brc_addr1}" size="60" class="input_gray3"><br/>
+                                 <input type="text" name="brc_addr2" value="${sdto.brc_addr2}" size="53" class="input_gray3">
                                  <input type="button" name="post" value="우편번호 검색" onclick="javascript:openZipcode('reg_${sdto.seq}');" /></td>
                                
                                  <td align="left" bgcolor="#FFFFFF" >
-                                 <input type="text" name="brc_boss" value="${ sdto.brc_boss}" size="5"></td>
+                                 <input type="text" name="brc_boss" value="${ sdto.brc_boss}" size="5" class="input_gray3"></td>
                                
                                  <td align="center" bgcolor="#FFFFFF" >
-                                 <input type="text" name="boss_phone" value="${ sdto.boss_phone}" size="10"></td>
+                                 <input type="text" name="boss_phone" value="${ sdto.boss_phone}" size="10" class="input_gray3"></td>
                                
                                  <td align="center" bgcolor="#FFFFFF" >
-                                 <input type="text" name="write_date" value="${ sdto.write_date}" size="7"></td>
+                                 <input type="text" name="write_date" value="${ sdto.write_date}" size="7" class="input_gray3"></td>
                                
                                  <td align="center" bgcolor="#FFFFFF" >
                                  <input type="submit" value="완료">
