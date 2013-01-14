@@ -82,25 +82,15 @@ function listdelete(seq){
 <!-- {4 )------------------------------------------------------------------------------------------------------------------------------------------>                                  
 <!-- {5(내용)------------------------------------------------------------------------------------------------------------------------------------>                             
                            		<c:forEach items="${list}" var="sdto">
-                           		
                            		<tr id="hidden_${sdto.seq}" style="display:table-row">
-                                 
-                                 
-                                 <td height="28" align="center" bgcolor="#FFFFFF" >${ sdto.rnum}</td>
-                                 
-                                 <td align="left" bgcolor="#FFFFFF" >${ sdto.brc_name}/${sdto.brc_id}</td>
-                                 
-                                 <td align="center" bgcolor="#FFFFFF" >${ sdto.brc_phone}</td>
-                                 
-                                 <td align="left" bgcolor="#FFFFFF" >${ sdto.brc_post} ${sdto.brc_addr1} ${sdto.brc_addr2}</td>
-                                 
-                                 <td align="left" bgcolor="#FFFFFF" >${ sdto.brc_boss}</td>
-                                 
-                                 <td align="center" bgcolor="#FFFFFF" >${ sdto.boss_phone}</td>
-                                 
-                                 <td align="center" bgcolor="#FFFFFF" >${ sdto.write_date}</td>
-                                 
-                                 <td align="center" bgcolor="#FFFFFF" >
+                                <td height="28" align="center" bgcolor="#FFFFFF" >${ sdto.rnum}</td>
+                                <td align="left" bgcolor="#FFFFFF" >${ sdto.brc_name}/${sdto.brc_id}</td>
+                                <td align="center" bgcolor="#FFFFFF" >${ sdto.brc_phone}</td>
+                                <td align="left" bgcolor="#FFFFFF" >${ sdto.brc_post} ${sdto.brc_addr1} ${sdto.brc_addr2}</td>
+                                <td align="left" bgcolor="#FFFFFF" >${ sdto.brc_boss}</td>
+                                <td align="center" bgcolor="#FFFFFF" >${ sdto.boss_phone}</td>
+                                <td align="center" bgcolor="#FFFFFF" >${ sdto.write_date}</td>
+                                <td align="center" bgcolor="#FFFFFF" >
                                  	<input type="button" onclick="javascript:HiddenSeem('hidden_${sdto.seq}','seem_${sdto.seq}')" value="수정">
                                  	<input type="button" onclick="javascript:listdelete('${sdto.seq}')" value="삭제">
                                  </td>
