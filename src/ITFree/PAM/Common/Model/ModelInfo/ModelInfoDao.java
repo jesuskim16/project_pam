@@ -12,4 +12,6 @@ public interface ModelInfoDao {
 
 	List<ModelInfoDto> modelRank(ModelInfoRankPageDto mIRPDto);
 
+	List<ModelInfoDto> modelTotalRank(ModelInfoRankPageDto pageRDto);
+
 }
