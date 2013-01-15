@@ -8,7 +8,7 @@
 	<typeAlias alias="ACdto" type="ITFree.PAM.Admin.Model.AdmClient.AdmClientDto" />
 	
 	<select id="AdmClientList" resultClass="ACdto">
-	SELECT seq, cust_name, CUST_PHONE, CONT_TERM, OPEN_DATE, MEMO,
+	SELECT rownum AS rnum, cust_name, CUST_PHONE, CONT_TERM, OPEN_DATE, MEMO,
 		WRITE_DATE, WRITE_IP, BRC_ID, PRICE_NAME, MODEL_CODE, REBATE, CUST_BIRTH
 	FROM CUSTOMINFO
 	</select>

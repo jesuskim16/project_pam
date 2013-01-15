@@ -8,7 +8,6 @@
 
 //차트 
 function RankForm(charthidden){
-	//document.getElementById(charthidden).style.display="block";
 	document.result_form.action="salesRank.do";
 	document.result_form.submit();
 	
