@@ -77,8 +77,10 @@ function RankForm(charthidden){
 	                            <td height="100" bgcolor="FFFFFFF"><table width="100%" border="0" cellspacing="0" cellpadding="0">
 	                          	  <tr>
 <!-- 그래프 -------------------------------------------------------------------------------------------------------------------------------------->
-	                          	  	<td id="charthidden" width="100" style="display:${hidden}">
+	                          	  	<td  width="100" >
+	                          	  	<div id="charthidden" style="display:${hidden}">
 	                          	  	<img src="${chart}" >
+	                          	  	</div>
 	                          	  	</td>
 	                          	  	<td><table width="100%" border="0" cellspacing="0" cellpadding="0">
 <!-- 그래프 -------------------------------------------------------------------------------------------------------------------------------------->	                          	  	
