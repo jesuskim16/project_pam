@@ -28,7 +28,7 @@
           <tr>
         	<td class="Text_white_12px_bold"> <a href='admClientList.do' class=style1>고객정보</td>
             <td class="Text_white_12px_bold">&nbsp;&nbsp;&nbsp;I&nbsp;&nbsp;&nbsp;</td>        
-            <td class="Text_white_12px_bold"> <a href='/#' class=style1>지점정보</td>
+            <td class="Text_white_12px_bold"> <a href='admBranchList.do' class=style1>지점정보</td>
             <td class="Text_white_12px_bold">&nbsp;&nbsp;&nbsp;I&nbsp;&nbsp;&nbsp;</td>
             <td><span class="Text_white_12px_bold"><a href='/#' class=style1>핸드폰정보</a></span></td>
             <td><span class="Text_white_12px_bold">&nbsp;&nbsp;&nbsp;I&nbsp;&nbsp;&nbsp;</span></td>
