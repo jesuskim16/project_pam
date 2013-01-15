@@ -1,6 +1,7 @@
 package ITFree.PAM.Common.Model.Board;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
@@ -114,21 +115,21 @@ public class BoardDaoImp implements BoardDao{
 	}
 	
 	@Override
-	public long Next_seq(long seq) {
+	public long Next_seq(Map<String, Long> seqBd) {
 		
 		try {
-			return (long) sqlMapClientTemplate.queryForObject("FreeBoard.Next_seq",seq);
+			return (long) sqlMapClientTemplate.queryForObject("FreeBoard.Next_seq",seqBd);
 		} catch (DataAccessException e) {
 			e.printStackTrace();
 			return 0;
 		}
 	}
-	
+
 	@Override
-	public long Prev_seq(long seq) {
+	public long Prev_seq(Map<String, Long> seqBd) {
 		
 		try {
-			return (long) sqlMapClientTemplate.queryForObject("FreeBoard.Prev_seq",seq);
+			return (long) sqlMapClientTemplate.queryForObject("FreeBoard.Prev_seq",seqBd);
 		} catch (DataAccessException e) {			
 			e.printStackTrace();
 			return 0;
@@ -145,5 +146,6 @@ public class BoardDaoImp implements BoardDao{
 		}
 		
 	}
+	
 
 }

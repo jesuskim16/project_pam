@@ -18,6 +18,7 @@
      				 )as rp_cnt
 				FROM board bd
 				WHERE rp_seq = 0
+				AND board_chk = #board_chk#
 				<isEqual property="searchCondition" compareValue="title">
 				AND title like '%' || #searchKeyword# || '%'
 				</isEqual>
@@ -35,7 +36,7 @@
   <!-- 게시판 글쓰기 부분  -->
   <insert id="freeBoardInsertAction" parameterClass="fdto">
   INSERT INTO board(seq,board_chk,title,content,filename,brc_id, write_ip)
-  VALUES(board_seq.nextval , 2, #title#, #content#, #filename#, #brc_id#, #write_ip#)
+  VALUES(board_seq.nextval , #board_chk#, #title#, #content#, #filename#, #brc_id#, #write_ip#)
   </insert>
   
   <!-- 게시판 상세보기 부분  -->
@@ -81,19 +82,24 @@
   </update>
   
   <!-- 게시판 다음글보기 부분  -->
-  <select id="Next_seq" parameterClass="Long" resultClass="Long">
+  <select id="Next_seq" parameterClass="HashMap" resultClass="long">
   	SELECT nvl(min(seq), #seq#) as next_seq
  	FROM BOARD
  	<![CDATA[
-	WHERE seq > #seq# AND rp_seq = 0
+	WHERE seq > #seq# 
+	AND board_chk=#board_chk#
+	AND rp_seq = 0
+	
 	]]>
   </select>
   <!-- 게시판 이전글보기 부분  -->
-   <select id="Prev_seq" parameterClass="Long" resultClass="Long">
+   <select id="Prev_seq" parameterClass="HashMap" resultClass="long">
     SELECT nvl(max(seq),#seq#) as prev_seq
  	FROM BOARD
  	<![CDATA[
-	WHERE seq < #seq# AND rp_seq = 0
+	WHERE seq < #seq#
+	AND board_chk=#board_chk# 
+	AND rp_seq = 0
 	]]>
   </select>
   

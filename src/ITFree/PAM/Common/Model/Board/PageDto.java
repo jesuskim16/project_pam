@@ -19,6 +19,8 @@ public class PageDto {
 	private String searchCondition; // 검색 상태
 	private String searchKeyword;   // 검색 단어
 	
+	private int board_chk;			//게시판 분류
+	
 	//기본 생성자(DI주입을 위해 꼭 생성해야함)
 	public PageDto() {
 		// TODO Auto-generated constructor stub
@@ -138,24 +140,28 @@ public class PageDto {
 		this.pHtml = pHtml;
 	}
 
-
 	public String getSearchCondition() {
 		return searchCondition;
 	}
-
 
 	public void setSearchCondition(String searchCondition) {
 		this.searchCondition = searchCondition;
 	}
 
-
 	public String getSearchKeyword() {
 		return searchKeyword;
 	}
 
-
 	public void setSearchKeyword(String searchKeyword) {
 		this.searchKeyword = searchKeyword;
+	}	
+
+	public int getBoard_chk() {
+		return board_chk;
+	}
+
+	public void setBoard_chk(int board_chk) {
+		this.board_chk = board_chk;
 	}
 
 	@Override
@@ -165,7 +171,7 @@ public class PageDto {
 				+ ", endNum=" + endNum + ", pageSize=" + pageSize
 				+ ", blockSize=" + blockSize + ", pHtml=" + pHtml
 				+ ", searchCondition=" + searchCondition + ", searchKeyword="
-				+ searchKeyword + "]";
+				+ searchKeyword + ", board_chk=" + board_chk + "]";
 	}
 
 
