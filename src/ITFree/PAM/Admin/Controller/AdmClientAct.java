@@ -37,6 +37,7 @@ public class AdmClientAct {
 		mav.setViewName("/WEB-INF/www/admin/client/list.jsp");
 		
 		mav.addObject("list", list);
+		mav.addObject("page", APDto);
 		
 		return mav;
 	}

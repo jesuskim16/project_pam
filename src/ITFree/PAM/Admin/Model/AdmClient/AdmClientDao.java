@@ -4,7 +4,7 @@ import java.util.List;
 
 public interface AdmClientDao {
 
-	List<AdmClientDto> AdmClientList(AdmClientPageDto aPDto);
+	List<AdmClientDto> AdmClientList(AdmClientPageDto APDto);
 
 	long TotalCount(AdmClientPageDto pageDto);
 

@@ -34,7 +34,7 @@ public class SalesRankAct {
 	private SalesDao salesDao;
 	
 	private int ChartListSize; //List Size
-	String[] ChartName = new String[10]; // List brc_name 판매점 이름
+	String[] ChartName; // List brc_name 판매점 이름
 	private String ChartSalesRankSelectBox; //Select Value 1 And 2  
 	private int[][] ChartSalesNumber; //SalesNumber 판매개수
 	private int[][] ChartSalesRebate; //SalesRebate 판매수익
@@ -49,10 +49,13 @@ public class SalesRankAct {
 			pageDto.setPg(1);
 		SalesPageDto SPDto = new SalesPageDto(pageDto.getPg(),
 				salesDao.TotalCount(pageDto), pageDto.getBrc_name(),
-				pageDto.getS_sdate(), pageDto.getS_edate());
+				pageDto.getS_sdate(), pageDto.getS_edate(), SalesRankSelectBox);
 		
+		log.debug("--"+SPDto);
 		List<SalesDto> list = salesDao.salesRankList(SPDto, SalesRankSelectBox);
 		hidden = "none"; //Chart Hidden Value
+		
+		log.debug("--"+list);
 		
 		//Chart Size 
 		if (!(list == null)) {
@@ -61,9 +64,12 @@ public class SalesRankAct {
 			ChartSalesRankSelectBox = SalesRankSelectBox; //Chart Sales number, rebate CheckBox Value 1 And 2 
 			ChartSalesNumber = new int[ChartListSize][1];
 			ChartSalesRebate = new int[ChartListSize][1];
+			ChartName = new String[ChartListSize];
+			
 			//Chart Value Add
 			for (int i = 0; i < list.size(); i++) {
 				ChartName[i] = list.get(i).getBrc_name(); //brc_name
+				log.debug("---"+list.get(i).getBrc_name());
 				ChartSalesNumber[i][0] = Integer.parseInt(list.get(i).getSalesnumber()); //SalesNumber  
 				ChartSalesRebate[i][0] = Integer.parseInt(list.get(i).getSalesrebate()); //SalesRebate
 			}

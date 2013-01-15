@@ -15,7 +15,7 @@ public class AdmClientDaoImpl implements AdmClientDao {
 	private SqlMapClientTemplate sqlMapClientTemplate;
 	
 	@Override
-	public List<AdmClientDto> AdmClientList() {
+	public List<AdmClientDto> AdmClientList(AdmClientPageDto APDto) {
 		try{
 			return sqlMapClientTemplate.queryForList("AdmClient.AdmClientList");
 		} catch(Exception e){
@@ -23,6 +23,12 @@ public class AdmClientDaoImpl implements AdmClientDao {
 			return null;
 		}
 		
+	}
+
+	@Override
+	public long TotalCount(AdmClientPageDto pageDto) {
+		return (int) sqlMapClientTemplate.queryForObject("AdmClient.readCount");
+
 	}
 
 }

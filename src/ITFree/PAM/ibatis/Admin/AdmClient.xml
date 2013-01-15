@@ -13,5 +13,10 @@
 	FROM CUSTOMINFO
 	</select>
 	
+	<select id="readCount" resultClass="int">
+	SELECT count(*)
+	FROM CUSTOMINFO
+	</select>
+	
 
 </sqlMap>

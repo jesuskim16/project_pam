@@ -5,6 +5,7 @@ public class SalesPageDto {
 	private String s_sdate;
 	private String s_edate;	
 	private String attach_id;
+	private String SalesRankSelectBox;
 	
 	private long pg; //현재 페이지
 	
@@ -28,12 +29,13 @@ public class SalesPageDto {
 		// TODO Auto-generated constructor stub
 	}
 	
-	public SalesPageDto(long pg, long totalCount , String brc_name, String s_sdate, String s_edate) {
+	public SalesPageDto(long pg, long totalCount , String brc_name, String s_sdate, String s_edate, String SalesRankSelectBox) {
 		//넘어온  parameter값을 각 변수에 할당
 		this.pg = pg;
 		this.totalCount = totalCount;
 		this.s_sdate = s_sdate;
 		this.s_edate = s_edate;
+		this.SalesRankSelectBox = SalesRankSelectBox;
 
 		
 		startNum = (pg - 1) * pageSize + 1; // 시작 페이징 값을 계산
@@ -46,7 +48,7 @@ public class SalesPageDto {
 	//HTML처리하는 메소드
 	private String getPageHtml() {
 		
-		String UrlName = "salesList.do";
+		String UrlName = "salesRank.do";
 		StringBuffer pageHtml = new StringBuffer(); //긴 문자열 저장을 위한 스트링버퍼 사용
 		
 		long startPage = ((pg-1) / blockSize) * blockSize + 1; //시작 페이지값 계산
@@ -65,10 +67,11 @@ public class SalesPageDto {
 		
 		
 		for(long p = startPage; p <= endPage; p++){
-			//현재 페이지가 아닐때(즉 다른페이지로 넘어가야 할 때 링크를 설정해줌. 검색설정값도 함께)
+			//현재 페이지가 아닐때(즉 다른페이지로 넘어가야 할 때 링크를 설정해줌.)
 			if(p != pg){
 				pageHtml.append("<font class='style2'><a href='"+UrlName+"?pg=" + p +  "'>" + 
-								+ p + "</a></font>&nbsp;");
+								+ p + "&s_sdate="+s_sdate+"&"+"s_edate="+s_edate+"&"+
+								"SalesRankSelectBox="+SalesRankSelectBox+ "</a></font>&nbsp;");
 			// 현재 보고있는 페이지 일경우 	
 			}else{
 				pageHtml.append("<font color='red'><b>"+p+"</b></font>&nbsp;");
@@ -182,16 +185,27 @@ public class SalesPageDto {
 	public void setBrc_name(String brc_name) {
 		this.brc_name = brc_name;
 	}
+	
+	public String getSalesRankSelectBox() {
+		return SalesRankSelectBox;
+	}
+
+	public void setSalesRankSelectBox(String salesRankSelectBox) {
+		SalesRankSelectBox = salesRankSelectBox;
+	}
 
 	@Override
 	public String toString() {
 		return "SalesPageDto [brc_name=" + brc_name + ", s_sdate=" + s_sdate
-				+ ", s_edate=" + s_edate + ", attach_id=" + attach_id + ", pg="
-				+ pg + ", totalCount=" + totalCount + ", pageCount="
-				+ pageCount + ", startNum=" + startNum + ", endNum=" + endNum
+				+ ", s_edate=" + s_edate + ", attach_id=" + attach_id
+				+ ", SalesRankSelectBox=" + SalesRankSelectBox + ", pg=" + pg
+				+ ", totalCount=" + totalCount + ", pageCount=" + pageCount
+				+ ", startNum=" + startNum + ", endNum=" + endNum
 				+ ", pageSize=" + pageSize + ", blockSize=" + blockSize
 				+ ", pHtml=" + pHtml + "]";
 	}
+	
+	
 
 	
 

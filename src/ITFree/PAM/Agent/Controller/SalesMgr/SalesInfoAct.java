@@ -30,7 +30,7 @@ public class SalesInfoAct {
 		protected ModelAndView salesList(@ModelAttribute SalesPageDto pageDto, HttpSession session){
 			if(pageDto.getPg() == 0) pageDto.setPg(1); 
 			
-			SalesPageDto SPDto = new SalesPageDto(pageDto.getPg(), salesDao.TotalCount(pageDto), null, null, null);
+			SalesPageDto SPDto = new SalesPageDto(pageDto.getPg(), salesDao.TotalCount(pageDto), null, null, null, null);
 			
 			SPDto.setAttach_id((String) session.getAttribute("brc_id"));
 			

@@ -16,7 +16,7 @@ function RankForm(charthidden){
 </script>
 
 
-<form name="result_form" method="post" style="margin:0">
+<form name="result_form" method="get" style="margin:0">
                         <td width="1"></td>
                         <td valign="top"><table width="100%" border="0" cellspacing="0" cellpadding="0">
                           <tr>
@@ -76,7 +76,7 @@ function RankForm(charthidden){
 	                            <td height="100" bgcolor="FFFFFFF"><table width="100%" border="0" cellspacing="0" cellpadding="0">
 	                          	  <tr>
 <!-- 그래프 -------------------------------------------------------------------------------------------------------------------------------------->
-	                          	  	<td  width="100" >
+	                          	  	<td>
 	                          	  	<div id="charthidden" style="display:${hidden}">
 	                          	  	<img src="${chart}" >
 	                          	  	</div>
@@ -84,12 +84,12 @@ function RankForm(charthidden){
 	                          	  	<td><table width="100%" border="0" cellspacing="0" cellpadding="0">
 <!-- 그래프 -------------------------------------------------------------------------------------------------------------------------------------->	                          	  	
 <!-- 리스트 -------------------------------------------------------------------------------------------------------------------------------------->	                          	  	
-	                          	  	  <tr>
+	                          	  	  <tr align="center">
 		                          	  	<th height="40" width="30" bgcolor="e2e2e2">순위</th>
 		                          	  	<th align="center" bgcolor="e2e2e2">판매점 이름</th>
 		                          	  	<th align="center" bgcolor="e2e2e2">판매 개수</th>
 		                          	  	<th align="center" bgcolor="e2e2e2">수익</th>
-		                          	  	<th></th>
+		                          	  	<th width="30">
 	                          	  	  </tr>
 	                          	  	  <c:if test="${empty list}">
 	                          	  	  <tr>
@@ -97,10 +97,10 @@ function RankForm(charthidden){
 	                          	  	  </tr>
 	                          	  	  </c:if>
 	                          	  	  
-	                          	  	  <c:forEach items="${list}" var="rkdto" varStatus="Rank">
+	                          	  	  <c:forEach items="${list}" var="rkdto">
 	                          	  	  <tr>
-	                          	  	    <td align="center" bgcolor="#FFFFFF" >${Rank.count}</td>
-	                          	  	  	<td align="center" bgcolor="#FFFFFF" >${rkdto.brc_name}</a></td>
+	                          	  	    <td align="center" bgcolor="#FFFFFF" >${rkdto.rown}</td>
+	                          	  	  	<td align="center" bgcolor="#FFFFFF" >${rkdto.brc_name}</td>
 	                          	  	  	<td align="center" bgcolor="#FFFFFF" >${rkdto.salesnumber} 대</td>
 	                          	  	  	<td align="center" bgcolor="#FFFFFF" >${rkdto.salesrebate} 만원</td>
 	                          	  	  </tr>

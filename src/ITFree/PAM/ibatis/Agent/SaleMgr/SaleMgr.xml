@@ -72,24 +72,30 @@
 	
 	<!-- 판매점 순위 -->
 	<select id="salesRankListNumber" resultClass="sdto" parameterClass="spdto">
-	SELECT b.brc_name, count(c.brc_id) AS salesnumber, sum(floor(c.rebate / 10000)) AS salesrebate
-	FROM CUSTOMINFO c join BRANCH b 
-	on c.brc_id=b.brc_id
-	<![CDATA[
-	WHERE #s_sdate# <= c.write_date AND c.write_date <= #s_edate#
-	GROUP BY b.brc_name
-	ORDER BY salesnumber DESC
+	SELECT D.* ,row_number()over (ORDER BY salesnumber DESC) AS rown
+	FROM 
+		(SELECT b.brc_name, count(c.brc_id) AS salesnumber, sum(floor(c.rebate / 10000)) AS salesrebate
+		FROM CUSTOMINFO c join BRANCH b 
+		on c.brc_id=b.brc_id
+		<![CDATA[
+		WHERE #s_sdate# <= c.write_date AND c.write_date <= #s_edate#
+		GROUP BY b.brc_name
+		ORDER BY salesnumber DESC) D
+	WHERE #startNum# <= rownum AND rownum <= #endNum#
 	]]>
 	</select>
 	
 	<select id="salesRankListRebate" resultClass="sdto" parameterClass="spdto">
-	SELECT b.brc_name, count(c.brc_id) AS salesnumber, sum(floor(c.rebate / 10000)) AS salesrebate
-	FROM CUSTOMINFO c join BRANCH b 
-	on c.brc_id=b.brc_id
-	<![CDATA[
-	WHERE #s_sdate# <= c.write_date AND c.write_date <= #s_edate#
-	GROUP BY b.brc_name
-	ORDER BY salesrebate DESC
+	SELECT D.* ,row_number()over (ORDER BY salesrebate DESC) AS rown
+	FROM 
+		(SELECT b.brc_name, count(c.brc_id) AS salesnumber, sum(floor(c.rebate / 10000)) AS salesrebate
+		FROM CUSTOMINFO c join BRANCH b 
+		on c.brc_id=b.brc_id
+		<![CDATA[
+		WHERE #s_sdate# <= c.write_date AND c.write_date <= #s_edate#
+		GROUP BY b.brc_name
+		ORDER BY salesrebate DESC) D
+	WHERE #startNum# <= rownum AND rownum <= #endNum#
 	]]>
 	</select>
 	

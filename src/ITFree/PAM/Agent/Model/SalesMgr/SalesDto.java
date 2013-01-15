@@ -1,8 +1,9 @@
 package ITFree.PAM.Agent.Model.SalesMgr;
 
 public class SalesDto {
+	
+	private int rown;
 	//BRANCH
-	private long rnum;
 	private long seq;             //seq	             
 	private String brc_id;        //지점ID(PK)           
 	private String attach_id;     //관리점ID              
@@ -179,12 +180,12 @@ public class SalesDto {
 	public void setBrc_post2(String brc_post2) {
 		this.brc_post2 = brc_post2;
 	}
-
-	public long getRnum() {
-		return rnum;
+	
+	public int getRown() {
+		return rown;
 	}
-	public void setRnum(long rnum) {
-		this.rnum = rnum;
+	public void setRown(int rown) {
+		this.rown = rown;
 	}
 	public String getSalesnumber() {
 		return salesnumber;
@@ -198,10 +199,9 @@ public class SalesDto {
 	public void setSalesrebate(String salesrebate) {
 		this.salesrebate = salesrebate;
 	}
-
 	@Override
 	public String toString() {
-		return "SalesDto [rnum=" + rnum + ", seq=" + seq + ", brc_id=" + brc_id
+		return "SalesDto [rown=" + rown + ", seq=" + seq + ", brc_id=" + brc_id
 				+ ", attach_id=" + attach_id + ", password=" + password
 				+ ", brc_name=" + brc_name + ", brc_phone=" + brc_phone
 				+ ", brc_phone1=" + brc_phone1 + ", brc_phone2=" + brc_phone2
@@ -214,8 +214,12 @@ public class SalesDto {
 				+ brc_lev + ", brc_state=" + brc_state + ", write_id="
 				+ write_id + ", write_date=" + write_date + ", write_ip="
 				+ write_ip + ", salesnumber=" + salesnumber + ", salesrebate="
-				+ salesrebate +  "]";
+				+ salesrebate + "]";
 	}
+	
+	
+	
+
 	
 
 	
