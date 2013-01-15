@@ -59,21 +59,19 @@
                                       <td height="30"><table width="100%" border="0" cellspacing="0" cellpadding="0">
                                           <tr>
                                           <c:forEach items="${list}" var="cdto">
-                                            <td width="30" align="center" class="s_Text_gray2_12px">${cdto.seq}</td>
-                                            <td align="left" class="s_Text_gray2_12px">
-                                              <a href="view.do">${cdto.CUST_NAME}</a></td>
-                                            <td width="50" align="center">${cdto.CUST_NAME}</td>
-                                            <td width="100" align="center" class="s_Text_gray2_12px">${cdto.CUST_PHONE}</td>
-                                            <td width="90" align="center" class="s_Text_gray2_12px">${cdto.CONT_TERM}</td>
-                                            <td width="90" align="center" class="s_Text_gray2_12px">${cdto.OPEN_DATE}</td>
-                                            <td width="90" align="center" class="s_Text_gray2_12px">${cdto.MEMO}</td>
-                                            <td width="90" align="center" class="s_Text_gray2_12px">${cdto.WRITE_DATE}</td>
-                                            <td width="90" align="center" class="s_Text_gray2_12px">${cdto.WRITE_IP}</td>
-                                            <td width="90" align="center" class="s_Text_gray2_12px">${cdto.BRC_ID}</td>
-                                            <td width="90" align="center" class="s_Text_gray2_12px">${cdto.PRICE_NAME}</td>
-                                            <td width="90" align="center" class="s_Text_gray2_12px">${cdto.MODEL_CODE}</td>
-                                            <td width="90" align="center" class="s_Text_gray2_12px">${cdto.REBATE}</td>
-                                            <td width="90" align="center" class="s_Text_gray2_12px">${cdto.CUST_BIRTH}</td>
+                                            <td width="30" align="center" class="s_Text_gray2_12px">${cdto.rnum}</td>
+                                            <td align="left" class="s_Text_gray2_12px">${cdto.cust_name}<a href="view.do"></a></td>
+                                            <td width="50" align="center">${cdto.cust_phone}</td>
+                                            <td width="100" align="center" class="s_Text_gray2_12px">${cdto.cont_term}</td>
+                                            <td width="90" align="center" class="s_Text_gray2_12px">${cdto.open_date}</td>
+                                            <td width="90" align="center" class="s_Text_gray2_12px">${cdto.memo}</td>
+                                            <td width="90" align="center" class="s_Text_gray2_12px">${cdto.write_date}</td>
+                                            <td width="90" align="center" class="s_Text_gray2_12px">${cdto.write_ip}</td>
+                                            <td width="90" align="center" class="s_Text_gray2_12px">${cdto.brc_id}</td>
+                                            <td width="90" align="center" class="s_Text_gray2_12px">${cdto.price_name}</td>
+                                            <td width="90" align="center" class="s_Text_gray2_12px">${cdto.model_code}</td>
+                                            <td width="90" align="center" class="s_Text_gray2_12px">${cdto.rebate}</td>
+                                            <td width="90" align="center" class="s_Text_gray2_12px">${cdto.cust_birth}</td>
                                             </c:forEach>
                                           </tr>
                                       </table></td>
