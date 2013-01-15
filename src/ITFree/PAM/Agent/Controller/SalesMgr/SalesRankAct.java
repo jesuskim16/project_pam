@@ -23,7 +23,9 @@ import org.springframework.web.servlet.ModelAndView;
 
 import ITFree.PAM.Agent.Model.SalesMgr.SalesDao;
 import ITFree.PAM.Agent.Model.SalesMgr.SalesDto;
-import ITFree.PAM.Agent.Model.SalesMgr.SalesPageDto;
+import ITFree.PAM.Agent.Model.SalesMgr.SalesRankPageDto;
+
+
 
 @Controller
 public class SalesRankAct {
@@ -40,19 +42,17 @@ public class SalesRankAct {
 	private int[][] ChartSalesRebate; //SalesRebate 판매수익
 	
 	@RequestMapping("/salesRank.do")
-	protected ModelAndView salesRank(@ModelAttribute SalesPageDto pageDto,
+	protected ModelAndView salesRank(@ModelAttribute SalesRankPageDto srpDto,
 			SalesDto salesDto, ModelAndView mav, String SalesRankSelectBox,
 			String brc_name, String salesnumber, String salesrebate, String hidden)
 			throws Exception {
 
-		if (pageDto.getPg() == 0)
-			pageDto.setPg(1);
-		SalesPageDto SPDto = new SalesPageDto(pageDto.getPg(),
-				salesDao.TotalCount(pageDto), pageDto.getBrc_name(),
-				pageDto.getS_sdate(), pageDto.getS_edate(), SalesRankSelectBox);
+		if (srpDto.getPg() == 0) srpDto.setPg(1);
+		SalesRankPageDto SRPDto = new SalesRankPageDto(srpDto.getPg(),
+				salesDao.RankTotalCount(srpDto), srpDto.getBrc_name(),
+				srpDto.getS_sdate(), srpDto.getS_edate(), SalesRankSelectBox);
 		
-		log.debug("--"+SPDto);
-		List<SalesDto> list = salesDao.salesRankList(SPDto, SalesRankSelectBox);
+		List<SalesDto> list = salesDao.salesRankList(SRPDto, SalesRankSelectBox);
 		hidden = "none"; //Chart Hidden Value
 		
 		log.debug("--"+list);
@@ -79,7 +79,7 @@ public class SalesRankAct {
 		mav.setViewName("/WEB-INF/www/agent/salesMgr/salesRank.jsp");
 		mav.addObject("title_name", "PAM::판매점순위");
 		mav.addObject("list", list);
-		mav.addObject("page", SPDto);
+		mav.addObject("page", SRPDto);
 		mav.addObject("chart", "barChartCreator.do");
 		mav.addObject("SRSB", SalesRankSelectBox);
 		mav.addObject("hidden", hidden);

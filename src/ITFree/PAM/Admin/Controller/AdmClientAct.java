@@ -13,7 +13,7 @@ import org.springframework.web.servlet.ModelAndView;
 import ITFree.PAM.Admin.Model.AdmClient.AdmClientDao;
 import ITFree.PAM.Admin.Model.AdmClient.AdmClientDto;
 import ITFree.PAM.Admin.Model.AdmClient.AdmClientPageDto;
-import ITFree.PAM.Agent.Model.SalesMgr.SalesPageDto;
+import ITFree.PAM.Agent.Model.SalesMgr.SalesRankPageDto;
 
 @Controller
 public class AdmClientAct {

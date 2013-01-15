@@ -7,7 +7,10 @@
 <sqlMap namespace="SaleMgr">
 	<typeAlias alias="sdto" type="ITFree.PAM.Agent.Model.SalesMgr.SalesDto" />
 	<typeAlias alias="zdto" type="ITFree.PAM.Agent.Model.SalesMgr.ZipcodeDto" />
-	<typeAlias alias="spdto" type="ITFree.PAM.Agent.Model.SalesMgr.SalesPageDto" />
+	
+	<typeAlias alias="sipdto" type="ITFree.PAM.Agent.Model.SalesMgr.SalesInfoPageDto" />
+	<typeAlias alias="srapdto" type="ITFree.PAM.Agent.Model.SalesMgr.SalesRankPageDto"/>
+
 	
 
 	<!-- 판매점 등록 -->
@@ -36,7 +39,7 @@
 	
 	
 	<!--판매점 정보  -->
-	<select id="salesList" resultClass="sdto" parameterClass="spdto">
+	<select id="salesList" resultClass="sdto" parameterClass="sipdto">
 	SELECT B.* 
 	FROM   (SELECT A.* ,rownum as rown
 		FROM (SELECT rownum as rnum, seq, brc_name, brc_id, brc_phone,
@@ -64,38 +67,48 @@
 		WHERE seq = #seq#
 	</delete>
 
-	<select id="readCount" resultClass="int">
+	<select id="InfoTotalCount" resultClass="long" parameterClass="sipdto">
 	SELECT count(*)
 	FROM branch
 	</select>
 	
 	
 	<!-- 판매점 순위 -->
-	<select id="salesRankListNumber" resultClass="sdto" parameterClass="spdto">
-	SELECT D.* ,row_number()over (ORDER BY salesnumber DESC) AS rown
-	FROM 
-		(SELECT b.brc_name, count(c.brc_id) AS salesnumber, sum(floor(c.rebate / 10000)) AS salesrebate
-		FROM CUSTOMINFO c join BRANCH b 
-		on c.brc_id=b.brc_id
-		<![CDATA[
-		WHERE #s_sdate# <= c.write_date AND c.write_date <= #s_edate#
-		GROUP BY b.brc_name
-		ORDER BY salesnumber DESC) D
-	WHERE #startNum# <= rownum AND rownum <= #endNum#
+	<select id="salesRankListNumber" resultClass="sdto" >
+	SELECT E.* 
+	FROM (SELECT D.* ,row_number()over (ORDER BY salesnumber DESC) AS rown
+		  FROM 
+			(SELECT b.brc_name, count(c.brc_id) AS salesnumber, sum(floor(c.rebate / 10000)) AS salesrebate
+			FROM CUSTOMINFO c join BRANCH b 
+			on c.brc_id=b.brc_id
+			<![CDATA[
+			WHERE #s_sdate# <= c.write_date AND c.write_date <=  #s_edate#
+			GROUP BY b.brc_name
+			ORDER BY salesnumber DESC) D) E
+	WHERE #startNum# <= rown AND rown <= #endNum#
 	]]>
 	</select>
 	
-	<select id="salesRankListRebate" resultClass="sdto" parameterClass="spdto">
-	SELECT D.* ,row_number()over (ORDER BY salesrebate DESC) AS rown
-	FROM 
-		(SELECT b.brc_name, count(c.brc_id) AS salesnumber, sum(floor(c.rebate / 10000)) AS salesrebate
-		FROM CUSTOMINFO c join BRANCH b 
-		on c.brc_id=b.brc_id
-		<![CDATA[
-		WHERE #s_sdate# <= c.write_date AND c.write_date <= #s_edate#
-		GROUP BY b.brc_name
-		ORDER BY salesrebate DESC) D
-	WHERE #startNum# <= rownum AND rownum <= #endNum#
+	<select id="salesRankListRebate" resultClass="sdto" parameterClass="srapdto">
+	SELECT E.* 
+	FROM (SELECT D.* ,row_number()over (ORDER BY salesrebate DESC) AS rown
+		  FROM 
+			(SELECT b.brc_name, count(c.brc_id) AS salesnumber, sum(floor(c.rebate / 10000)) AS salesrebate
+			FROM CUSTOMINFO c join BRANCH b 
+			on c.brc_id=b.brc_id
+			<![CDATA[
+			WHERE #s_sdate# <= c.write_date AND c.write_date <=  #s_edate#
+			GROUP BY b.brc_name
+			ORDER BY salesrebate DESC) D) E
+	WHERE #startNum# <= rown AND rown <= #endNum#
+	]]>
+	</select>
+	
+	<select id="RankTotalCount" resultClass="long" parameterClass="srapdto">
+	SELECT count(distinct brc_id)
+	FROM CUSTOMINFO
+	<![CDATA[
+			WHERE #s_sdate# <= write_date AND write_date <=  #s_edate#
 	]]>
 	</select>
 	
