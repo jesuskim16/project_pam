@@ -17,7 +17,7 @@ public class AdmClientDaoImpl implements AdmClientDao {
 	@Override
 	public List<AdmClientDto> AdmClientList(AdmClientPageDto APDto) {
 		try{
-			return sqlMapClientTemplate.queryForList("AdmClient.AdmClientList");
+			return sqlMapClientTemplate.queryForList("AdmClient.AdmClientList", APDto);
 		} catch(Exception e){
 			e.printStackTrace();
 			return null;
@@ -29,6 +29,27 @@ public class AdmClientDaoImpl implements AdmClientDao {
 	public long ListTotalCount(AdmClientPageDto pageDto) {
 		return (long) sqlMapClientTemplate.queryForObject("AdmClient.ListTotalCount", pageDto);
 
+	}
+
+	@Override
+	public AdmClientDto AdmClientView(long seq) {
+		try{
+			return (AdmClientDto) sqlMapClientTemplate.queryForObject("AdmClient.AdmClientView", seq);
+		} catch(Exception e){
+			e.printStackTrace();
+			return null;
+		}
+	}
+
+	@Override
+	public boolean AdmClientDelete(AdmClientDto Cdto) {
+		try {
+			return sqlMapClientTemplate.delete("AdmClient.AdmClientDelete", Cdto) > 0;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		}
+		
 	}
 
 }
