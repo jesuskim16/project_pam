@@ -4,12 +4,6 @@
 <jsp:include page="/inc/top1.jsp"/>    
 <jsp:include page="/inc/menu4.jsp"/>   
 <script type="text/javascript" src="js/setDate.js"></script>
-<script type="text/javascript" src="js/jquery-1.8.3.min.js"></script>
-<script type="text/javascript" src="js/jquery.enumerable.js"></script>
-<script type="text/javascript" src="js/jquery.tufte-graph.js"></script>
-<script type="text/javascript" src="js/raphael.js"></script>
-<script type="text/javascript" src="js/setChart.js"></script>
-<link rel="stylesheet" href="css/tufte-graph.css" type="text/css" media="screen" charset="utf-8" />
 
                         <td width="1"></td>
                         <td valign="top"><table width="100%" border="0" cellspacing="0" cellpadding="0">
@@ -22,7 +16,7 @@
                             </table></td>
                     	</tr>
                     	<tr>
-                          <form method="get" name="result_form" action="modelRank.do" style="margin:0">
+                          <form method="post" name="result_form" action="modelRank.do" style="margin:0">
                           <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
                             <tr bgcolor="cccccc">
                               <td height="10" colspan="2"></td>
@@ -52,7 +46,7 @@
                                  <div id="test">
                                  </div>  
                                   </td>                               
-								  <td valign="bottom"><input type="image" src="img/btn_ok.gif"  width="40" height="21"></td>
+								  <td valign="bottom"><input type="image" src="img/btn_ok.gif" width="40" height="21"></td>
                                 </tr>
                               </table></td>
                             </tr>
@@ -67,16 +61,8 @@
                           <tr>
                             <td><table width="100%" border="0" cellpadding="0" cellspacing="1" bgcolor="ffffff">
                               <tr>
-                              <td width="30%" align="center">
-                               <c:if test="${!empty MIRList}">                              	
-							      <table id='data-table-1' >
-							        <tr><td></td><td></td></tr>
-							        <c:forEach items="${MIRList}" var="MIRdto">
-							        <tr><td class="Text_white_1px">${MIRdto.model_name}</td><td class="Text_white_1px">${MIRdto.cnt}</td></tr>
-							        </c:forEach>   
-							      </table>							    
-							   </c:if>
-                              </td>  
+                              <td width="30%" align="center" <c:if test="${empty MIRList}"> hidden= "true" </c:if>>                              
+                              <img alt="" src="${chart}?s_sdate=${MIRPDto.s_sdate}&s_edate=${MIRPDto.s_edate}" <c:if test="${empty MIRList}"> hidden= "true" </c:if>></td>                                 
                             <td valign="top"><table width="100%" border="0" cellpadding="0" cellspacing="1" bgcolor="cccccc">
 <!-- {4(목록)----------------------------------------------------------------------------------------------------------------------------------->                            
                                <tr >
@@ -91,7 +77,7 @@
 <!-- {5(내용)------------------------------------------------------------------------------------------------------------------------------------>                             
                             <c:if test="${empty MIRList}">
                               <tr>
-                                 <th height="30" width="30" bgcolor="ffffff" colspan="6">검색값이 없습니다.</th>    
+                                 <th height="200" width="30" bgcolor="ffffff" colspan="6">검색값이 없습니다.</th>    
                                </tr>                            
                             </c:if>
                             <c:forEach items="${MIRList}" var="MIRdto">

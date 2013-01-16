@@ -52,6 +52,19 @@
 	WHERE #s_sdate# <= open_date AND open_date <= #s_edate#
 	]]>	  
 	</select>
+	
+	<select id="modelTotalRank" resultClass="midto" parameterClass="mirpdto">
+	SELECT B.*
+		FROM(SELECT rownum as rown, A.* , rownum as rnum
+			 FROM (SELECT count(*) as cnt, MODEL_NAME, filename, c.MODEL_CODE, p.make_comp, to_char(p.open_date, 'YYYY-MM-DD') as open_date
+			  	   FROM PHONEMODEL p join CUSTOMINFO c
+			 	   ON   p.MODEL_CODE = c.MODEL_CODE
+			 	   <![CDATA[ 
+				   WHERE #s_sdate# <= p.open_date AND p.open_date <= #s_edate#
+				   ]]>	 
+			 	   GROUP BY MODEL_NAME,filename, c.MODEL_CODE, p.make_comp, p.open_date
+			 	   ORDER BY cnt DESC) A ) B	
+	</select>
 
 	
 </sqlMap>

@@ -6,10 +6,20 @@
     
 <sqlMap namespace="AdmClient">
 	<typeAlias alias="ACdto" type="ITFree.PAM.Admin.Model.AdmClient.AdmClientDto" />
+	<typeAlias alias="ACPdto" type="ITFree.PAM.Admin.Model.AdmClient.AdmClientPageDto" />
 	
-	<select id="AdmClientList" resultClass="ACdto">
-	SELECT seq, cust_name, CUST_PHONE, CONT_TERM, OPEN_DATE, MEMO,
-		WRITE_DATE, WRITE_IP, BRC_ID, PRICE_NAME, MODEL_CODE, REBATE, CUST_BIRTH
+	<select id="AdmClientList" resultClass="ACdto" parameterClass="ACPdto">
+	SELECT rownum AS rnum, cust_name, CUST_PHONE, CONT_TERM, OPEN_DATE, MEMO,
+		WRITE_DATE, WRITE_IP, BRC_ID, PRICE_NAME, MODEL_CODE, REBATE, to_char(CUST_BIRTH, 'YYYY-DD-MM') AS CUST_BIRTH 
+	FROM CUSTOMINFO
+	<![CDATA[
+	WHERE #startNum# <= rown AND rown <= #endNum# 
+	ORDER BY rnum DESC
+	]]>
+	</select>
+	
+	<select id="ListTotalCount" resultClass="long" parameterClass="ACPdto">
+	SELECT count(*)
 	FROM CUSTOMINFO
 	</select>
 	

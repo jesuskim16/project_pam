@@ -83,7 +83,7 @@ function listdelete(seq){
 <!-- {5(내용)------------------------------------------------------------------------------------------------------------------------------------>                             
                            		<c:forEach items="${list}" var="sdto">
                            		<tr id="hidden_${sdto.seq}" style="display:table-row">
-                                <td height="28" align="center" bgcolor="#FFFFFF" >${ sdto.rnum}</td>
+                                <td height="28" align="center" bgcolor="#FFFFFF" >${ sdto.rown}</td>
                                 <td align="left" bgcolor="#FFFFFF" >${ sdto.brc_name}/${sdto.brc_id}</td>
                                 <td align="center" bgcolor="#FFFFFF" >${ sdto.brc_phone}</td>
                                 <td align="left" bgcolor="#FFFFFF" >${ sdto.brc_post} ${sdto.brc_addr1} ${sdto.brc_addr2}</td>
@@ -138,7 +138,7 @@ function listdelete(seq){
                           <tr>
                             <td height="50"><table width="100%" border="0" cellpadding="0" cellspacing="0">
                             
-<!-- {4(PAGING)------------------------------------------------------------------------------------------------------------------------------------>                              
+<!-- {6(PAGING)------------------------------------------------------------------------------------------------------------------------------------>                              
                               <tr>                            
 		                        <td width="200">&nbsp;</td>
                                 <td align="center"><table border="0" cellspacing="0" cellpadding="0">
@@ -150,7 +150,7 @@ function listdelete(seq){
                                 </table></td>
                                 <td width=​"15" valign=​"top" background=​"img/box_left.jpg"></td>
                               </tr>
-<!-- {4 )-------------------------------------------------------------------------------------------------------------------------------------------->                               
+<!-- {6 )-------------------------------------------------------------------------------------------------------------------------------------------->                               
                             </table></td>
                           </tr>
                         </table></td>

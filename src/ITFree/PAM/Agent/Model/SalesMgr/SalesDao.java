@@ -10,17 +10,21 @@ public interface SalesDao {
 	List<ZipcodeDto> searchZipcode(String dong);
 
 	//판매점 정보
-	List<SalesDto> salesList(SalesPageDto p);
+	List<SalesDto> salesList(SalesInfoPageDto SIPDto);
 
 	boolean salesUpdate(SalesDto salesDto);
 
 	boolean salesDelete(SalesDto salesDto);
 
-	long TotalCount(SalesPageDto pageDto);
+	long InfoTotalCount(SalesInfoPageDto sipDto);
+	
+	
 	
 	//판매점 순위
 	
-	List<SalesDto> salesRankList(SalesPageDto pageDto,String SalesRankSelectBox);
+	List<SalesDto> salesRankList(SalesRankPageDto SRPDto,String SalesRankSelectBox);
+	
+	long RankTotalCount(SalesRankPageDto srpDto);
 
 	
 

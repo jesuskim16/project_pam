@@ -5,15 +5,17 @@ import java.util.List;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.ibatis.SqlMapClientTemplate;
+import org.springframework.stereotype.Repository;
 
-public class AdmClientDaoImp implements AdmClientDao {
+@Repository
+public class AdmClientDaoImpl implements AdmClientDao {
 	Logger log = Logger.getLogger(this.getClass());
 
 	@Autowired
 	private SqlMapClientTemplate sqlMapClientTemplate;
 	
 	@Override
-	public List<AdmClientDto> AdmClientList() {
+	public List<AdmClientDto> AdmClientList(AdmClientPageDto APDto) {
 		try{
 			return sqlMapClientTemplate.queryForList("AdmClient.AdmClientList");
 		} catch(Exception e){
@@ -21,6 +23,12 @@ public class AdmClientDaoImp implements AdmClientDao {
 			return null;
 		}
 		
+	}
+
+	@Override
+	public long ListTotalCount(AdmClientPageDto pageDto) {
+		return (long) sqlMapClientTemplate.queryForObject("AdmClient.ListTotalCount", pageDto);
+
 	}
 
 }

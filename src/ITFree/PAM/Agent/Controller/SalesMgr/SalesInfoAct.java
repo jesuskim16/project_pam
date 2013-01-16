@@ -11,12 +11,9 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-
-
-
-import ITFree.PAM.Agent.Model.SalesMgr.SalesPageDto;
 import ITFree.PAM.Agent.Model.SalesMgr.SalesDao;
 import ITFree.PAM.Agent.Model.SalesMgr.SalesDto;
+import ITFree.PAM.Agent.Model.SalesMgr.SalesInfoPageDto;
 
 
 @Controller
@@ -27,28 +24,27 @@ public class SalesInfoAct {
 	private SalesDao salesDao;
 	
 		@RequestMapping("/salesList.do")
-		protected ModelAndView salesList(@ModelAttribute SalesPageDto pageDto, HttpSession session){
-			if(pageDto.getPg() == 0) pageDto.setPg(1); 
+		protected ModelAndView salesList(@ModelAttribute SalesInfoPageDto sipDto, HttpSession session,
+				ModelAndView mav){
+			if(sipDto.getPg() == 0) sipDto.setPg(1); 
 			
-			SalesPageDto SPDto = new SalesPageDto(pageDto.getPg(), salesDao.TotalCount(pageDto), null, null, null);
+			SalesInfoPageDto SIPDto = new SalesInfoPageDto(sipDto.getPg(), salesDao.InfoTotalCount(sipDto));
 			
-			SPDto.setAttach_id((String) session.getAttribute("brc_id"));
+			SIPDto.setAttach_id((String) session.getAttribute("brc_id"));
 			
-			List<SalesDto> list = salesDao.salesList(SPDto);
-			
-			ModelAndView mav = new ModelAndView();
+			List<SalesDto> list = salesDao.salesList(SIPDto);
 			
 			mav.setViewName("/WEB-INF/www/agent/salesMgr/salesList.jsp");
 			
 			mav.addObject("title_name","PAM::판매점정보");
 			mav.addObject("list", list);
-			mav.addObject("page",SPDto);
+			mav.addObject("page",SIPDto);
 			
 			return mav;
 		}
 		
 		@RequestMapping("/salesUpdate.do")
-		protected ModelAndView salesUpdate(SalesDto salesDto, SalesPageDto spDto){
+		protected ModelAndView salesUpdate(SalesDto salesDto, SalesInfoPageDto spDto){
 			
 			boolean update = salesDao.salesUpdate(salesDto);
 			if(spDto.getPg() == 0) spDto.setPg(1); 
@@ -56,9 +52,7 @@ public class SalesInfoAct {
 		}
 		
 		@RequestMapping("/salesDelete.do")
-		protected ModelAndView salesDelete(SalesDto salesDto, SalesPageDto spDto){
-			
-			log.debug(salesDto);
+		protected ModelAndView salesDelete(SalesDto salesDto, SalesInfoPageDto spDto){
 			
 			boolean delete = salesDao.salesDelete(salesDto);
 			if(spDto.getPg() == 0) spDto.setPg(1); 

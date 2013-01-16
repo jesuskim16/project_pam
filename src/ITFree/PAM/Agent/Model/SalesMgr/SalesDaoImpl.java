@@ -40,6 +40,11 @@ public class SalesDaoImpl implements SalesDao {
 
 	//판매점 정보
 	@Override
+	public List<SalesDto> salesList(SalesInfoPageDto SIPDto) {
+		return sqlMapClientTemplate.queryForList("SaleMgr.salesList", SIPDto);
+	}
+	
+	@Override
 	public boolean salesUpdate(SalesDto salesDto) {
 		try {
 			sqlMapClientTemplate.update("SaleMgr.salesUpdate", salesDto);
@@ -49,11 +54,6 @@ public class SalesDaoImpl implements SalesDao {
 			return false;
 		}
 		
-	}
-
-	@Override
-	public List<SalesDto> salesList(SalesPageDto p) {
-		return sqlMapClientTemplate.queryForList("SaleMgr.salesList", p);
 	}
 
 	@Override
@@ -68,20 +68,20 @@ public class SalesDaoImpl implements SalesDao {
 	}
 
 	@Override
-	public long TotalCount(SalesPageDto pageDto) {
-		return (int) sqlMapClientTemplate.queryForObject("SaleMgr.readCount");
+	public long InfoTotalCount(SalesInfoPageDto sipDto) {
+		return (long) sqlMapClientTemplate.queryForObject("SaleMgr.InfoTotalCount", sipDto);
 	}
 	//-----------------------------------------------------------------------------
 	
 	
 	//판매점  순위
 	@Override
-	public List<SalesDto> salesRankList(SalesPageDto pageDto, String SalesRankSelectBox) {
+	public List<SalesDto> salesRankList(SalesRankPageDto SRPDto, String SalesRankSelectBox) {
 		try {
 			if(SalesRankSelectBox.equals("1")){
-				return sqlMapClientTemplate.queryForList("SaleMgr.salesRankListNumber", pageDto);
+				return sqlMapClientTemplate.queryForList("SaleMgr.salesRankListNumber", SRPDto);
 			} else if(SalesRankSelectBox.equals("2")) {
-				return sqlMapClientTemplate.queryForList("SaleMgr.salesRankListRebate", pageDto);
+				return sqlMapClientTemplate.queryForList("SaleMgr.salesRankListRebate", SRPDto);
 			} 
 		} catch (Exception e) {			
 			e.printStackTrace();
@@ -90,7 +90,15 @@ public class SalesDaoImpl implements SalesDao {
 		return null;
 		
 	}
+	
+	@Override
+	public long RankTotalCount(SalesRankPageDto srpDto) {
+		return (long) sqlMapClientTemplate.queryForObject("SaleMgr.RankTotalCount", srpDto);
+	}
+	
 	//----------------------------------------------------------------------------------------
+
+	
 
 
 

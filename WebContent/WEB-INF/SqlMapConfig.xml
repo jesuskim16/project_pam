@@ -8,13 +8,18 @@
 	<settings 
 		cacheModelsEnabled="true" 
 		useStatementNamespaces="true"/>
-	<sqlMap resource="ITFree/PAM/ibatis/Common/Login/Login.xml" />
-	<sqlMap resource="ITFree/PAM/ibatis/Seller/Client/ClientReg.xml" />
-	<sqlMap resource="ITFree/PAM/ibatis/Agent/SaleMgr/SaleMgr.xml"/>
-	<sqlMap resource="ITFree/PAM/ibatis/Common/Board/FreeBoard.xml" />
-	<sqlMap resource="ITFree/PAM/ibatis/Seller/Client/ClientInfo.xml" />
+	<!-- 관리자 부분 -->
+	<sqlMap resource="ITFree/PAM/ibatis/Admin/AdmClient.xml"/>
+	<!-- 대리점 부분 -->
+	<sqlMap resource="ITFree/PAM/ibatis/Agent/SaleMgr/SaleMgr.xml"/>	
 	<sqlMap resource="ITFree/PAM/ibatis/Agent/ModelRcd/ModelRcd.xml" />
 	<sqlMap resource="ITFree/PAM/ibatis/Agent/SalesRcd/SalesRcd.xml"/>
+	<!-- 판매자 부분 -->
+	<sqlMap resource="ITFree/PAM/ibatis/Seller/Client/ClientReg.xml" />
+	<sqlMap resource="ITFree/PAM/ibatis/Seller/Client/ClientInfo.xml" />
+	<!-- 공통 부분 -->
+	<sqlMap resource="ITFree/PAM/ibatis/Common/Login/Login.xml" />
+	<sqlMap resource="ITFree/PAM/ibatis/Common/Board/FreeBoard.xml" />
 	<sqlMap resource="ITFree/PAM/ibatis/Common/ModelInfo/ModelInfo.xml"/>
-	<sqlMap resource="ITFree/PAM/ibatis/Admin/AdmClient.xml"/>
+	
 </sqlMapConfig>
