@@ -27,7 +27,7 @@ public class AdmClientAct {
 	public ModelAndView admClientList(@ModelAttribute AdmClientPageDto pageDto, ModelAndView mav){
 		if(pageDto.getPg() == 0) pageDto.setPg(1);
 		
-		AdmClientPageDto APDto = new AdmClientPageDto(pageDto.getPg(), ACdao.TotalCount(pageDto));
+		AdmClientPageDto APDto = new AdmClientPageDto(pageDto.getPg(), ACdao.ListTotalCount(pageDto));
 		
 		List<AdmClientDto> list = ACdao.AdmClientList(APDto);
 		

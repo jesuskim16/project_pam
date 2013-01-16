@@ -41,7 +41,7 @@ public class AdmClientPageDto {
 	//HTML처리하는 메소드
 	private String getPageHtml() {
 		
-		String UrlName = "salesList.do";
+		String UrlName = "admClientList.do";
 		StringBuffer pageHtml = new StringBuffer(); //긴 문자열 저장을 위한 스트링버퍼 사용
 		
 		long startPage = ((pg-1) / blockSize) * blockSize + 1; //시작 페이지값 계산

@@ -24,19 +24,19 @@
                                 <td width="10"><img src="admin/img/board.bar.left.gif" width="10" height="35"></td>
                                 <td background="admin/img/board.bar.bg.gif"><table width="100%" border="0" cellspacing="0" cellpadding="0">
                                     <tr>
-                                      <td width="90" align="center"><span class="s_Text_gray2_12px_Bold">번호</td>
-                                      <td width="90" align="center"><span class="s_Text_gray2_12px_Bold">고객이름</span></td>
-                                      <td width="90" align="center"><span class="s_Text_gray2_12px_Bold">고객번호</span></td>
-                                      <td width="90" align="center"><span class="s_Text_gray2_12px_Bold">약정기간</span></td>
-                                      <td width="90" align="center"><span class="s_Text_gray2_12px_Bold">개통일</span></td>
-                                      <td width="90" align="center"><span class="s_Text_gray2_12px_Bold">메모</span></td>
-                                      <td width="90" align="center"><span class="s_Text_gray2_12px_Bold">작성일</span></td>
-                                      <td width="90" align="center"><span class="s_Text_gray2_12px_Bold">작성 IP</span></td>
-                                      <td width="100" align="center"><span class="s_Text_gray2_12px_Bold">판매점 ID</span></td>
-                                      <td width="100" align="center"><span class="s_Text_gray2_12px_Bold">요금제</span></td>
-                                      <td width="100" align="center"><span class="s_Text_gray2_12px_Bold">모델 코드</span></td>
-                                      <td width="100" align="center"><span class="s_Text_gray2_12px_Bold">요금제</span></td>
-                                      <td width="90" align="center"><span class="s_Text_gray2_12px_Bold">주민번호</span></td>
+                                      <th width="90" align="center"><span class="s_Text_gray2_12px_Bold">번호</span></th>
+                                      <th width="90" align="center"><span class="s_Text_gray2_12px_Bold">고객이름</span></th>
+                                      <th width="90" align="center"><span class="s_Text_gray2_12px_Bold">고객번호</span></th>
+                                      <th width="90" align="center"><span class="s_Text_gray2_12px_Bold">약정기간</span></th>
+                                      <th width="90" align="center"><span class="s_Text_gray2_12px_Bold">개통일</span></th>
+                                      <th width="90" align="center"><span class="s_Text_gray2_12px_Bold">메모</span></th>
+                                      <th width="90" align="center"><span class="s_Text_gray2_12px_Bold">작성일</span></th>
+                                      <th width="90" align="center"><span class="s_Text_gray2_12px_Bold">작성 IP</span></th>
+                                      <th width="100" align="center"><span class="s_Text_gray2_12px_Bold">판매점 ID</span></th>
+                                      <th width="100" align="center"><span class="s_Text_gray2_12px_Bold">요금제</span></th>
+                                      <th width="100" align="center"><span class="s_Text_gray2_12px_Bold">모델 코드</span></th>
+                                      <th width="100" align="center"><span class="s_Text_gray2_12px_Bold">요금제</span></th>
+                                      <th width="90" align="center"><span class="s_Text_gray2_12px_Bold">주민번호</span></th>
                                     </tr>
                                 </table></td>
                                 <td width="10"><img src="admin/img/board.bar.right.gif" width="10" height="35"></td>
@@ -57,23 +57,23 @@
                                     <tr>
                                       <td width="10">&nbsp;</td>
                                       <td height="30"><table width="100%" border="0" cellspacing="0" cellpadding="0">
-                                          <tr>
                                           <c:forEach items="${list}" var="cdto">
-<%--                                             <td width="30" align="center" class="s_Text_gray2_12px">${cdto.rnum}</td> --%>
-<%--                                             <td align="left" class="s_Text_gray2_12px">${cdto.cust_name}<a href="view.do"></a></td> --%>
-<%--                                             <td width="50" align="center">${cdto.cust_phone}</td> --%>
-<%--                                             <td width="100" align="center" class="s_Text_gray2_12px">${cdto.cont_term}</td> --%>
-<%--                                             <td width="90" align="center" class="s_Text_gray2_12px">${cdto.open_date}</td> --%>
-<%--                                             <td width="90" align="center" class="s_Text_gray2_12px">${cdto.memo}</td> --%>
-<%--                                             <td width="90" align="center" class="s_Text_gray2_12px">${cdto.write_date}</td> --%>
-<%--                                             <td width="90" align="center" class="s_Text_gray2_12px">${cdto.write_ip}</td> --%>
-<%--                                             <td width="90" align="center" class="s_Text_gray2_12px">${cdto.brc_id}</td> --%>
-<%--                                             <td width="90" align="center" class="s_Text_gray2_12px">${cdto.price_name}</td> --%>
-<%--                                             <td width="90" align="center" class="s_Text_gray2_12px">${cdto.model_code}</td> --%>
-<%--                                             <td width="90" align="center" class="s_Text_gray2_12px">${cdto.rebate}</td> --%>
-<%--                                             <td width="90" align="center" class="s_Text_gray2_12px">${cdto.cust_birth}</td> --%>
-                                            </c:forEach>
+                                          <tr>
+                                          	<td width="100" align="center" class="s_Text_gray2_12px">${cdto.rnum}</td>
+                                            <td width="100" align="center" class="s_Text_gray2_12px">${cdto.cust_name}<a href="view.do"></a></td>
+                                            <td width="100" align="center" class="s_Text_gray2_12px">${cdto.cust_phone}</td>
+                                            <td width="100" align="center" class="s_Text_gray2_12px">${cdto.cont_term}</td>
+                                            <td width="100" align="center" class="s_Text_gray2_12px">${cdto.open_date}</td>
+                                            <td width="100" align="center" class="s_Text_gray2_12px">${cdto.memo}</td>
+                                            <td width="100" align="center" class="s_Text_gray2_12px">${cdto.write_date}</td>
+                                            <td width="100" align="center" class="s_Text_gray2_12px">${cdto.write_ip}</td>
+                                            <td width="100" align="center" class="s_Text_gray2_12px">${cdto.brc_id}</td>
+                                            <td width="100" align="center" class="s_Text_gray2_12px">${cdto.price_name}</td>
+                                            <td width="100" align="center" class="s_Text_gray2_12px">${cdto.model_code}</td>
+                                            <td width="100" align="center" class="s_Text_gray2_12px">${cdto.rebate}</td>
+                                            <td width="100" align="center" class="s_Text_gray2_12px">${cdto.cust_birth}</td>
                                           </tr>
+                                           </c:forEach>
                                       </table></td>
                                       <td width="10">&nbsp;</td>
                                     </tr>
