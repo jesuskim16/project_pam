@@ -26,7 +26,7 @@ public class AdmBranchAct {
 	}
 	
 	@RequestMapping("admBranchIdCheck.do")
-	public @ResponseBody String admBranchIdCheck(String brc_id){
+	public  @ResponseBody  String admBranchIdCheck(String brc_id){
 		String idCheck = ABDao.admBranchIdCheck(brc_id);
 		if(!brc_id.equals(idCheck)){
 			idCheck = "empty";

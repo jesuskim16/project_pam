@@ -46,13 +46,13 @@
                                               <tr>
                                                 <td width="5"></td>
                                                 <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
-<!-- 제목 -->
+<!-- 아이디 -->
                                                   <tr>
                                                     <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
                                                       <tr>
                                                         <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
                                                           <tr>
-                                                            <td width="13" align="top"><img src="admin/img/icon.dot.blue2.gif" alt="" width="3" height="3"></td>
+                                                            <td width="13" align="center"><img src="admin/img/icon.dot.red2.gif" alt="" width="4" height="4"></td>
                                                             <td height="26">아이디</td>
                                                           </tr>
                                                         </table></td>
@@ -62,8 +62,8 @@
                                                       </tr>
                                                     </table></td>                                                  
                                                   </tr>
-<!-- /제목 -->
-<!-- 제목 -->
+<!-- /아이디 -->
+<!-- 비밀번호 -->
                                                   <tr>
                                                     <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
                                                       <tr>
@@ -72,7 +72,7 @@
                                                       <tr>
                                                         <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
                                                           <tr>
-                                                            <td width="13" align="center"><img src="admin/img/icon.dot.blue2.gif" alt="" width="3" height="3"></td>
+                                                            <td width="13" align="center"><img src="admin/img/icon.dot.red2.gif" alt="" width="4" height="4"></td>
                                                             <td height="26">비밀번호</td>
                                                           </tr>
                                                         </table></td>
@@ -82,8 +82,8 @@
                                                       </tr>
                                                     </table></td>                                                  
                                                   </tr>
-<!-- /제목 -->
-<!-- 제목 -->
+<!-- /비밀번호 -->
+<!-- 비밀번호 확인 -->
                                                   <tr>
                                                     <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
                                                       <tr>
@@ -92,7 +92,7 @@
                                                       <tr>
                                                         <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
                                                           <tr>
-                                                            <td width="13" align="center"><img src="admin/img/icon.dot.blue2.gif" alt="" width="3" height="3"></td>
+                                                            <td width="13" align="center"><img src="admin/img/icon.dot.red2.gif" alt="" width="4" height="4"></td>
                                                             <td height="26">비밀번호 확인</td>
                                                           </tr>
                                                         </table></td>
@@ -102,8 +102,8 @@
                                                       </tr>
                                                     </table></td>                                                  
                                                   </tr>
-<!-- /제목 -->
-<!-- 제목 -->
+<!-- /비밀번호 확인 -->
+<!-- 지점명 -->
                                                   <tr>
                                                     <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
                                                       <tr>
@@ -112,7 +112,7 @@
                                                       <tr>
                                                         <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
                                                           <tr>
-                                                            <td width="13" align="center"><img src="admin/img/icon.dot.blue2.gif" alt="" width="3" height="3"></td>
+                                                            <td width="13" align="center"></td>
                                                             <td height="26">지점명</td>
                                                           </tr>
                                                         </table></td>
@@ -122,8 +122,8 @@
                                                       </tr>
                                                     </table></td>                                                  
                                                   </tr>
-<!-- /제목 -->
-<!-- 제목 -->
+<!-- /지점명 -->
+<!-- 지점 전화번호 -->
                                                   <tr>
                                                     <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
                                                       <tr>
@@ -132,7 +132,7 @@
                                                       <tr>
                                                         <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
                                                           <tr>
-                                                            <td width="13" align="center"><img src="admin/img/icon.dot.blue2.gif" alt="" width="3" height="3"></td>
+                                                            <td width="13" align="center"></td>
                                                             <td height="26">지점 전화번호</td>
                                                           </tr>
                                                         </table></td>
@@ -142,8 +142,8 @@
                                                       </tr>
                                                     </table></td>                                                  
                                                   </tr>
-<!-- /제목 -->
-<!-- 제목 -->
+<!-- /지점 전화번호 -->
+<!-- 지점 주소 -->
                                                   <tr>
                                                     <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
                                                       <tr>
@@ -152,7 +152,7 @@
                                                       <tr>
                                                         <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
                                                           <tr>
-                                                            <td width="13" align="center"><img src="admin/img/icon.dot.blue2.gif" alt="" width="3" height="3"></td>
+                                                            <td width="13" align="center"></td>
                                                             <td height="46">지점 주소</td>
                                                           </tr>
                                                         </table></td>
@@ -162,8 +162,8 @@
                                                       </tr>
                                                     </table></td>                                                  
                                                   </tr>
-<!-- /제목 -->
-<!-- 제목 -->
+<!-- /지점 주소 -->
+<!-- 지점 상세주소 -->
                                                   <tr>
                                                     <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
                                                       <tr>
@@ -172,7 +172,7 @@
                                                       <tr>
                                                         <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
                                                           <tr>
-                                                            <td width="13" align="center"><img src="admin/img/icon.dot.blue2.gif" alt="" width="3" height="3"></td>
+                                                            <td width="13" align="center"></td>
                                                             <td height="26">지점 상세주소</td>
                                                           </tr>
                                                         </table></td>
@@ -182,8 +182,8 @@
                                                       </tr>
                                                     </table></td>                                                  
                                                   </tr>
-<!-- /제목 -->
-<!-- 제목 -->
+<!-- /지점 상세주소 -->
+<!-- 대표자 이름 -->
                                                   <tr>
                                                     <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
                                                       <tr>
@@ -192,7 +192,7 @@
                                                       <tr>
                                                         <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
                                                           <tr>
-                                                            <td width="13" align="center"><img src="admin/img/icon.dot.blue2.gif" alt="" width="3" height="3"></td>
+                                                            <td width="13" align="center"><img src="admin/img/icon.dot.red2.gif" alt="" width="4" height="4"></td>
                                                             <td height="26">대표자 이름</td>
                                                           </tr>
                                                         </table></td>
@@ -202,8 +202,8 @@
                                                       </tr>
                                                     </table></td>                                                  
                                                   </tr>
-<!-- /제목 -->
-<!-- 제목 -->
+<!-- /대표자 이름 -->
+<!-- 대표자 연락처 -->
                                                   <tr>
                                                     <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
                                                       <tr>
@@ -212,7 +212,7 @@
                                                       <tr>
                                                         <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
                                                           <tr>
-                                                            <td width="13" align="center"><img src="admin/img/icon.dot.blue2.gif" alt="" width="3" height="3"></td>
+                                                            <td width="13" align="center"><!-- <img src="admin/img/icon.dot.blue2.gif" alt="" width="3" height="3"> --></td>
                                                             <td height="26">대표자 연락처</td>
                                                           </tr>
                                                         </table></td>
@@ -222,8 +222,8 @@
                                                       </tr>
                                                     </table></td>                                                  
                                                   </tr>
-<!-- /제목 -->
-<!-- 제목 -->
+<!-- /대표자 연락처 -->
+<!-- 지점 선택 -->
                                                   <tr>
                                                     <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
                                                       <tr>
@@ -232,7 +232,7 @@
                                                       <tr>
                                                         <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
                                                           <tr>
-                                                            <td width="13" align="center"><img src="admin/img/icon.dot.blue2.gif" alt="" width="3" height="3"></td>
+                                                            <td width="13" align="center"><img src="admin/img/icon.dot.red2.gif" alt="" width="4" height="4"></td>
                                                             <td height="26">지점 선택</td>
                                                           </tr>
                                                         </table></td>
@@ -242,7 +242,7 @@
                                                       </tr>
                                                     </table></td>                                                  
                                                   </tr>
-<!-- /제목 -->
+<!-- /지점 선택 -->
 
 <!-- 라인 -->                                      
                                                   <tr>
@@ -250,7 +250,7 @@
                                                   </tr>
 <!-- /라인 -->                                                  
                                                
-<!--  -->                                                  
+<!-- 입력창 부분 시작 -->                                                  
                                                 </table></td>
                                                 <td width="5"></td>
                                               </tr>
@@ -299,7 +299,7 @@
                                                   <tr>
                                                     <td height="26"><table border="0" cellpadding="0" cellspacing="2" bgcolor="cdcdcd">
                                                       <tr>
-                                                        <td height="20" valign="bottom" bgcolor="#FFFFFF"><input name="titles" type="text" class="input_bg_white" id="textfield3" size="11"></td>
+                                                        <td height="20" valign="bottom" bgcolor="#FFFFFF"><input name="password" id="password" type="password" class="input_bg_white" id="textfield3" size="11"></td>
                                                       </tr>
                                                     </table></td>
                                                   </tr>
@@ -318,7 +318,9 @@
                                                   <tr>
                                                     <td height="26"><table border="0" cellpadding="0" cellspacing="2" bgcolor="cdcdcd">
                                                       <tr>
-                                                        <td height="20" valign="bottom" bgcolor="#FFFFFF"><input name="titles" type="text" class="input_bg_white" id="textfield3" size="11"></td>
+                                                        <td height="20" valign="bottom" bgcolor="#FFFFFF"><input name="re_password" id="re_password" type="password" class="input_bg_white" id="textfield3" size="11"></td>
+                                                        <td width="5" height="20" valign="center" bgcolor="#FFFFFF"></td>
+                                                        <td height="20" valign="center" bgcolor="#FFFFFF"><div id="password_Check"></div></td>
                                                       </tr>
                                                     </table></td>
                                                   </tr>
@@ -338,7 +340,7 @@
                                                   <tr>
                                                     <td height="26"><table border="0" cellpadding="0" cellspacing="2" bgcolor="cdcdcd">
                                                       <tr>
-                                                        <td height="20" valign="bottom" bgcolor="#FFFFFF"><input name="titles" type="text" class="input_bg_white" id="textfield3" size="20"></td>
+                                                        <td height="20" valign="bottom" bgcolor="#FFFFFF"><input name="brc_name" type="text" class="input_bg_white" id="textfield3" size="20"></td>
                                                       </tr>
                                                     </table></td>
                                                   </tr>
@@ -358,15 +360,16 @@
                                                     <td height="26"><table border="0" cellpadding="0" cellspacing="2" bgcolor="cdcdcd">
                                                       <tr>
                                                         <td height="20" valign="bottom" bgcolor="#FFFFFF">
-                                                        <select class="input_bg_white">
-                                                        	<option>011</option>
-                                                        	<option>010</option>
-                                                        	<option>016</option>
-                                                        	<option>017</option>
-                                                        	<option>019</option>
-                                                        </select>
-                                                        <input name="titles" type="text" class="input_bg_white" id="textfield3" size="3" maxlength="4">
-                                                        <input name="titles" type="text" class="input_bg_white" id="textfield3" size="3" maxlength="4">
+			                                              <select name="brc_phone1" class="input_bg_white" >
+				                                            <option>02</option><option>031</option><option>032</option>
+				                                            <option>033</option><option>041</option><option>042</option>
+				                                            <option>043</option><option>051</option><option>052</option>
+				                                            <option>053</option><option>054</option><option>055</option>
+				                                            <option>061</option><option>062</option><option>063</option>
+				                                            <option>064</option><option>070</option>
+				                                          </select>
+                                                        <input name="brc_phone2" type="text" class="input_bg_white" id="textfield3" size="3" maxlength="4">
+                                                        <input name="brc_phone3" type="text" class="input_bg_white" id="textfield3" size="3" maxlength="4">
                                                         </td>
                                                       </tr>
                                                     </table></td>
@@ -387,13 +390,13 @@
                                                     <td height="26"><table border="0" cellpadding="0" cellspacing="2" bgcolor="cdcdcd">
                                                       <tr>
                                                       	<td height="20" valign="bottom" bgcolor="#FFFFFF">
-                                                      		<input name="titles" type="text" class="input_bg_white" id="textfield3" size="1" maxlength="3" readonly="readonly">
-                                                      		<input name="titles" type="text" class="input_bg_white" id="textfield3" size="1" maxlength="3" readonly="readonly">
+                                                      		<input name="brc_post1" type="text" class="input_bg_white" id="brc_post1" size="1" maxlength="3" readonly="readonly">
+                                                      		<input name="brc_post2" type="text" class="input_bg_white" id="brc_post2" size="1" maxlength="3" readonly="readonly">
                                                       		<input type="button" class="input_bg_gray" value="우편번호 검색" onclick="javascript:test();">
                                                       	</td>
                                                       </tr>
                                                       <tr>
-                                                        <td height="20" valign="bottom" bgcolor="#FFFFFF"><input name="titles" type="text" class="input_bg_white" id="textfield3" size="30" readonly="readonly"></td>
+                                                        <td height="20" valign="bottom" bgcolor="#FFFFFF"><input name="brc_addr1" type="text" class="input_bg_white" id="textfield3" size="30" readonly="readonly"></td>
                                                       </tr>
                                                     </table></td>
                                                   </tr>
@@ -412,7 +415,7 @@
                                                   <tr>
                                                     <td height="26"><table border="0" cellpadding="0" cellspacing="2" bgcolor="cdcdcd">
                                                       <tr>
-                                                        <td height="20" valign="bottom" bgcolor="#FFFFFF"><input name="titles" type="text" class="input_bg_white" id="textfield3" size="45"></td>
+                                                        <td height="20" valign="bottom" bgcolor="#FFFFFF"><input name="brc_addr2" type="text" class="input_bg_white" id="textfield3" size="45"></td>
                                                       </tr>
                                                     </table></td>
                                                   </tr>
@@ -431,7 +434,9 @@
                                                   <tr>
                                                     <td height="26"><table border="0" cellpadding="0" cellspacing="2" bgcolor="cdcdcd">
                                                       <tr>
-                                                        <td height="20" valign="bottom" bgcolor="#FFFFFF"><input name="titles" type="text" class="input_bg_white" id="textfield3" size="15" maxlength="10"></td>
+                                                        <td height="20" valign="bottom" bgcolor="#FFFFFF"><input name="brc_boss" type="text" class="input_bg_white" id="brc_boss" size="15" maxlength="10"></td>
+                                                        <td width="5" height="20" valign="bottom" bgcolor="#FFFFFF"></td>
+                                                        <td height="20" valign="bottom" bgcolor="#FFFFFF"><div id="brc_bossCheck"></div></td>
                                                       </tr>
                                                     </table></td>
                                                   </tr>
@@ -451,15 +456,16 @@
                                                     <td height="26"><table border="0" cellpadding="0" cellspacing="2" bgcolor="cdcdcd">
                                                       <tr>
                                                         <td height="20" valign="bottom" bgcolor="#FFFFFF">
-                                                        <select class="input_bg_white">
-                                                        	<option>011</option>
-                                                        	<option>010</option>
-                                                        	<option>016</option>
-                                                        	<option>017</option>
-                                                        	<option>019</option>
-                                                        </select>                                                        
-                                                        <input name="titles" type="text" class="input_bg_white" id="textfield3" size="3" maxlength="4">
-                                                        <input name="titles" type="text" class="input_bg_white" id="textfield3" size="3" maxlength="4">
+                                                        <select class="input_bg_white" name="brc_phone1" id="boss_phone1">
+                                                        	<option value="011">011</option>
+                                                        	<option value="010" selected>010</option>
+                                                        	<option value="016">016</option>
+                                                        	<option value="017">017</option>
+                                                        	<option value="018">018</option>
+                                                        	<option value="019">019</option>
+                                                        </select>                                                       
+                                                        <input name="boss_phone2" type="text" class="input_bg_white" id="boss_phone2" size="3" maxlength="4">
+                                                        <input name="boss_phone3" type="text" class="input_bg_white" id="boss_phone3" size="3" maxlength="4">
                                                         </td>
                                                       </tr>
                                                     </table></td>
@@ -483,7 +489,7 @@
                                                             <select class="input_bg_white">
 	                                                        	<option>대리점</option>
 	                                                        	<option>판매점</option>
-                                                        </selsect>
+                                                        	</select>
                                                         </td>
                                                       </tr>
                                                     </table></td>
