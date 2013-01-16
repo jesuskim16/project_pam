@@ -1,6 +1,5 @@
 $(document).ready(function(){
-	$("#brc_id").focusout(function() {
-		
+	$("#brc_id").focusout(function() {		
 		var cmttxt =trim($("input[name=brc_id]").val()); 
 		if(cmttxt == "") { 
 		alert("ID를 입력해 주세요");
@@ -29,14 +28,12 @@ $(document).ready(function(){
 			},
 			error : function() {
 				alert("읽을 수 없습니다");
-			}
-			
+			}			
 		});
 		function trim(str) {
 			return str.replace(/^\s\s*/, '').replace(/\s\s*$/, ''); 
 		} 
 	});
-
 });
 
 

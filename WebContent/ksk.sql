@@ -248,3 +248,13 @@ SELECT * FROM branch
 SELECT row_number()over (ORDER BY c.seq ASC) as rown, c.seq , c.cust_name, c.model_code, c.price_name, c.cont_term, to_char(open_date,'YYYY-MM-DD') as open_date
 FROM custominfo c join branch b
 using (brc_id)
+
+select * from branch
+
+SELECT brc_id 
+FROM branch
+WHERE brc_id like 
+
+SELECT NVL(brc_id , 'empty') as brc_id
+FROM branch
+WHERE brc_id like 'manager3'
