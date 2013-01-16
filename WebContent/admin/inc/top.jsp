@@ -7,6 +7,7 @@
 <title>PAM::관리자페이지</title>
 <link href="admin/css/admin.css" rel="stylesheet" type="text/css">
 <link href="admin/css/style.css" rel="stylesheet" type="text/css">
+<link href="admin/css/jquery.toastmessage.css" rel="stylesheet" type="text/css"> 
 </head>
 <head>
 <body leftmargin="0" topmargin="0">

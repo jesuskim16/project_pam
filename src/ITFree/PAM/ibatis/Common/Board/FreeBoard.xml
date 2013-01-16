@@ -13,9 +13,9 @@
 	FROM (SELECT  A.*,rownum as rnum
 		  FROM (SELECT row_number()over (ORDER BY seq ASC) as rown,seq,board_chk,title,content,readcount,rp_seq,
 				to_char(write_date , 'YYYY-MM-DD') as write_date,brc_id,
-					 (select  count(*) as rp_cnt from board rp where 
-      				 exists(select * from board where rp.rp_seq=bd.seq)
-     				 )as rp_cnt
+					 (select  count(*) as rp_cnt 
+					  from board rp 
+					  where exists(select * from board where rp.rp_seq=bd.seq)) AS rp_cnt
 				FROM board bd
 				WHERE rp_seq = 0
 				<isEqual property="searchCondition" compareValue="title">

@@ -1,11 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    
+<script type="text/javascript" src="js/jquery-1.8.3.min.js"></script>
+<script type="text/javascript" src="js/branch_Insert.js"></script> 
+<script type="text/javascript" src="js/jquery.toastmessage.js"></script> 
 <jsp:include page="/admin/inc/top.jsp"/>
-
-<link rel="stylesheet" href="editor/css/editor.css" type="text/css" charset="utf-8"/>
-<script src="editor/js/editor_loader.js" type="text/javascript" charset="utf-8"></script>
-
 <jsp:include page="/admin/inc/menu_branch.jsp"/>
 <table width="600" border="0" align="center" cellpadding="0" cellspacing="0">
   <tr>
@@ -39,9 +37,9 @@
                                     <td width="5">&nbsp;</td>
                                     <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
                                       <tr>
-                                        <td width="102" valign="top"><table border="0" cellspacing="0" cellpadding="0">
-                                          <tr>
-                                            <td><img src="admin/img/board.write.intop.gif" width="102" height="8"></td>
+                                        <td width="102" valign="bottom"><table border="0" cellspacing="0" cellpadding="0" >
+                                          <tr bgcolor="ffffff" >                                          
+                                            <td ><img src="admin/img/board.write.intop.gif" width="102" height="8" align="bottom"></td>
                                           </tr>
                                           <tr>
                                             <td bgcolor="#EEEEEE"><table width="100%" border="0" cellspacing="0" cellpadding="0">
@@ -52,13 +50,10 @@
                                                   <tr>
                                                     <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
                                                       <tr>
-                                                        <td height="5"></td>
-                                                      </tr>
-                                                      <tr>
                                                         <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
                                                           <tr>
-                                                            <td width="13" align="center"><img src="admin/img/icon.dot.blue2.gif" alt="" width="3" height="3"></td>
-                                                            <td height="26">제목</td>
+                                                            <td width="13" align="top"><img src="admin/img/icon.dot.blue2.gif" alt="" width="3" height="3"></td>
+                                                            <td height="26">아이디</td>
                                                           </tr>
                                                         </table></td>
                                                       </tr>
@@ -68,11 +63,7 @@
                                                     </table></td>                                                  
                                                   </tr>
 <!-- /제목 -->
-<!-- 라인 -->                                      
-                                                  <tr>
-                                                    <td height="2" background="admin/img/board.write.inline.gif"></td>
-                                                  </tr>
-<!-- /라인 -->                                                  
+<!-- 제목 -->
                                                   <tr>
                                                     <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
                                                       <tr>
@@ -82,15 +73,183 @@
                                                         <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
                                                           <tr>
                                                             <td width="13" align="center"><img src="admin/img/icon.dot.blue2.gif" alt="" width="3" height="3"></td>
-                                                            <td height="26">첨부파일</td>
+                                                            <td height="26">비밀번호</td>
                                                           </tr>
                                                         </table></td>
                                                       </tr>
                                                       <tr>
                                                         <td height="5"></td>
                                                       </tr>
-                                                    </table></td>
-                                                  </tr>                                                
+                                                    </table></td>                                                  
+                                                  </tr>
+<!-- /제목 -->
+<!-- 제목 -->
+                                                  <tr>
+                                                    <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                                      <tr>
+                                                        <td height="5"></td>
+                                                      </tr>
+                                                      <tr>
+                                                        <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                                          <tr>
+                                                            <td width="13" align="center"><img src="admin/img/icon.dot.blue2.gif" alt="" width="3" height="3"></td>
+                                                            <td height="26">비밀번호 확인</td>
+                                                          </tr>
+                                                        </table></td>
+                                                      </tr>
+                                                      <tr>
+                                                        <td height="5"></td>
+                                                      </tr>
+                                                    </table></td>                                                  
+                                                  </tr>
+<!-- /제목 -->
+<!-- 제목 -->
+                                                  <tr>
+                                                    <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                                      <tr>
+                                                        <td height="5"></td>
+                                                      </tr>
+                                                      <tr>
+                                                        <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                                          <tr>
+                                                            <td width="13" align="center"><img src="admin/img/icon.dot.blue2.gif" alt="" width="3" height="3"></td>
+                                                            <td height="26">지점명</td>
+                                                          </tr>
+                                                        </table></td>
+                                                      </tr>
+                                                      <tr>
+                                                        <td height="5"></td>
+                                                      </tr>
+                                                    </table></td>                                                  
+                                                  </tr>
+<!-- /제목 -->
+<!-- 제목 -->
+                                                  <tr>
+                                                    <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                                      <tr>
+                                                        <td height="5"></td>
+                                                      </tr>
+                                                      <tr>
+                                                        <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                                          <tr>
+                                                            <td width="13" align="center"><img src="admin/img/icon.dot.blue2.gif" alt="" width="3" height="3"></td>
+                                                            <td height="26">지점 전화번호</td>
+                                                          </tr>
+                                                        </table></td>
+                                                      </tr>
+                                                      <tr>
+                                                        <td height="5"></td>
+                                                      </tr>
+                                                    </table></td>                                                  
+                                                  </tr>
+<!-- /제목 -->
+<!-- 제목 -->
+                                                  <tr>
+                                                    <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                                      <tr>
+                                                        <td height="5"></td>
+                                                      </tr>
+                                                      <tr>
+                                                        <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                                          <tr>
+                                                            <td width="13" align="center"><img src="admin/img/icon.dot.blue2.gif" alt="" width="3" height="3"></td>
+                                                            <td height="46">지점 주소</td>
+                                                          </tr>
+                                                        </table></td>
+                                                      </tr>
+                                                      <tr>
+                                                        <td height="5"></td>
+                                                      </tr>
+                                                    </table></td>                                                  
+                                                  </tr>
+<!-- /제목 -->
+<!-- 제목 -->
+                                                  <tr>
+                                                    <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                                      <tr>
+                                                        <td height="5"></td>
+                                                      </tr>
+                                                      <tr>
+                                                        <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                                          <tr>
+                                                            <td width="13" align="center"><img src="admin/img/icon.dot.blue2.gif" alt="" width="3" height="3"></td>
+                                                            <td height="26">지점 상세주소</td>
+                                                          </tr>
+                                                        </table></td>
+                                                      </tr>
+                                                      <tr>
+                                                        <td height="5"></td>
+                                                      </tr>
+                                                    </table></td>                                                  
+                                                  </tr>
+<!-- /제목 -->
+<!-- 제목 -->
+                                                  <tr>
+                                                    <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                                      <tr>
+                                                        <td height="5"></td>
+                                                      </tr>
+                                                      <tr>
+                                                        <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                                          <tr>
+                                                            <td width="13" align="center"><img src="admin/img/icon.dot.blue2.gif" alt="" width="3" height="3"></td>
+                                                            <td height="26">대표자 이름</td>
+                                                          </tr>
+                                                        </table></td>
+                                                      </tr>
+                                                      <tr>
+                                                        <td height="5"></td>
+                                                      </tr>
+                                                    </table></td>                                                  
+                                                  </tr>
+<!-- /제목 -->
+<!-- 제목 -->
+                                                  <tr>
+                                                    <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                                      <tr>
+                                                        <td height="5"></td>
+                                                      </tr>
+                                                      <tr>
+                                                        <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                                          <tr>
+                                                            <td width="13" align="center"><img src="admin/img/icon.dot.blue2.gif" alt="" width="3" height="3"></td>
+                                                            <td height="26">대표자 연락처</td>
+                                                          </tr>
+                                                        </table></td>
+                                                      </tr>
+                                                      <tr>
+                                                        <td height="5"></td>
+                                                      </tr>
+                                                    </table></td>                                                  
+                                                  </tr>
+<!-- /제목 -->
+<!-- 제목 -->
+                                                  <tr>
+                                                    <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                                      <tr>
+                                                        <td height="5"></td>
+                                                      </tr>
+                                                      <tr>
+                                                        <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                                          <tr>
+                                                            <td width="13" align="center"><img src="admin/img/icon.dot.blue2.gif" alt="" width="3" height="3"></td>
+                                                            <td height="26">지점 선택</td>
+                                                          </tr>
+                                                        </table></td>
+                                                      </tr>
+                                                      <tr>
+                                                        <td height="5"></td>
+                                                      </tr>
+                                                    </table></td>                                                  
+                                                  </tr>
+<!-- /제목 -->
+
+<!-- 라인 -->                                      
+                                                  <tr>
+                                                    <td height="2" background="admin/img/board.write.inline.gif"></td>
+                                                  </tr>
+<!-- /라인 -->                                                  
+                                               
 <!--  -->                                                  
                                                 </table></td>
                                                 <td width="5"></td>
@@ -108,7 +267,30 @@
                                           </tr>
                                           <tr>
                                             <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
-<!-- 제목 -->                                  
+<!-- 아이디 -->                                  
+                                              <tr>
+                                                <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                                  <tr>
+                                                    <td height="10"></td>
+                                                  </tr>
+                                                  <tr>
+                                                    <td height="25" bgcolor="ffffff"><table border="0" cellpadding="0" cellspacing="2" bgcolor="cdcdcd">
+                                                      <tr>
+                                                        <td height="20" valign="bottom" bgcolor="#FFFFFF">
+                                                        	<input id="brc_id" name="brc_id" type="text" class="input_bg_white" id="textfield3" size="11" maxlength="11">                                                        	
+                                                        </td>
+                                                        <td width="5" height="20" valign="center" bgcolor="#FFFFFF"></td>
+                                                        <td height="20" valign="center" bgcolor="#FFFFFF">   <div id="idCheck"></div></td>                                                        
+                                                      </tr>
+                                                    </table></td>
+                                                  </tr>
+                                                  <tr>
+                                                    <td height="5"></td>
+                                                  </tr>
+                                                </table></td>
+                                              </tr>
+<!-- /아이디 -->
+<!-- 비밀번호 -->                                  
                                               <tr>
                                                 <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
                                                   <tr>
@@ -117,7 +299,7 @@
                                                   <tr>
                                                     <td height="26"><table border="0" cellpadding="0" cellspacing="2" bgcolor="cdcdcd">
                                                       <tr>
-                                                        <td height="20" valign="bottom" bgcolor="#FFFFFF"><input name="titles" type="text" class="input_bg_white" id="textfield3" size="80"></td>
+                                                        <td height="20" valign="bottom" bgcolor="#FFFFFF"><input name="titles" type="text" class="input_bg_white" id="textfield3" size="11"></td>
                                                       </tr>
                                                     </table></td>
                                                   </tr>
@@ -126,27 +308,17 @@
                                                   </tr>
                                                 </table></td>
                                               </tr>
-<!-- /제목 -->
-<!-- 라인 -->                                                 
-                                              <tr>
-                                                <td height="2" background="admin/img/board.write.inline.gif"></td>
-                                              </tr>
-<!-- /라인 -->                                                 
+<!-- /비밀번호 -->
+<!-- 비밀번호 -->                                  
                                               <tr>
                                                 <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
                                                   <tr>
                                                     <td height="5"></td>
                                                   </tr>
                                                   <tr>
-                                                    <td height="26"><table border="0" cellspacing="0" cellpadding="0">
+                                                    <td height="26"><table border="0" cellpadding="0" cellspacing="2" bgcolor="cdcdcd">
                                                       <tr>
-                                                        <td><table border="0" cellpadding="0" cellspacing="2" bgcolor="cdcdcd">
-                                                          <tr>
-                                                            <td height="20" valign="bottom" bgcolor="#FFFFFF"><input name="file1" type="file" class="input_bg_white" id="textfield" size="66"></td>
-                                                          </tr>
-                                                        </table></td>
-                                                        <td width="5"></td>
-                                                        <td></td>
+                                                        <td height="20" valign="bottom" bgcolor="#FFFFFF"><input name="titles" type="text" class="input_bg_white" id="textfield3" size="11"></td>
                                                       </tr>
                                                     </table></td>
                                                   </tr>
@@ -155,7 +327,173 @@
                                                   </tr>
                                                 </table></td>
                                               </tr>
-<!--  -->                                                      
+<!-- /비밀번호 -->
+
+<!-- 지점명 -->                                  
+                                              <tr>
+                                                <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                                  <tr>
+                                                    <td height="5"></td>
+                                                  </tr>
+                                                  <tr>
+                                                    <td height="26"><table border="0" cellpadding="0" cellspacing="2" bgcolor="cdcdcd">
+                                                      <tr>
+                                                        <td height="20" valign="bottom" bgcolor="#FFFFFF"><input name="titles" type="text" class="input_bg_white" id="textfield3" size="20"></td>
+                                                      </tr>
+                                                    </table></td>
+                                                  </tr>
+                                                  <tr>
+                                                    <td height="5"></td>
+                                                  </tr>
+                                                </table></td>
+                                              </tr>
+<!-- /지점명 -->
+<!-- 지점 전화번호 -->                                  
+                                              <tr>
+                                                <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                                  <tr>
+                                                    <td height="5"></td>
+                                                  </tr>
+                                                  <tr>
+                                                    <td height="26"><table border="0" cellpadding="0" cellspacing="2" bgcolor="cdcdcd">
+                                                      <tr>
+                                                        <td height="20" valign="bottom" bgcolor="#FFFFFF">
+                                                        <select class="input_bg_white">
+                                                        	<option>011</option>
+                                                        	<option>010</option>
+                                                        	<option>016</option>
+                                                        	<option>017</option>
+                                                        	<option>019</option>
+                                                        </select>
+                                                        <input name="titles" type="text" class="input_bg_white" id="textfield3" size="3" maxlength="4">
+                                                        <input name="titles" type="text" class="input_bg_white" id="textfield3" size="3" maxlength="4">
+                                                        </td>
+                                                      </tr>
+                                                    </table></td>
+                                                  </tr>
+                                                  <tr>
+                                                    <td height="5"></td>
+                                                  </tr>
+                                                </table></td>
+                                              </tr>
+<!-- /지점 전화번호  -->
+<!-- 주소 -->                                  
+                                              <tr>
+                                                <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                                  <tr>
+                                                    <td height="5"></td>
+                                                  </tr>
+                                                  <tr>
+                                                    <td height="26"><table border="0" cellpadding="0" cellspacing="2" bgcolor="cdcdcd">
+                                                      <tr>
+                                                      	<td height="20" valign="bottom" bgcolor="#FFFFFF">
+                                                      		<input name="titles" type="text" class="input_bg_white" id="textfield3" size="1" maxlength="3" readonly="readonly">
+                                                      		<input name="titles" type="text" class="input_bg_white" id="textfield3" size="1" maxlength="3" readonly="readonly">
+                                                      		<input type="button" class="input_bg_gray" value="우편번호 검색" onclick="javascript:test();">
+                                                      	</td>
+                                                      </tr>
+                                                      <tr>
+                                                        <td height="20" valign="bottom" bgcolor="#FFFFFF"><input name="titles" type="text" class="input_bg_white" id="textfield3" size="30" readonly="readonly"></td>
+                                                      </tr>
+                                                    </table></td>
+                                                  </tr>
+                                                  <tr>
+                                                    <td height="5"></td>
+                                                  </tr>
+                                                </table></td>
+                                              </tr>
+<!-- /주소 -->
+<!-- 상세주소 -->                                  
+                                              <tr>
+                                                <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                                  <tr>
+                                                    <td height="5"></td>
+                                                  </tr>
+                                                  <tr>
+                                                    <td height="26"><table border="0" cellpadding="0" cellspacing="2" bgcolor="cdcdcd">
+                                                      <tr>
+                                                        <td height="20" valign="bottom" bgcolor="#FFFFFF"><input name="titles" type="text" class="input_bg_white" id="textfield3" size="45"></td>
+                                                      </tr>
+                                                    </table></td>
+                                                  </tr>
+                                                  <tr>
+                                                    <td height="5"></td>
+                                                  </tr>
+                                                </table></td>
+                                              </tr>
+<!-- /상세주소 -->
+<!-- 대표자이름 -->                                  
+                                              <tr>
+                                                <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                                  <tr>
+                                                    <td height="5"></td>
+                                                  </tr>
+                                                  <tr>
+                                                    <td height="26"><table border="0" cellpadding="0" cellspacing="2" bgcolor="cdcdcd">
+                                                      <tr>
+                                                        <td height="20" valign="bottom" bgcolor="#FFFFFF"><input name="titles" type="text" class="input_bg_white" id="textfield3" size="15" maxlength="10"></td>
+                                                      </tr>
+                                                    </table></td>
+                                                  </tr>
+                                                  <tr>
+                                                    <td height="5"></td>
+                                                  </tr>
+                                                </table></td>
+                                              </tr>
+<!-- /대표자이름 -->
+<!-- 대표자 연락처 -->                                  
+                                              <tr>
+                                                <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                                  <tr>
+                                                    <td height="5"></td>
+                                                  </tr>
+                                                  <tr>
+                                                    <td height="26"><table border="0" cellpadding="0" cellspacing="2" bgcolor="cdcdcd">
+                                                      <tr>
+                                                        <td height="20" valign="bottom" bgcolor="#FFFFFF">
+                                                        <select class="input_bg_white">
+                                                        	<option>011</option>
+                                                        	<option>010</option>
+                                                        	<option>016</option>
+                                                        	<option>017</option>
+                                                        	<option>019</option>
+                                                        </select>                                                        
+                                                        <input name="titles" type="text" class="input_bg_white" id="textfield3" size="3" maxlength="4">
+                                                        <input name="titles" type="text" class="input_bg_white" id="textfield3" size="3" maxlength="4">
+                                                        </td>
+                                                      </tr>
+                                                    </table></td>
+                                                  </tr>
+                                                  <tr>
+                                                    <td height="5"></td>
+                                                  </tr>
+                                                </table></td>
+                                              </tr>
+<!-- /대표자 연락처 -->
+<!-- 지점선택 -->                                  
+                                              <tr>
+                                                <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                                  <tr>
+                                                    <td height="5"></td>
+                                                  </tr>
+                                                  <tr>
+                                                    <td height="26"><table border="0" cellpadding="0" cellspacing="2" bgcolor="cdcdcd">
+                                                      <tr>
+                                                        <td height="20" valign="bottom" bgcolor="#FFFFFF">
+                                                            <select class="input_bg_white">
+	                                                        	<option>대리점</option>
+	                                                        	<option>판매점</option>
+                                                        </selsect>
+                                                        </td>
+                                                      </tr>
+                                                    </table></td>
+                                                  </tr>
+                                                  <tr>
+                                                    <td height="5"></td>
+                                                  </tr>
+                                                </table></td>
+                                              </tr>
+                                                    
                                             </table></td>
                                           </tr>
                                           <tr>

@@ -10,6 +10,7 @@
 		useStatementNamespaces="true"/>
 	<!-- 관리자 부분 -->
 	<sqlMap resource="ITFree/PAM/ibatis/Admin/AdmClient.xml"/>
+	<sqlMap resource="ITFree/PAM/ibatis/Admin/AdmBranch.xml"/>
 	<!-- 대리점 부분 -->
 	<sqlMap resource="ITFree/PAM/ibatis/Agent/SaleMgr/SaleMgr.xml"/>	
 	<sqlMap resource="ITFree/PAM/ibatis/Agent/ModelRcd/ModelRcd.xml" />
