@@ -8,4 +8,8 @@ public interface AdmClientDao {
 
 	long ListTotalCount(AdmClientPageDto pageDto);
 
+	AdmClientDto AdmClientView(long seq);
+
+	boolean AdmClientDelete(AdmClientDto cdto);
+
 }

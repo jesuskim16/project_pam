@@ -3,6 +3,16 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <jsp:include page="/admin/inc/top.jsp"/>
 
+<script type="text/javascript">
+var view = function(seq){
+	var url = "admClientView.do?seq="+seq;
+	open(url, "confirm", 
+			"toolbar=no, location=no, status=no, menubar=no, scrolbar=yes" +
+	"resizeble=no, width=700, height=345");
+}
+
+</script>
+
 <br>
 <center>    
 <table width="800" border="0" align="center" cellpadding="0" cellspacing="0">
@@ -18,79 +28,70 @@
               <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
                   <tr>
                     <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
+                        
                         <tr>
                           <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
                               <tr>
                                 <td width="10"><img src="admin/img/board.bar.left.gif" width="10" height="35"></td>
                                 <td background="admin/img/board.bar.bg.gif"><table width="100%" border="0" cellspacing="0" cellpadding="0">
                                     <tr>
-                                      <th width="90" align="center"><span class="s_Text_gray2_12px_Bold">번호</span></th>
+                                      <th width="30" align="center"><span class="s_Text_gray2_12px_Bold">번호</span></th>
                                       <th width="90" align="center"><span class="s_Text_gray2_12px_Bold">고객이름</span></th>
-                                      <th width="90" align="center"><span class="s_Text_gray2_12px_Bold">고객번호</span></th>
-                                      <th width="90" align="center"><span class="s_Text_gray2_12px_Bold">약정기간</span></th>
-                                      <th width="90" align="center"><span class="s_Text_gray2_12px_Bold">개통일</span></th>
-                                      <th width="90" align="center"><span class="s_Text_gray2_12px_Bold">메모</span></th>
-                                      <th width="90" align="center"><span class="s_Text_gray2_12px_Bold">작성일</span></th>
-                                      <th width="90" align="center"><span class="s_Text_gray2_12px_Bold">작성 IP</span></th>
-                                      <th width="100" align="center"><span class="s_Text_gray2_12px_Bold">판매점 ID</span></th>
-                                      <th width="100" align="center"><span class="s_Text_gray2_12px_Bold">요금제</span></th>
-                                      <th width="100" align="center"><span class="s_Text_gray2_12px_Bold">모델 코드</span></th>
-                                      <th width="100" align="center"><span class="s_Text_gray2_12px_Bold">요금제</span></th>
-                                      <th width="90" align="center"><span class="s_Text_gray2_12px_Bold">주민번호</span></th>
+                                      <th width="100" align="center"><span class="s_Text_gray2_12px_Bold">고객번호</span></th>
+                                      <th width="90"  align="center"><span class="s_Text_gray2_12px_Bold">약정기간</span></th>
+                                      <th width="90" align="center"><span class="s_Text_gray2_12px_Bold">요금제</span></th>
+                                      <th width="120" align="center"><span class="s_Text_gray2_12px_Bold">모델 코드</span></th>
+                                      <th width="150" align="center"><span class="s_Text_gray2_12px_Bold">작성일</span></th>
                                     </tr>
                                 </table></td>
                                 <td width="10"><img src="admin/img/board.bar.right.gif" width="10" height="35"></td>
                               </tr>
                           </table></td>
                         </tr>
+                        
                         <tr>
                           <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
                               <!-- 게시물없을때 -->
-                              <!-- 
+                              <c:if test="${ empty list}">
                               <tr>
                                 <td colspan="12" Height="200" align="center" bgColor="#ffffff">등록된 내용이 없습니다.</td>
                               </tr>
-                              -->
+                              </c:if>
                               <!-- 반복문  -->
+                            <c:forEach items="${list}" var="cdto">
                               <tr>
                                 <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
-                                    <tr>
-                                      <td width="10">&nbsp;</td>
-                                      <td height="30"><table width="100%" border="0" cellspacing="0" cellpadding="0">
-                                          <c:forEach items="${list}" var="cdto">
-                                          <tr>
-                                          	<td width="100" align="center" class="s_Text_gray2_12px">${cdto.rnum}</td>
-                                            <td width="100" align="center" class="s_Text_gray2_12px">${cdto.cust_name}<a href="view.do"></a></td>
-                                            <td width="100" align="center" class="s_Text_gray2_12px">${cdto.cust_phone}</td>
-                                            <td width="100" align="center" class="s_Text_gray2_12px">${cdto.cont_term}</td>
-                                            <td width="100" align="center" class="s_Text_gray2_12px">${cdto.open_date}</td>
-                                            <td width="100" align="center" class="s_Text_gray2_12px">${cdto.memo}</td>
-                                            <td width="100" align="center" class="s_Text_gray2_12px">${cdto.write_date}</td>
-                                            <td width="100" align="center" class="s_Text_gray2_12px">${cdto.write_ip}</td>
-                                            <td width="100" align="center" class="s_Text_gray2_12px">${cdto.brc_id}</td>
-                                            <td width="100" align="center" class="s_Text_gray2_12px">${cdto.price_name}</td>
-                                            <td width="100" align="center" class="s_Text_gray2_12px">${cdto.model_code}</td>
-                                            <td width="100" align="center" class="s_Text_gray2_12px">${cdto.rebate}</td>
-                                            <td width="100" align="center" class="s_Text_gray2_12px">${cdto.cust_birth}</td>
-                                          </tr>
-                                           </c:forEach>
-                                      </table></td>
-                                      <td width="10">&nbsp;</td>
-                                    </tr>
+                                  <tr>                                      
+                                    <td height="30"><table width="100%" border="0" cellspacing="0" cellpadding="0">        
+                                      <tr onclick="javascript:view('${cdto.seq}');">
+                                      	<td width="40" align="center" class="s_Text_gray2_12px">${cdto.rnum}</td>
+                                        <td width="90" align="center" class="s_Text_gray2_12px">${cdto.cust_name}</td>
+                                        <td width="100" align="center" class="s_Text_gray2_12px">${cdto.cust_phone}</td>
+                                        <td width="90"  align="center" class="s_Text_gray2_12px">${cdto.cont_term}</td>
+                                        <td width="90" align="center" class="s_Text_gray2_12px">${cdto.rebate}</td>
+                                        <td width="120" align="center" class="s_Text_gray2_12px">${cdto.model_code}</td>
+                                        <td width="150" align="center" class="s_Text_gray2_12px">${cdto.write_date}</td>
+                                      </tr>                                        
+                                    </table></td>                                      
+                                  </tr>                             
                                 </table></td>
                               </tr>
                               <tr>
                                 <td height="1" bgcolor="e5e5e5"></td>
                               </tr>
-       				          <!-- 반복문 종료  -->
+                            </c:forEach>
+                              
+       				      </table></td>
+                        </tr>
+                        
+                        <tr>      
+                          <td height="30" align="center"><table>
+                            <tr>
+                              <td>${page.pHtml}</td>
+                            </tr> 
                           </table></td>
                         </tr>
-                        <tr>
-                          <td height="30" align="center">
-                            ${page.pHtml}  
-                          </td>
-                          
-                        </tr>
+                        
                         <tr>
                           <td height="30" align="right"><a href="admClientInsert.do"><img src="admin/img/bts.write.gif"></a> </td>
                         </tr>
