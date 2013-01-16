@@ -12,7 +12,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import ITFree.PAM.Common.Model.Board.BoardDao;
@@ -62,7 +61,7 @@ public class FreeboardAct {
 			return mav;
 		}
 		
-		@RequestMapping(value="/freeBoardView.do", method=RequestMethod.GET)//뷰 폼
+		@RequestMapping(value="/freeBoardView.do")//뷰 폼
 		protected ModelAndView freeBoardView(@ModelAttribute BoardDto boardDto, HttpServletRequest request, HttpSession session) throws Exception {
 			log.debug("---start["+"FreeboardAct.freeBoardView"+"]");			
 			String brc_id = boardDto.getBrc_id();
@@ -104,7 +103,7 @@ public class FreeboardAct {
 			return mav;
 		}
 		
-		@RequestMapping(value="/freeBoardReplyInsert.do",method=RequestMethod.POST)//댓글입력
+		@RequestMapping("/freeBoardReplyInsert.do")//댓글입력
 		protected ModelAndView freeBoardReplyInsert(@ModelAttribute BoardDto boardDto, HttpSession session){
 			log.debug("---start["+"FreeboardAct.freeBoardInsert"+"]");
 			long rp_seq = boardDto.getSeq();
@@ -173,7 +172,7 @@ public class FreeboardAct {
 			return mav;
 		}
 		
-		@RequestMapping(value="/freeBoardInsertAction.do", method=RequestMethod.POST)//입력
+		@RequestMapping(value="/freeBoardInsertAction.do")//입력
 		protected ModelAndView freeBoardInsertAction(@ModelAttribute BoardDto boardDto, HttpSession session){
 			log.debug("---start["+"FreeboardAct.freeBoardInsertAction"+"]");
 			boardDto.setBoard_chk(board_chk);

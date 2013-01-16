@@ -12,12 +12,10 @@
 <jsp:include page="/inc/menu6.jsp"/>
 </c:when>
 </c:choose>
-
-
 <script>
 function write_ok(){
 
-var frm = document.forms;
+var frm = document.tx_editor_form;
 
 	if(frm.title.value == ""){
 		alert("제목을 입력하세요");
@@ -25,20 +23,18 @@ var frm = document.forms;
 		return false;
 	}
 	
-	<c:choose><c:when test="${board_chk==3}"/><c:otherwise>   
-		if(frm.content.value == ""){
-		alert("내용을 입력하세요");
-		frm.contents.focus();
-		return false;
-	}
-	</c:otherwise></c:choose>	
+	<c:choose><c:when test="${board_chk==3}"/>
+	  <c:otherwise>   
+	  saveContent();	  
+	  </c:otherwise>
+	</c:choose>	
 	
 	frm.action = "${board_name}InsertAction.do";
 	frm.submit();
 }
 </script>
 
-<form name="forms" method="post" style="margin:0"  ENCTYPE="multipart/form-data"> 
+<form name="tx_editor_form" id="tx_editor_form" method="post" accept-charset="utf-8" enctype="multipart/form-data" style="margin:0">
                        	  <input type="hidden" name="brc_id" value="${brc_id}">
                        	  <input type="hidden" name="write_ip" value="${write_ip}">
                           <td width="1"></td>
@@ -92,7 +88,7 @@ var frm = document.forms;
                                             <td width="10" style="height: 70px">&nbsp;</td>
                                             <td style="height: 70px"><table width="100%" border="0" cellpadding="0" cellspacing="1" bgcolor="cfcfcf">
                                                 <tr>  
-                                                     <td bgcolor="#FFFFFF"><input type="file" name="filename" id="filename" align="absmiddle" onclick="return textfield_onclick()"></td>
+                                                     <td bgcolor="#FFFFFF"><input type="file" name="upfile" id="upfile" onclick="return textfield_onclick()"></td>
                                                      <!--<td bgcolor="#FFFFFF"><input type="text" name="file1_name" size="20" align="absmiddle"></td>-->
                                                 </tr>
                                             </table></td>
@@ -124,7 +120,10 @@ var frm = document.forms;
                                                   <td width="10">&nbsp;</td>
                                                   <td><table width="100%" border="0" cellpadding="0" cellspacing="1" bgcolor="cfcfcf">
                                                       <tr>
-                                                        <td bgcolor="#FFFFFF"><textarea name="content" cols="130" rows="20" class="form878787" id="textarea2"></textarea></td>
+                                                        <td bgcolor="#FFFFFF">
+<!--                                                         <textarea name="content" cols="130" rows="20" class="form878787" id="textarea2"></textarea> -->
+														<jsp:include page="/editor/editor.jsp"/>
+                                                        </td>
                                                       </tr>
                                                   </table></td>
                                                 </tr>
