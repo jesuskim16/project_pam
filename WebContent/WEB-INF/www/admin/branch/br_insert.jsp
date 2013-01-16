@@ -212,7 +212,7 @@
                                                       <tr>
                                                         <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
                                                           <tr>
-                                                            <td width="13" align="center"><!-- <img src="admin/img/icon.dot.blue2.gif" alt="" width="3" height="3"> --></td>
+                                                            <td width="13" align="center"></td>
                                                             <td height="26">대표자 연락처</td>
                                                           </tr>
                                                         </table></td>
