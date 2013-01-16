@@ -9,19 +9,35 @@
 	<typeAlias alias="ACPdto" type="ITFree.PAM.Admin.Model.AdmClient.AdmClientPageDto" />
 	
 	<select id="AdmClientList" resultClass="ACdto" parameterClass="ACPdto">
-	SELECT rownum AS rnum, cust_name, CUST_PHONE, CONT_TERM, OPEN_DATE, MEMO,
-		WRITE_DATE, WRITE_IP, BRC_ID, PRICE_NAME, MODEL_CODE, REBATE, to_char(CUST_BIRTH, 'YYYY-DD-MM') AS CUST_BIRTH 
-	FROM CUSTOMINFO
+	SELECT B.* 
+	FROM (SELECT A.*, rownum AS rnum
+	  FROM (SELECT seq, cust_name, CUST_PHONE, CONT_TERM, OPEN_DATE, MEMO,
+				   WRITE_DATE, WRITE_IP, BRC_ID, PRICE_NAME, MODEL_CODE, REBATE, to_char(CUST_BIRTH, 'YYYY-DD-MM') AS CUST_BIRTH 
+	  			   FROM CUSTOMINFO) A) B
 	<![CDATA[
-	WHERE #startNum# <= rown AND rown <= #endNum# 
-	ORDER BY rnum DESC
+	WHERE #startNum# <= rnum AND rnum <= #endNum#
+	ORDER BY rnum ASC
 	]]>
+	
 	</select>
 	
 	<select id="ListTotalCount" resultClass="long" parameterClass="ACPdto">
 	SELECT count(*)
 	FROM CUSTOMINFO
 	</select>
+	
+	<select id="AdmClientView" resultClass="ACdto" parameterClass="long">
+	SELECT rownum AS rnum, seq, cust_name, CUST_PHONE, CONT_TERM, OPEN_DATE, MEMO,
+		   WRITE_DATE, WRITE_IP, BRC_ID, PRICE_NAME, MODEL_CODE, REBATE, to_char(CUST_BIRTH, 'YYYY-DD-MM') AS CUST_BIRTH 
+	FROM CUSTOMINFO
+	WHERE seq=#seq#
+	</select>
+	
+	<delete id="AdmClientDelete" parameterClass="ACdto" >
+	DELETE FROM CUSTOMINFO
+	WHERE seq = #seq#
+	</delete>
+
 	
 
 </sqlMap>

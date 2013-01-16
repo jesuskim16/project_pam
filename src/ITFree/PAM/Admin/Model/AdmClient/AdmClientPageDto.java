@@ -16,9 +16,6 @@ public class AdmClientPageDto {
 	
 	private String pHtml; // HTML문자열을 저장할 변수
 	
-	
-	
-	
 	//기본 생성자(DI주입을 위해 꼭 생성해야함)
 	public AdmClientPageDto() {
 		// TODO Auto-generated constructor stub
@@ -29,8 +26,6 @@ public class AdmClientPageDto {
 		this.pg = pg;
 		this.totalCount = totalCount;
 
-
-		
 		startNum = (pg - 1) * pageSize + 1; // 시작 페이징 값을 계산
 		endNum = pg * pageSize; // 끝 페이징 값을 계산
 		
@@ -51,10 +46,16 @@ public class AdmClientPageDto {
 		if(pageCount < endPage) endPage = pageCount; //끝 페이지가 총 페이지랑 안맞을 경우 10개 단위의 페이징으로 표시하지 않기 위해 값을 할당하는 것
 		
 		//총 페이징 갯수가 10개 이상일때, 10개 이상 페이지 이동을 했을때 뒤로가기 아이콘을 표시하며, 10개 단위의 이동을 위한 페이지 이동버튼
-		if(startPage != 1){
-			pageHtml.append("<td width='18' align='left'><a href='"+UrlName+"?pg="+(startPage-1)+"'>" +
-							"<img src='img/arrow_left.gif' width='21' height='21' " +
-							"</td><td width='10'>&nbsp;</td>" +
+		if(endPage != pageCount){
+			pageHtml.append(
+							"<td width='18' align='left'><a href='"+UrlName+"?pg="+(startPage-1)+"'>" +
+							"<img src='admin/img/bts.arrow.left02.gif' width='14' height='13' " +
+							"</td>" +
+							"<td width='18' align='right'>" +
+							"<a href='"+UrlName+"?pg="+(pg-1)+"'>"  +
+							"<img src='admin/img/bts.arrow.left01.gif' width='14' height='13' " +
+							" ></a></td>"+
+							"<td width='10'>&nbsp;</td>" +
 							"<td class='Text_gray2_11px'>");
 		}
 		
@@ -73,16 +74,19 @@ public class AdmClientPageDto {
 		//총 페이징 갯수가 10개 이상일때, 앞으로가기 아이콘을 표시하며, 10개 단위의 이동을 위한 페이지 이동버튼
 		if(endPage != pageCount){
 			pageHtml.append("<td width='10'>&nbsp;</td>" +
-							"<td width='18' align='right'><a href='"+UrlName+"?pg="+(endPage+1)+"'>"  +
-							"<img src='img/arrow_right.gif' width='21' height='21' " +
+							"<td width='18' align='right'>" +
+							"<a href='"+UrlName+"?pg="+(pg+1)+"'>"  +
+							"<img src='admin/img/bts.arrow.right01.gif' width='14' height='13' " +
+							" ></a></td>"+
+							"<td width='18' align='right'>" +
+							"<a href='"+UrlName+"?pg="+(endPage+1)+"'>"  +
+							"<img src='admin/img/bts.arrow.right02.gif' width='14' height='13' " +
 							" ></a></td>");
 		}
 		
 		//모든 HTML값 설정이 끝난 뒤 모든 문자열을 리턴~
 		return pageHtml.toString();
 	}
-
-	
 
 	public long getPg() {
 		return pg;
@@ -155,6 +159,8 @@ public class AdmClientPageDto {
 				+ ", endNum=" + endNum + ", pageSize=" + pageSize
 				+ ", blockSize=" + blockSize + ", pHtml=" + pHtml + "]";
 	}
+
+
 
 
 

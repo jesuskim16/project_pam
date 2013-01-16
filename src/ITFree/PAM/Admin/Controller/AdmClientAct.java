@@ -30,10 +30,7 @@ public class AdmClientAct {
 		AdmClientPageDto APDto = new AdmClientPageDto(pageDto.getPg(), ACdao.ListTotalCount(pageDto));
 		
 		List<AdmClientDto> list = ACdao.AdmClientList(APDto);
-		
-		log.debug("--"+list);
 
-		
 		mav.setViewName("/WEB-INF/www/admin/client/list.jsp");
 		
 		mav.addObject("list", list);
@@ -41,5 +38,29 @@ public class AdmClientAct {
 		
 		return mav;
 	}
+	
+	@RequestMapping("/admClientView.do")
+	public ModelAndView admClientView(ModelAndView mav, long seq){
+		
+		AdmClientDto ACDto = ACdao.AdmClientView(seq);
+		
+		log.debug("--"+ACDto);
+		mav.setViewName("/WEB-INF/www/admin/client/view.jsp");
+		
+		mav.addObject("ACDto", ACDto);
+		return mav;
+	}
+	
+	@RequestMapping("/admClientDelete.do")
+	public ModelAndView admClientDelete(@ModelAttribute AdmClientDto Cdto, ModelAndView mav){
+		
+		boolean delete = ACdao.AdmClientDelete(Cdto);
+		
+		mav.setViewName("/WEB-INF/www/admin/client/view.jsp");
+		mav.addObject("delete", delete);
+		return mav;
+	}
+	
+	
 
 }

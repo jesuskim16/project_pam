@@ -3,18 +3,18 @@ package ITFree.PAM.Admin.Model.AdmClient;
 public class AdmClientDto {
 	private long rnum;
 	private long seq;          //번호      
-	private String cust_name;  //고객 이름   
-	private String cust_phone; //고객 번호   
-	private int cont_term;	   //약정 기간   
-	private String open_date;  //개통일     
+	private String cust_name;  //고객 이름  
+	private String cust_phone; //고객 번호   /
+	private int cont_term;	   //약정 기간  / 
+	private String open_date;  //개통일 /     
 	private String memo      ; //메모      
-	private String write_date; //작성일     
-	private String write_ip;   //작성 IP   
-	private String brc_id;     //판매점 ID   
-	private String price_name; //요금제     
-	private String model_code; //모델 코드   
-	private long rebate;       //요금제     
-	private String cust_birth; //주민번호
+	private String write_date; //작성일    /
+	private String write_ip;   //작성 IP   /
+	private String brc_id;     //판매점 ID   /
+	private String price_name; //요금제    / 
+	private String model_code; //모델 코드  / 
+	private long rebate;       //요금제     /
+	private String cust_birth; //주민번호 /
 	
 	public long getRnum() {
 		return rnum;
