@@ -6,6 +6,6 @@ public interface AdmClientDao {
 
 	List<AdmClientDto> AdmClientList(AdmClientPageDto APDto);
 
-	long TotalCount(AdmClientPageDto pageDto);
+	long ListTotalCount(AdmClientPageDto pageDto);
 
 }

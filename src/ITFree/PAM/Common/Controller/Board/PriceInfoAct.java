@@ -23,7 +23,7 @@ import org.springframework.web.servlet.ModelAndView;
 import ITFree.PAM.Common.Model.Board.BoardDao;
 import ITFree.PAM.Common.Model.Board.BoardDto;
 import ITFree.PAM.Common.Model.Board.PageDto;
-@SessionAttributes("brc_lev")
+
 @Controller
 public class PriceInfoAct {	
 	private Logger log = Logger.getLogger(getClass());

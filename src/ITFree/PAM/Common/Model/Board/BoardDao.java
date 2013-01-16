@@ -1,6 +1,7 @@
 package ITFree.PAM.Common.Model.Board;
 
 import java.util.List;
+import java.util.Map;
 
 public interface BoardDao {
 
@@ -14,9 +15,9 @@ public interface BoardDao {
 
 	boolean freeBoardInsertAction(BoardDto boardDto);
 
-	long Prev_seq(long seq);
+	long Prev_seq(Map<String, Long> seqBd);
 
-	long Next_seq(long seq);
+	long Next_seq(Map<String, Long> seqBd);
 
 	void BoardReadCount(long seq);
 

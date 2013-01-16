@@ -1,15 +1,14 @@
 package ITFree.PAM.Agent.Model.SalesMgr;
 
-public class SalesPageDto {
+public class SalesInfoPageDto {
 	private String brc_name;
-	private String s_sdate;
-	private String s_edate;	
+
 	private String attach_id;
 	private String SalesRankSelectBox;
 	
 	private long pg; //현재 페이지
 	
-	private long totalCount; // 총 게시물의 갯수
+	private long InfoTotalCount; // 총 게시물의 갯수
 	private long pageCount; // 총 게시물을 페이지 갯수를 나눈 것.(10개의 게시물이 몇페이지까지 있는지를 나타냄)
 	
 	
@@ -25,30 +24,28 @@ public class SalesPageDto {
 	
 	
 	//기본 생성자(DI주입을 위해 꼭 생성해야함)
-	public SalesPageDto() {
+	public SalesInfoPageDto() {
 		// TODO Auto-generated constructor stub
 	}
 	
-	public SalesPageDto(long pg, long totalCount , String brc_name, String s_sdate, String s_edate, String SalesRankSelectBox) {
+	public SalesInfoPageDto(long pg, long InfoTotalCount) {
 		//넘어온  parameter값을 각 변수에 할당
 		this.pg = pg;
-		this.totalCount = totalCount;
-		this.s_sdate = s_sdate;
-		this.s_edate = s_edate;
-		this.SalesRankSelectBox = SalesRankSelectBox;
+		this.InfoTotalCount = InfoTotalCount;
+		
 
 		
 		startNum = (pg - 1) * pageSize + 1; // 시작 페이징 값을 계산
 		endNum = pg * pageSize; // 끝 페이징 값을 계산
 		
-		pageCount = totalCount / pageSize + (totalCount % pageSize > 0 ? 1 : 0); // 총 페이징갯수 계산 알고리즘
+		pageCount = InfoTotalCount / pageSize + (InfoTotalCount % pageSize > 0 ? 1 : 0); // 총 페이징갯수 계산 알고리즘
 		setpHtml(getPageHtml()); //HTML값을 할당하기 위해 getPageHtml메소드 호출
 	}
 	
 	//HTML처리하는 메소드
 	private String getPageHtml() {
 		
-		String UrlName = "salesRank.do";
+		String UrlName = "salesList.do";
 		StringBuffer pageHtml = new StringBuffer(); //긴 문자열 저장을 위한 스트링버퍼 사용
 		
 		long startPage = ((pg-1) / blockSize) * blockSize + 1; //시작 페이지값 계산
@@ -69,9 +66,8 @@ public class SalesPageDto {
 		for(long p = startPage; p <= endPage; p++){
 			//현재 페이지가 아닐때(즉 다른페이지로 넘어가야 할 때 링크를 설정해줌.)
 			if(p != pg){
-				pageHtml.append("<font class='style2'><a href='"+UrlName+"?pg=" + p +  "'>" + 
-								+ p + "&s_sdate="+s_sdate+"&"+"s_edate="+s_edate+"&"+
-								"SalesRankSelectBox="+SalesRankSelectBox+ "</a></font>&nbsp;");
+				pageHtml.append("<font class='style2'><a href='"+UrlName+"?pg=" + p + "'>" + 
+								+ p +  "</a></font>&nbsp;");
 			// 현재 보고있는 페이지 일경우 	
 			}else{
 				pageHtml.append("<font color='red'><b>"+p+"</b></font>&nbsp;");
@@ -90,21 +86,7 @@ public class SalesPageDto {
 		return pageHtml.toString();
 	}
 
-	public String getS_sdate() {
-		return s_sdate;
-	}
-
-	public void setS_sdate(String s_sdate) {
-		this.s_sdate = s_sdate;
-	}
-
-	public String getS_edate() {
-		return s_edate;
-	}
-
-	public void setS_edate(String s_edate) {
-		this.s_edate = s_edate;
-	}
+	
 
 	public long getPg() {
 		return pg;
@@ -114,12 +96,14 @@ public class SalesPageDto {
 		this.pg = pg;
 	}
 
-	public long getTotalCount() {
-		return totalCount;
+	
+
+	public long getInfoTotalCount() {
+		return InfoTotalCount;
 	}
 
-	public void setTotalCount(long totalCount) {
-		this.totalCount = totalCount;
+	public void setInfoTotalCount(long infoTotalCount) {
+		InfoTotalCount = infoTotalCount;
 	}
 
 	public long getPageCount() {
@@ -196,14 +180,15 @@ public class SalesPageDto {
 
 	@Override
 	public String toString() {
-		return "SalesPageDto [brc_name=" + brc_name + ", s_sdate=" + s_sdate
-				+ ", s_edate=" + s_edate + ", attach_id=" + attach_id
-				+ ", SalesRankSelectBox=" + SalesRankSelectBox + ", pg=" + pg
-				+ ", totalCount=" + totalCount + ", pageCount=" + pageCount
-				+ ", startNum=" + startNum + ", endNum=" + endNum
-				+ ", pageSize=" + pageSize + ", blockSize=" + blockSize
-				+ ", pHtml=" + pHtml + "]";
+		return "SalesInfoPageDto [brc_name=" + brc_name + ", attach_id="
+				+ attach_id + ", SalesRankSelectBox=" + SalesRankSelectBox
+				+ ", pg=" + pg + ", InfoTotalCount=" + InfoTotalCount
+				+ ", pageCount=" + pageCount + ", startNum=" + startNum
+				+ ", endNum=" + endNum + ", pageSize=" + pageSize
+				+ ", blockSize=" + blockSize + ", pHtml=" + pHtml + "]";
 	}
+
+	
 	
 	
 

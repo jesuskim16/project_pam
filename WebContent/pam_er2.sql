@@ -1,7 +1,27 @@
-	SELECT rownum, cust_name, CUST_PHONE, CONT_TERM, OPEN_DATE, MEMO,
-		WRITE_DATE, WRITE_IP, BRC_ID, PRICE_NAME, MODEL_CODE, REBATE, CUST_BIRTH
-	FROM CUSTOMINFO;
 
+	SELECT E.*, count()
+	FROM (SELECT D.* ,row_number()over (ORDER BY salesnumber DESC) AS rown
+		  FROM 
+			(SELECT b.brc_name, count(c.brc_id) AS salesnumber, sum(floor(c.rebate / 10000)) AS salesrebate
+			FROM CUSTOMINFO c join BRANCH b 
+			on c.brc_id=b.brc_id
+			WHERE '2012-07-15' <= c.write_date AND c.write_date <=  '2014-01-15'
+			GROUP BY b.brc_name
+			ORDER BY salesnumber DESC) D) E
+		 WHERE 1 <= rown AND rown <= 10;
+	GROUP BY name;
+	
+		SELECT count(distinct brc_id)
+		  FROM CUSTOMINFO
+		  WHERE '2012-07-15' <= write_date AND write_date <=  '2014-01-15';
+
+	
+	
+	
+	
+	
+	
+	
 /* Drop Tables */
 
 DROP TABLE BOARD;
@@ -268,5 +288,36 @@ SELECT B.*
 	WHERE 2012-07-09 <= c.write_date AND c.write_date <= 2013-10-09
 	GROUP BY b.brc_name
 	ORDER BY salesrebate DESC;
+	
+	SELECT D.* ,row_number()over (ORDER BY salesnumber DESC) AS rown
+	FROM 
+		(SELECT b.brc_name, count(c.brc_id) AS salesnumber, sum(floor(c.rebate / 10000)) AS salesrebate
+		FROM CUSTOMINFO c join BRANCH b 
+		on c.brc_id=b.brc_id
+		WHERE '2012-07-15' <= c.write_date AND c.write_date <= '2014-01-15'
+		GROUP BY b.brc_name
+		ORDER BY salesnumber DESC) D
+		
+	SELECT D.* ,row_number()over (ORDER BY salesnumber DESC) AS rown
+	FROM 
+		(SELECT b.brc_name, count(c.brc_id) AS salesnumber, sum(floor(c.rebate / 10000)) AS salesrebate
+		FROM CUSTOMINFO c join BRANCH b 
+		on c.brc_id=b.brc_id
+		WHERE '2012-07-15' <= c.write_date AND c.write_date <= '2014-01-15'
+		GROUP BY b.brc_name
+		ORDER BY salesnumber DESC) D
+	WHERE 11 <= rownum AND rownum <= 20;
+	
+	
+	SELECT E.* 
+	FROM (SELECT D.* ,row_number()over (ORDER BY salesnumber DESC) AS rown
+		  FROM 
+			(SELECT b.brc_name, count(c.brc_id) AS salesnumber, sum(floor(c.rebate / 10000)) AS salesrebate
+			FROM CUSTOMINFO c join BRANCH b 
+			on c.brc_id=b.brc_id
+			WHERE '2012-07-15' <= c.write_date AND c.write_date <= '2014-01-15'
+			GROUP BY b.brc_name
+			ORDER BY salesnumber DESC) D) E
+	WHERE 11 <= rown AND rown <= 20;
 	
 	 

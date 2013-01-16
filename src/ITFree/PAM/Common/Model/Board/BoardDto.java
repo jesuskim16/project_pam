@@ -2,12 +2,11 @@ package ITFree.PAM.Common.Model.Board;
 
 import org.springframework.web.multipart.commons.CommonsMultipartFile;
 
-public class BoardDto {
-	
+public class BoardDto {	
 	
 	private long rown;
 	private long seq; 		
-	private long board_chk; 	
+	private int board_chk; 	
 	private String title; 		
 	private String content; 	
 	private long readcount; 	
@@ -19,22 +18,15 @@ public class BoardDto {
 	private long prev_seq;
 	private long next_seq;
 	private int rp_cnt;
-	private CommonsMultipartFile filename;
-	
-
+	private String filename;
+	private CommonsMultipartFile upFile;
 	
 	public long getSeq() {
 		return seq;
 	}
 	public void setSeq(long seq) {
 		this.seq = seq;
-	}
-	public long getBoard_chk() {
-		return board_chk;
-	}
-	public void setBoard_chk(long board_chk) {
-		this.board_chk = board_chk;
-	}
+	}	
 	public String getTitle() {
 		return title;
 	}
@@ -107,12 +99,23 @@ public class BoardDto {
 	public void setRp_cnt(int rp_cnt) {
 		this.rp_cnt = rp_cnt;
 	}
-	
-	public CommonsMultipartFile getFilename() {
+	public int getBoard_chk() {
+		return board_chk;
+	}	
+	public void setBoard_chk(int board_chk) {
+		this.board_chk = board_chk;
+	}	
+	public String getFilename() {
 		return filename;
 	}
-	public void setFilename(CommonsMultipartFile filename) {
+	public void setFilename(String filename) {
 		this.filename = filename;
+	}
+	public CommonsMultipartFile getUpFile() {
+		return upFile;
+	}
+	public void setUpFile(CommonsMultipartFile upFile) {
+		this.upFile = upFile;
 	}
 	@Override
 	public String toString() {
@@ -120,9 +123,10 @@ public class BoardDto {
 				+ board_chk + ", title=" + title + ", content=" + content
 				+ ", readcount=" + readcount + ", rp_seq=" + rp_seq
 				+ ", write_date=" + write_date + ", write_ip=" + write_ip
-				+ ", filename=" + filename + ", brc_id=" + brc_id
-				+ ", brc_name=" + brc_name + ", prev_seq=" + prev_seq
-				+ ", next_seq=" + next_seq + ", rp_cnt=" + rp_cnt + "]";
+				+ ", brc_id=" + brc_id + ", brc_name=" + brc_name
+				+ ", prev_seq=" + prev_seq + ", next_seq=" + next_seq
+				+ ", rp_cnt=" + rp_cnt + ", filename=" + filename + ", upFile="
+				+ upFile + "]";
 	}
 	
 	

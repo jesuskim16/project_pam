@@ -14,7 +14,7 @@
 
 <script>
 var del_ok = function(brc_id){
-	var result = confirm("삭제를 하시면 복구가 힘듭니다. 삭제 하시겠습니까?");	
+	var result = confirm("삭제 하시겠습니까?");	
 		if(result){
 				location.href="${board_name}Delete.do?seq="+${boardDto.seq}+"&brc_id="+brc_id;
 		}else{
@@ -95,7 +95,7 @@ function reply_insert(){
 <!-- {댓글 리스트 뿌릴곳)----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->                                
                              <td align="center" bgcolor="#FFFFFF">                              
                                   <table width="100%" border="0" cellspacing="20" cellpadding="0">
-                                  <c:forEach items="${rList }" var="rdto">
+                                  <c:forEach items="${rList}" var="rdto">
                                     <tr>
                                       <td width="130" align="center"><b>${rdto.brc_id}</b></td>                                      
                                       <td width="600" align=left>${rdto.content}</td>
@@ -114,7 +114,7 @@ function reply_insert(){
                             <tr>
                               <td height="10"></td>
                             </tr>
-                            <form action="${board_name }ReplyInsert.do" method="post" name="rforms">
+                            <form action="${board_name}ReplyInsert.do" method="post" name="rforms">
                             <input type="hidden" name="seq" value="${boardDto.seq}">
                             <tr>
                               <td align="center"><table width="100%" border="0" cellspacing="0" cellpadding="0">

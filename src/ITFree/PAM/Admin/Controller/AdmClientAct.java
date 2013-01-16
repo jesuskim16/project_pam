@@ -13,7 +13,7 @@ import org.springframework.web.servlet.ModelAndView;
 import ITFree.PAM.Admin.Model.AdmClient.AdmClientDao;
 import ITFree.PAM.Admin.Model.AdmClient.AdmClientDto;
 import ITFree.PAM.Admin.Model.AdmClient.AdmClientPageDto;
-import ITFree.PAM.Agent.Model.SalesMgr.SalesPageDto;
+import ITFree.PAM.Agent.Model.SalesMgr.SalesRankPageDto;
 
 @Controller
 public class AdmClientAct {
@@ -27,7 +27,7 @@ public class AdmClientAct {
 	public ModelAndView admClientList(@ModelAttribute AdmClientPageDto pageDto, ModelAndView mav){
 		if(pageDto.getPg() == 0) pageDto.setPg(1);
 		
-		AdmClientPageDto APDto = new AdmClientPageDto(pageDto.getPg(), ACdao.TotalCount(pageDto));
+		AdmClientPageDto APDto = new AdmClientPageDto(pageDto.getPg(), ACdao.ListTotalCount(pageDto));
 		
 		List<AdmClientDto> list = ACdao.AdmClientList(APDto);
 		

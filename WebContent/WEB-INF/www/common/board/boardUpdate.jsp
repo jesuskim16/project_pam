@@ -15,7 +15,7 @@
 <script>
 function write_ok(){
 
-var frm = document.forms;
+var frm = document.tx_editor_form;
 
 	if(frm.title.value == ""){
 		alert("제목을 입력하세요");
@@ -23,18 +23,18 @@ var frm = document.forms;
 		return false;
 	}
 	
-		if(frm.content.value == ""){
-		alert("내용을 입력하세요");
-		frm.content.focus();
-		return false;
-	}
+	<c:choose><c:when test="${board_chk==3}"/>
+	  <c:otherwise>   
+	   Editor.save();	  
+	  </c:otherwise>
+	</c:choose>	
 	
 	frm.action = "${board_name}UpdateAction.do";
 	frm.submit();
 }
 </script> 
-<form name="forms" method="get" style="margin:0" > 
-                       
+ 
+<form name="tx_editor_form" id="tx_editor_form" method="post" accept-charset="utf-8" enctype="multipart/form-data" style="margin:0">                       
                           <td width="1"></td>
                           <td valign="top"><table width="100%" border="0" cellspacing="0" cellpadding="0">
                               <tr>
@@ -112,7 +112,12 @@ var frm = document.forms;
                                                   <td width="10">&nbsp;</td>
                                                   <td><table width="100%" border="0" cellpadding="0" cellspacing="1" bgcolor="cfcfcf">
                                                       <tr>
-                                                        <td bgcolor="#FFFFFF"><textarea name="content" cols="130" rows="20" class="form878787" id="textarea2">${boardDto.content }</textarea></td>
+                                                        <td bgcolor="#FFFFFF">
+<%--                                                         <textarea name="content" cols="130" rows="20" class="form878787" id="textarea2">${boardDto.content }</textarea> --%>
+                                                        <jsp:include page="/editor/editor.jsp">
+                                                          <jsp:param value="${boardDto.content}" name="content"/>
+                                                        </jsp:include>
+                                                        </td>
                                                       </tr>
                                                   </table></td>
                                                 </tr>

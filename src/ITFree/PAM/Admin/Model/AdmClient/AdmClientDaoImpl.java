@@ -26,8 +26,8 @@ public class AdmClientDaoImpl implements AdmClientDao {
 	}
 
 	@Override
-	public long TotalCount(AdmClientPageDto pageDto) {
-		return (int) sqlMapClientTemplate.queryForObject("AdmClient.readCount");
+	public long ListTotalCount(AdmClientPageDto pageDto) {
+		return (long) sqlMapClientTemplate.queryForObject("AdmClient.ListTotalCount", pageDto);
 
 	}
 
