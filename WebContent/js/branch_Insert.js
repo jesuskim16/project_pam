@@ -74,6 +74,7 @@ $(document).ready(function(){
 		}
 	});
 	
+	//대리점, 판매점 선택
 	$("select").change(function(){
 		var check = 0;
 		  $("select[id='br_sel'] option:selected").each(function () {
@@ -94,10 +95,12 @@ $(document).ready(function(){
 		return str.replace(/^\s\s*/, '').replace(/\s\s*$/, ''); 
 	} 
 	
+	//페이지 로드시 대리점 목록을 숨김
 	function pageLoad(){
 		$("#BR_List").hide();
 	  	$("#BR_List_name").hide();
 	}
+	
 window.onload = pageLoad;
 
 });
