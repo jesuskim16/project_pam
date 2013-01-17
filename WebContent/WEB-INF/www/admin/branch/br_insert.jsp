@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <script type="text/javascript" src="js/jquery-1.8.3.min.js"></script>
 <script type="text/javascript" src="js/branch_Insert.js"></script> 
-<script type="text/javascript" src="js/jquery.toastmessage.js"></script> 
+<script type="text/javascript" src="js/jquery.toastmessage.js"></script>
 <jsp:include page="/admin/inc/top.jsp"/>
 <jsp:include page="/admin/inc/menu_branch.jsp"/>
 <table width="600" border="0" align="center" cellpadding="0" cellspacing="0">
@@ -11,7 +11,7 @@
       <tr>
         <td width="16" valign="top"><img src="admin/img/sub.body.box.left.gif" width="16" height="170"></td>
           <td valign="top">
-          <form name="forms" method="post" action="admNoticeInsertAct.do" style="margin:0"  ENCTYPE="multipart/form-data">
+          <form name="result_forms" method="get" action="admNoticeInsertAct.do" style="margin:0"  ENCTYPE="multipart/form-data">
             <table width="100%" border="0" cellspacing="0" cellpadding="0">
               <tr>
                 <td height="5" background="admin/img/sub.body.bg01.gif"></td>
@@ -46,6 +46,23 @@
                                               <tr>
                                                 <td width="5"></td>
                                                 <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
+<!-- 지점선택 -->
+                                                  <tr>
+                                                    <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                                      <tr>
+                                                        <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                                          <tr>
+                                                            <td width="13" align="center"><img src="admin/img/icon.dot.red2.gif" alt="" width="4" height="4"></td>
+                                                            <td height="26">지점선택</td>
+                                                          </tr>
+                                                        </table></td>
+                                                      </tr>
+                                                      <tr>
+                                                        <td height="5"></td>
+                                                      </tr>
+                                                    </table></td>                                                  
+                                                  </tr>
+<!-- /지점선택 -->
 <!-- 아이디 -->
                                                   <tr>
                                                     <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
@@ -223,8 +240,13 @@
                                                     </table></td>                                                  
                                                   </tr>
 <!-- /대표자 연락처 -->
-<!-- 지점 선택 -->
+<!-- 라인 -->                                      
                                                   <tr>
+                                                    <td height="2" background="admin/img/board.write.inline.gif"></td>
+                                                  </tr>
+<!-- /라인 --> 
+<!-- 대표자 이름 -->
+                                                  <tr id="BR_List_name">
                                                     <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
                                                       <tr>
                                                         <td height="5"></td>
@@ -233,7 +255,7 @@
                                                         <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
                                                           <tr>
                                                             <td width="13" align="center"><img src="admin/img/icon.dot.red2.gif" alt="" width="4" height="4"></td>
-                                                            <td height="26">지점 선택</td>
+                                                            <td height="26">대리점 목록</td>
                                                           </tr>
                                                         </table></td>
                                                       </tr>
@@ -242,13 +264,15 @@
                                                       </tr>
                                                     </table></td>                                                  
                                                   </tr>
-<!-- /지점 선택 -->
+<!-- /대표자 이름 -->
+ 
+<!-- -------------------------------------------------------------------------------------------------------------------------- -->
+<!-- -------------------------------------------------------------------------------------------------------------------------- -->
+<!-- -----------------------------------------           입력창 부분 시작                      --------------------------------------------------- -->
+<!-- -------------------------------------------------------------------------------------------------------------------------- -->
+<!-- -------------------------------------------------------------------------------------------------------------------------- -->
 
-<!-- 라인 -->                                      
-                                                  <tr>
-                                                    <td height="2" background="admin/img/board.write.inline.gif"></td>
-                                                  </tr>
-<!-- /라인 -->                                                  
+                                                
                                                
 <!-- 입력창 부분 시작 -->                                                  
                                                 </table></td>
@@ -267,14 +291,39 @@
                                           </tr>
                                           <tr>
                                             <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                            
+<!-- 지점선택 -->                                  
+                                              <tr>
+                                                <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                                  <tr>
+                                                    <td></td>
+                                                  </tr>
+                                                  <tr >
+                                                    <td ><table border="0" cellpadding="0" cellspacing="0" bgcolor="#D8D8D8">
+                                                      <tr >
+                                                        <td  valign="bottom" >
+                                                            <select id="br_sel" class="input_bg_white">
+	                                                        	<option id="br_1" value="1" selected="selected">대리점</option>
+	                                                        	<option id="br_2" value="2">판매점</option>
+                                                        	</select>
+                                                        </td>
+                                                      </tr>
+                                                    </table></td>
+                                                  </tr>
+                                                  <tr>
+                                                    <td height="5"></td>
+                                                  </tr>
+                                                </table></td>
+                                              </tr>
+<!-- /지점선택 -->                                               
 <!-- 아이디 -->                                  
                                               <tr>
                                                 <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
                                                   <tr>
-                                                    <td height="10"></td>
+                                                    <td height="5"></td>
                                                   </tr>
                                                   <tr>
-                                                    <td height="25" bgcolor="ffffff"><table border="0" cellpadding="0" cellspacing="2" bgcolor="cdcdcd">
+                                                    <td height="25" bgcolor="ffffff"><table border="0" cellpadding="0" cellspacing="0" bgcolor="cdcdcd">
                                                       <tr>
                                                         <td height="20" valign="bottom" bgcolor="#FFFFFF">
                                                         	<input id="brc_id" name="brc_id" type="text" class="input_bg_white" id="textfield3" size="11" maxlength="11">                                                        	
@@ -297,7 +346,7 @@
                                                     <td height="5"></td>
                                                   </tr>
                                                   <tr>
-                                                    <td height="26"><table border="0" cellpadding="0" cellspacing="2" bgcolor="cdcdcd">
+                                                    <td height="26"><table border="0" cellpadding="0" cellspacing="0" bgcolor="cdcdcd">
                                                       <tr>
                                                         <td height="20" valign="bottom" bgcolor="#FFFFFF"><input name="password" id="password" type="password" class="input_bg_white" id="textfield3" size="11"></td>
                                                       </tr>
@@ -476,8 +525,8 @@
                                                 </table></td>
                                               </tr>
 <!-- /대표자 연락처 -->
-<!-- 지점선택 -->                                  
-                                              <tr>
+<!-- 대리점 목록 -->                                 
+                                              <tr id="BR_List">
                                                 <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
                                                   <tr>
                                                     <td height="5"></td>
@@ -486,10 +535,14 @@
                                                     <td height="26"><table border="0" cellpadding="0" cellspacing="2" bgcolor="cdcdcd">
                                                       <tr>
                                                         <td height="20" valign="bottom" bgcolor="#FFFFFF">
-                                                            <select class="input_bg_white">
-	                                                        	<option>대리점</option>
-	                                                        	<option>판매점</option>
-                                                        	</select>
+                                                        <select class="input_bg_white" name="brc_phone1" id="boss_phone1">
+                                                        	<option value="011">011</option>
+                                                        	<option value="010" selected>010</option>
+                                                        	<option value="016">016</option>
+                                                        	<option value="017">017</option>
+                                                        	<option value="018">018</option>
+                                                        	<option value="019">019</option>
+                                                        </select>                                                       
                                                         </td>
                                                       </tr>
                                                     </table></td>
@@ -499,7 +552,8 @@
                                                   </tr>
                                                 </table></td>
                                               </tr>
-                                                    
+                                             
+<!-- /대리점 목록 -->                                                  
                                             </table></td>
                                           </tr>
                                           <tr>
