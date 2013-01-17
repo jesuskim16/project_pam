@@ -17,7 +17,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
 import ITFree.PAM.Common.Model.Board.BoardDao;
@@ -90,15 +89,15 @@ public class PriceInfoAct {
 		}
 		
 		protected boolean fileupload(@ModelAttribute BoardDto bdDto){
-			String filename = bdDto.getFilename().getName(); // 컴포넌트명
-			String originalFilename = bdDto.getFilename().getOriginalFilename(); //파일명
-			String contentType = bdDto.getFilename().getContentType(); //컨텐트타입
-			long filesize = bdDto.getFilename().getSize(); //파일크기
+			String filename = bdDto.getUpFile().getName(); // 컴포넌트명
+			String originalFilename = bdDto.getUpFile().getOriginalFilename(); //파일명
+			String contentType = bdDto.getUpFile().getContentType(); //컨텐트타입
+			long filesize = bdDto.getUpFile().getSize(); //파일크기
 			InputStream is = null;
 			OutputStream os = null;
 			try {
 				if(filesize>0){
-					is=bdDto.getFilename().getInputStream();
+					is=bdDto.getUpFile().getInputStream();
 					File realUploadDir = new File("/www/upload//");//업로드경로
 					if(!realUploadDir.exists()){
 						realUploadDir.mkdirs();
