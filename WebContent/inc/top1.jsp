@@ -79,7 +79,3 @@ body {
                         </tr>
                     </table></td>
                   </tr>
-                  <tr>
-                    <td height="30" align="center"><table border="0" cellspacing="0" cellpadding="0">
-                    </table></td>
-                  </tr>

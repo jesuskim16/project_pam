@@ -16,7 +16,7 @@
 		  WHERE '2012-07-15' <= write_date AND write_date <=  '2014-01-15';
 
 	
-	
+select * from branchlog;	
 	
 	
 	

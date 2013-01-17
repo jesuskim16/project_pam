@@ -14,4 +14,8 @@ public class LoginDaoImp implements LoginDao {
 		return (LoginDto) sqlMapClientTemplate.queryForObject("login.getLoginInfo", branchDto);
 	}
 
+	@Override
+	public void setLoginLog(LoginDto branchDto) {		
+		sqlMapClientTemplate.insert("login.setLoginLog",branchDto);
+	}
 }

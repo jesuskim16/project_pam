@@ -15,6 +15,7 @@ public class LoginDto {
 	private String 	boss_phone; 	//대표연락처               
 	private int 	brc_lev;        //레벨(대리점:1, 판매점:2)    
 	private int 	brc_state;      //상태(기본0,삭제1)
+	private String	ip;
 	
 	public int getSeq() {
 		return seq;
@@ -93,16 +94,22 @@ public class LoginDto {
 	}
 	public void setBrc_state(int brc_state) {
 		this.brc_state = brc_state;
+	}	
+	public String getIp() {
+		return ip;
+	}
+	public void setIp(String ip) {
+		this.ip = ip;
 	}
 	@Override
 	public String toString() {
-		return "BranchDto [seq=" + seq + ", brc_id=" + brc_id + ", attach_id="
+		return "LoginDto [seq=" + seq + ", brc_id=" + brc_id + ", attach_id="
 				+ attach_id + ", password=" + password + ", brc_name="
 				+ brc_name + ", brc_phone=" + brc_phone + ", brc_addr1="
 				+ brc_addr1 + ", brc_addr2=" + brc_addr2 + ", brc_post="
 				+ brc_post + ", brc_boss=" + brc_boss + ", boss_phone="
 				+ boss_phone + ", brc_lev=" + brc_lev + ", brc_state="
-				+ brc_state + "]";
+				+ brc_state + ", ip=" + ip + "]";
 	}
 	
 
