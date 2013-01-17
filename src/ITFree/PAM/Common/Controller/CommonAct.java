@@ -20,14 +20,14 @@ public class CommonAct {
 		
 		HttpSession session=request.getSession();
 		int level = (int) session.getAttribute("brc_lev");
-		log.debug("::main::"+level);
 		
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("/WEB-INF/www/main.jsp");
-		mav.addObject("title_name","PAM::MainPage");
+		mav.addObject("title_name","PAM::MainMenu");
 		mav.addObject("brc_lev",level);
 		return mav;
 	}
+	
 	@RequestMapping("/admMain.do")
 	public String admMain(){
 		return "/WEB-INF/www/admin/main.jsp";

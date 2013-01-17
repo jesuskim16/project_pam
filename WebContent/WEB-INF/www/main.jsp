@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>${site_name}</title>
+<title>${title_name}</title>
 <link href="css/style.css" rel="stylesheet" type="text/css">
 <style type="text/css">
 <!--
@@ -143,10 +143,10 @@ body {
 <!-- 8-->                        
                         <td width="150" height="120" align="center"><table border="0" cellspacing="0" cellpadding="0">
                           <tr>
-                            <td align="center"><a href="#"><img src="img/main_icon11.gif" width="57" height="57"></a></td>
+                            <td align="center"><a href="modelRank.do"><img src="img/main_icon11.gif" width="57" height="57"></a></td>
                           </tr>
                           <tr>
-                            <td height="30" align="center"><span class="Text_gray4_12px">스케줄</span></td>
+                            <td height="30" align="center"><span class="Text_gray4_12px">모델순위</span></td>
                           </tr>
                         </table></td>
                         <td width="15"></td>

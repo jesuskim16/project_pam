@@ -1,9 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
-                  <tr>
-                    <td>&nbsp;</td>
-                  </tr>
                   <tr>
                     <td height="60"><table width="100%" border="0" cellspacing="0" cellpadding="0">
                       <tr>

@@ -10,5 +10,8 @@
     FROM 	branch 
     WHERE 	brc_id=#brc_id# AND password=#password# 
   </select>
-	
+  <insert id="setLoginLog" parameterClass="ldto">
+    INSERT INTO branchlog(seq, log_ip, brc_id)
+    VALUES	(brc_seq.nextval,#ip#, #brc_id#)
+  </insert>	
 </sqlMap>
