@@ -104,21 +104,22 @@ public class PriceInfoAct {
 			try {
 				if(filesize>0){					
 					is=bdDto.getUpFile().getInputStream();					
-					File realUploadDir = new File("/upload//");//업로드경로
+					File realUploadDir = new File("c:\\upload\\");//업로드경로
 						if(!realUploadDir.exists()){
 							realUploadDir.mkdirs();
 						}
-					os = new FileOutputStream("/upload/"+originalFilename);
+					os = new FileOutputStream("c:\\upload\\"+originalFilename);
 					
 					int readBytes = 0;
 					byte[] buffer = new byte[8192];			     
 						while ((readBytes = is.read(buffer, 0, 8192))!=-1) {
 							os.write(buffer, 0, readBytes);
+						
 						}
 				}
 				return originalFilename;	
 			} catch (IOException e) {
-				e.printStackTrace();
+				e.printStackTrace();                   
 				return null;
 			} finally{
 				try{os.close();}catch(IOException e){};
