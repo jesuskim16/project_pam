@@ -35,6 +35,7 @@ var frm = document.tx_editor_form;
 </script>
 
 <form name="tx_editor_form" id="tx_editor_form" method="post" accept-charset="utf-8" enctype="multipart/form-data" style="margin:0">
+<!-- <form:form method="post" commandNamd="tx_editor_form" enctype="multipart/form-data"> -->
                        	  <input type="hidden" name="brc_id" value="${brc_id}">
                        	  <input type="hidden" name="write_ip" value="${write_ip}">
                           <td width="1"></td>
@@ -88,7 +89,7 @@ var frm = document.tx_editor_form;
                                             <td width="10" style="height: 70px">&nbsp;</td>
                                             <td style="height: 70px"><table width="100%" border="0" cellpadding="0" cellspacing="1" bgcolor="cfcfcf">
                                                 <tr>  
-                                                     <td bgcolor="#FFFFFF"><input type="file" name="upfile" id="upfile" onclick="return textfield_onclick()"></td>
+                                                     <td bgcolor="#FFFFFF"><input type="file" name="upFile" id="upFile"></td>
                                                      <!--<td bgcolor="#FFFFFF"><input type="text" name="file1_name" size="20" align="absmiddle"></td>-->
                                                 </tr>
                                             </table></td>
@@ -157,5 +158,5 @@ var frm = document.tx_editor_form;
                               </tr>
                           </table></td>
 </form>     
-
+<!-- </form:form> -->
 <jsp:include page="/inc/bottom.jsp"/>      

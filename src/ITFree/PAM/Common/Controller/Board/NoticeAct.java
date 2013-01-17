@@ -43,13 +43,13 @@ public class NoticeAct {
 			
 			ModelAndView mav = new ModelAndView();
 			mav.setViewName("/WEB-INF/www/common/board/boardList.jsp"); // 이동할 페이지
-			mav.addObject("title_name",title_name); //게시판 이름
-			mav.addObject("board_chk",board_chk);             //게시판분류 (2: 자유게시판)
-			mav.addObject("board_name",board_name); //게시판이름
-			mav.addObject("brc_lev",session.getAttribute("brc_lev"));		//레벨(1:대리점, 2:판매점)
-			mav.addObject("fbList",fbList);     // Web으로 리스트를 넘김 
+			mav.addObject("title_name", title_name); //게시판 이름
+			mav.addObject("board_chk", board_chk);             //게시판분류 (2: 자유게시판)
+			mav.addObject("board_name", board_name); //게시판이름
+			mav.addObject("brc_lev", session.getAttribute("brc_lev"));		//레벨(1:대리점, 2:판매점)
+			mav.addObject("fbList", fbList);     // Web으로 리스트를 넘김 
 			mav.addObject("pageDto", pageDto);	// Web으로 pageDto정보를 넘김(검색창을 설정해 주기 위함)
-			mav.addObject("page" ,pageDto.getpHtml());	// 게시판 아래 페이징을 하기위해 페이지정보를 넘김
+			mav.addObject("page", pageDto.getpHtml());	// 게시판 아래 페이징을 하기위해 페이지정보를 넘김
 			return mav;
 		}
 		
@@ -90,7 +90,7 @@ public class NoticeAct {
 			return mav;
 		}
 		
-		@RequestMapping("/noticeInsert.do")
+		@RequestMapping("/noticeInsert.do")//입력 폼
 		protected ModelAndView noticeInsert(@ModelAttribute BoardDto boardDto, HttpServletRequest request, HttpSession session){			
 			log.debug("---start["+"NoticeAct.noticeInsert"+"]");
 			
@@ -98,10 +98,10 @@ public class NoticeAct {
 			String write_ip = request.getRemoteAddr(); //접속 아이피주소 
 			ModelAndView mav = new ModelAndView();
 			mav.setViewName("/WEB-INF/www/common/board/boardInsert.jsp");
-			mav.addObject("title_name",title_name);
-			mav.addObject("board_chk",board_chk);             //게시판분류 (2: 자유게시판)
-			mav.addObject("board_name",board_name); //게시판이름
-			mav.addObject("brc_lev",session.getAttribute("brc_lev"));		//레벨(1:대리점, 2:판매점)
+			mav.addObject("title_name", title_name);
+			mav.addObject("board_chk", board_chk);             //게시판분류 (2: 자유게시판)
+			mav.addObject("board_name", board_name); //게시판이름
+			mav.addObject("brc_lev", session.getAttribute("brc_lev"));		//레벨(1:대리점, 2:판매점)
 			mav.addObject("brc_id" , brc_id);   //글쓰기 시 id를 DB에 삽입하기 위해 값을 넘김
 			mav.addObject("write_ip", write_ip);//글쓰기 시 ip를 DB에 사빕하기 위해 값을 넘김
 			return mav;
@@ -128,7 +128,7 @@ public class NoticeAct {
 			return mav;
 		}		
 		
-		@RequestMapping("/noticeUpdate.do")
+		@RequestMapping("/noticeUpdate.do")//수정 폼
 		protected ModelAndView noticeUpdate(long seq, String brc_id, HttpSession session){
 			log.debug("---start["+"NoticeAct.noticeUpdate"+"]");
 			
@@ -166,7 +166,7 @@ public class NoticeAct {
 			return mav;
 		}
 		
-		@RequestMapping("/noticeDelete.do")
+		@RequestMapping("/noticeDelete.do")// 삭제
 		protected ModelAndView noticeDelete(@ModelAttribute BoardDto boardDto, HttpSession session){			
 			log.debug("---start["+"NoticeAct.noticeDelete"+"]");
 			

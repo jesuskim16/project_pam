@@ -86,7 +86,7 @@ var search = function(){
                                 <c:choose>
                                   <c:when test="${board_chk==3}">
                                     <td height="28" bgcolor="#FFFFFF">&nbsp;&nbsp;${fdto.title}</td>                                    
-                                    <td height="28" align="left" bgcolor="#FFFFFF">&nbsp;&nbsp;<a href="" target="">${fdto.filename}</a></td>
+                                    <td height="28" align="left" bgcolor="#FFFFFF">&nbsp;&nbsp;<span class="Text_blue_12px_unberline"><a href="/upload/${fdto.filename}" target="${fdto.filename}">${fdto.filename}</a></span></td>
                                   </c:when>
                                   <c:otherwise>
                                     <td height="28" bgcolor="#FFFFFF">&nbsp;&nbsp;<a href="${board_name}View.do?seq=${fdto.seq}&brc_id=${fdto.brc_id }">${fdto.title }

@@ -1,6 +1,6 @@
 package ITFree.PAM.Common.Model.Board;
 
-import org.springframework.web.multipart.commons.CommonsMultipartFile;
+import org.springframework.web.multipart.MultipartFile;
 
 public class BoardDto {	
 	
@@ -19,7 +19,7 @@ public class BoardDto {
 	private long next_seq;
 	private int rp_cnt;
 	private String filename;
-	private CommonsMultipartFile upFile;
+	private MultipartFile upFile;
 	
 	public long getSeq() {
 		return seq;
@@ -111,10 +111,10 @@ public class BoardDto {
 	public void setFilename(String filename) {
 		this.filename = filename;
 	}
-	public CommonsMultipartFile getUpFile() {
+	public MultipartFile getUpFile() {
 		return upFile;
 	}
-	public void setUpFile(CommonsMultipartFile upFile) {
+	public void setUpFile(MultipartFile upFile) {
 		this.upFile = upFile;
 	}
 	@Override
