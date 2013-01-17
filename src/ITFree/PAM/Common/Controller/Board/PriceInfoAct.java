@@ -33,53 +33,53 @@ public class PriceInfoAct {
 	@Autowired
 	private BoardDao bdDao;		
 	
-		@RequestMapping("/priceInfoList.do")
+		@RequestMapping("/priceInfoList.do")	//리스트 폼
 		protected String priceInfoList(Model model, @ModelAttribute PageDto pgDto, HttpSession session){
-			
+			log.debug("---start["+"PriceInfoAct."+"priceInfoList"+"]");
 			if(pgDto.getPg() == 0)pgDto.setPg(1);
-
+			pgDto.setBoard_chk(board_chk);				//TotalCount를 얻기위한 게시판코드(tw)
 			PageDto pageDto = new PageDto(pgDto.getPg(), bdDao.TotalCount(pgDto), pgDto.getSearchCondition(), pgDto.getSearchKeyword());
 			pageDto.setSearchCondition(pgDto.getSearchCondition());
 			pageDto.setSearchKeyword(pgDto.getSearchKeyword());
+			pageDto.setBoard_chk(board_chk);
 			List<BoardDto> fbList = bdDao.freeBoardList(pageDto);			
-			
+			log.debug("--pricdInfoList:"+pageDto);
 			model.addAttribute("title_name",title_name);
-			model.addAttribute("board_chk",board_chk);             //게시판분류 (3: 단가표)
-			model.addAttribute("board_name",board_name); //게시판이름
-			model.addAttribute("brc_lev",session.getAttribute("brc_lev"));		//레벨(1:대리점, 2:판매점)			
-			model.addAttribute("fbList",fbList); 
-			model.addAttribute("pageDto", pageDto);
-			model.addAttribute("page" ,pageDto.getpHtml());
+			model.addAttribute("board_chk",board_chk);  					//게시판분류 (3: 단가표)
+			model.addAttribute("board_name",board_name); 					//게시판이름
+			model.addAttribute("brc_lev",session.getAttribute("brc_lev"));	//레벨(1:대리점, 2:판매점)			
+			model.addAttribute("fbList",fbList); 							//리스트
+			model.addAttribute("pageDto", pageDto);							//페이지정보
+			model.addAttribute("page" ,pageDto.getpHtml());						// 게시판 아래 페이징을 하기위해 페이지정보를 넘김
 			return "/WEB-INF/www/common/board/boardList.jsp";
 		}
 		
-		@RequestMapping("/priceInfoInsert.do")
-		protected String priceInfoInsert(Model model, HttpSession session, HttpServletRequest request){
-			
-			int brc_lev = (int) session.getAttribute("brc_lev");
-			String brc_id = (String) session.getAttribute("brc_id");			
-			String write_ip = request.getRemoteAddr();
+		@RequestMapping("/priceInfoInsert.do")	//입력 폼
+		protected String priceInfoInsert(Model model, HttpSession session){
+			log.debug("---start["+"PriceInfoAct:"+"priceInfoInsert"+"]");
 			
 			model.addAttribute("title_name",title_name);
-			model.addAttribute("board_chk",board_chk);             //게시판분류 (3: 단가표)
-			model.addAttribute("board_name",board_name); //게시판이름
-			model.addAttribute("brc_lev",brc_lev);		//레벨(1:대리점, 2:판매점)
-			model.addAttribute("brc_id",brc_id);
-			model.addAttribute("write_ip",write_ip);
+			model.addAttribute("board_chk",board_chk);             			//게시판분류 (3: 단가표)
+			model.addAttribute("board_name",board_name); 					//게시판이름
+			model.addAttribute("brc_lev",session.getAttribute("brc_lev"));	//레벨(세션)
+			model.addAttribute("brc_id",session.getAttribute("brc_id"));	//아이디(세션)			
 			return "/WEB-INF/www/common/board/boardInsert.jsp";
 		}
 		
-		@RequestMapping("/priceInfoInsertAction.do")
-		protected String priceInfoInsertAction(@ModelAttribute BoardDto bdDto, Model model, HttpSession session){
-			log.debug("-=-=-="+bdDto);
-			bdDto.setContent(board_name);
-			fileupload(bdDto);
-			boolean result = bdDao.freeBoardInsertAction(bdDto);			
+		@RequestMapping("/priceInfoInsertAction.do")//입력
+		protected String priceInfoInsertAction(@ModelAttribute BoardDto bdDto, Model model, HttpSession session, HttpServletRequest request){
+			log.debug("---start["+"PriceInfoAct:"+"priceInfoInsertAction"+"]");
+			bdDto.setBoard_chk(board_chk);				//게시판분류코드
+			bdDto.setContent("-");						//내용 NN이므로 임의 입력
+			bdDto.setWrite_ip(request.getRemoteAddr());	//작성아이피
+			log.debug("--"+bdDto);
+			//fileupload(bdDto);									//파일업로드
+			boolean result = bdDao.freeBoardInsertAction(bdDto);	//SQL Insert		
 			if(result){
 				model.addAttribute("title_name",title_name);
-				model.addAttribute("board_chk",board_chk);             //게시판분류 (3: 단가표)
-				model.addAttribute("board_name",board_name); //게시판이름
-				model.addAttribute("brc_lev",session.getAttribute("brc_lev"));		//레벨(1:대리점, 2:판매점)
+				model.addAttribute("board_chk",board_chk);          			//게시판분류 (3: 단가표)
+				model.addAttribute("board_name",board_name); 					//게시판이름
+				model.addAttribute("brc_lev",session.getAttribute("brc_lev"));	//레벨(1:대리점, 2:판매점)
 				return "priceInfoList.do";
 			}else{				
 				model.addAttribute("msg","[Error]관리자에게 문의하세요.");
@@ -89,6 +89,7 @@ public class PriceInfoAct {
 		}
 		
 		protected boolean fileupload(@ModelAttribute BoardDto bdDto){
+			log.debug("---start["+"PriceInfoAct:"+"fileupload"+"]");
 			String filename = bdDto.getUpFile().getName(); // 컴포넌트명
 			String originalFilename = bdDto.getUpFile().getOriginalFilename(); //파일명
 			String contentType = bdDto.getUpFile().getContentType(); //컨텐트타입
@@ -118,7 +119,8 @@ public class PriceInfoAct {
 
 		@RequestMapping("/priceInfoUpdate.do")
 		protected ModelAndView priceInfoUpdate(HttpServletRequest requset,
-				HttpServletResponse response) throws Exception {
+				HttpServletResponse response){
+			log.debug("---start["+"PriceInfoAct:"+"priceInfoUpdate"+"]");
 			
 			ModelAndView mav = new ModelAndView();
 			mav.setViewName("/WEB-INF/www/common/board/boardUpdate.jsp");
@@ -131,7 +133,8 @@ public class PriceInfoAct {
 		
 		@RequestMapping("/priceInfoDelete.do")
 		protected ModelAndView priceInfoDelete(HttpServletRequest requset,
-				HttpServletResponse response) throws Exception {
+				HttpServletResponse response){
+			log.debug("---start["+"PriceInfoAct:"+"priceInfoDelete"+"]");
 			
 			ModelAndView mav = new ModelAndView();
 			mav.setViewName("/WEB-INF/www/common/board/boardList.jsp");

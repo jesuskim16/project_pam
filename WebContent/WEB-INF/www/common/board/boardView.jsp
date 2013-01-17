@@ -75,7 +75,7 @@ function reply_insert(){
                                   <td height="28" align="center" bgcolor="#FFFFFF"><table width="100%" border="0" cellspacing="0" cellpadding="0">
                                       <tr>
                                         <td width="20">&nbsp;</td>
-                                        <td align="left">첨부파일: <span class="Text_blue_12px_unberline"><a href="" target="test.txt">${boardDto.filename }</a></span></td>
+                                        <td align="left">첨부파일: <span class="Text_blue_12px_unberline"><a href="" target="test.txt">${boardDto.filename}</a></span></td>
                                         <td width="120">등록자: ${boardDto.brc_name}</td>
                                         <td width="120">IP: ${boardDto.write_ip}</td>
                                         <td width="200">등록일: ${boardDto.write_date}</td>

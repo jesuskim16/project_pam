@@ -43,12 +43,13 @@ public class FreeboardAct {
 			//boardDao.TotalCount(spageDto) : 게시물의 갯수를 넘김(검색값 포함)
 			//spageDto.getSearchCondition() : 검색 상태를 넘김 (제목인지 내용인지 이름인지 등등....)
 			//spageDto.getSearchKeyword()   : 검색한 단어를 넘김
+			spageDto.setBoard_chk(board_chk);				//TotalCount를 얻기위한 게시판코드(tw)
 			PageDto pageDto = new PageDto(spageDto.getPg(), boardDao.TotalCount(spageDto), spageDto.getSearchCondition(), spageDto.getSearchKeyword());
 			pageDto.setSearchCondition(spageDto.getSearchCondition()); //값을 유지할 수 있도록 pageDto 객체에 검색상태 넘김
 			pageDto.setSearchKeyword(spageDto.getSearchKeyword()); 	   // 값을 유지할 수 있도록 pageDto 객체에  검색단어를 넘김
 			pageDto.setBoard_chk(board_chk);
 			List<BoardDto> fbList = boardDao.freeBoardList(pageDto);       // 리스트를 뿌리기 위해 SQL을 넘기고 값을 받아옴
-			
+			log.debug("--freeBoardList:"+pageDto);
 			ModelAndView mav = new ModelAndView();
 			mav.setViewName("/WEB-INF/www/common/board/boardList.jsp"); // 이동할 페이지
 			mav.addObject("title_name",title_name); //게시판 이름
@@ -61,8 +62,8 @@ public class FreeboardAct {
 			return mav;
 		}
 		
-		@RequestMapping(value="/freeBoardView.do")//뷰 폼
-		protected ModelAndView freeBoardView(@ModelAttribute BoardDto boardDto, HttpServletRequest request, HttpSession session) throws Exception {
+		@RequestMapping(value="/freeBoardView.do")//뷰 폼(tw)
+		protected ModelAndView freeBoardView(@ModelAttribute BoardDto boardDto, HttpServletRequest request, HttpSession session){
 			log.debug("---start["+"FreeboardAct.freeBoardView"+"]");			
 			String brc_id = boardDto.getBrc_id();
 			long seq = boardDto.getSeq();			
@@ -175,7 +176,7 @@ public class FreeboardAct {
 		@RequestMapping(value="/freeBoardInsertAction.do")//입력
 		protected ModelAndView freeBoardInsertAction(@ModelAttribute BoardDto boardDto, HttpSession session){
 			log.debug("---start["+"FreeboardAct.freeBoardInsertAction"+"]");
-			boardDto.setBoard_chk(board_chk);
+			boardDto.setBoard_chk(board_chk);		//게시판분류코드
 			log.debug("---boardDto"+boardDto);
 			boolean result = boardDao.freeBoardInsertAction(boardDto);
 			ModelAndView mav = new ModelAndView();

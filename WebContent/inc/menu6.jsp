@@ -18,7 +18,7 @@
                                   <tr>
                                     <td width="14" align="center">&nbsp;</td>
                                     <td width="20" align="center"><img src="img/icon.dot.black.gif" width="9" height="10"></td>
-                                    <td class="Text_gray3_12px"><a href="noticeAct.do">공지사항</a></td>
+                                    <td class="Text_gray3_12px"><a href="noticeList.do">공지사항</a></td>
                                   </tr>
                                 </table></td>
                               </tr>

@@ -77,20 +77,19 @@ var search = function(){
 <!-- {3(게시판본문)------------------------------------------------------------------------------------------------------------------------------------>                             
                                	<c:if test="${empty fbList}">
                                	<tr>
-                               		<td colspan="6" height="28" align="center" bgcolor="#FFFFFF">검색값이 없습니다.</td>
+                               		<td colspan="6" height="200" align="center" bgcolor="#FFFFFF"><h1>검색값이 없습니다.</h1></td>
                                	</tr>
                                	</c:if>
-                               	
                                	<c:forEach items="${fbList }" var="fdto">
                                   <tr>
                                     <td height="28" align="center" bgcolor="#FFFFFF" >${fdto.rown}</td> 
                                 <c:choose>
                                   <c:when test="${board_chk==3}">
-                                    <td height="28" bgcolor="#FFFFFF">${fdto.title }</td>                                    
-                                    <td height="28" align="left" bgcolor="#FFFFFF">&nbsp;<a href="" target="">${fdto.filename}</a></td>
+                                    <td height="28" bgcolor="#FFFFFF">&nbsp;&nbsp;${fdto.title}</td>                                    
+                                    <td height="28" align="left" bgcolor="#FFFFFF">&nbsp;&nbsp;<a href="" target="">${fdto.filename}</a></td>
                                   </c:when>
                                   <c:otherwise>
-                                    <td height="28" bgcolor="#FFFFFF"><a href="${board_name}View.do?seq=${fdto.seq}&brc_id=${fdto.brc_id }">${fdto.title }
+                                    <td height="28" bgcolor="#FFFFFF">&nbsp;&nbsp;<a href="${board_name}View.do?seq=${fdto.seq}&brc_id=${fdto.brc_id }">${fdto.title }
                                     <c:if test="${fdto.rp_cnt != 0}">
                                     [${fdto.rp_cnt}]
                                     </c:if>
@@ -99,7 +98,7 @@ var search = function(){
                                   </c:otherwise>
                                 </c:choose>
                                 	<td height="28" align="center" bgcolor="#FFFFFF">${fdto.readcount }</td>
-                                    <td height="28" align="center" bgcolor="#FFFFFF">${fdto.brc_id }</td>                                    
+                                    <td height="28" align="left" bgcolor="#FFFFFF">&nbsp;&nbsp;${fdto.brc_id }</td>                                    
                                     <td height="28" align="center" bgcolor="#FFFFFF">${fdto.write_date }</td>
                                   </tr> 
                                  </c:forEach>      
@@ -109,16 +108,20 @@ var search = function(){
                             <td height="50"><table width="100%" border="0" cellpadding="0" cellspacing="0">
 <!-- {4(PAGING)------------------------------------------------------------------------------------------------------------------------------------>                              
                               <tr>                            
-		                        <a href="${board_name}Insert.do"><img src="img/btn_write.gif"></a>		                                       
-                                <td width="200">&nbsp;</td>
+		                        
+                                <td width="300">
+                                 <c:if test="${!((board_chk==1||board_chk==3)&&brc_lev==2)}">
+                                  <a href="${board_name}Insert.do"><img src="img/btn_write.gif"></a>
+                                 </c:if>  
+                                </td>
                                 <td align="center"><table border="0" cellspacing="0" cellpadding="0">
                                     <tr>
                                       <td>
 										<table border='0' cellspacing='0' cellpadding='0'>
 											<tr>
 												<td class='Text_gray2_11px'>
-												<c:forEach items="${page }" var="page">
-												${page }
+												<c:forEach items="${page}" var="page">
+												${page}
 												</c:forEach>
 												</td>
 											</tr>
@@ -126,7 +129,7 @@ var search = function(){
 									</td>
                                     </tr>
                                 </table></td>
-                                <td width="200">&nbsp;</td>
+                                <td width="400">&nbsp;</td>
                               </tr>
 <!-- {4 )-------------------------------------------------------------------------------------------------------------------------------------------->                               
                             </table></td>
