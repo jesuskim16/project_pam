@@ -260,4 +260,6 @@ SELECT NVL(brc_id , 'empty') as brc_id
 FROM branch
 WHERE brc_id like 'manager3'
 
+
+
 select * from BRANCHLOG
