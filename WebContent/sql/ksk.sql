@@ -66,9 +66,10 @@ CREATE TABLE BRANCH								--[지점]
 	BOSS_PHONE 	VARCHAR2(20),						--대표연락처
 	BRC_LEV 	NUMBER(2) 		DEFAULT '0',		--레벨(대리점:1, 판매점:2)
 	BRC_STATE 	NUMBER(2) 		DEFAULT 0,			--상태(기본0,삭제1)
-0
 	PRIMARY KEY (BRC_ID)
 );
+
+
 
 
 CREATE TABLE BRANCHLOG							--[접속기록]
@@ -258,3 +259,5 @@ WHERE brc_id like
 SELECT NVL(brc_id , 'empty') as brc_id
 FROM branch
 WHERE brc_id like 'manager3'
+
+select * from BRANCHLOG

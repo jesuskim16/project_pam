@@ -302,7 +302,7 @@
                                                     <td ><table border="0" cellpadding="0" cellspacing="0" bgcolor="#D8D8D8">
                                                       <tr >
                                                         <td  valign="bottom" >
-                                                            <select id="br_sel" class="input_bg_white">
+                                                            <select name="brc_lev" id="brc_lev" class="input_bg_white">
 	                                                        	<option id="br_1" value="1" selected="selected">대리점</option>
 	                                                        	<option id="br_2" value="2">판매점</option>
                                                         	</select>
@@ -441,7 +441,7 @@
                                                       	<td height="20" valign="bottom" bgcolor="#FFFFFF">
                                                       		<input name="brc_post1" type="text" class="input_bg_white" id="brc_post1" size="1" maxlength="3" readonly="readonly">
                                                       		<input name="brc_post2" type="text" class="input_bg_white" id="brc_post2" size="1" maxlength="3" readonly="readonly">
-                                                      		<input type="button" class="input_bg_gray" value="우편번호 검색" onclick="javascript:test();">
+                                                      		<input type="button" id="brc_post" class="input_bg_gray" value="우편번호 검색" >
                                                       	</td>
                                                       </tr>
                                                       <tr>
@@ -535,7 +535,7 @@
                                                     <td height="26"><table border="0" cellpadding="0" cellspacing="2" bgcolor="cdcdcd">
                                                       <tr>
                                                         <td height="20" valign="bottom" bgcolor="#FFFFFF">
-                                                        <select class="input_bg_white" name="brc_phone1" id="boss_phone1">
+                                                        <select class="input_bg_white" name="attach_id" id="attach_id">
                                                         	<option value="011">011</option>
                                                         	<option value="010" selected>010</option>
                                                         	<option value="016">016</option>

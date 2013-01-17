@@ -59,6 +59,7 @@ $(document).ready(function(){
 	
 	//대표자명 입력확인
 	$("#brc_boss").focusout(function(){
+		$().lightBox({fixedNavigation:true});
 		var brc_boss = trim($("input[name=brc_boss]").val());
 		if(brc_boss == ""){
 			$("#brc_bossCheck").html("<font color=red>대표자 명을 입력하세요.</font>");
@@ -75,9 +76,9 @@ $(document).ready(function(){
 	});
 	
 	//대리점, 판매점 선택
-	$("select").change(function(){
+	$("select").change(function(){		
 		var check = 0;
-		  $("select[id='br_sel'] option:selected").each(function () {
+		  $("select[id='brc_lev'] option:selected").each(function () {
 			  check = $(this).val();
 		  });
 		  if(check == 1){
@@ -97,6 +98,7 @@ $(document).ready(function(){
 	
 	//페이지 로드시 대리점 목록을 숨김
 	function pageLoad(){
+		
 		$("#BR_List").hide();
 	  	$("#BR_List_name").hide();
 	}
