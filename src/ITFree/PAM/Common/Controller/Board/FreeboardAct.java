@@ -28,8 +28,6 @@ public class FreeboardAct {
 		@Autowired
 		private BoardDao boardDao;
 		
-		
-		
 		@RequestMapping("/freeBoardList.do")//리스트 폼
 		protected ModelAndView freeBoardList(@ModelAttribute PageDto spageDto , HttpSession session){
 			log.debug("---start["+"FreeboardAct.freeBoardList"+"]");
@@ -249,6 +247,5 @@ public class FreeboardAct {
 				mav.addObject("url" ,"javascript:history.back();");
 			}
 			return mav;
-		}		
-		
+		}	
 }

@@ -10,7 +10,10 @@
 		
 	<!-- 파일업로드multipart -->
 	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
-	  <property name="defaultEncoding" value="UTF-8"></property>
+	  <property name="defaultEncoding" value="UTF-8"/>
+<!-- 	  <property name="maxUploadSize" value=""/> -->
+<!-- 	  <property name="uploadTempDir" value=""/> -->
+<!-- 	  <property name="maxInMemorySize" value=""/> -->
 	</bean>
 	
 	<context:component-scan base-package="ITFree" />		

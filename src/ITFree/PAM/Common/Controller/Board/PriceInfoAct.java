@@ -7,6 +7,7 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.List;
 
+import javax.annotation.processing.FilerException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -69,11 +70,11 @@ public class PriceInfoAct {
 		@RequestMapping("/priceInfoInsertAction.do")//입력
 		protected String priceInfoInsertAction(@ModelAttribute BoardDto bdDto, Model model, HttpSession session, HttpServletRequest request){
 			log.debug("---start["+"PriceInfoAct:"+"priceInfoInsertAction"+"]");
-			bdDto.setBoard_chk(board_chk);				//게시판분류코드
-			bdDto.setContent("-");						//내용 NN이므로 임의 입력
-			bdDto.setWrite_ip(request.getRemoteAddr());	//작성아이피
+			bdDto.setBoard_chk(board_chk);							//게시판분류코드
+			bdDto.setContent("-");									//내용 NN이므로 임의 입력
+			bdDto.setWrite_ip(request.getRemoteAddr());				//작성아이피
 			log.debug("--"+bdDto);
-			//fileupload(bdDto);									//파일업로드
+			bdDto.setFilename(fileupload(bdDto));					//파일업로드
 			boolean result = bdDao.freeBoardInsertAction(bdDto);	//SQL Insert		
 			if(result){
 				model.addAttribute("title_name",title_name);
@@ -88,29 +89,37 @@ public class PriceInfoAct {
 			}
 		}
 		
-		protected boolean fileupload(@ModelAttribute BoardDto bdDto){
+		protected String fileupload(@ModelAttribute BoardDto bdDto){
 			log.debug("---start["+"PriceInfoAct:"+"fileupload"+"]");
-			String filename = bdDto.getUpFile().getName(); // 컴포넌트명
-			String originalFilename = bdDto.getUpFile().getOriginalFilename(); //파일명
-			String contentType = bdDto.getUpFile().getContentType(); //컨텐트타입
-			long filesize = bdDto.getUpFile().getSize(); //파일크기
+			log.debug("--:"+bdDto);
+			if(bdDto.getUpFile().isEmpty()){}
+			String filename = bdDto.getUpFile().getName(); 						//컴포넌트명(input 속성)
+			String originalFilename = bdDto.getUpFile().getOriginalFilename(); 	//파일명
+			String contentType = bdDto.getUpFile().getContentType(); 			//컨텐트타입
+			long filesize = bdDto.getUpFile().getSize(); 						//파일크기
+			
+			log.debug("--fileupload:"+filename+":"+originalFilename+":"+contentType+":"+filesize);
 			InputStream is = null;
 			OutputStream os = null;
 			try {
-				if(filesize>0){
-					is=bdDto.getUpFile().getInputStream();
-					File realUploadDir = new File("/www/upload//");//업로드경로
-					if(!realUploadDir.exists()){
-						realUploadDir.mkdirs();
-					}
-					os = new FileOutputStream("/www/upload/"+originalFilename);
+				if(filesize>0){					
+					is=bdDto.getUpFile().getInputStream();					
+					File realUploadDir = new File("/upload//");//업로드경로
+						if(!realUploadDir.exists()){
+							realUploadDir.mkdirs();
+						}
+					os = new FileOutputStream("/upload/"+originalFilename);
 					
-					int realBytes = 0;
-					byte[] buffer = new byte[8192];					
+					int readBytes = 0;
+					byte[] buffer = new byte[8192];			     
+						while ((readBytes = is.read(buffer, 0, 8192))!=-1) {
+							os.write(buffer, 0, readBytes);
+						}
 				}
-				return true;	
-			} catch (Exception e) {
-				return false;
+				return originalFilename;	
+			} catch (IOException e) {
+				e.printStackTrace();
+				return null;
 			} finally{
 				try{os.close();}catch(IOException e){};
 				try{is.close();}catch(IOException e){};
@@ -119,29 +128,29 @@ public class PriceInfoAct {
 
 		@RequestMapping("/priceInfoUpdate.do")
 		protected ModelAndView priceInfoUpdate(HttpServletRequest requset,
-				HttpServletResponse response){
+				HttpServletResponse response, HttpSession session){
 			log.debug("---start["+"PriceInfoAct:"+"priceInfoUpdate"+"]");
 			
 			ModelAndView mav = new ModelAndView();
 			mav.setViewName("/WEB-INF/www/common/board/boardUpdate.jsp");
-			mav.addObject("title_name","PAM::단가표");
-			mav.addObject("board_chk","3");             //게시판분류 (3: 단가표)
-			mav.addObject("board_name","priceInfo"); //게시판이름
-			mav.addObject("brc_lev","1");		//레벨(1:대리점, 2:판매점)
+			mav.addObject("title_name",title_name);
+			mav.addObject("board_chk",board_chk);             				//게시판분류 (3: 단가표)
+			mav.addObject("board_name",board_name); 						//게시판이름
+			mav.addObject("brc_lev",session.getAttribute("brc_lev"));		//레벨(1:대리점, 2:판매점)
 			return mav;
 		}
 		
 		@RequestMapping("/priceInfoDelete.do")
 		protected ModelAndView priceInfoDelete(HttpServletRequest requset,
-				HttpServletResponse response){
+				HttpServletResponse response, HttpSession session){
 			log.debug("---start["+"PriceInfoAct:"+"priceInfoDelete"+"]");
 			
 			ModelAndView mav = new ModelAndView();
 			mav.setViewName("/WEB-INF/www/common/board/boardList.jsp");
-			mav.addObject("title_name","PAM::단가표");
-			mav.addObject("board_chk","3");             //게시판분류 (3: 단가표)
-			mav.addObject("board_name","priceInfo"); //게시판이름
-			mav.addObject("brc_lev","1");		//레벨(1:대리점, 2:판매점)
+			mav.addObject("title_name",title_name);
+			mav.addObject("board_chk",board_chk);             //게시판분류 (3: 단가표)
+			mav.addObject("board_name",board_name); //게시판이름
+			mav.addObject("brc_lev",session.getAttribute("brc_lev"));		//레벨(1:대리점, 2:판매점)
 			return mav;
 		}		
 		
