@@ -27,7 +27,7 @@ $(document).ready(function(){
 					$().toastmessage('showToast', {
 					    text     : '아이디가 이미 존재합니다.',
 					    sticky   : false,
-					    stayTime : 1000,
+					    stayTime : 1500,
 					    position : 'middle-center',
 					    type     : 'warning'					    	
 					});
@@ -62,7 +62,8 @@ $(document).ready(function(){
 		var brc_boss = trim($("input[name=brc_boss]").val());
 		if(brc_boss == ""){
 			$("#brc_bossCheck").html("<font color=red>대표자 명을 입력하세요.</font>");
-				$("input[name=brc_boss]").focus();
+				$("input[name=brc_boss]").focus();		        
+
 				$().toastmessage('showToast', {
 				    text     : '대표자 명을 입력하세요.',
 				    sticky   : false,
@@ -71,16 +72,36 @@ $(document).ready(function(){
 				    type     : 'warning'					    	
 				});
 		}
-
-
 	});
 	
-	
+	//대리점, 판매점 선택
+	$("select").change(function(){
+		var check = 0;
+		  $("select[id='br_sel'] option:selected").each(function () {
+			  check = $(this).val();
+		  });
+		  if(check == 1){
+			$("#BR_List").hide(1000);
+		  	$("#BR_List_name").hide(1000);
+		  }else if(check == 2){
+			$("#BR_List").show(1000);
+			$("#BR_List_name").show(1000);
+		  }
+	});
+
 	
 	//공백을 삭제해주는 메소드
 	function trim(str) {
 		return str.replace(/^\s\s*/, '').replace(/\s\s*$/, ''); 
 	} 
+	
+	//페이지 로드시 대리점 목록을 숨김
+	function pageLoad(){
+		$("#BR_List").hide();
+	  	$("#BR_List_name").hide();
+	}
+	
+window.onload = pageLoad;
 
 });
 

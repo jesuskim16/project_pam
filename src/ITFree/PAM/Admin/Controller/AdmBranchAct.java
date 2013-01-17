@@ -20,6 +20,11 @@ public class AdmBranchAct {
 		return "/WEB-INF/www/admin/branch/br_list.jsp";		
 	}
 	
+	@RequestMapping("admNoticeInsertAct.do")
+	public String admNoticeInsertAct(){		
+		return null;		
+	}
+	
 	@RequestMapping("admBranchInsert.do")
 	public String admBranchInsert(){		
 		return "/WEB-INF/www/admin/branch/br_insert.jsp";		
