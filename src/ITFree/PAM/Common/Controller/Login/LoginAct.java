@@ -28,20 +28,23 @@ public class LoginAct {
 	}
 
 	@RequestMapping("/loginAction.do")
-	protected ModelAndView loginAction(String brc_id, String password, HttpSession session, HttpServletRequest request){	
+	protected ModelAndView loginAction(String brc_id, String password, HttpSession session, HttpServletRequest request, ModelAndView mav){	
 		
 		LoginDto branchDto = new LoginDto();
 		branchDto.setBrc_id(brc_id);
 		branchDto.setPassword(password);		
 		branchDto = branchDao.getLoginInfo(branchDto);
-		ModelAndView mav = new ModelAndView();		
 		if (branchDto != null && branchDto.getBrc_name() != null) {			
 			session.setAttribute("brc_id", branchDto.getBrc_id());
 			session.setAttribute("brc_name", branchDto.getBrc_name());
 			session.setAttribute("brc_lev", branchDto.getBrc_lev());	
 			branchDto.setIp(request.getRemoteAddr());
 			branchDao.setLoginLog(branchDto);
-			mav.setViewName("redirect:main.do");			
+			if(branchDto.getBrc_lev()==0){
+				mav.setViewName("redirect:admMain.do");
+			}else{
+				mav.setViewName("redirect:main.do");
+			}
 		} else {
 			mav.setViewName("redirect:login.do");			
 		}
