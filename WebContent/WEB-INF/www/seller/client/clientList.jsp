@@ -147,12 +147,8 @@
                                    </select><span class="Text_gray_12px ">&nbsp;개월
                                  </td>
                                  
-                                  <c:set var="t12" value=""/>
-								  <c:set var="t18" value=""/>
-								  <c:set var="t24" value=""/>
-								  <c:set var="t30" value=""/>
-								  <c:set var="t36" value=""/>
-								  
+                                  <c:set var="t12" value=""/><c:set var="t18" value=""/><c:set var="t24" value=""/><c:set var="t30" value=""/><c:set var="t36" value=""/>	
+								  							  
                                  <td align="center" bgcolor="#FFFFFF"><input type="date" size="15" name="open_date"  value="${client.open_date}" class="select_140_2"/></td>
                                  <td align="center" bgcolor="#FFFFFF">
                                    <input type="submit" value="완료"/>

@@ -29,4 +29,6 @@ public interface BoardDao {
 
 	boolean freeBoardReplyDelete(long seq);	
 
+	String fileupload(BoardDto bdDto, String board_name);
+
 }

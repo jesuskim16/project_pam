@@ -7,7 +7,13 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.1.xsd
 		http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.1.xsd">	
-		
+	<!-- 파일다운로드 -->
+<!-- 	<bean class="org.springframework.web.servlet.view.BeanNameViewResolver"> -->
+<!-- 		<property name="order" value="0"/> -->
+<!-- 	</bean>		 -->
+<!-- 	<bean id="download" class="ITFree.PAM.Common.Controller.Board.DownloadView"/> -->
+<!-- 	<bean id="down" class="ITFree.PAM.Common.Controller.Board.DownloadController"/> -->
+	
 	<!-- 파일업로드multipart -->
 	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
 	  <property name="defaultEncoding" value="UTF-8"/>

@@ -2,12 +2,10 @@ package ITFree.PAM.Common.Controller.Login;
 
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
@@ -15,8 +13,6 @@ import org.springframework.web.servlet.ModelAndView;
 import ITFree.PAM.Common.Model.Login.LoginDao;
 import ITFree.PAM.Common.Model.Login.LoginDto;
 
-
-  
 @Controller
 public class LoginAct {
 	private Logger log = Logger.getLogger(this.getClass());
@@ -25,8 +21,7 @@ public class LoginAct {
 	private LoginDao branchDao;
 	
 	@RequestMapping("/login.do")
-	protected ModelAndView login(ModelAndView mav){		
-		
+	protected ModelAndView login(ModelAndView mav){
 		mav.setViewName("/WEB-INF/www/login.jsp");
 		mav.addObject("title_name","PAM::로그인");
 		return mav;
@@ -64,5 +59,6 @@ public class LoginAct {
 		mav.setViewName("redirect:login.do");		
 		return mav;
 	}
+	
 }
 
