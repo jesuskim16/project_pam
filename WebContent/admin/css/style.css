@@ -1,4 +1,4 @@
-/*¹Ùµð µðÆúÆ®¿É¼Ç*/
+/*ï¿½Ùµï¿½ ï¿½ï¿½ï¿½ï¿½Æ®ï¿½É¼ï¿½*/
 body,td {margin:0; padding:0; font-size:12px; color:#555555;line-height:16px;}
 
 
@@ -7,7 +7,7 @@ body,td {margin:0; padding:0; font-size:12px; color:#555555;line-height:16px;}
 table { border-spacing:0px; border-collapse:collapse; } 
 
 
-/* ÀÏ¹Ý ÅØ½ºÆ® */
+/* ï¿½Ï¹ï¿½ ï¿½Ø½ï¿½Æ® */
 .Text_all_12px {color:#555555; font-size:12px; font-family:dotum; text-decoration: underline;}
 
 .s_Text_gray_Bold {color:#6F6F6F; font-size:12px; font-family:"dotum";font-weight:bold}
@@ -604,7 +604,7 @@ div,ul,li,dl,ol,dt,dd,h1,h2,h3,h4,h5,h6  {
 }
 
 
-/*ÀÌ¹ÌÁö º¸´õ*/
+/*ï¿½Ì¹ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½*/
 img { border: none;}
 
 
@@ -894,7 +894,7 @@ img { border: none;}
 .input_bg_white {font-size: 11px;
 	        color: #797979;
 	        background-color: #ffffff;
-	        border: 1px solid #ffffff;
+	        border: 1px solid #B3D26C;
 			}
 .radio { margin:-4px 3px -1px -2px; vertical-align: middle; }
 .check { margin:-2px 3px -1px -2px; vertical-align: middle; }
