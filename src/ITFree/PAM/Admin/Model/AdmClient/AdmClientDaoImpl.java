@@ -13,7 +13,7 @@ public class AdmClientDaoImpl implements AdmClientDao {
 
 	@Autowired
 	private SqlMapClientTemplate sqlMapClientTemplate;
-	
+	//List//////////////////////////////////////////////////////////////////////////////
 	@Override
 	public List<AdmClientDto> AdmClientList(AdmClientPageDto APDto) {
 		try{
@@ -22,15 +22,44 @@ public class AdmClientDaoImpl implements AdmClientDao {
 			e.printStackTrace();
 			return null;
 		}
-		
+	}
+	
+	@Override
+	public List<AdmClientDto> ManagerList(M_AdmClientPageDto MPDto) {
+		try{
+			return sqlMapClientTemplate.queryForList("AdmClient.ManagerList", MPDto); 
+		} catch(Exception e){
+			e.printStackTrace();
+			return null;
+		}
+	}
+	
+	@Override
+	public List<AdmClientDto> SalesList(S_AdmClientPageDto SPDto) {
+		try{
+			return sqlMapClientTemplate.queryForList("AdmClient.SalesList", SPDto); 
+		} catch(Exception e){
+			e.printStackTrace();
+			return null;
+		}
 	}
 
 	@Override
-	public long ListTotalCount(AdmClientPageDto pageDto) {
-		return (long) sqlMapClientTemplate.queryForObject("AdmClient.ListTotalCount", pageDto);
+	public long CListTotalCount(AdmClientPageDto CPDto) {
+		return (long) sqlMapClientTemplate.queryForObject("AdmClient.ListTotalCount", CPDto);
 
 	}
-
+	@Override
+	public long MListTotalCount(M_AdmClientPageDto MPDto) {
+		return (long) sqlMapClientTemplate.queryForObject("AdmClient.MListTotalCount", MPDto);
+	}
+	
+	@Override
+	public long SListTotalCount(S_AdmClientPageDto SPDto) {
+		return (long) sqlMapClientTemplate.queryForObject("AdmClient.SListTotalCount", SPDto);
+	}
+	//List//////////////////////////////////////////////////////////////////////////////
+	
 	@Override
 	public AdmClientDto AdmClientView(long seq) {
 		try{
@@ -51,5 +80,13 @@ public class AdmClientDaoImpl implements AdmClientDao {
 		}
 		
 	}
+
+	
+
+
+
+
+
+
 
 }
