@@ -8,7 +8,6 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -22,8 +21,13 @@ public class DownloadController implements ApplicationContextAware {
     	log.debug("---start"+"DownloadController.download");
     	String server_root ="c:\\Documents and Settings\\A\\git\\project_pam\\WebContent";	//서버절대경로
 		String upfolder = server_root+"\\upload\\"+board_name+"\\";							//업로드경로
-    	String fullPath = upfolder + "\\" + filename;                   
-    	File file = new File(fullPath);                   
+    	String fullPath = upfolder + filename;
+    	log.debug("--filename:"+filename);
+    	log.debug("--fullPath:"+fullPath);
+    	File file = new File(fullPath);     
+    	log.debug("--file:"+file);
+    	
+    	
     	return new ModelAndView("download", "downloadFile", file);     
     }
     

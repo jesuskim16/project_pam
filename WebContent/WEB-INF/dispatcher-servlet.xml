@@ -6,23 +6,34 @@
 	xmlns:p="http://www.springframework.org/schema/p"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.1.xsd
-		http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.1.xsd">	
-	<!-- 파일다운로드 -->
-<!-- 	<bean class="org.springframework.web.servlet.view.BeanNameViewResolver"> -->
-<!-- 		<property name="order" value="0"/> -->
-<!-- 	</bean>		 -->
-<!-- 	<bean id="download" class="ITFree.PAM.Common.Controller.Board.DownloadView"/> -->
-<!-- 	<bean id="down" class="ITFree.PAM.Common.Controller.Board.DownloadController"/> -->
-	
-	<!-- 파일업로드multipart -->
-	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
-	  <property name="defaultEncoding" value="UTF-8"/>
-<!-- 	  <property name="maxUploadSize" value=""/> -->
-<!-- 	  <property name="uploadTempDir" value=""/> -->
-<!-- 	  <property name="maxInMemorySize" value=""/> -->
-	</bean>
-	
-	<context:component-scan base-package="ITFree" />		
+		http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.1.xsd">
+	<context:component-scan base-package="ITFree.PAM" />	<!-- 어노테이션이 있는 클래스를 자동으로 스캔 -->		
+<!-- 	  <bean id="download" class="ITFree.PAM.Common.Controller.Board.DownloadView"/> -->
+<!-- 	<bean id="down" class="ITFree.PAM.Common.Controller.Board.DownloadController"/> -->	 
+	  
+<!--     <bean class="org.springframework.web.servlet.view.ContentNegotiatingViewResolver"> -->
+<!-- 		<property name="viewResolvers"> -->
+<!-- 		   <list> -->
+<!-- 		       <bean class="org.springframework.web.servlet.view.BeanNameViewResolver"> -->
+<!-- 		         <property name="order" value="0"/> -->
+<!-- 		       </bean> -->
+<!-- 		       <bean id="viewResolver" class="org.springframework.web.servlet.view.UrlBasedViewResolver"> -->
+<!-- 					<property name="viewClass" value="org.springframework.web.servlet.view.JstlView"/> -->
+<!-- 					<property name="prefix" value="/WEB-INF/jsp/"/> -->
+<!-- 					<property name="suffix" value=".jsp"/> -->
+<!-- 			   </bean> -->
+			   <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">	<!-- 파일업로드multipart -->
+	    		<property name="defaultEncoding" value="UTF-8"/>
+	    		
+	  		   </bean>
+<!-- 			   <bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver"/> -->
+<!-- 		   </list> -->
+<!-- 		</property> -->
+<!-- 	</bean> -->
+
+	  
+	  
+	  
 </beans>
 
 

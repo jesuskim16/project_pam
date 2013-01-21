@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>    
 <jsp:include page="/admin/inc/top.jsp"/>
 <jsp:include page="/admin/inc/menu_board.jsp"/>
 <br>
@@ -24,10 +25,12 @@
                                 <td background="admin/img/board.bar.bg.gif"><table width="100%" border="0" cellspacing="0" cellpadding="0">
                                     <tr>
                                       <td width="30" align="center" class="s_Text_gray2_12px_Bold">번호</td>
-                                      <td align="center"><span class="s_Text_gray2_12px_Bold">제목</span></td>
+                                      <td align="center"><span class="s_Text_gray2_12px_Bold">제목</span></td>           
                                       <td width="50" align="center"><span class="s_Text_gray2_12px_Bold">첨부</span></td>
-                                      <td width="90" align="center"><span class="s_Text_gray2_12px_Bold">글쓴이</span></td>
-                                      <td width="100" align="center"><span class="s_Text_gray2_12px_Bold">등록일</span></td>
+                                      <td width="80" align="center"><span class="s_Text_gray2_12px_Bold">글쓴이</span></td>
+                                      <td width="90" align="center"><span class="s_Text_gray2_12px_Bold">등록일</span></td>
+                                      <td width="50" align="center"><span class="s_Text_gray2_12px_Bold">댓글</span></td>
+                                      <td width="50" align="center"><span class="s_Text_gray2_12px_Bold">조회수</span></td>
                                     </tr>
                                 </table></td>
                                 <td width="10"><img src="admin/img/board.bar.right.gif" width="10" height="35"></td>
@@ -35,13 +38,14 @@
                           </table></td>
                         </tr>
                         <tr>
-                          <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
+                          <td height="300" valign="top"><table width="100%" border="0" cellspacing="0" cellpadding="0">
                               <!-- 게시물없을때 -->
-                              <!-- 
+                              <c:if test="${empty list}">
                               <tr>
-                                <td colspan="12" Height="200" align="center" bgColor="#ffffff">등록된 내용이 없습니다.</td>
+                                <td colspan="12" height="250" align="center" valign="center" bgColor="#ffffff"><h1>등록된 내용이 없습니다.</h1></td>
                               </tr>
-                              -->
+                              </c:if>
+                             <c:forEach items="${list}" var="abdDto">
                               <!-- 반복문  -->
                               <tr>
                                 <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
@@ -49,12 +53,19 @@
                                       <td width="10">&nbsp;</td>
                                       <td height="30"><table width="100%" border="0" cellspacing="0" cellpadding="0">
                                           <tr>
-                                            <td width="30" align="center" class="s_Text_gray2_12px">1</td>
+                                            <td width="30" align="center" class="s_Text_gray2_12px">${abdDto.rown}</td>
                                             <td align="left" class="s_Text_gray2_12px">
-                                              <a href="admNoticeView.do">제목</a></td>
-                                            <td width="50" align="center"><img src="admin/img/icon.file.gif" width="15" height="15"></td>
-                                            <td width="90" align="center" class="s_Text_gray2_12px">홍길동</td>
-                                            <td width="100" align="center" class="s_Text_gray2_12px">2013-01-01</td>
+                                              <a href="adminNoticeView.do">&nbsp;&nbsp;${abdDto.title}</a>
+                                            </td>
+                                            <td width="50" align="center">
+                                             <c:if test="${empty abdDto.title}">
+                                              <img src="admin/img/icon.file.gif" width="15" height="15">
+                                             </c:if>
+                                            </td>
+                                            <td width="80" align="left" class="s_Text_gray2_12px">&nbsp;&nbsp;&nbsp;${abdDto.brc_id}</td>
+                                            <td width="90" align="center" class="s_Text_gray2_12px">${abdDto.write_date}</td>
+                                            <td width="50" align="center">${abdDto.rp_cnt}</td>
+                                            <td width="50" align="center">${abdDto.readcount}</td>
                                           </tr>
                                       </table></td>
                                       <td width="10">&nbsp;</td>
@@ -64,206 +75,7 @@
                               <tr>
                                 <td height="1" bgcolor="e5e5e5"></td>
                               </tr>
-                              <!-- 반복문  -->
-                              <tr>
-                                <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
-                                    <tr>
-                                      <td width="10">&nbsp;</td>
-                                      <td height="30"><table width="100%" border="0" cellspacing="0" cellpadding="0">
-                                          <tr>
-                                            <td width="30" align="center" class="s_Text_gray2_12px">2</td>
-                                            <td align="left" class="s_Text_gray2_12px">
-                                              <a href="adminNoticeView.do">제목</a></td>
-                                            <td width="50" align="center"><img src="admin/img/icon.file.gif" width="15" height="15"></td>
-                                            <td width="90" align="center" class="s_Text_gray2_12px">홍길동</td>
-                                            <td width="100" align="center" class="s_Text_gray2_12px">2013-01-01</td>
-                                          </tr>
-                                      </table></td>
-                                      <td width="10">&nbsp;</td>
-                                    </tr>
-                                </table></td>
-                              </tr>
-                              <tr>
-                                <td height="1" bgcolor="e5e5e5"></td>
-                              </tr>
-                              <!-- 반복문  -->
-                              <tr>
-                                <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
-                                    <tr>
-                                      <td width="10">&nbsp;</td>
-                                      <td height="30"><table width="100%" border="0" cellspacing="0" cellpadding="0">
-                                          <tr>
-                                            <td width="30" align="center" class="s_Text_gray2_12px">3</td>
-                                            <td align="left" class="s_Text_gray2_12px">
-                                              <a href="view.do">제목</a></td>
-                                            <td width="50" align="center"><img src="admin/img/icon.file.gif" width="15" height="15"></td>
-                                            <td width="90" align="center" class="s_Text_gray2_12px">홍길동</td>
-                                            <td width="100" align="center" class="s_Text_gray2_12px">2013-01-01</td>
-                                          </tr>
-                                      </table></td>
-                                      <td width="10">&nbsp;</td>
-                                    </tr>
-                                </table></td>
-                              </tr>
-                              <tr>
-                                <td height="1" bgcolor="e5e5e5"></td>
-                              </tr>
-                              <!-- 반복문  -->
-                              <tr>
-                                <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
-                                    <tr>
-                                      <td width="10">&nbsp;</td>
-                                      <td height="30"><table width="100%" border="0" cellspacing="0" cellpadding="0">
-                                          <tr>
-                                            <td width="30" align="center" class="s_Text_gray2_12px">4</td>
-                                            <td align="left" class="s_Text_gray2_12px">
-                                              <a href="view.do">제목</a></td>
-                                            <td width="50" align="center"><img src="admin/img/icon.file.gif" width="15" height="15"></td>
-                                            <td width="90" align="center" class="s_Text_gray2_12px">홍길동</td>
-                                            <td width="100" align="center" class="s_Text_gray2_12px">2013-01-01</td>
-                                          </tr>
-                                      </table></td>
-                                      <td width="10">&nbsp;</td>
-                                    </tr>
-                                </table></td>
-                              </tr>
-                              <tr>
-                                <td height="1" bgcolor="e5e5e5"></td>
-                              </tr>
-                              <!-- 반복문  -->
-                              <tr>
-                                <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
-                                    <tr>
-                                      <td width="10">&nbsp;</td>
-                                      <td height="30"><table width="100%" border="0" cellspacing="0" cellpadding="0">
-                                          <tr>
-                                            <td width="30" align="center" class="s_Text_gray2_12px">5</td>
-                                            <td align="left" class="s_Text_gray2_12px">
-                                              <a href="view.do">제목</a></td>
-                                            <td width="50" align="center"><img src="admin/img/icon.file.gif" width="15" height="15"></td>
-                                            <td width="90" align="center" class="s_Text_gray2_12px">홍길동</td>
-                                            <td width="100" align="center" class="s_Text_gray2_12px">2013-01-01</td>
-                                          </tr>
-                                      </table></td>
-                                      <td width="10">&nbsp;</td>
-                                    </tr>
-                                </table></td>
-                              </tr>
-                              <tr>
-                                <td height="1" bgcolor="e5e5e5"></td>
-                              </tr>
-                              <!-- 반복문  -->
-                              <tr>
-                                <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
-                                    <tr>
-                                      <td width="10">&nbsp;</td>
-                                      <td height="30"><table width="100%" border="0" cellspacing="0" cellpadding="0">
-                                          <tr>
-                                            <td width="30" align="center" class="s_Text_gray2_12px">6</td>
-                                            <td align="left" class="s_Text_gray2_12px">
-                                              <a href="view.do">제목</a></td>
-                                            <td width="50" align="center"><img src="admin/img/icon.file.gif" width="15" height="15"></td>
-                                            <td width="90" align="center" class="s_Text_gray2_12px">홍길동</td>
-                                            <td width="100" align="center" class="s_Text_gray2_12px">2013-01-01</td>
-                                          </tr>
-                                      </table></td>
-                                      <td width="10">&nbsp;</td>
-                                    </tr>
-                                </table></td>
-                              </tr>
-                              <tr>
-                                <td height="1" bgcolor="e5e5e5"></td>
-                              </tr>
-                              <!-- 반복문  -->
-                              <tr>
-                                <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
-                                    <tr>
-                                      <td width="10">&nbsp;</td>
-                                      <td height="30"><table width="100%" border="0" cellspacing="0" cellpadding="0">
-                                          <tr>
-                                            <td width="30" align="center" class="s_Text_gray2_12px">7</td>
-                                            <td align="left" class="s_Text_gray2_12px">
-                                              <a href="view.do">제목</a></td>
-                                            <td width="50" align="center"><img src="admin/img/icon.file.gif" width="15" height="15"></td>
-                                            <td width="90" align="center" class="s_Text_gray2_12px">홍길동</td>
-                                            <td width="100" align="center" class="s_Text_gray2_12px">2013-01-01</td>
-                                          </tr>
-                                      </table></td>
-                                      <td width="10">&nbsp;</td>
-                                    </tr>
-                                </table></td>
-                              </tr>
-                              <tr>
-                                <td height="1" bgcolor="e5e5e5"></td>
-                              </tr>
-                              <!-- 반복문  -->
-                              <tr>
-                                <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
-                                    <tr>
-                                      <td width="10">&nbsp;</td>
-                                      <td height="30"><table width="100%" border="0" cellspacing="0" cellpadding="0">
-                                          <tr>
-                                            <td width="30" align="center" class="s_Text_gray2_12px">8</td>
-                                            <td align="left" class="s_Text_gray2_12px">
-                                              <a href="view.do">제목</a></td>
-                                            <td width="50" align="center"><img src="admin/img/icon.file.gif" width="15" height="15"></td>
-                                            <td width="90" align="center" class="s_Text_gray2_12px">홍길동</td>
-                                            <td width="100" align="center" class="s_Text_gray2_12px">2013-01-01</td>
-                                          </tr>
-                                      </table></td>
-                                      <td width="10">&nbsp;</td>
-                                    </tr>
-                                </table></td>
-                              </tr>
-                              <tr>
-                                <td height="1" bgcolor="e5e5e5"></td>
-                              </tr>
-                              <!-- 반복문  -->
-                              <tr>
-                                <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
-                                    <tr>
-                                      <td width="10">&nbsp;</td>
-                                      <td height="30"><table width="100%" border="0" cellspacing="0" cellpadding="0">
-                                          <tr>
-                                            <td width="30" align="center" class="s_Text_gray2_12px">9</td>
-                                            <td align="left" class="s_Text_gray2_12px">
-                                              <a href="view.do">제목</a></td>
-                                            <td width="50" align="center"><img src="admin/img/icon.file.gif" width="15" height="15"></td>
-                                            <td width="90" align="center" class="s_Text_gray2_12px">홍길동</td>
-                                            <td width="100" align="center" class="s_Text_gray2_12px">2013-01-01</td>
-                                          </tr>
-                                      </table></td>
-                                      <td width="10">&nbsp;</td>
-                                    </tr>
-                                </table></td>
-                              </tr>
-                              <tr>
-                                <td height="1" bgcolor="e5e5e5"></td>
-                              </tr>
-                              <!-- 반복문  -->
-                              <tr>
-                                <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
-                                    <tr>
-                                      <td width="10">&nbsp;</td>
-                                      <td height="30"><table width="100%" border="0" cellspacing="0" cellpadding="0">
-                                          <tr>
-                                            <td width="30" align="center" class="s_Text_gray2_12px">10</td>
-                                            <td align="left" class="s_Text_gray2_12px">
-                                              <a href="view.do">제목</a></td>
-                                            <td width="50" align="center"><img src="admin/img/icon.file.gif" width="15" height="15"></td>
-                                            <td width="90" align="center" class="s_Text_gray2_12px">홍길동</td>
-                                            <td width="100" align="center" class="s_Text_gray2_12px">2013-01-01</td>
-                                          </tr>
-                                      </table></td>
-                                      <td width="10">&nbsp;</td>
-                                    </tr>
-                                </table></td>
-                              
-                              </tr>
-                              <tr>
-                                <td height="1" bgcolor="e5e5e5"></td>
-                              </tr>
-       				          <!-- 반복문 종료  -->
+                             </c:forEach>
                           </table></td>
                         </tr>
                         <tr>
