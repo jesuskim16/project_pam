@@ -4,9 +4,10 @@
 <jsp:include page="/admin/inc/top.jsp"/>
 
 <script type="text/javascript">
-var view = function(seq){
+var view = function(seq, value){
+	
 	var url = "admClientView.do?seq="+seq;
-	open(url, "confirm", 
+	open(url,  
 			"toolbar=no, location=no, status=no, menubar=no, scrolbar=yes" +
 	"resizeble=no, width=700, height=345");
 }
@@ -14,8 +15,175 @@ var view = function(seq){
 </script>
 
 <br>
-<center>    
+<center>
 <table width="800" border="0" align="center" cellpadding="0" cellspacing="0">
+<!-- 대리점 목록 ---------------------------------------------------------------------------------------------------------------->    
+ <tr valign="top">
+  <td align="left"><table width="200" border="0" align="center" cellpadding="0" cellspacing="0">
+	<tr>
+  	  <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
+      	<tr>
+          <td width="16" valign="top"><img src="admin/img/sub.body.box.left.gif" width="16" height="170"></td>
+          <td valign="top"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+            <tr>
+              <td height="5" background="admin/img/sub.body.bg01.gif"></td>
+            </tr>
+            <tr>
+              <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
+                  <tr>
+                    <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
+                        
+                        <tr>
+                          <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
+                              <tr>
+                                <td width="10"><img src="admin/img/board.bar.left.gif" width="10" height="35"></td>
+                                <td background="admin/img/board.bar.bg.gif"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                    <tr>
+                                      <th width="50" align="center"><span class="s_Text_gray2_12px_Bold">번호</span></th>
+                                      <th width="60" align="center"><span class="s_Text_gray2_12px_Bold">대리점</span></th>
+                                    </tr>
+                                </table></td>
+                                <td width="10"><img src="admin/img/board.bar.right.gif" width="10" height="35"></td>
+                              </tr>
+                          </table></td>
+                        </tr>
+                        
+                        <tr>
+                          <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
+                              <!-- 게시물없을때 -->
+                              <c:if test="${ empty Mlist}">
+                              <tr>
+                                <td colspan="12" Height="200" align="center" bgColor="#ffffff">등록된 내용이 없습니다.</td>
+                              </tr>
+                              </c:if>
+                              <!-- 반복문  -->
+                            <c:forEach items="${Mlist}" var="Mcdto">
+                              <tr>
+                                <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                  <tr>                                      
+                                    <td height="30"><table width="100%" border="0" cellspacing="0" cellpadding="0">        
+                                      	<td width="50" align="center" class="s_Text_gray2_12px">${Mcdto.rnum}</td>
+                                      	<td width="60" align="center" class="s_Text_gray2_12px">${Mcdto.brc_id}</td>
+                                      </tr>                                        
+                                    </table></td>                                      
+                                  </tr>                             
+                                </table></td>
+                              </tr>
+                              <tr>
+                                <td height="1" bgcolor="e5e5e5"></td>
+                              </tr>
+                            </c:forEach>
+                              
+       				      </table></td>
+                        </tr>
+                        
+                        <tr>      
+                          <td height="30" align="center"><table>
+                            <tr>
+                              <td>${Mpage.pHtml}</td>
+                            </tr> 
+                          </table></td>
+                        </tr>
+                        
+                    </table></td>
+                  </tr>
+				  
+              </table></td>
+            </tr>
+            <tr>
+              <td>&nbsp;</td>
+            </tr>
+        </table></td>
+        <td width="16" valign="top"><img src="admin/img/sub.body.box.right.gif" width="16" height="170"></td>
+      </tr>
+    </table></td>
+  </tr>  
+</table></td>
+<!-------------------------------------------------------------------------------------------------------------------------------->
+<!------판매점 목록-------------------------------------------------------------------------------------------------------------------->
+  <td align="left"><table width="200" border="0" align="center" cellpadding="0" cellspacing="0">
+	<tr>
+  	  <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
+      	<tr>
+          <td width="16" valign="top"><img src="admin/img/sub.body.box.left.gif" width="16" height="170"></td>
+          <td valign="top"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+            <tr>
+              <td height="5" background="admin/img/sub.body.bg01.gif"></td>
+            </tr>
+            <tr>
+              <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
+                  <tr>
+                    <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
+                        
+                        <tr>
+                          <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
+                              <tr>
+                                <td width="10"><img src="admin/img/board.bar.left.gif" width="10" height="35"></td>
+                                <td background="admin/img/board.bar.bg.gif"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                    <tr>
+                                      <th width="50" align="center"><span class="s_Text_gray2_12px_Bold">번호</span></th>
+                                      <th width="60" align="center"><span class="s_Text_gray2_12px_Bold">대리점</span></th>
+                                    </tr>
+                                </table></td>
+                                <td width="10"><img src="admin/img/board.bar.right.gif" width="10" height="35"></td>
+                              </tr>
+                          </table></td>
+                        </tr>
+                        
+                        <tr>
+                          <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
+                              <!-- 게시물없을때 -->
+                              <c:if test="${ empty Slist}">
+                              <tr>
+                                <td colspan="12" Height="200" align="center" bgColor="#ffffff">등록된 내용이 없습니다.</td>
+                              </tr>
+                              </c:if>
+                              <!-- 반복문  -->
+                            <c:forEach items="${Slist}" var="Scdto">
+                              <tr>
+                                <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                  <tr>                                      
+                                    <td height="30"><table width="100%" border="0" cellspacing="0" cellpadding="0">        
+                                      	<td width="50" align="center" class="s_Text_gray2_12px">${Scdto.rnum}</td>
+                                      	<td width="60" align="center" class="s_Text_gray2_12px">${Scdto.brc_id}</td>
+                                      </tr>                                        
+                                    </table></td>                                      
+                                  </tr>                             
+                                </table></td>
+                              </tr>
+                              <tr>
+                                <td height="1" bgcolor="e5e5e5"></td>
+                              </tr>
+                            </c:forEach>
+                              
+       				      </table></td>
+                        </tr>
+                        
+                        <tr>      
+                          <td height="30" align="center"><table>
+                            <tr>
+                              <td>${Spage.pHtml}</td>
+                            </tr> 
+                          </table></td>
+                        </tr>
+                        
+                    </table></td>
+                  </tr>
+				  
+              </table></td>
+            </tr>
+            <tr>
+              <td>&nbsp;</td>
+            </tr>
+        </table></td>
+        <td width="16" valign="top"><img src="admin/img/sub.body.box.right.gif" width="16" height="170"></td>
+      </tr>
+    </table></td>
+  </tr>  
+</table></td>
+<!-------------------------------------------------------------------------------------------------------------------------------->
+<!-------------------------------------------------------------------------------------------------------------------------------->
+<td><table width="800" border="0" align="center" cellpadding="0" cellspacing="0">
   <tr>
   <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
       <tr>
@@ -52,13 +220,13 @@ var view = function(seq){
                         <tr>
                           <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
                               <!-- 게시물없을때 -->
-                              <c:if test="${ empty list}">
+                              <c:if test="${ empty Clist}">
                               <tr>
                                 <td colspan="12" Height="200" align="center" bgColor="#ffffff">등록된 내용이 없습니다.</td>
                               </tr>
                               </c:if>
                               <!-- 반복문  -->
-                            <c:forEach items="${list}" var="cdto">
+                            <c:forEach items="${Clist}" var="cdto">
                               <tr>
                                 <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
                                   <tr>                                      
@@ -87,7 +255,7 @@ var view = function(seq){
                         <tr>      
                           <td height="30" align="center"><table>
                             <tr>
-                              <td>${page.pHtml}</td>
+                              <td>${Cpage.pHtml}</td>
                             </tr> 
                           </table></td>
                         </tr>
@@ -150,6 +318,9 @@ var view = function(seq){
       </tr>
     </table></td>
   </tr>
-</table>   
+</table></td>
+<!-------------------------------------------------------------------------------------------------------------------------------->
+</tr>
+</table> 
 </center> 
 <jsp:include page="/admin/inc/bottom.jsp"/>
