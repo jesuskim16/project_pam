@@ -18,8 +18,13 @@ public class admBoardDaoImp implements admBoardDao {
 	}
 
 	@Override
-	public List<admBoardDao> boardList(admPageDto apgDto) {
+	public List<admBoardDto> boardList(admPageDto apgDto) {
 		return sqlMapClientTemplate.queryForList("admBoard.boardList",apgDto);
+	}
+
+	@Override
+	public admBoardDto boardView(int seq) {
+		return (admBoardDto) sqlMapClientTemplate.queryForObject("admBoard.boardView",seq);
 	}
 	
 	

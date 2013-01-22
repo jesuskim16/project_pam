@@ -36,7 +36,12 @@
 			  )A
 		  )B
 	  <![CDATA[ 
-	  WHERE		#startNum# < rnum AND rnum < #endNum#
+	  WHERE		#startNum# <= rnum AND rnum <= #endNum#
 	  ]]> 
+	</select>
+	<select id="boardView" parameterClass="int" resultClass="abdDto">
+		SELECT 	*
+		FROM 	board
+		WHERE	seq=#seq#
 	</select>
 </sqlMap>

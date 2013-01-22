@@ -1,10 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    
-<jsp:include page="/admin/inc/top.jsp"/>
-
-<jsp:include page="/admin/inc/menu_board.jsp"/>    
-    
 <table width="600" border="0" align="center" cellpadding="0" cellspacing="0">
   <tr>
     <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
@@ -42,7 +37,7 @@
                                                 <td width="20" align="center"><img src="admin/img/icon.arrow02.gif" alt="" width="7" height="7"></td>
                                               </tr>
                                             </table></td>
-                                            <td>제목입니다.</td>
+                                            <td>${abdDto.title}</td>
                                           </tr>
                                         </table></td>
                                       </tr>
@@ -68,21 +63,21 @@
                                                 <td width="20" align="center"><img src="admin/img/icon.arrow02.gif" alt="" width="7" height="7"></td>
                                               </tr>
                                             </table></td>
-                                            <td>홍길동</td>
+                                            <td>${abdDto.brc_id}</td>
                                             <td width="80"><table border="0" cellspacing="0" cellpadding="0">
                                               <tr>
-                                                <td width="60" align="right">등록일</td>
+                                                <td width="60" align="right">작성IP</td>
                                                 <td width="20" align="center"><img src="admin/img/icon.arrow02.gif" alt="" width="7" height="7"></td>
                                               </tr>
                                             </table></td>
-                                            <td width="100">2013-01-01</td>
+                                            <td width="100">${abdDto.write_ip}</td>
                                             <td width="80"><table border="0" cellspacing="0" cellpadding="0">
                                               <tr>
                                                 <td width="60" align="right">조회수</td>
                                                 <td width="20" align="center"><img src="admin/img/icon.arrow02.gif" alt="" width="7" height="7"></td>
                                               </tr>
                                             </table></td>
-                                            <td width="60">0</td>
+                                            <td width="60">${abdDto.readcount}</td>
                                           </tr>
                                         </table></td>
                                       </tr>
@@ -108,7 +103,15 @@
 	                                             <td width="20" align="center"><img src="admin/img/icon.arrow02.gif" alt="" width="7" height="7"></td>
 	                                           </tr>
 	                                         </table></td>
-	                                         <td class="Text_blue_12px_unberline"><a href="" target="">file.text</a></td>
+	                                         <td class="Text_blue_12px_unberline"><a href="" target="">${abdDto.filename}</a></td>
+	                                         <td></td>
+	                                         <td width="80"><table border="0" cellspacing="0" cellpadding="0">
+                                               <tr>
+                                                 <td width="60" align="right">등록일</td>
+                                                 <td width="20" align="center"><img src="admin/img/icon.arrow02.gif" alt="" width="7" height="7"></td>
+                                               </tr>
+                                             </table></td>
+                                             <td width="160">${abdDto.write_date}</td>
 	                                       </tr>
 	                                    </table></td>
 	                                  </tr>
@@ -128,9 +131,13 @@
                     </table></td>
                   </tr>
                   <tr>
-                    <td><table width="100%" border="0" cellspacing="10" cellpadding="0">
-                      <tr>
-                        <td>내용입니다.<br/>.<br/>.<br/>.<br/> </td>
+                    <td><table width="100%" height="300" border="0" cellspacing="10" cellpadding="0">
+                      <tr>                  
+                        <td valign="top">
+                        <div style="overflow-y:scroll; height:280px; padding:4px">
+                        ${abdDto.content}
+                        </div> 
+                        </td>
                       </tr>
                     </table></td>
                   </tr>
@@ -142,10 +149,10 @@
                       <tr>
                         <td align="right"><table border="0" cellspacing="0" cellpadding="0">
                           <tr>
-                            <td><a href=""><img src="admin/img/bts.reple.gif" width="69" height="33"></a>&nbsp;</td>
+<!--                             <td><a href=""><img src="admin/img/bts.reple.gif" width="69" height="33"></a>&nbsp;</td> -->
                             <td><a href="admNoticeUpdate.do"><img src="admin/img/bts.edit.gif" width="69" height="33"></a>&nbsp;</td>
                             <td><a href="admNoticeDel.do"><img src="admin/img/bts.del.gif" width="69" height="33"></a>&nbsp;</td>
-                            <td><a href="admNoticeList.do"><img src="admin/img/bts.list.gif" width="69" height="33"></a></td>
+<!--                             <td><a href="admNoticeList.do"><img src="admin/img/bts.list.gif" width="69" height="33"></a></td> -->
                           </tr>
                         </table></td>
                       </tr>
@@ -214,4 +221,3 @@
     </table></td>
   </tr>
 </table>
-<jsp:include page="/admin/inc/bottom.jsp"/>

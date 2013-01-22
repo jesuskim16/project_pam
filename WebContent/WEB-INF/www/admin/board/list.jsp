@@ -2,9 +2,49 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>    
 <jsp:include page="/admin/inc/top.jsp"/>
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.js"></script>
+<style type="text/css">
+.mw_layer{display:none;position:fixed;_position:absolute;top:0;left:0;z-index:10000;width:100%;height:100%}
+.mw_layer.open{display:block}
+.mw_layer .bg{position:absolute;top:0;left:0;width:100%;height:100%;background:#000;opacity:.5;filter:alpha(opacity=50)}
+#layer{position:absolute;top:250px;left:30%;width:700px;height:550px;margin:-150px 0 0 -194px;padding:28px 28px 0 28px;border:2px solid #555;background:#fff;font-size:12px;font-family:Tahoma, Geneva, sans-serif;color:#767676;line-height:normal;white-space:normal}
+</style>
+<script type="text/javascript">
+function openContent(seq){
+	
+	$('.mw_layer').addClass('open');
+	$.ajax({
+		  type:'post',
+		  url:'admNoticeView.do',
+		  data: ({seq:seq}),
+		  success:function(data){
+			$('#layer').html(data);
+		  }
+	});
+}
+jQuery(function($){
+	var layerWindow = $('.mw_layer');
+	$(document).keydown(function(event){
+	 if(event.keyCode != 27) return true;
+	 if (layerWindow.hasClass('open')) {
+	  layerWindow.removeClass('open');
+	 }
+	 return false;
+	});
+	
+	// Hide Window
+	layerWindow.find('>.bg').mousedown(function(event){
+	 layerWindow.removeClass('open');
+	 return false;
+	});
+});
+</script>
+
 <jsp:include page="/admin/inc/menu_board.jsp"/>
+
 <br>
-<center>    
+<center> 
 <table width="800" border="0" align="center" cellpadding="0" cellspacing="0">
   <tr>
   <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
@@ -17,80 +57,22 @@
             <tr>
               <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
                   <tr>
-                    <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
-                        <tr>
-                          <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
-                              <tr>
-                                <td width="10"><img src="admin/img/board.bar.left.gif" width="10" height="35"></td>
-                                <td background="admin/img/board.bar.bg.gif"><table width="100%" border="0" cellspacing="0" cellpadding="0">
-                                    <tr>
-                                      <td width="30" align="center" class="s_Text_gray2_12px_Bold">번호</td>
-                                      <td align="center"><span class="s_Text_gray2_12px_Bold">제목</span></td>           
-                                      <td width="50" align="center"><span class="s_Text_gray2_12px_Bold">첨부</span></td>
-                                      <td width="80" align="center"><span class="s_Text_gray2_12px_Bold">글쓴이</span></td>
-                                      <td width="90" align="center"><span class="s_Text_gray2_12px_Bold">등록일</span></td>
-                                      <td width="50" align="center"><span class="s_Text_gray2_12px_Bold">댓글</span></td>
-                                      <td width="50" align="center"><span class="s_Text_gray2_12px_Bold">조회수</span></td>
-                                    </tr>
-                                </table></td>
-                                <td width="10"><img src="admin/img/board.bar.right.gif" width="10" height="35"></td>
-                              </tr>
-                          </table></td>
-                        </tr>
-                        <tr>
-                          <td height="300" valign="top"><table width="100%" border="0" cellspacing="0" cellpadding="0">
-                              <!-- 게시물없을때 -->
-                              <c:if test="${empty list}">
-                              <tr>
-                                <td colspan="12" height="250" align="center" valign="center" bgColor="#ffffff"><h1>등록된 내용이 없습니다.</h1></td>
-                              </tr>
-                              </c:if>
-                             <c:forEach items="${list}" var="abdDto">
-                              <!-- 반복문  -->
-                              <tr>
-                                <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
-                                    <tr>
-                                      <td width="10">&nbsp;</td>
-                                      <td height="30"><table width="100%" border="0" cellspacing="0" cellpadding="0">
-                                          <tr>
-                                            <td width="30" align="center" class="s_Text_gray2_12px">${abdDto.rown}</td>
-                                            <td align="left" class="s_Text_gray2_12px">
-                                              <a href="adminNoticeView.do">&nbsp;&nbsp;${abdDto.title}</a>
-                                            </td>
-                                            <td width="50" align="center">
-                                             <c:if test="${empty abdDto.title}">
-                                              <img src="admin/img/icon.file.gif" width="15" height="15">
-                                             </c:if>
-                                            </td>
-                                            <td width="80" align="left" class="s_Text_gray2_12px">&nbsp;&nbsp;&nbsp;${abdDto.brc_id}</td>
-                                            <td width="90" align="center" class="s_Text_gray2_12px">${abdDto.write_date}</td>
-                                            <td width="50" align="center">${abdDto.rp_cnt}</td>
-                                            <td width="50" align="center">${abdDto.readcount}</td>
-                                          </tr>
-                                      </table></td>
-                                      <td width="10">&nbsp;</td>
-                                    </tr>
-                                </table></td>
-                              </tr>
-                              <tr>
-                                <td height="1" bgcolor="e5e5e5"></td>
-                              </tr>
-                             </c:forEach>
-                          </table></td>
-                        </tr>
-                        <tr>
-                          <td height="30" align="center">
-                            <jsp:include page="/admin/inc/paging.jsp"/>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td height="30" align="right"><a href="admNoticeInsert.do"><img src="admin/img/bts.write.gif"></a> </td>
-                        </tr>
-                    </table></td>
+                    <td>
+                    <div id="list">
+                    
+                    </div>
+                    </td>
                   </tr>
 				  <tr>
                     <td align="center"><form name="forms" method="post" action="list.asp" style="margin:0">
                         <input type="hidden" name="table_name" value="sub5_page2_board2">
+                        
+                        <!-- light box -->
+						<div class="mw_layer">
+							<div class="bg"></div>
+							<div id="layer"></div>
+						</div>
+						                        
                         <table border="0" cellspacing="0" cellpadding="0">
                           <tr>
                             <td><img src="admin/img/board.search.img01.gif" width="41" height="42"></td>
@@ -141,6 +123,24 @@
       </tr>
     </table></td>
   </tr>
-</table>   
+</table>  
+<script>
+	window.onload = function(){
+		loadNextPage(1,1);
+	}
+	function loadNextPage(bd_chk,page){
+		page = parseInt(page);
+		bd_chk = parseInt(bd_chk);
+		$('#list').empty();
+		$.ajax({
+			type:'post',
+			url:'ajaxList.do',
+			data:({board_chk:bd_chk,page:page,chk:'list'}),
+			success:function(data){
+				$('#list').append(data);
+			}
+		});
+	}
+</script>
 </center> 
 <jsp:include page="/admin/inc/bottom.jsp"/>
