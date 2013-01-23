@@ -26,7 +26,9 @@ public class AdmBranchDto {
 	private int brc_state;     //상태(기본0,삭제1)        
 	private String write_id;      //생성자ID              
 	private String write_date;    //생성일                
-	private String write_ip;      //생성자IP 
+	private String write_ip;	//생성자IP 
+	
+	
 	public long getRown() {
 		return rown;
 	}

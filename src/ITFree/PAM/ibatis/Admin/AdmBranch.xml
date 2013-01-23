@@ -6,10 +6,37 @@
     
 <sqlMap namespace="AdmBranch">
 	<typeAlias alias="ABDto" type="ITFree.PAM.Admin.Model.AdmBranch.AdmBranchDto" />
-
+	<typeAlias alias="ABZDto" type="ITFree.PAM.Admin.Model.AdmBranch.AdmBranchZipcodeDto" />
+	
 	<select id="admBranchIdCheck" parameterClass="String" resultClass="String">
 	SELECT nvl(brc_id , 'empty') as brc_id
 	FROM branch
 	WHERE brc_id like #brc_id#
 	</select>
+	
+	<select id="admBranchZipcode" parameterClass="String" resultClass="ABZDto">
+	SELECT trim(substr(zipcode, 1,3)) AS zipcode1, trim(substr(zipcode, 5,7)) AS zipcode2 , sido || ' ' || gugun || ' ' || dong || ' ' || ri || ' ' || bunji AS addr1
+	FROM zipcode
+	WHERE dong LIKE '%' || #dong# || '%'
+	</select>
+
+	<insert id="admBranchInsertAction" parameterClass="ABDto">
+	INSERT INTO branch(seq , brc_id, attach_id, password, brc_name, brc_phone, brc_addr1, brc_addr2,
+					   brc_post, brc_boss, boss_phone, brc_lev) 
+	VALUES (brc_seq.nextval , #brc_id#, #attach_id#, #password#, #brc_name#, #brc_phone#, #brc_addr1#, #brc_addr2#,
+					   #brc_post#, #brc_boss#, #boss_phone#, #brc_lev#)
+	</insert>
+	
+	<select id="admBranchList" resultClass="ABDto">
+	SELECT seq , brc_id, attach_id, password, brc_name, brc_phone, brc_addr1, brc_addr2,
+		   brc_post, brc_boss, boss_phone, brc_lev
+	FROM branch
+	</select>
+	
+	<select id="admBranchSelectList" resultClass="ABDto">
+	SELECT attach_id, brc_name
+	FROM branch
+	WHERE brc_lev = 1
+	</select>
+	
 </sqlMap>
