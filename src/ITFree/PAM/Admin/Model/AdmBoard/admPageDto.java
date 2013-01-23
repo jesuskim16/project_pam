@@ -12,6 +12,8 @@ public class admPageDto {
 	private int board_chk;			//게시판 분류
 	private long startPage;
 	private long endPage;	
+	private int pageSize;
+	private int blockSize;
 	
 	public long getPg() {return pg;}
 	public void setPg(long pg) {this.pg = pg;}
@@ -32,7 +34,11 @@ public class admPageDto {
 	public long getStartPage() {return startPage;}
 	public void setStartPage(long startPage) {this.startPage = startPage;}
 	public long getEndPage() {return endPage;}
-	public void setEndPage(long endPage) {this.endPage = endPage;}
+	public void setEndPage(long endPage) {this.endPage = endPage;}	
+	public int getPageSize() {return pageSize;}
+	public void setPageSize(int pageSize) {this.pageSize = pageSize;}
+	public int getBlockSize() {return blockSize;}
+	public void setBlockSize(int blockSize) {this.blockSize = blockSize;}
 	
 	@Override
 	public String toString() {
@@ -41,9 +47,8 @@ public class admPageDto {
 				+ ", endNum=" + endNum + ", searchCondition=" + searchCondition
 				+ ", searchKeyword=" + searchKeyword + ", board_chk="
 				+ board_chk + ", startPage=" + startPage + ", endPage="
-				+ endPage + "]";
+				+ endPage + ", pageSize=" + pageSize + ", blockSize="
+				+ blockSize + "]";
 	}
-
-	
 	
 }

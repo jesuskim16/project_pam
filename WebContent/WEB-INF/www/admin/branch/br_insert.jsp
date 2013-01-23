@@ -1,17 +1,19 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <script type="text/javascript" src="js/jquery-1.8.3.min.js"></script>
 <script type="text/javascript" src="js/branch_Insert.js"></script> 
 <script type="text/javascript" src="js/jquery.toastmessage.js"></script>
 <jsp:include page="/admin/inc/top.jsp"/>
 <jsp:include page="/admin/inc/menu_branch.jsp"/>
+
 <table width="600" border="0" align="center" cellpadding="0" cellspacing="0">
   <tr>
     <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
       <tr>
         <td width="16" valign="top"><img src="admin/img/sub.body.box.left.gif" width="16" height="170"></td>
           <td valign="top">
-          <form name="result_forms" method="get" action="admNoticeInsertAct.do" style="margin:0"  ENCTYPE="multipart/form-data">
+          <form name="result_forms" method="post" style="margin:0"  ENCTYPE="multipart/form-data">
             <table width="100%" border="0" cellspacing="0" cellpadding="0">
               <tr>
                 <td height="5" background="admin/img/sub.body.bg01.gif"></td>
@@ -271,9 +273,7 @@
 <!-- -----------------------------------------           입력창 부분 시작                      --------------------------------------------------- -->
 <!-- -------------------------------------------------------------------------------------------------------------------------- -->
 <!-- -------------------------------------------------------------------------------------------------------------------------- -->
-
-                                                
-                                               
+                     
 <!-- 입력창 부분 시작 -->                                                  
                                                 </table></td>
                                                 <td width="5"></td>
@@ -439,13 +439,14 @@
                                                     <td height="26"><table border="0" cellpadding="0" cellspacing="2" bgcolor="cdcdcd">
                                                       <tr>
                                                       	<td height="20" valign="bottom" bgcolor="#FFFFFF">
-                                                      		<input name="brc_post1" type="text" class="input_bg_white" id="brc_post1" size="1" maxlength="3" readonly="readonly">
-                                                      		<input name="brc_post2" type="text" class="input_bg_white" id="brc_post2" size="1" maxlength="3" readonly="readonly">
-                                                      		<input type="button" id="brc_post" class="input_bg_gray" value="우편번호 검색" >
+                                                      		<input name="br_post1" type="text" class="input_bg_white" id="br_post1" size="1" maxlength="3" readonly="readonly">
+                                                      		<input name="br_post2" type="text" class="input_bg_white" id="br_post2" size="1" maxlength="3" readonly="readonly">
+                                                      		<input name="brc_post" type="hidden">
+                                                      		<input type="button" id="br_post" value="우편번호 검색" onclick="javascript:openZipcode()">                                 
                                                       	</td>
                                                       </tr>
                                                       <tr>
-                                                        <td height="20" valign="bottom" bgcolor="#FFFFFF"><input name="brc_addr1" type="text" class="input_bg_white" id="textfield3" size="30" readonly="readonly"></td>
+                                                        <td height="20" valign="bottom" bgcolor="#FFFFFF"><input name="brc_addr1" type="text" class="input_bg_white" id="brc_addr1" size="50" readonly="readonly"></td>
                                                       </tr>
                                                     </table></td>
                                                   </tr>
@@ -464,7 +465,7 @@
                                                   <tr>
                                                     <td height="26"><table border="0" cellpadding="0" cellspacing="2" bgcolor="cdcdcd">
                                                       <tr>
-                                                        <td height="20" valign="bottom" bgcolor="#FFFFFF"><input name="brc_addr2" type="text" class="input_bg_white" id="textfield3" size="45"></td>
+                                                        <td height="20" valign="bottom" bgcolor="#FFFFFF"><input name="brc_addr2" type="text" class="input_bg_white" id="textfield3" size="50"></td>
                                                       </tr>
                                                     </table></td>
                                                   </tr>
@@ -505,7 +506,7 @@
                                                     <td height="26"><table border="0" cellpadding="0" cellspacing="2" bgcolor="cdcdcd">
                                                       <tr>
                                                         <td height="20" valign="bottom" bgcolor="#FFFFFF">
-                                                        <select class="input_bg_white" name="brc_phone1" id="boss_phone1">
+                                                        <select class="input_bg_white" name="boss_phone1" id="boss_phone1">
                                                         	<option value="011">011</option>
                                                         	<option value="010" selected>010</option>
                                                         	<option value="016">016</option>
@@ -535,14 +536,11 @@
                                                     <td height="26"><table border="0" cellpadding="0" cellspacing="2" bgcolor="cdcdcd">
                                                       <tr>
                                                         <td height="20" valign="bottom" bgcolor="#FFFFFF">
-                                                        <select class="input_bg_white" name="attach_id" id="attach_id">
-                                                        	<option value="011">011</option>
-                                                        	<option value="010" selected>010</option>
-                                                        	<option value="016">016</option>
-                                                        	<option value="017">017</option>
-                                                        	<option value="018">018</option>
-                                                        	<option value="019">019</option>
-                                                        </select>                                                       
+					                                    <select name="attach_id" id="attach_id" class="input_bg_white">
+					                                  		<c:forEach items="${ABList}" var="ABDto">
+																<option value="${ABDto.attach_id}" >${ABDto.brc_name}</option>									
+															</c:forEach> 
+														</select>                                                   
                                                         </td>
                                                       </tr>
                                                     </table></td>
@@ -582,7 +580,7 @@
                           <tr>
                             <td align="right"><table border="0" cellspacing="0" cellpadding="0">
                               <tr>
-                                <td><input type="image" src="admin/img/bts.enter.gif" width="69" height="33"></td>
+                                <td><a href="javascript:br_Insert();"><img alt="" src="admin/img/bts.enter.gif" width="69" height="33"></a> </td>
                                 <td width="5"></td>
                                 <td><img src="admin/img/bts.cancle.gif" width="69" height="33" onClick="history.back();" style="cursor:hand"></td>
                               </tr>

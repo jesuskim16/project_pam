@@ -6,8 +6,8 @@ public interface admBoardDao {
 
 	int totalCount(admPageDto apgDto);
 
-	List<admBoardDao> boardList(admPageDto apgDto);
+	List<admBoardDto> boardList(admPageDto apgDto);
 
-	
+	admBoardDto boardView(int seq);
 
 }

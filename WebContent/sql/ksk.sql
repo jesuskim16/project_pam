@@ -69,7 +69,7 @@ CREATE TABLE BRANCH								--[지점]
 	PRIMARY KEY (BRC_ID)
 );
 
-
+select * from BRANCH
 
 
 CREATE TABLE BRANCHLOG							--[접속기록]
@@ -262,4 +262,17 @@ WHERE brc_id like 'manager3'
 
 
 
-select * from BRANCHLOG
+SELECT trim(substr(zipcode, 1,3)) AS zipcode1, trim(substr(zipcode, 5,7)) AS zipcode2 , sido || ' ' || gugun || ' ' || dong || ' ' || ri || ' ' || bunji AS addr1
+FROM zipcode
+WHERE dong LIKE '%구로%'
+
+
+select * from zipcode
+
+SELECT attach_id, brc_name 
+FROM branch
+WHERE brc_lev = 1
+
+SELECT seq , brc_id, attach_id, password, brc_name, brc_phone, brc_addr1, brc_addr2,
+	   brc_post, brc_boss, boss_phone, brc_lev
+FROM branch
