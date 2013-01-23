@@ -1,13 +1,7 @@
 package ITFree.PAM.Common.Controller.Board;
 
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
 import java.util.List;
 
-import javax.annotation.processing.FilerException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -52,6 +46,9 @@ public class PriceInfoAct {
 			model.addAttribute("fbList",fbList); 							//리스트
 			model.addAttribute("pageDto", pageDto);							//페이지정보
 			model.addAttribute("page" ,pageDto.getpHtml());						// 게시판 아래 페이징을 하기위해 페이지정보를 넘김
+			
+			model.addAttribute("board_name" ,board_name);
+			
 			return "/WEB-INF/www/common/board/boardList.jsp";
 		}
 		
@@ -68,15 +65,21 @@ public class PriceInfoAct {
 		}
 		
 		@RequestMapping("/priceInfoInsertAction.do")//입력
-		protected String priceInfoInsertAction(@ModelAttribute BoardDto bdDto, Model model, HttpSession session, HttpServletRequest request){
-			log.debug("---start["+"PriceInfoAct:"+"priceInfoInsertAction"+"]");
+		protected String priceInfoInsertAction(@ModelAttribute BoardDto bdDto, Model model, HttpSession session, HttpServletRequest request){			
+			log.debug("---start["+"PriceInfoAct:"+"priceInfoInsertAction"+"]");			
 			bdDto.setBoard_chk(board_chk);							//게시판분류코드
 			bdDto.setContent("-");									//내용 NN이므로 임의 입력
 			bdDto.setWrite_ip(request.getRemoteAddr());				//작성아이피
-			log.debug("--"+bdDto);
-			bdDto.setFilename(fileupload(bdDto));					//파일업로드
+			
+			String filename = bdDao.fileupload(bdDto,board_name);	//파일업로드
+			bdDto.setFilename(filename);							
 			boolean result = bdDao.freeBoardInsertAction(bdDto);	//SQL Insert		
-			if(result){
+			
+			if(filename==null){
+				model.addAttribute("msg","파일이 존재하지 않습니다.");
+				model.addAttribute("url","javascript:history.back();");
+				return "/WEB-INF/www/common/result.jsp";
+			}else if(result){
 				model.addAttribute("title_name",title_name);
 				model.addAttribute("board_chk",board_chk);          			//게시판분류 (3: 단가표)
 				model.addAttribute("board_name",board_name); 					//게시판이름
@@ -87,45 +90,7 @@ public class PriceInfoAct {
 				model.addAttribute("url","javascript:history.back();");
 				return "/WEB-INF/www/common/result.jsp";
 			}
-		}
-		
-		protected String fileupload(@ModelAttribute BoardDto bdDto){
-			log.debug("---start["+"PriceInfoAct:"+"fileupload"+"]");
-			log.debug("--:"+bdDto);
-			if(bdDto.getUpFile().isEmpty()){}
-			String filename = bdDto.getUpFile().getName(); 						//컴포넌트명(input 속성)
-			String originalFilename = bdDto.getUpFile().getOriginalFilename(); 	//파일명
-			String contentType = bdDto.getUpFile().getContentType(); 			//컨텐트타입
-			long filesize = bdDto.getUpFile().getSize(); 						//파일크기
-			
-			log.debug("--fileupload:"+filename+":"+originalFilename+":"+contentType+":"+filesize);
-			InputStream is = null;
-			OutputStream os = null;
-			try {
-				if(filesize>0){					
-					is=bdDto.getUpFile().getInputStream();					
-					File realUploadDir = new File("c:\\upload\\");//업로드경로
-						if(!realUploadDir.exists()){
-							realUploadDir.mkdirs();
-						}
-					os = new FileOutputStream("c:\\upload\\"+originalFilename);
-					
-					int readBytes = 0;
-					byte[] buffer = new byte[8192];			     
-						while ((readBytes = is.read(buffer, 0, 8192))!=-1) {
-							os.write(buffer, 0, readBytes);
-						
-						}
-				}
-				return originalFilename;	
-			} catch (IOException e) {
-				e.printStackTrace();                   
-				return null;
-			} finally{
-				try{os.close();}catch(IOException e){};
-				try{is.close();}catch(IOException e){};
-			}			
-		}
+		}	
 
 		@RequestMapping("/priceInfoUpdate.do")
 		protected ModelAndView priceInfoUpdate(HttpServletRequest requset,
@@ -153,6 +118,6 @@ public class PriceInfoAct {
 			mav.addObject("board_name",board_name); //게시판이름
 			mav.addObject("brc_lev",session.getAttribute("brc_lev"));		//레벨(1:대리점, 2:판매점)
 			return mav;
-		}		
-		
+		}
+	   
 }

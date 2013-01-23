@@ -8,13 +8,13 @@
       <br>
       <table border="0" cellspacing="1" cellpadding="5" width="150" bgcolor="#cccccc">
 		<tr height="30">
-		  <td bgcolor="white"><a href="admNoticeList.do" class="style2">· 공지사항 </a></td>
+		  <td bgcolor="white"><a href="#" onclick="loadNextPage(1,1)" class="style2">· 공지사항 </a></td>
 	    </tr>
 		<tr height="30">
-		  <td bgcolor="white"><a href="admFreeBoardList.do" class="style2">· 자유게시판</a></td>
+		  <td bgcolor="white"><a href="#" onclick="loadNextPage(2,1)" class="style2">· 자유게시판</a></td>
 	    </tr>
 		<tr height="30">
-		  <td bgcolor="white"><a href="admPriceInfo.do" class="style2">· 단가표</a></td>
+		  <td bgcolor="white"><a href="#" onclick="loadNextPage(3,1)" class="style2">· 단가표</a></td>
 	    </tr>
 	  </table>
       </td>

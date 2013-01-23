@@ -6,7 +6,11 @@
     
 <sqlMap namespace="AdmClient">
 	<typeAlias alias="ACdto" type="ITFree.PAM.Admin.Model.AdmClient.AdmClientDto" />
+	
 	<typeAlias alias="ACPdto" type="ITFree.PAM.Admin.Model.AdmClient.AdmClientPageDto" />
+	<typeAlias alias="MCPdto" type="ITFree.PAM.Admin.Model.AdmClient.M_AdmClientPageDto" />
+	<typeAlias alias="SCPdto" type="ITFree.PAM.Admin.Model.AdmClient.S_AdmClientPageDto" />
+	
 	
 	<select id="AdmClientList" resultClass="ACdto" parameterClass="ACPdto">
 	SELECT B.* 
@@ -18,13 +22,52 @@
 	WHERE #startNum# <= rnum AND rnum <= #endNum#
 	ORDER BY rnum ASC
 	]]>
-	
 	</select>
 	
 	<select id="ListTotalCount" resultClass="long" parameterClass="ACPdto">
 	SELECT count(*)
 	FROM CUSTOMINFO
 	</select>
+	
+	
+	<select id="ManagerList" resultClass="ACdto" parameterClass="MCPdto">
+	SELECT B.* 
+	FROM (SELECT A.*, rownum AS rnum
+	  FROM (SELECT brc_id
+	  		FROM BRANCH
+	  		WHERE BRC_LEV='1') A) B
+	<![CDATA[
+	WHERE #startNum# <= rnum AND rnum <= #endNum#
+	ORDER BY rnum ASC
+	]]>
+	</select>
+	
+	<select id="MListTotalCount" resultClass="long" parameterClass="MCPdto">
+	SELECT count(*)
+	FROM BRANCH
+	WHERE BRC_LEV='1'
+	</select>
+	
+	
+	<select id="SalesList" resultClass="ACdto" parameterClass="SCPdto">
+	SELECT B.* 
+	FROM (SELECT A.*, rownum AS rnum
+	  FROM (SELECT brc_id
+	  		FROM BRANCH
+	  		WHERE BRC_LEV='2') A) B
+	<![CDATA[
+	WHERE #startNum# <= rnum AND rnum <= #endNum#
+	ORDER BY rnum ASC
+	]]>
+	</select>
+	
+	<select id="SListTotalCount" resultClass="long" parameterClass="SCPdto">
+	SELECT count(*)
+	FROM BRANCH
+	WHERE BRC_LEV='2'
+	</select>
+	
+	
 	
 	<select id="AdmClientView" resultClass="ACdto" parameterClass="long">
 	SELECT rownum AS rnum, seq, cust_name, CUST_PHONE, CONT_TERM, OPEN_DATE, MEMO,
