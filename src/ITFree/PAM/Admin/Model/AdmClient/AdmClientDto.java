@@ -5,16 +5,26 @@ public class AdmClientDto {
 	private long seq;          //번호      
 	private String cust_name;  //고객 이름  
 	private String cust_phone; //고객 번호   /
+	private String cust_phone1;
+	private String cust_phone2;
+	private String cust_phone3;
+	
 	private int cont_term;	   //약정 기간  / 
 	private String open_date;  //개통일 /     
 	private String memo      ; //메모      
 	private String write_date; //작성일    /
 	private String write_ip;   //작성 IP   /
 	private String brc_id;     //판매점 ID   /
-	private String price_name; //요금제    / 
+	private String price_name; //요금제    /
+	
 	private String model_code; //모델 코드  / 
-	private long rebate;       //요금제     /
+	private int rebate;       //요금제     /
 	private String cust_birth; //주민번호 /
+	
+	private String model_name;
+	
+	
+	
 	
 	public long getRnum() {
 		return rnum;
@@ -88,10 +98,13 @@ public class AdmClientDto {
 	public void setModel_code(String model_code) {
 		this.model_code = model_code;
 	}
-	public long getRebate() {
+	
+	
+	
+	public int getRebate() {
 		return rebate;
 	}
-	public void setRebate(long rebate) {
+	public void setRebate(int rebate) {
 		this.rebate = rebate;
 	}
 	public String getCust_birth() {
@@ -100,16 +113,46 @@ public class AdmClientDto {
 	public void setCust_birth(String cust_birth) {
 		this.cust_birth = cust_birth;
 	}
+
+	public String getModel_name() {
+		return model_name;
+	}
+	public void setModel_name(String model_name) {
+		this.model_name = model_name;
+	}
+	public String getCust_phone1() {
+		return cust_phone1;
+	}
+	public void setCust_phone1(String cust_phone1) {
+		this.cust_phone1 = cust_phone1;
+	}
+	public String getCust_phone2() {
+		return cust_phone2;
+	}
+	public void setCust_phone2(String cust_phone2) {
+		this.cust_phone2 = cust_phone2;
+	}
+	public String getCust_phone3() {
+		return cust_phone3;
+	}
+	public void setCust_phone3(String cust_phone3) {
+		this.cust_phone3 = cust_phone3;
+	}
 	@Override
 	public String toString() {
 		return "AdmClientDto [rnum=" + rnum + ", seq=" + seq + ", cust_name="
-				+ cust_name + ", cust_phone=" + cust_phone + ", cont_term="
-				+ cont_term + ", open_date=" + open_date + ", memo=" + memo
+				+ cust_name + ", cust_phone=" + cust_phone + ", cust_phone1="
+				+ cust_phone1 + ", cust_phone2=" + cust_phone2
+				+ ", cust_phone3=" + cust_phone3 + ", cont_term=" + cont_term
+				+ ", open_date=" + open_date + ", memo=" + memo
 				+ ", write_date=" + write_date + ", write_ip=" + write_ip
 				+ ", brc_id=" + brc_id + ", price_name=" + price_name
 				+ ", model_code=" + model_code + ", rebate=" + rebate
-				+ ", cust_birth=" + cust_birth + "]";
+				+ ", cust_birth=" + cust_birth + ", model_name=" + model_name
+				+ "]";
 	}
+	
+	
 	
 	
 

@@ -6,8 +6,6 @@ FROM (SELECT A.*, rownum AS rnum
 WHERE 11 <= rnum AND rnum <= 20
 ORDER BY rnum ASC;
 
-DELETE FROM CUSTOMINFO
-WHERE seq = 362;
 
 SELECT * FROM CUSTOMINFO;
 
@@ -17,3 +15,32 @@ SELECT B.*
 	  FROM (SELECT brc_id
 	  		FROM BRANCH) A) B
 ORDER BY rnum ASC;
+
+
+INSERT INTO	BRANCH (            SEQ,    BRC_ID, ATTACH_ID, PASSWORD, BRC_NAME,        BRC_PHONE, BRC_ADDR1, BRC_ADDR2,  BRC_POST, BRC_BOSS,     BOSS_PHONE, BRC_LEV, WRITE_ID, WRITE_IP )
+			 VALUES(BRC_SEQ.nextval,'manager2',  'MGR_ID',   '1111',  '대리점1', '02-1234-5678',    '서울시',    '구로구', '123-456',   '김대표', '010-5678-1234',       1,  'ADMIN', '127.0.0.1' );
+INSERT INTO	BRANCH (            SEQ,    BRC_ID, ATTACH_ID, PASSWORD, BRC_NAME,        BRC_PHONE, BRC_ADDR1, BRC_ADDR2,  BRC_POST, BRC_BOSS,     BOSS_PHONE, BRC_LEV,   WRITE_ID, WRITE_IP )
+			 VALUES(BRC_SEQ.nextval, 'seller21','manager2',   '1111',  '판매점1', '02-1234-5678',    '서울시',    '구로구', '123-456',   '김대표', '010-5678-1234',       2,  'manger2', '127.0.0.1' );
+			 
+			 
+			 
+			SELECT brc_id
+	  		FROM BRANCH
+	  		WHERE BRC_LEV='2' AND ATTACH_ID='manager1';
+	  		
+	  		
+SELECT model_code, price_name
+FROM CUSTOMINFO;
+
+SELECT MODEL_NAME
+FROM PHONEMODEL;
+
+SELECT PRICE_NAME
+FROM PHONEPRICE;
+5
+SELECT * FROM PHONEPRICE;
+SELECT * FROM REBATE;
+
+SELECT p.PRICE_NAME, r.
+	FROM PHONEPRICE p, REBATE r
+	WHERE r.

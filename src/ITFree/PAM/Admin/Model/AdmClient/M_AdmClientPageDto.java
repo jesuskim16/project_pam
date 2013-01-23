@@ -4,6 +4,8 @@ import ITFree.PAM.Admin.Controller.AdmClientAct;
 
 public class M_AdmClientPageDto {
 	
+	
+	
 	private long Mpg; //현재 페이지
 	
 	private long TotalCount; // 총 게시물의 갯수

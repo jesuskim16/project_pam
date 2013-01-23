@@ -145,7 +145,7 @@ function checkNumber(tobj) {
                          </select>
                         </td>
                         <td class="pl5 pr5">-</td>
-                        <td><input name = "cust_phone2" type="text" class="input_gray" size="4" maxlength="4" OnKeypress="checkNumber(this);"></td>
+                        <td>C<input name = "cust_phone2" type="text" class="input_gray" size="4" maxlength="4" OnKeypress="checkNumber(this);"></td>
                         <td class="pl5 pr5">-</td>
                         <td><input name = "cust_phone3" type="text" class="input_gray" size="4" maxlength="4" OnKeypress="checkNumber(this);"></td>
                       </tr>

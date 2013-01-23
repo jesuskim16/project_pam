@@ -15,34 +15,45 @@ public class AdmClientDaoImpl implements AdmClientDao {
 	private SqlMapClientTemplate sqlMapClientTemplate;
 	//List//////////////////////////////////////////////////////////////////////////////
 	@Override
-	public List<AdmClientDto> AdmClientList(AdmClientPageDto APDto) {
+	public List<AdmClientDto> AdmClientList(AdmClientPageDto APDto, String count) {
 		try{
-			return sqlMapClientTemplate.queryForList("AdmClient.AdmClientList", APDto);
+			if(count.equals("1")){
+				return sqlMapClientTemplate.queryForList("AdmClient.AdmClientListStratum", APDto);
+			}else{
+				return sqlMapClientTemplate.queryForList("AdmClient.AdmClientList", APDto);
+			}
+				
 		} catch(Exception e){
 			e.printStackTrace();
-			return null;
+			return sqlMapClientTemplate.queryForList("AdmClient.AdmClientList", APDto);
 		}
 	}
 	
 	@Override
 	public List<AdmClientDto> ManagerList(M_AdmClientPageDto MPDto) {
-		try{
-			return sqlMapClientTemplate.queryForList("AdmClient.ManagerList", MPDto); 
-		} catch(Exception e){
-			e.printStackTrace();
-			return null;
-		}
+			try{
+				return sqlMapClientTemplate.queryForList("AdmClient.ManagerList", MPDto); 
+			} catch(Exception e){
+				e.printStackTrace();
+				return null;
+			}	
 	}
 	
 	@Override
-	public List<AdmClientDto> SalesList(S_AdmClientPageDto SPDto) {
-		try{
-			return sqlMapClientTemplate.queryForList("AdmClient.SalesList", SPDto); 
-		} catch(Exception e){
-			e.printStackTrace();
-			return null;
+	public List<AdmClientDto> SalesList(S_AdmClientPageDto SPDto,String count) {
+			try{
+				if(count.equals("1") ){
+					return sqlMapClientTemplate.queryForList("AdmClient.SalesListStratum", SPDto);
+					
+				} else {
+						return sqlMapClientTemplate.queryForList("AdmClient.SalesList", SPDto);
+				}
+			} catch(Exception e){
+				e.printStackTrace();
+				return sqlMapClientTemplate.queryForList("AdmClient.SalesList", SPDto);
+			}
 		}
-	}
+
 
 	@Override
 	public long CListTotalCount(AdmClientPageDto CPDto) {
@@ -78,6 +89,53 @@ public class AdmClientDaoImpl implements AdmClientDao {
 			e.printStackTrace();
 			return false;
 		}
+		
+	}
+
+	@Override
+	public boolean admClientInsertAct(AdmClientDto ACdto) {
+		try {
+			return (boolean) sqlMapClientTemplate.insert("AdmClient.admClientInsertAct", ACdto);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		}
+		
+	}
+
+	@Override
+	public List<AdmClientDto> admClientInsertModelList(AdmClientDto ACdto) {
+		try {
+			return sqlMapClientTemplate.queryForList("AdmClient.admClientInsertModelList", ACdto);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+		
+	}
+	@Override
+	public List<AdmClientDto> admClientInsertPriceList(AdmClientDto ACdto) {
+		try {
+			return sqlMapClientTemplate.queryForList("AdmClient.admClientInsertPriceList", ACdto);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+		
+		
+	}
+
+	@Override
+	public int admClientInsertRebate(AdmClientDto ACdto) {
+		try {
+			return (int) sqlMapClientTemplate.queryForObject("AdmClient.admClientInsertRebate", ACdto);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return (Integer) null;
+			
+		}
+		
+		
 		
 	}
 
