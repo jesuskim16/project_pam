@@ -891,13 +891,15 @@ img { border: none;}
 	        background-color: #f2f2f2;
 	        border: 1px solid #f2f2f2;
 			}
-.input_bg_white {font-size: 11px;
+.input_bg_white {font-size: 12px;
 	        color: #797979;
 	        background-color: #ffffff;
 	        border: 1px solid #B3D26C;
 			}
 .radio { margin:-4px 3px -1px -2px; vertical-align: middle; }
 .check { margin:-2px 3px -1px -2px; vertical-align: middle; }
+
+
 
 .input_checking { font-size:12px; 
    font-family:dotum; 
