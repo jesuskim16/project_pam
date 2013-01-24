@@ -9,7 +9,7 @@ var view = function(seq, value){
 	var url = "admClientView.do?seq="+seq;
 	open(url, "confirm",
 			"toolbar=no, location=no, status=no, menubar=no, scrolbar=yes" +
-	"resizeble=no, width=700, height=345");
+	"resizeble=no, width=700, height=455");
 }
 
 
@@ -525,8 +525,8 @@ var customInput = function() {
 								                         	<option value="018">018</option>
 								                         	<option value="019">019</option>
 								                         </select>-
-                                                        <input name="cust_phone2" type="text" class="input_bg_white" id="" size="3" maxlength="4">-
-                                                        <input name="cust_phone3" type="text" class="input_bg_white" id="" size="3" maxlength="4">
+                                                        <input name="cust_phone2" type="text" class="input_bg_white"  size="3" maxlength="4">-
+                                                        <input name="cust_phone3" type="text" class="input_bg_white"  size="3" maxlength="4">
                                                         </td>
                                                       </tr>
                                                     </table></td>

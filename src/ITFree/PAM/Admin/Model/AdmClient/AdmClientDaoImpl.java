@@ -139,6 +139,26 @@ public class AdmClientDaoImpl implements AdmClientDao {
 		
 	}
 
+	@Override
+	public List<AdmClientDto> admClientViewUpdateModelList(AdmClientDto aCdto) {
+		try {
+			return sqlMapClientTemplate.queryForList("AdmClient.admClientViewUpdateModelList", aCdto);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
+
+	@Override
+	public List<AdmClientDto> admClientViewUpdatePriceList(AdmClientDto aCdto) {
+		try {
+			return sqlMapClientTemplate.queryForList("AdmClient.admClientViewUpdatePriceList", aCdto);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
+
 	
 
 

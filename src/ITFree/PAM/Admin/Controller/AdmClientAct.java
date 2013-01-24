@@ -88,12 +88,8 @@ public class AdmClientAct {
 		ACdto.setWrite_ip(request.getRemoteAddr());//IP
 		ACdto.setCust_phone(ACdto.getCust_phone1()+ "-" + ACdto.getCust_phone2()+ "-" + ACdto.getCust_phone3());
 		
-		log.debug("--"+request.getRemoteAddr());
-		
 		int rebate = ACdao.admClientInsertRebate(ACdto);
 		ACdto.setRebate(rebate);
-		
-		log.debug("--"+ACdto);
 		
 		boolean insert = ACdao.admClientInsertAct(ACdto);
 		
@@ -287,13 +283,18 @@ public class AdmClientAct {
 
 	
 	@RequestMapping("/admClientView.do")
-	public ModelAndView admClientView(ModelAndView mav, long seq){
+	public ModelAndView admClientView(@ModelAttribute AdmClientDto ACdto, ModelAndView mav, long seq){
 		
 		AdmClientDto ACDto = ACdao.AdmClientView(seq);
+		
+		List<AdmClientDto> Modellist = ACdao.admClientViewUpdateModelList(ACdto);
+		List<AdmClientDto> Pricelist = ACdao.admClientViewUpdatePriceList(ACdto);
 		
 		mav.setViewName("/WEB-INF/www/admin/client/view.jsp");
 		
 		mav.addObject("ACDto", ACDto);
+		mav.addObject("Model", Modellist);
+		mav.addObject("Price", Pricelist);
 		return mav;
 	}
 

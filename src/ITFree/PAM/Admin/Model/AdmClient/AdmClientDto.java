@@ -15,13 +15,14 @@ public class AdmClientDto {
 	private String write_date; //작성일    /
 	private String write_ip;   //작성 IP   /
 	private String brc_id;     //판매점 ID   /
-	private String price_name; //요금제    /
+	private String price_name; //요금제명  /
 	
 	private String model_code; //모델 코드  / 
-	private int rebate;       //요금제     /
+	private int rebate;       //수익금     /
 	private String cust_birth; //주민번호 /
 	
 	private String model_name;
+	
 	
 	
 	
