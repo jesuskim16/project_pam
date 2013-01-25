@@ -1233,7 +1233,7 @@ window.onload = function(){
 								              	</select>
                                    			    </c:when>
                                    			    <c:otherwise>
-                                   			    -<input type="text" size="4" name="cust_phone${status.count}" value="${phone}" class="input_gray"/>
+                                   			    -<input type="text" size="4" maxlength="4" name="cust_phone${status.count}" value="${phone}" class="input_gray"/>
                                    			    </c:otherwise></c:choose>
                                  			  </c:forEach>
                                             </td>
@@ -1265,7 +1265,7 @@ window.onload = function(){
                                             <td align="left">
                                               <select name="price_name">
                                                 <c:forEach items="${Price}" var="pdto">
-                        						  <option value="${pdto.price_name}"<c:if test="${pdto.price_name == pdto.price_name}">selected="selected"</c:if>>${pdto.price_name}</option>
+                        						  <option value="${pdto.price_name}" <c:if test="${pdto.price_name == ACDto.getPrice_name()}">selected="selected"</c:if>>${pdto.price_name}</option>
                       						    </c:forEach>
                       						   </select>
                                             </td>
