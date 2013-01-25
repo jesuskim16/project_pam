@@ -1347,7 +1347,7 @@ window.onload = function(){
                                               </tr>
                                             </table></td>
                                             <td>
-                                             <select id="model_name" name="model_name" class="input_bg_white" onchange="javascript:modelchange('model_name', 'model_code');">
+                                             <select name="model_name" class="input_bg_white" onchange="javascript:modelchange('model_name', 'model_code');">
                                                <c:forEach items="${Model}" var="mdto">
 										         <option value="${mdto.model_code}" <c:if test="${ACDto.getModel_code() == mdto.model_code}">selected="selected"</c:if>>${mdto.model_name}</option>
 										       </c:forEach>
@@ -1359,7 +1359,7 @@ window.onload = function(){
                                                 <td width="20" align="center"><img src="admin/img/icon.arrow02.gif" alt="" width="7" height="7"></td>
                                               </tr>
                                             </table></td>
-                                            <td width="200"><input type="text" name="model_code" id="model_code" value="${ACDto.getModel_code()}" readonly="readonly"></td>
+                                            <td width="200"><input type="text" name="model_code" value="${ACDto.getModel_code()}" readonly="readonly"></td>
                                           </tr>
                                         </table></td>
                                       </tr>
@@ -1392,7 +1392,7 @@ window.onload = function(){
 	                                             <td width="20" align="center"><img src="admin/img/icon.arrow02.gif" alt="" width="7" height="7"></td>
 	                                           </tr>
 	                                         </table></td>
-	                                         <td align="left"><input type="text" name="write_date" value="${ACDto.getOpen_date()}" readonly="readonly"></td>
+	                                         <td align="left"><input type="text" name="open_date" value="${ACDto.getOpen_date()}" readonly="readonly"></td>
 	                                          
 	                                       </tr>
 	                                    </table></td>
@@ -1413,7 +1413,7 @@ window.onload = function(){
                                              <td width="80"><table border="0" cellspacing="0" cellpadding="0">
                                                <tr>
 	                                             <td align="left">작성일</td>
-	                                             <td width="20" align="center"><img src="admin/img/icon.arrow02.gif" alt="" width="7" height="7"></td>
+	                                             <td width="20" align="center"><img src="admin/img/icon.arrow02.gif"  width="7" height="7"></td>
 	                                           </tr>
 	                                         </table></td>
 	                                         <td width="245" align="left"><input type="text" name="write_date" value="${ACDto.getWrite_date()}" readonly="readonly"></td>
