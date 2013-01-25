@@ -26,6 +26,13 @@ public interface AdmClientDao {
 	List<AdmClientDto> admClientInsertPriceList(AdmClientDto ACdto);
 
 	int admClientInsertRebate(AdmClientDto ACdto);
+
+	List<AdmClientDto> admClientViewUpdateModelList(AdmClientDto aCdto);
+	List<AdmClientDto> admClientViewUpdatePriceList(AdmClientDto aCdto);
+
+	boolean AdmClientUpdateAct(AdmClientDto aCdto);
+
+	
 	
 	
 

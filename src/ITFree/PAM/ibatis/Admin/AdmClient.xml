@@ -91,28 +91,7 @@
 	WHERE BRC_LEV='2'
 	</select>
 	
-	
-	
-	<select id="AdmClientView" resultClass="ACdto" parameterClass="long">
-	SELECT rownum AS rnum, seq, cust_name, CUST_PHONE, CONT_TERM, OPEN_DATE, MEMO,
-		   WRITE_DATE, WRITE_IP, BRC_ID, PRICE_NAME, MODEL_CODE, REBATE, to_char(CUST_BIRTH, 'YYYY-DD-MM') AS CUST_BIRTH 
-	FROM CUSTOMINFO
-	WHERE seq=#seq#
-	</select>
-	
-	
-	
-	<delete id="AdmClientDelete" parameterClass="ACdto" >
-	DELETE FROM CUSTOMINFO
-	WHERE seq = #seq#
-	</delete>
-
-	<insert id="admClientInsertAct" parameterClass="ACdto">
-    INSERT INTO custominfo(seq, cust_name, cust_phone, cust_birth, cont_term, open_date, memo, brc_id, price_name, model_code, rebate, write_ip)	
-   	VALUES (custom_seq.nextval, #cust_name#, #cust_phone#, #cust_birth#, #cont_term#, #open_date#, #memo#, #brc_id#, #price_name#, #model_code#, #rebate#, #write_ip#)
-    </insert>
-	
-	<select id="admClientInsertModelList" resultClass="ACdto" >
+		<select id="admClientInsertModelList" resultClass="ACdto" >
 	SELECT MODEL_NAME, model_code
 	FROM PHONEMODEL
 	</select>
@@ -127,5 +106,41 @@
 	FROM REBATE
 	WHERE MODEL_CODE=#model_code#
 	</select>
+	
+	<select id="AdmClientView" resultClass="ACdto" parameterClass="long">
+	SELECT rownum AS rnum, C.seq, C.cust_name, C.CUST_PHONE, C.CONT_TERM, to_char(C.OPEN_DATE, 'YYYY-MM-DD') AS OPEN_DATE, C.MEMO,
+	   C.WRITE_DATE, C.WRITE_IP, C.BRC_ID, C.PRICE_NAME, C.MODEL_CODE, C.REBATE, to_char(C.CUST_BIRTH, 'YYYY-MM-DD') AS CUST_BIRTH,
+	   P.MODEL_NAME	   
+	FROM CUSTOMINFO C, PHONEMODEL P
+	WHERE P.MODEL_CODE = C. MODEL_CODE AND C.seq=#seq#
+	</select>
+	
+	<select id="admClientViewUpdateModelList" resultClass="ACdto" >
+	SELECT MODEL_NAME, model_code
+	FROM PHONEMODEL
+	</select>
+	
+	<select id="admClientViewUpdatePriceList" resultClass="ACdto">
+	SELECT PRICE_NAME
+	FROM PHONEPRICE
+	</select>
+	
+	<delete id="AdmClientDelete" parameterClass="ACdto" >
+	DELETE FROM CUSTOMINFO
+	WHERE seq = #seq#
+	</delete>
+
+	<insert id="admClientInsertAct" parameterClass="ACdto">
+    INSERT INTO custominfo(seq, cust_name, cust_phone, cust_birth, cont_term, open_date, memo, brc_id, price_name, model_code, rebate, write_ip)	
+   	VALUES (custom_seq.nextval, #cust_name#, #cust_phone#, #cust_birth#, #cont_term#, #open_date#, #memo#, #brc_id#, #price_name#, #model_code#, #rebate#, #write_ip#)
+    </insert>
+	
+	<update id="AdmClientUpdateAct" parameterClass="ACdto">
+	UPDATE CUSTOMINFO SET
+	CUST_NAME=#cust_name#, CUST_PHONE=#cust_phone#, CONT_TERM=#cont_term#, MEMO=#memo#, BRC_ID=#brc_id#, 
+	PRICE_NAME=#price_name#, MODEL_CODE=#model_code#, REBATE=#rebate#, CUST_BIRTH=#cust_birth#
+	WHERE SEQ = #seq#
+	</update>
+
 
 </sqlMap>
