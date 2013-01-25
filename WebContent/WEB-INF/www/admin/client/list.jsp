@@ -40,8 +40,10 @@ function saleshref(salesID, span_brc_id){
 	var seq = document.listForm.seq.value;
 	
 	
-	if (!(managerID == null)) {
+	if (!(managerID == "")) {
 		location.href="admClientList.do?managerID="+managerID+"&salesID="+salesID+"&count="+count+"&Mpg="+Mpg+"&Spg="+Spg+"&Cpg="+Cpg+"&seq="+seq;	
+	} else {
+		alert("대리점을 선택하세요.");
 	}
 	
 	
