@@ -63,3 +63,7 @@ SELECT rownum AS rnum, C.seq, C.cust_name, C.CUST_PHONE, C.CONT_TERM, to_char(C.
 FROM CUSTOMINFO C, PHONEMODEL P
 WHERE P.MODEL_CODE = C. MODEL_CODE AND C.seq=#seq#;
 	
+
+			SELECT *
+	  		FROM BRANCH
+	  		WHERE BRC_LEV='2';

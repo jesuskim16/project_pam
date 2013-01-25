@@ -39,7 +39,11 @@ function saleshref(salesID, span_brc_id){
 	var Cpg = document.listForm.Cpg.value;
 	var seq = document.listForm.seq.value;
 	
-	location.href="admClientList.do?managerID="+managerID+"&salesID="+salesID+"&count="+count+"&Mpg="+Mpg+"&Spg="+Spg+"&Cpg="+Cpg+"&seq="+seq;
+	
+	if (!(managerID == null)) {
+		location.href="admClientList.do?managerID="+managerID+"&salesID="+salesID+"&count="+count+"&Mpg="+Mpg+"&Spg="+Spg+"&Cpg="+Cpg+"&seq="+seq;	
+	}
+	
 	
 	document.listForm.sales_span_brc_id.value = span_brc_id;
 	
