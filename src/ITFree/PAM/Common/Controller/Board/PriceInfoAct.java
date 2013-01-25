@@ -72,7 +72,7 @@ public class PriceInfoAct {
 			bdDto.setWrite_ip(request.getRemoteAddr());				//작성아이피
 			
 			String filename = bdDao.fileupload(bdDto,board_name);	//파일업로드
-			bdDto.setFilename(filename);							
+			bdDto.setFilename(filename);
 			boolean result = bdDao.freeBoardInsertAction(bdDto);	//SQL Insert		
 			
 			if(filename==null){
