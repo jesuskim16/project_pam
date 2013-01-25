@@ -205,7 +205,7 @@ window.onload = function(){
                           </table></td>
                         </tr>
                         
-                        <tr>
+                        <tr height="300" valign="top">
                           <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
                               <!-- 게시물없을때 -->
                               <c:if test="${ empty Mlist}">
@@ -287,7 +287,7 @@ window.onload = function(){
                           </table></td>
                         </tr>
                         
-                        <tr>
+                        <tr height="300" valign="top">
                           <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
                               <!-- 게시물없을때 -->
                               <c:if test="${ empty Slist}">
@@ -805,7 +805,7 @@ window.onload = function(){
                           </table></td>
                         </tr>
                         
-                        <tr>
+                        <tr height="300" valign="top">
                           <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
                               <!-- 게시물없을때 -->
                               <c:if test="${ empty Clist}">
@@ -853,48 +853,7 @@ window.onload = function(){
                         </tr>
                     </table></td>
                   </tr>
-				  <tr>
-                    <td align="center"><form name="forms" method="post" action="list.asp" style="margin:0">
-                        <input type="hidden" name="table_name" value="sub5_page2_board2">
-                        <table border="0" cellspacing="0" cellpadding="0">
-                          <tr>
-                            <td><img src="admin/img/board.search.img01.gif" width="41" height="42"></td>
-                            <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
-                                <tr>
-                                  <td height="1" bgcolor="cfcfcf"></td>
-                                </tr>
-                                <tr>
-                                  <td height="40"><table border="0" cellspacing="0" cellpadding="0">
-                                      <tr>
-                                        <td><table border="0" cellpadding="0" cellspacing="1" bgcolor="cacaca">
-                                            <tr>
-                                              <td bgcolor="#FFFFFF"><select name="search" class="input_bg_white">
-                                                  <option value="TITLES" >제목</option>
-                                                  <option valwue="USERNAME" >글쓴이</option>
-                                              </select></td>
-                                            </tr>
-                                          </table>
-                                            <label></label></td>
-                                        <td width="5"></td>
-                                        <td><table width="100%" border="0" cellpadding="0" cellspacing="2" bgcolor="cdcdcd">
-                                          <tr>
-                                            <td height="20" valign="bottom" bgcolor="#FFFFFF"><input name="se_string" type="text" class="input_bg_white" id="textfield3" size="46" value=""></td>
-                                          </tr>
-                                        </table></td>
-                                        <td width="5"></td>
-                                        <td><input type="image" src="admin/img/bts.search.gif" width="45" height="21"></td>
-                                      </tr>
-                                  </table></td>
-                                </tr>
-                                <tr>
-                                  <td height="1" bgcolor="cfcfcf"></td>
-                                </tr>
-                            </table></td>
-                            <td><img src="admin/img/board.search.img02.gif" width="11" height="42"></td>
-                          </tr>
-                        </table>
-                    </form></td>
-                  </tr>
+				  
 
               </table></td>
             </tr>
