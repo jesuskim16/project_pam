@@ -1,6 +1,7 @@
 package ITFree.PAM.Admin.Controller;
 
 import java.util.List;
+import java.util.Set;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -57,6 +58,16 @@ public class AdmClientAct {
 		List<AdmClientDto> Modellist = ACdao.admClientInsertModelList(ACdto);
 		List<AdmClientDto> Pricelist = ACdao.admClientInsertPriceList(ACdto);
 		
+		log.debug(ACdto.getSeq());
+		
+		AdmClientDto ACDto = new AdmClientDto();
+		long seq = ACdto.getSeq();
+		if (!(seq == 0)) {
+			 ACDto= ACdao.AdmClientView(seq);
+			
+		}
+		
+		
 		mav.setViewName("/WEB-INF/www/admin/client/list.jsp");
 		
 		mav.addObject("Mlist", managerlist);
@@ -76,6 +87,11 @@ public class AdmClientAct {
 		mav.addObject("Model", Modellist);
 		mav.addObject("Pricelist", Pricelist);
 		
+		
+		mav.addObject("Model", Modellist);
+		mav.addObject("Price", Pricelist);
+		
+		mav.addObject("ACDto", ACDto);
 		
 		return mav;
 	}
@@ -281,22 +297,6 @@ public class AdmClientAct {
 		//Client//
 	
 
-	
-	@RequestMapping("/admClientView.do")
-	public ModelAndView admClientView(@ModelAttribute AdmClientDto ACdto, ModelAndView mav, long seq){
-		
-		AdmClientDto ACDto = ACdao.AdmClientView(seq);
-		
-		List<AdmClientDto> Modellist = ACdao.admClientViewUpdateModelList(ACdto);
-		List<AdmClientDto> Pricelist = ACdao.admClientViewUpdatePriceList(ACdto);
-		
-		mav.setViewName("/WEB-INF/www/admin/client/view.jsp");
-		
-		mav.addObject("ACDto", ACDto);
-		mav.addObject("Model", Modellist);
-		mav.addObject("Price", Pricelist);
-		return mav;
-	}
 
 	
 	@RequestMapping("/admClientDelete.do")
@@ -304,14 +304,29 @@ public class AdmClientAct {
 		
 		boolean delete = ACdao.AdmClientDelete(Cdto);
 		
-		mav.setViewName("/WEB-INF/www/admin/client/view.jsp");
+		mav.setViewName("redirect:admClientList.do");
 		mav.addObject("delete", delete);
 		return mav;
 	}
 	
+	@RequestMapping("/admClientUpdateAct.do")
+	public ModelAndView admClientUpdateAct(@ModelAttribute AdmClientDto ACdto, ModelAndView mav){
+		
+		ACdto.setCust_phone(ACdto.getCust_phone1() + "-" + ACdto.getCust_phone2() + "-" + ACdto.getCust_phone3());
+		
+		
+		log.debug("확인:"+ACdto);
+		boolean update =  ACdao.AdmClientUpdateAct(ACdto);
+		
+		log.debug("결과:"+update);
+		
+		mav.setViewName("redirect:admClientList.do");
+		
+		return mav;
 
+	}
 	
-	
+
 	
 	
 

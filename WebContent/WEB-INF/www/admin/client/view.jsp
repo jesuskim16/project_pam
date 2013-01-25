@@ -23,6 +23,21 @@ function admClientUpdate(hidden, seem){
 	document.getElementById(hidden).style.display="block";
 	document.getElementById(seem).style.display="none";
 }
+
+function Update(){
+	document.updateForm.action="admClientUpdateAct.do";
+	document.updateForm.submit();
+}
+
+function modelchange(model_name, model_code){
+	var name_code = document.getElementById(model_name).value;
+	
+	document.getElementById( model_code).value = name_code; 
+		
+	
+	
+}
+
 </script>
  
  <form name="deleteForm" method="get">
@@ -38,7 +53,6 @@ function admClientUpdate(hidden, seem){
         <td valign="top"><table width="100%" border="0" cellspacing="0" cellpadding="0">
           <tr>
             <td><div id="seem" style="display:block;">
-              <form name="viewForm">
               <table width="100%" border="0" cellspacing="0" cellpadding="0">
               <tr>
                 <td height="5" background="admin/img/sub.body.bg01.gif"></td>
@@ -207,17 +221,17 @@ function admClientUpdate(hidden, seem){
                                              <td width="80"><table border="0" cellspacing="0" cellpadding="0">
                                               <tr>
                                                 <td align="left">개통일</td>
-                                                <td width="20" align="center"><img src="admin/img/icon.arrow02.gif" alt="" width="7" height="7"></td>
+                                                <td width="20" align="center"><img src="admin/img/icon.arrow02.gif"  width="7" height="7"></td>
                                               </tr>
                                             </table></td>
                                             <td width="245" align="left">${ACDto.getOpen_date()}</td>
 	                                         <td width="80"><table border="0" cellspacing="0" cellpadding="0">
                                               <tr>
-                                                <td align="left">작성일</td>
-                                                <td width="20" align="center"><img src="admin/img/icon.arrow02.gif" alt="" width="7" height="7"></td>
+                                                <td width="200" align="left">고객 생일</td>
+                                                <td width="20" align="center"><img src="admin/img/icon.arrow02.gif"  width="7" height="7"></td>
                                               </tr>
                                             </table></td>
-                                            <td align="left">${ACDto.getWrite_date()}</td>
+                                            <td align="left">${ACDto.getCust_birth()}</td>
 	                                       </tr>
 	                                    </table></td>
 	                                  </tr>
@@ -235,9 +249,16 @@ function admClientUpdate(hidden, seem){
                                         <td height="5"></td>
                                       </tr>
                                       <tr>
+                                       <td width="80"><table border="0" cellspacing="0" cellpadding="0">
+                                              <tr>
+                                                <td align="left">작성일</td>
+                                                <td width="20" align="center"><img src="admin/img/icon.arrow02.gif"  width="7" height="7"></td>
+                                              </tr>
+                                            </table></td>
+                                            <td width="245" align="left">${ACDto.getWrite_date()}</td>
                                         <td width="80"><table border="0" cellspacing="0" cellpadding="0">
                                           <tr>
-                                            <td width="60" align="left">작성 IP</td>
+                                            <td align="left">작성 IP</td>
                                             <td width="20" align="center"><img src="admin/img/icon.arrow02.gif" alt="" width="7" height="7"></td>
                                           </tr>
                                          </table></td>
@@ -294,23 +315,10 @@ function admClientUpdate(hidden, seem){
 	            </table></div></td>
 <!-- view  ------------------------------------------------------------------------------------------------>
 
-<script type="text/javascript">
-function Update(){
-	document.updateForm.action="admClientUpdateAct.do";
-	document.updateForm.submit();
-}
 
-function modelchange(model_name, model_code){
-	var name_code = document.getElementById(model_name).value;
-	
-	document.getElementById( model_code).value = name_code; 
-		
-	
-	
-}
-</script>
 <!-- update  ------------------------------------------------------------------------------------------------>
-	            <td><form name="updateForm">
+	            <td><form name="updateForm" method="get">
+	             <input type="hidden" name="seq" value="${ACdto.getSeq()}">
                   <div id="hidden" style="display:none;"><table width="100%" border="0" cellspacing="0" cellpadding="0">
                   <tr>
                     <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
@@ -336,7 +344,7 @@ function modelchange(model_name, model_code){
                                           <tr>
                                             <td width="80"><table border="0" cellspacing="0" cellpadding="0">
                                               <tr>
-                                                <td width="80" align="left">고객 이름</td>
+                                                <td width="200" align="left">고객 이름</td>
                                                 <td width="20" align="center"><img src="admin/img/icon.arrow02.gif" alt="" width="7" height="7"></td>
                                               </tr>
                                             </table></td>
@@ -439,7 +447,7 @@ function modelchange(model_name, model_code){
                                             </table></td>
                                             <td width="248">
                                               <input type="text" name="brc_id" value="${ACDto.getBrc_id()}" size="10" readonly="readonly">
-                                              <input type="button" value="선택" onclick="">
+                                              <input type="button" value="선택" onclick="javascript:salesupdate();">
                                             </td>
                                             <td width="80"><table border="0" cellspacing="0" cellpadding="0">
                                               <tr>
@@ -447,7 +455,7 @@ function modelchange(model_name, model_code){
                                                 <td width="20" align="center"><img src="admin/img/icon.arrow02.gif" alt="" width="7" height="7"></td>
                                               </tr>
                                             </table></td>
-                                            <td width="200"><input type="text" name="open_date" value="${ACDto.getRebate()}" size="5"> 원</td>
+                                            <td width="200"><input type="text" name="rebate" value="${ACDto.getRebate()}" size="5"> 원</td>
                                           </tr>
                                         </table></td>
                                       </tr>
@@ -507,20 +515,21 @@ function modelchange(model_name, model_code){
                                       <tr>
                                         <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
                                            <tr>
+                                           <td width="80"><table border="0" cellspacing="0" cellpadding="0">
+                                              <tr>
+                                                <td width="200" align="left">고객 생일</td>
+                                                <td width="20" align="center"><img src="admin/img/icon.arrow02.gif"  width="7" height="7"></td>
+                                              </tr>
+                                            </table></td>
+                                            <td width="245" align="left"><input type="date" name="cust_birth" value="${ACDto.getCust_birth()}"></td>
                                              <td width="80"><table border="0" cellspacing="0" cellpadding="0">
                                                <tr>
 	                                             <td align="left">개통일</td>
 	                                             <td width="20" align="center"><img src="admin/img/icon.arrow02.gif" alt="" width="7" height="7"></td>
 	                                           </tr>
 	                                         </table></td>
-	                                         <td width="245"><input type="text" name="write_date" value="${ACDto.getOpen_date()}" readonly="readonly"></td>
-	                                          <td width="80"><table border="0" cellspacing="0" cellpadding="0">
-                                               <tr>
-	                                             <td align="left">작성일</td>
-	                                             <td width="20" align="center"><img src="admin/img/icon.arrow02.gif" alt="" width="7" height="7"></td>
-	                                           </tr>
-	                                         </table></td>
-	                                         <td align="left"><input type="text" name="write_date" value="${ACDto.getWrite_date()}" readonly="readonly"></td>
+	                                         <td align="left"><input type="text" name="write_date" value="${ACDto.getOpen_date()}" readonly="readonly"></td>
+	                                          
 	                                       </tr>
 	                                    </table></td>
 	                                  </tr>
@@ -537,7 +546,13 @@ function modelchange(model_name, model_code){
                                       <tr>
                                         <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
                                            <tr>
-                                             
+                                             <td width="80"><table border="0" cellspacing="0" cellpadding="0">
+                                               <tr>
+	                                             <td align="left">작성일</td>
+	                                             <td width="20" align="center"><img src="admin/img/icon.arrow02.gif" alt="" width="7" height="7"></td>
+	                                           </tr>
+	                                         </table></td>
+	                                         <td width="245" align="left"><input type="text" name="write_date" value="${ACDto.getWrite_date()}" readonly="readonly"></td>
 	                                         <td width="80"><table border="0" cellspacing="0" cellpadding="0">
                                               <tr>
                                                 <td align="left">작성 IP</td>
@@ -545,6 +560,7 @@ function modelchange(model_name, model_code){
                                               </tr>
                                             </table></td>
                                             <td align="left"><input type="text" name="write_ip" value="${ACDto.getWrite_ip()}" readonly="readonly"></td>
+                                            
 	                                       </tr>
 	                                    </table></td>
 	                                  </tr>
@@ -579,7 +595,7 @@ function modelchange(model_name, model_code){
                       <tr>
                         <td align="right"><table border="0" cellspacing="0" cellpadding="0">
                           <tr>
-                            <td><a href="javascript:Update();"><img src="admin/img/bts.check.gif" width="69" height="33"></a>&nbsp;</td>
+                            <td><a href="javascript:Update();"><img src="admin/img/bts.enter2.gif" width="69" height="33"></a>&nbsp;</td>
                             <td><a href="admClientView.do?seq=${ACDto.getSeq()}"><img src="admin/img/bts.cancle.gif" width="69" height="33"></a>&nbsp;</td>
                           </tr>
                         </table></td>

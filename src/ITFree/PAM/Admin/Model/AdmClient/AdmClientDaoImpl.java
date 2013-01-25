@@ -159,6 +159,20 @@ public class AdmClientDaoImpl implements AdmClientDao {
 		}
 	}
 
+	@Override
+	public boolean AdmClientUpdateAct(AdmClientDto aCdto) {
+		try {
+			return sqlMapClientTemplate.update("AdmClient.AdmClientUpdateAct", aCdto) > 0;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		}
+	}
+
+	
+		
+
+
 	
 
 

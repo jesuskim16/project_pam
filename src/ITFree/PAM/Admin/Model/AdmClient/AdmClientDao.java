@@ -29,6 +29,10 @@ public interface AdmClientDao {
 
 	List<AdmClientDto> admClientViewUpdateModelList(AdmClientDto aCdto);
 	List<AdmClientDto> admClientViewUpdatePriceList(AdmClientDto aCdto);
+
+	boolean AdmClientUpdateAct(AdmClientDto aCdto);
+
+	
 	
 	
 
