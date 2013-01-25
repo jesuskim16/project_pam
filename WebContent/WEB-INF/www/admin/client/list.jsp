@@ -1347,7 +1347,7 @@ window.onload = function(){
                                               </tr>
                                             </table></td>
                                             <td>
-                                             <select name="model_name" class="input_bg_white" onchange="javascript:modelchange('model_name', 'model_code');">
+                                             <select id="model_name" name="model_name" class="input_bg_white" onchange="javascript:modelchange('model_name', 'model_code');">
                                                <c:forEach items="${Model}" var="mdto">
 										         <option value="${mdto.model_code}" <c:if test="${ACDto.getModel_code() == mdto.model_code}">selected="selected"</c:if>>${mdto.model_name}</option>
 										       </c:forEach>
@@ -1359,7 +1359,7 @@ window.onload = function(){
                                                 <td width="20" align="center"><img src="admin/img/icon.arrow02.gif" alt="" width="7" height="7"></td>
                                               </tr>
                                             </table></td>
-                                            <td width="200"><input type="text" name="model_code" value="${ACDto.getModel_code()}" readonly="readonly"></td>
+                                            <td width="200"><input type="text" id="model_code" name="model_code" value="${ACDto.getModel_code()}" readonly="readonly"></td>
                                           </tr>
                                         </table></td>
                                       </tr>
