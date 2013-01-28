@@ -69,6 +69,7 @@ CREATE TABLE BRANCH								--[지점]
 	PRIMARY KEY (BRC_ID)
 );
 
+ALTER TABLE branch ADD(write_date data DEFAULT SYSDATE)
 select * from BRANCH
 
 
@@ -276,3 +277,48 @@ WHERE brc_lev = 1
 SELECT seq , brc_id, attach_id, password, brc_name, brc_phone, brc_addr1, brc_addr2,
 	   brc_post, brc_boss, boss_phone, brc_lev
 FROM branch
+
+SELECT seq , brc_id, attach_id , brc_name, brc_addr1, brc_addr2, brc_boss, brc_lev,
+	   substr(brc_phone , 0 , instr(brc_phone , '-', 1, 1) - 1 ) as brc_phone1 ,
+	   substr(brc_phone , instr(brc_phone , '-', 1, 1) +1, instr(brc_phone , '-', 2, 2) - 4 ) as brc_phone2,
+	   substr(brc_phone , instr(brc_phone , '-', 2, 2) +1, instr(brc_phone , '-', 2, 2) - 3 ) as brc_phone3,
+	   substr(brc_post , 0 , instr(brc_post , '-', 1, 1) - 1 ) as brc_post1,
+	   substr(brc_post , instr(brc_post , '-', 1, 1) + 1, instr(brc_post , '-', 1, 1) + 2) as brc_post2,
+	   substr(boss_phone , 0 , instr(boss_phone , '-', 1, 1) - 1 ) as boss_phone1,
+	   substr(brc_phone , instr(brc_phone , '-', 1, 1) +1, instr(brc_phone , '-', 2, 2) - 4 ) as boss_phone2,
+	   substr(brc_phone , instr(brc_phone , '-', 2, 2) +1, instr(brc_phone , '-', 2, 2) - 3 ) as boss_phone3
+FROM branch
+ 
+SELECT 	   substr(boss_phone , 0 , instr(boss_phone , '-', 1, 1) - 1 ) as boss_phone1,
+	   substr(brc_phone , instr(brc_phone , '-', 1, 1) +1, instr(brc_phone , '-', 2, 2) - 4 ) as boss_phone2,
+	   substr(brc_phone , instr(brc_phone , '-', 2, 2) +1, instr(brc_phone , '-', 2, 2) - 3 ) as boss_phone3
+FROM branch
+
+SELECT * 
+FROM branch
+
+select * from rebate
+
+UPDATE BRANCH
+set brc_state = 1
+
+
+SELECT B.*
+FROM(SELECT A.* , rownum as rnum
+	 FROM  (SELECT  row_number()over (ORDER BY seq ASC) as rown, seq , brc_id, attach_id, password, brc_name, brc_phone, brc_addr1, brc_addr2,
+			   brc_post, brc_boss, boss_phone, brc_lev, to_char(write_date , 'YYYY-MM-DD') AS write_date
+		    FROM branch
+		    WHERE brc_lev != 0
+		    ORDER BY rown DESC ) A ) B
+WHERE 1 <= rnum AND rnum <= 10
+
+	SELECT count(*)
+	FROM branch
+	WHERE brc_lev != 0 
+	
+	
+DELETE FROM branch
+WHERE seq = 66
+
+SELECT * FROM CUSTOMINFO
+WHERE brc_id = 'seller9'
