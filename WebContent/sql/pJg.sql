@@ -67,3 +67,8 @@ WHERE P.MODEL_CODE = C. MODEL_CODE AND C.seq=#seq#;
 			SELECT *
 	  		FROM BRANCH
 	  		WHERE BRC_LEV='2';
+	  		
+	  		
+	  		
+SELECT count(*)
+FROM PHONEPRICE;

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+    
+<sqlMap namespace="AdmPrice">
+   <typeAlias alias="APdto" type="ITFree.PAM.Admin.Model.AdmPrice.AdmPriceDto" />
+   <typeAlias alias="APPdto" type="ITFree.PAM.Admin.Model.AdmPrice.AdmPricePageDto" />
+   
+   <select id="TotalCount" resultClass="long" parameterClass="APPdto">
+    SELECT count(*)
+	FROM PHONEPRICE
+   </select>
+
+   <select id="AdmPriceList" resultClass="APdto" parameterClass="APPdto">
+   	SELECT B.* 
+	FROM (SELECT A.*, rownum AS rnum
+	  FROM (SELECT seq, price_name, price, use_call, use_sms, use_data, memo, to_char(write_date, 'YYYY-MM-DD') AS write_date,
+   	 	   write_ip, state_chk
+	FROM PHONEPRICE) A) B       
+	<![CDATA[
+	WHERE #startNum# <= rnum AND rnum <= #endNum#
+	ORDER BY rnum ASC
+	]]>
+   </select>
+
+</sqlMap>

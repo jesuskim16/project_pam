@@ -205,7 +205,7 @@ window.onload = function(){
                           </table></td>
                         </tr>
                         
-                        <tr height="300" valign="top">
+                        <tr height="310" valign="top">
                           <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
                               <!-- 게시물없을때 -->
                               <c:if test="${ empty Mlist}">

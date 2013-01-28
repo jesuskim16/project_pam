@@ -34,6 +34,8 @@
             <td><span class="Text_white_12px_bold"><a href='/#' class=style1>핸드폰정보</a></span></td>
             <td><span class="Text_white_12px_bold">&nbsp;&nbsp;&nbsp;I&nbsp;&nbsp;&nbsp;</span></td>
             <td><span class="Text_white_12px_bold"><a href='admNoticeList.do' class=style1>게시판</a></span></td>
+            <td><span class="Text_white_12px_bold">&nbsp;&nbsp;&nbsp;I&nbsp;&nbsp;&nbsp;</span></td>
+            <td><span class="Text_white_12px_bold"><a href='admPriceList.do' class=style1>요금제</a></span></td>
           </tr>
         </table></td>
       </tr>
