@@ -35,6 +35,8 @@
             <td><span class="Text_white_12px_bold">&nbsp;&nbsp;&nbsp;I&nbsp;&nbsp;&nbsp;</span></td>
             <td><span class="Text_white_12px_bold"><a href='admRebateList.do' class=style1>수익표</a></span></td>
             <td><span class="Text_white_12px_bold">&nbsp;&nbsp;&nbsp;I&nbsp;&nbsp;&nbsp;</span></td>
+            <td><span class="Text_white_12px_bold"><a href='admModelList.do' class=style1>모델정보</a></span></td>
+            <td><span class="Text_white_12px_bold">&nbsp;&nbsp;&nbsp;I&nbsp;&nbsp;&nbsp;</span></td>
             <td><span class="Text_white_12px_bold"><a href='admNoticeList.do' class=style1>게시판</a></span></td>
           </tr>
         </table></td>
