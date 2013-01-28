@@ -55,7 +55,7 @@ public class AdmModelAct {
 
 			String filename = Mfile.getOriginalFilename();	
 
-			File file = new File("/upload/" + filename);
+			File file = new File("C:/STS/src/project_pam/WebContent/upload" + filename);
 			try {
 				Mfile.transferTo(file);
 			} catch (IllegalStateException e) {
