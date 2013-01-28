@@ -7,6 +7,7 @@
 <sqlMap namespace="AdmBranch">
 	<typeAlias alias="ABDto" type="ITFree.PAM.Admin.Model.AdmBranch.AdmBranchDto" />
 	<typeAlias alias="ABZDto" type="ITFree.PAM.Admin.Model.AdmBranch.AdmBranchZipcodeDto" />
+	<typeAlias alias="ABPDto" type="ITFree.PAM.Admin.Model.AdmBranch.AdmBranchPageDto"/>
 	
 	<select id="admBranchIdCheck" parameterClass="String" resultClass="String">
 	SELECT nvl(brc_id , 'empty') as brc_id
@@ -22,15 +23,22 @@
 
 	<insert id="admBranchInsertAction" parameterClass="ABDto">
 	INSERT INTO branch(seq , brc_id, attach_id, password, brc_name, brc_phone, brc_addr1, brc_addr2,
-					   brc_post, brc_boss, boss_phone, brc_lev) 
+					   brc_post, brc_boss, boss_phone, brc_lev, brc_state) 
 	VALUES (brc_seq.nextval , #brc_id#, #attach_id#, #password#, #brc_name#, #brc_phone#, #brc_addr1#, #brc_addr2#,
-					   #brc_post#, #brc_boss#, #boss_phone#, #brc_lev#)
+					   #brc_post#, #brc_boss#, #boss_phone#, #brc_lev# , 1)
 	</insert>
 	
-	<select id="admBranchList" resultClass="ABDto">
-	SELECT seq , brc_id, attach_id, password, brc_name, brc_phone, brc_addr1, brc_addr2,
-		   brc_post, brc_boss, boss_phone, brc_lev
-	FROM branch
+	<select id="admBranchList" resultClass="ABDto" parameterClass="ABPDto">
+	SELECT B.*
+	FROM(SELECT A.* , rownum as rnum
+		 FROM  (SELECT  row_number()over (ORDER BY seq ASC) as rown, seq , brc_id, attach_id, password, brc_name, brc_phone, brc_addr1, brc_addr2,
+				   brc_post, brc_boss, boss_phone, brc_lev, to_char(write_date , 'YYYY-MM-DD') AS write_date
+			    FROM branch
+			    WHERE brc_lev != 0 AND brc_state = 1
+			    ORDER BY rown DESC ) A ) B
+	<![CDATA[		    
+	WHERE #startNum# <= rnum AND rnum <= #endNum#
+	]]>
 	</select>
 	
 	<select id="admBranchSelectList" resultClass="ABDto">
@@ -38,5 +46,42 @@
 	FROM branch
 	WHERE brc_lev = 1
 	</select>
+	
+	<select id="admBranchModify" parameterClass="Long" resultClass="ABDto">
+	SELECT seq , brc_id, attach_id , brc_name, brc_addr1, brc_addr2, brc_boss, brc_lev,
+		   substr(brc_phone , 0 , instr(brc_phone , '-', 1, 1) - 1 ) as brc_phone1 ,
+		   substr(brc_phone , instr(brc_phone , '-', 1, 1) +1, instr(brc_phone , '-', 2, 2) - 4 ) as brc_phone2,
+		   substr(brc_phone , instr(brc_phone , '-', 2, 2) +1, instr(brc_phone , '-', 2, 2) - 3 ) as brc_phone3,
+		   substr(brc_post , 0 , instr(brc_post , '-', 1, 1) - 1 ) as brc_post1,
+		   substr(brc_post , instr(brc_post , '-', 1, 1) + 1, instr(brc_post , '-', 1, 1) + 2) as brc_post2,
+		   substr(boss_phone , 0 , instr(boss_phone , '-', 1, 1) - 1 ) as boss_phone1,
+		   substr(brc_phone , instr(brc_phone , '-', 1, 1) +1, instr(brc_phone , '-', 2, 2) - 4 ) as boss_phone2,
+		   substr(brc_phone , instr(brc_phone , '-', 2, 2) +1, instr(brc_phone , '-', 2, 2) - 3 ) as boss_phone3
+	FROM branch
+	WHERE seq = #seq#
+	</select>
+	
+	<update id="admBranchModifyAction" parameterClass="ABDto">
+	UPDATE branch
+	SET attach_id = #attach_id#, brc_name = #brc_name#, brc_phone = #brc_phone#, brc_addr1 = #brc_addr1#, brc_addr2 = #brc_addr2#,
+		   brc_post = #brc_post#, brc_boss = #brc_boss#, boss_phone = #boss_phone#, brc_lev = #brc_lev#
+	WHERE seq = #seq#
+	</update>
+	
+	<select id="totalCount" resultClass="Long">
+	SELECT count(*)
+	FROM branch
+	WHERE brc_lev != 0 
+	</select>
+	
+	<update id="admBranchDeleteAction" parameterClass="java.util.List">
+	UPDATE branch
+	SET brc_state = 2 
+	WHERE 
+				<iterate open="(" close=")" conjunction="or">
+				 seq = #[]#
+				</iterate>
+	
+	</update>
 	
 </sqlMap>

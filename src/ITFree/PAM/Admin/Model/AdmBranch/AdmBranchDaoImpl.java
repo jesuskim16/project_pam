@@ -15,9 +15,9 @@ public class AdmBranchDaoImpl implements AdmBranchDao {
 
 	// 지점목록 불러오기
 	@Override
-	public List<AdmBranchDto> admBranchList() {
+	public List<AdmBranchDto> admBranchList(AdmBranchPageDto ABPDto) {
 		try {
-			return sqlMapClientTemplate.queryForList("AdmBranch.admBranchList");
+			return sqlMapClientTemplate.queryForList("AdmBranch.admBranchList" , ABPDto);
 		} catch (DataAccessException e) {			
 			e.printStackTrace();
 			return null;
@@ -46,6 +46,18 @@ public class AdmBranchDaoImpl implements AdmBranchDao {
 		}
 	}
 	
+	//지점 수정부분(ajax)
+	@Override
+	public AdmBranchDto admBranchModify(long seq) {
+		
+		try {
+			return (AdmBranchDto)sqlMapClientTemplate.queryForObject("AdmBranch.admBranchModify" , seq);
+		} catch (DataAccessException e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
+	
 	//회원가입 부분
 	@Override
 	public boolean admBranchInsertAction(AdmBranchDto ABDto) {		
@@ -53,6 +65,18 @@ public class AdmBranchDaoImpl implements AdmBranchDao {
 			sqlMapClientTemplate.insert("AdmBranch.admBranchInsertAction", ABDto);
 			return true;
 		} catch (DataAccessException e) {			
+			e.printStackTrace();
+			return false;
+		}
+	}
+	
+	//회원정보 수정 부분
+	@Override
+	public boolean admBranchModifyAction(AdmBranchDto ABDto) {
+		try {
+			sqlMapClientTemplate.update("AdmBranch.admBranchModifyAction" , ABDto);
+			return true;
+		} catch (DataAccessException e) {
 			e.printStackTrace();
 			return false;
 		}
@@ -69,4 +93,29 @@ public class AdmBranchDaoImpl implements AdmBranchDao {
 			return null;
 		}
 	}
+	
+	//게시물 총 갯수 갖고오는 부분
+	@Override
+	public long totalCount() {		
+		try {
+			return (long) sqlMapClientTemplate.queryForObject("AdmBranch.totalCount");
+		} catch (DataAccessException e) {
+			e.printStackTrace();
+			return 0;
+		}
+	}
+	
+	//게시물 삭제 부분
+	@Override
+	public boolean admBranchDeleteAction(List<String> seqList) {
+		
+		try {
+			return sqlMapClientTemplate.update("AdmBranch.admBranchDeleteAction" , seqList ) > 0;
+		} catch (DataAccessException e) {		
+			e.printStackTrace();
+			return false;
+		}
+	}
+	
+
 }

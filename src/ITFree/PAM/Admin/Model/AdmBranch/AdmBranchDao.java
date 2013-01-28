@@ -10,9 +10,17 @@ public interface AdmBranchDao {
 
 	boolean admBranchInsertAction(AdmBranchDto aBDto);
 
-	List<AdmBranchDto> admBranchList();
+	List<AdmBranchDto> admBranchList(AdmBranchPageDto ABPDto);
 
 	List<AdmBranchDto> admBranchSelectList();
+
+	AdmBranchDto admBranchModify(long seq);
+
+	boolean admBranchModifyAction(AdmBranchDto aBDto);
+
+	long totalCount();
+
+	boolean admBranchDeleteAction(List<String> seqList);
 
 
 }
