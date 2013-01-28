@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+    
+<sqlMap namespace="AdmModel">
+	<typeAlias alias="AMDto" type="ITFree.PAM.Admin.Model.AdmModel.AdmModelDto"/>
+	
+	<select id="admModelList" resultClass="AMDto">
+	SELECT seq, model_code, model_name, filename, open_date, to_char(write_date ,'YYYY-MM-DD') AS write_date, write_ip, make_comp, state_chk
+	FROM PHONEMODEL
+	</select>
+	
+	<!-- SELECT BOX에 제조사 리스트 (중복제거) -->
+	<select id="admCompList" resultClass="AMDto">
+	SELECT DISTINCT make_comp
+	FROM PHONEMODEL
+	</select>
+	
+	<insert id="admModelInsertAction" parameterClass="AMDto">
+	INSERT INTO PHONEMODEL(seq, model_code, model_name, filename, make_comp, state_chk, open_date)
+	VALUES(model_seq.nextval, #model_code#, #model_name#, '없음', #make_comp#, #state_chk# , '2013-01-28')
+	</insert>
+  
+</sqlMap>
