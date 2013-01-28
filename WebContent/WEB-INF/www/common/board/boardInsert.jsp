@@ -15,7 +15,7 @@
 <script>
 function write_ok(){
 
-var frm = document.tx_editor_form;
+var frm = document.forms;
 
 	if(frm.title.value == ""){
 		alert("제목을 입력하세요");
@@ -34,7 +34,7 @@ var frm = document.tx_editor_form;
 }
 </script>
 
-<form name="tx_editor_form" id="tx_editor_form" method="post" accept-charset="utf-8" enctype="multipart/form-data" style="margin:0">
+<form name="forms" id="forms" method="post" accept-charset="utf-8" enctype="multipart/form-data" style="margin:0">
 <!-- <form:form method="post" commandNamd="tx_editor_form" enctype="multipart/form-data"> -->
                        	  <input type="hidden" name="brc_id" value="${brc_id}">
                        	  <input type="hidden" name="write_ip" value="${write_ip}">

@@ -81,6 +81,7 @@
   	WHERE seq = #seq#
   </update>
   
+  
   <!-- 게시판 다음글보기 부분  -->
   <select id="Next_seq" parameterClass="HashMap" resultClass="long">
   	SELECT nvl(min(seq), #seq#) as next_seq

@@ -83,6 +83,6 @@
                           </td>
                         </tr>
                         <tr>
-                          <td height="30" align="right"><a href="admNoticeInsert.do"><img src="admin/img/bts.write.gif"></a> </td>
+                          <td height="30" align="right"><a href="#layer" onclick="insertContent('${p.board_chk}')"><img src="admin/img/bts.write.gif"></a> </td>
                         </tr>
                     </table>                          

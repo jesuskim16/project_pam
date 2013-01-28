@@ -7,6 +7,7 @@
 <sqlMap namespace="admBoard">
 	<typeAlias alias="abdDto" type="ITFree.PAM.Admin.Model.AdmBoard.admBoardDto" />
 	<typeAlias alias="apgDto" type="ITFree.PAM.Admin.Model.AdmBoard.admPageDto"/>
+	<typeAlias alias="bdDto" type="ITFree.PAM.Common.Model.Board.BoardDto" />
 	<select id="totalCount" parameterClass="apgDto" resultClass="int">
 	  SELECT count(*) 
 	  FROM board
@@ -44,4 +45,8 @@
 		FROM 	board
 		WHERE	seq=#seq#
 	</select>
+	<insert id="freeBoardInsertAction" parameterClass="bdDto">
+  		INSERT INTO board(seq,board_chk,title,content,filename,brc_id, write_ip)
+  		VALUES(board_seq.nextval , #board_chk#, #title#, #content#, #filename#, #brc_id#, #write_ip#)
+  </insert>
 </sqlMap>

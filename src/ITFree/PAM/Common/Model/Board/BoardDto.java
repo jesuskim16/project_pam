@@ -20,6 +20,7 @@ public class BoardDto {
 	private int rp_cnt;
 	private String filename;
 	private MultipartFile upFile;
+	private String board_name;
 	
 	public long getSeq() {
 		return seq;
@@ -116,7 +117,15 @@ public class BoardDto {
 	}
 	public void setUpFile(MultipartFile upFile) {
 		this.upFile = upFile;
+	}	
+	
+	public String getBoard_name() {
+		return board_name;
 	}
+	public void setBoard_name(String board_name) {
+		this.board_name = board_name;
+	}
+	
 	@Override
 	public String toString() {
 		return "BoardDto [rown=" + rown + ", seq=" + seq + ", board_chk="
