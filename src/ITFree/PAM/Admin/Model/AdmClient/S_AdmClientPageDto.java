@@ -3,6 +3,7 @@ package ITFree.PAM.Admin.Model.AdmClient;
 import ITFree.PAM.Admin.Controller.AdmClientAct;
 
 public class S_AdmClientPageDto {
+	private String managerID; 
 	
 	private long Spg; //현재 페이지
 	
@@ -23,10 +24,11 @@ public class S_AdmClientPageDto {
 		// TODO Auto-generated constructor stub
 	}
 	
-	public S_AdmClientPageDto(long Spg, long TotalCount) {
+	public S_AdmClientPageDto(long Spg, long TotalCount, String managerID) {
 		//넘어온  parameter값을 각 변수에 할당
 		this.Spg = Spg;
 		this.TotalCount = TotalCount;
+		this.managerID = managerID;
 		
 		
 		startNum = (Spg - 1) * pageSize + 1; // 시작 페이징 값을 계산
@@ -110,14 +112,17 @@ public class S_AdmClientPageDto {
 		UrlName = urlName;
 	}
 
-	@Override
-	public String toString() {
-		return "S_AdmClientPageDto [Spg=" + Spg + ", TotalCount=" + TotalCount
-				+ ", pageCount=" + pageCount + ", startNum=" + startNum
-				+ ", endNum=" + endNum + ", pageSize=" + pageSize
-				+ ", blockSize=" + blockSize + ", pHtml=" + pHtml
-				+ ", UrlName=" + UrlName + "]";
+	public String getManagerID() {
+		return managerID;
 	}
+
+	public void setManagerID(String managerID) {
+		this.managerID = managerID;
+	}
+
+	
+	
+
 
 
 

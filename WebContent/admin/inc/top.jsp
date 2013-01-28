@@ -27,11 +27,13 @@
       <tr>
         <td height="44" align="center" background="admin/img/bar.bg.gif"><table border="0" cellspacing="14" cellpadding="0">
           <tr>
-        	<td class="Text_white_12px_bold"> <a href='admClientList.do' class=style1>고객정보</td>
-            <td class="Text_white_12px_bold">&nbsp;&nbsp;&nbsp;I&nbsp;&nbsp;&nbsp;</td>        
             <td class="Text_white_12px_bold"> <a href='admBranchList.do' class=style1>지점정보</td>
             <td class="Text_white_12px_bold">&nbsp;&nbsp;&nbsp;I&nbsp;&nbsp;&nbsp;</td>
-            <td><span class="Text_white_12px_bold"><a href='/#' class=style1>핸드폰정보</a></span></td>
+        	<td class="Text_white_12px_bold"> <a href='admClientList.do' class=style1>고객정보</td>
+            <td class="Text_white_12px_bold">&nbsp;&nbsp;&nbsp;I&nbsp;&nbsp;&nbsp;</td>
+            <td><span class="Text_white_12px_bold"><a href='admPriceList.do' class=style1>요금제</a></span></td>
+            <td><span class="Text_white_12px_bold">&nbsp;&nbsp;&nbsp;I&nbsp;&nbsp;&nbsp;</span></td>
+            <td><span class="Text_white_12px_bold"><a href='admRebateList.do' class=style1>수익표</a></span></td>
             <td><span class="Text_white_12px_bold">&nbsp;&nbsp;&nbsp;I&nbsp;&nbsp;&nbsp;</span></td>
             <td><span class="Text_white_12px_bold"><a href='admNoticeList.do' class=style1>게시판</a></span></td>
           </tr>

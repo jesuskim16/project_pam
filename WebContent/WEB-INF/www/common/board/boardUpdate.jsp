@@ -34,7 +34,7 @@ var frm = document.tx_editor_form;
 }
 </script> 
  
-<form name="tx_editor_form" id="tx_editor_form" method="post" accept-charset="utf-8" enctype="multipart/form-data" style="margin:0">                       
+<form name="forms" id="forms" method="post" accept-charset="utf-8" enctype="multipart/form-data" style="margin:0">                       
                           <td width="1"></td>
                           <td valign="top"><table width="100%" border="0" cellspacing="0" cellpadding="0">
                               <tr>

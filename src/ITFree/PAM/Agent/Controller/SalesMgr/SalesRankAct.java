@@ -55,8 +55,6 @@ public class SalesRankAct {
 		List<SalesDto> list = salesDao.salesRankList(SRPDto, SalesRankSelectBox);
 		hidden = "none"; //Chart Hidden Value
 		
-		log.debug("--"+list);
-		
 		//Chart Size 
 		if (!(list == null)) {
 			hidden = "block"; //Chart Seem Value
@@ -69,7 +67,7 @@ public class SalesRankAct {
 			//Chart Value Add
 			for (int i = 0; i < list.size(); i++) {
 				ChartName[i] = list.get(i).getBrc_name(); //brc_name
-				log.debug("---"+list.get(i).getBrc_name());
+
 				ChartSalesNumber[i][0] = Integer.parseInt(list.get(i).getSalesnumber()); //SalesNumber  
 				ChartSalesRebate[i][0] = Integer.parseInt(list.get(i).getSalesrebate()); //SalesRebate
 			}

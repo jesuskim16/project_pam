@@ -2,54 +2,54 @@
     pageEncoding="UTF-8"%>
 <link rel="stylesheet" href="editor/css/editor.css" type="text/css" charset="utf-8"/>
 <script src="editor/js/editor_loader.js" type="text/javascript" charset="utf-8"></script>
-${content}
+
 													    <div class="body">
 														<!-- 에디터 시작 -->
 															<!-- 에디터 컨테이너 시작 -->
 															<div id="tx_trex_container" class="tx-editor-container">
 															  <!-- 사이드바 -->
-															  <div id="tx_sidebar" class="tx-sidebar">
-																<div class="tx-sidebar-boundary">
-																  <!-- 사이드바 / 첨부 -->
-																  <ul class="tx-bar tx-bar-left tx-nav-attach">
-																    <!-- 이미지 첨부 버튼 시작 -->
-																	<!--
-																		@decsription
-																		<li></li> 단위로 위치를 이동할 수 있다.
-																	-->
-																	<li class="tx-list">
-																	  <div unselectable="on" id="tx_image" class="tx-image tx-btn-trans"><a href="javascript:;" title="사진" class="tx-text">사진</a></div>
-																	</li>
-																	<!-- 이미지 첨부 버튼 끝 -->
-																	<li class="tx-list">
-																	  <div unselectable="on" id="tx_file" class="tx-file tx-btn-trans"><a href="javascript:;" title="파일" class="tx-text">파일</a></div>
-																	</li>
-																	<li class="tx-list">
-																	  <div unselectable="on" id="tx_media" class="tx-media tx-btn-trans"><a href="javascript:;" title="외부컨텐츠" class="tx-text">외부컨텐츠</a></div>
-																	</li>
-																	<li class="tx-list tx-list-extra">
-																	  <div unselectable="on" class="tx-btn-nlrbg tx-extra"><a href="javascript:;" class="tx-icon" title="버튼 더보기">버튼 더보기</a></div>
-																	  <ul class="tx-extra-menu tx-menu" style="left:-48px;" unselectable="on">
-																		<!--
-																			@decsription
-																			일부 버튼들을 빼서 레이어로 숨기는 기능을 원할 경우 이 곳으로 이동시킬 수 있다.
-																		-->
-																	  </ul>
-																	</li>
-																  </ul>
-																  <!-- 사이드바 / 우측영역 -->
-																  <ul class="tx-bar tx-bar-right">
-																    <li class="tx-list">
-																      <div unselectable="on" class="tx-btn-lrbg tx-fullscreen" id="tx_fullscreen"><a href="javascript:;" class="tx-icon" title="넓게쓰기 (Ctrl+M)">넓게쓰기</a></div>
- 																    </li>
-																  </ul>
-																  <ul class="tx-bar tx-bar-right tx-nav-opt">
-																	<li class="tx-list">
-																	  <div unselectable="on" class="tx-switchtoggle" id="tx_switchertoggle"><a href="javascript:;" title="에디터 타입">에디터</a></div>
-																	</li>
-																  </ul>
-																</div>
-															  </div>
+<!-- 															  <div id="tx_sidebar" class="tx-sidebar"> -->
+<!-- 																<div class="tx-sidebar-boundary"> -->
+<!-- 																  사이드바 / 첨부 -->
+<!-- 																  <ul class="tx-bar tx-bar-left tx-nav-attach"> -->
+<!-- 																    이미지 첨부 버튼 시작 -->
+<!-- 																	
+<!-- 																		@decsription -->
+<!-- 																		<li></li> 단위로 위치를 이동할 수 있다. -->
+<!-- 																	-->
+<!--  																	<li class="tx-list"> -->
+<!--  																	  <div unselectable="on" id="tx_image" class="tx-image tx-btn-trans"><a href="javascript:;" title="사진" class="tx-text">사진</a></div> -->
+<!--  																	</li> --> 
+<!-- 																	이미지 첨부 버튼 끝 -->
+<!--  																	<li class="tx-list"> -->
+<!--  																	  <div unselectable="on" id="tx_file" class="tx-file tx-btn-trans"><a href="javascript:;" title="파일" class="tx-text">파일</a></div> -->
+<!--  																	</li> --> 
+<!--  																	<li class="tx-list"> -->
+<!--  																	  <div unselectable="on" id="tx_media" class="tx-media tx-btn-trans"><a href="javascript:;" title="외부컨텐츠" class="tx-text">외부컨텐츠</a></div> -->
+<!--  																	</li> --> 
+<!-- 																	<li class="tx-list tx-list-extra"> -->
+<!--  																	  <div unselectable="on" class="tx-btn-nlrbg tx-extra"><a href="javascript:;" class="tx-icon" title="버튼 더보기">버튼 더보기</a></div> -->
+<!-- 																	  <ul class="tx-extra-menu tx-menu" style="left:-48px;" unselectable="on"> -->
+<!-- 																		
+<!-- 																			@decsription -->
+<!-- 																			일부 버튼들을 빼서 레이어로 숨기는 기능을 원할 경우 이 곳으로 이동시킬 수 있다. -->
+<!-- 																		-->
+<!-- 																	  </ul> -->
+<!-- 																	</li> -->
+<!-- 																  </ul> -->
+<!-- 																  사이드바 / 우측영역 -->
+<!-- 																  <ul class="tx-bar tx-bar-right"> -->
+<!-- 																    <li class="tx-list"> -->
+<!-- 																      <div unselectable="on" class="tx-btn-lrbg tx-fullscreen" id="tx_fullscreen"><a href="javascript:;" class="tx-icon" title="넓게쓰기 (Ctrl+M)">넓게쓰기</a></div> -->
+<!--  																    </li> -->
+<!-- 																  </ul> -->
+<!-- 																  <ul class="tx-bar tx-bar-right tx-nav-opt"> -->
+<!-- 																	<li class="tx-list"> -->
+<!-- 																	  <div unselectable="on" class="tx-switchtoggle" id="tx_switchertoggle"><a href="javascript:;" title="에디터 타입">에디터</a></div> -->
+<!-- 																	</li> -->
+<!-- 																  </ul> -->
+<!-- 																</div> -->
+<!-- 															  </div> -->
 													
 															  <!-- 툴바 - 기본 시작 -->
 															  <!--
@@ -314,7 +314,7 @@ ${content}
 														      </div>
 															  <div class="tx-side-bi" id="tx_side_bi">
 															    <div style="text-align: right;">
-																<img hspace="4" height="14" width="78" align="absmiddle" src="editor/images/icon/editor/editor_bi.png" />
+																
 															  </div>
 														    </div>
 																	<!-- 편집영역 끝 -->
@@ -346,13 +346,13 @@ ${content}
 <!-- 에디터 끝 -->
 	<script type="text/javascript">
 		var config = {
-			txHost: '', /* 런타임 시 리소스들을 로딩할 때 필요한 부분으로, 경로가 변경되면 이 부분 수정이 필요. ex) http://xxx.xxx.com */
-			txPath: '', /* 런타임 시 리소스들을 로딩할 때 필요한 부분으로, 경로가 변경되면 이 부분 수정이 필요. ex) /xxx/xxx/ */
+			txHost: 'http://localhost/project_pam/editor', /* 런타임 시 리소스들을 로딩할 때 필요한 부분으로, 경로가 변경되면 이 부분 수정이 필요. ex) http://xxx.xxx.com */
+			txPath: 'editor/', /* 런타임 시 리소스들을 로딩할 때 필요한 부분으로, 경로가 변경되면 이 부분 수정이 필요. ex) /xxx/xxx/ */
 			txService: 'sample', /* 수정필요없음. */
 			txProject: 'sample', /* 수정필요없음. 프로젝트가 여러개일 경우만 수정한다. */
 			initializedId: "", /* 대부분의 경우에 빈문자열 */
-			wrapper: "tx_trex_container", /* 에디터를 둘러싸고 있는 레이어 이름(에디터 컨테이너) */
-			form: 'tx_editor_form'+"", /* 등록하기 위한 Form 이름 */
+			wrapper: "forms", /* 에디터를 둘러싸고 있는 레이어 이름(에디터 컨테이너) */
+			form: 'forms'+"", /* 등록하기 위한 Form 이름 */
 			txIconPath: "editor/images/icon/editor/", /*에디터에 사용되는 이미지 디렉터리, 필요에 따라 수정한다. */
 			txDecoPath: "editor/images/deco/contents/", /*본문에 사용되는 이미지 디렉터리, 서비스에서 사용할 때는 완성된 컨텐츠로 배포되기 위해 절대경로로 수정한다. */
 			canvas: {
@@ -371,7 +371,7 @@ ${content}
 			},
 			sidebar: {
 				attachbox: {
-					show: true
+					show: false
 				}
 			},
 			size: {
@@ -381,6 +381,8 @@ ${content}
 	
 		EditorJSLoader.ready(function(Editor) {
 			var editor = new Editor(config);
+			Editor.getCanvas().setCanvasSize({height:250});//높이설정추가(tw)
+
 		});
 		
 	</script>
@@ -406,6 +408,7 @@ ${content}
 			// sample : validate that content exists
 			var validator = new Trex.Validator();
 			var content = editor.getContent();
+			
 			if (!validator.exists(content)) {
 				alert('내용을 입력하세요');
 				return false;
@@ -463,53 +466,47 @@ ${content}
 		}
 	</script>
 <!-- End: Saving Contents -->
-
-<!-- Sample: Loading Contents -->
-	<textarea id="sample_contents_source" style="display:none;">
-		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-		<p style="text-align: center;">
-			<img src="http://cfile273.uf.daum.net/image/2064CD374EE1ACCB0F15C8" class="tx-daum-image" style="clear: none; float: none;"/>
-		</p>﻿
-		<p>
-			<a href="http://cfile297.uf.daum.net/attach/207C8C1B4AA4F5DC01A644"><img src="snapshot/editor/images/icon/p_gif_s.gif"/> editor_bi.gif</a>
-		</p>
-	</textarea>
-	<script type="text/javascript">
-		function loadContent() {
-			var attachments = {};
-			attachments['image'] = [];
-			attachments['image'].push({
-				'attacher': 'image',
-				'data': {
-					'imageurl': 'http://cfile273.uf.daum.net/image/2064CD374EE1ACCB0F15C8',
-					'filename': 'github.gif',
-					'filesize': 59501,
-					'originalurl': 'http://cfile273.uf.daum.net/original/2064CD374EE1ACCB0F15C8',
-					'thumburl': 'http://cfile273.uf.daum.net/P150x100/2064CD374EE1ACCB0F15C8'
-				}
-			});
-			attachments['file'] = [];
-			attachments['file'].push({
-				'attacher': 'file',
-				'data': {
-					'attachurl': 'http://cfile297.uf.daum.net/attach/207C8C1B4AA4F5DC01A644',
-					'filemime': 'image/gif',
-					'filename': 'editor_bi.gif',
-					'filesize': 640
-				}
-			});
-			/* 저장된 컨텐츠를 불러오기 위한 함수 호출 */
-			Editor.modify({
-				"attachments": function () { /* 저장된 첨부가 있을 경우 배열로 넘김, 위의 부분을 수정하고 아래 부분은 수정없이 사용 */
-					var allattachments = [];
-					for (var i in attachments) {
-						allattachments = allattachments.concat(attachments[i]);
-					}
-					return allattachments;
-				}(),
-				"content": document.getElementById("sample_contents_source") /* 내용 문자열, 주어진 필드(textarea) 엘리먼트 */
-			});
+<script type="text/javascript">
+window.onload = function() {
+	var attachments = {};
+	
+	attachments['image'] = [];
+	attachments['image'].push( { 
+		'attacher': 'image', 
+		'data': { 
+			'imageurl': 'http://cfile284.uf.daum.net/image/116E89154AA4F4E2838948',
+			'filename': 'editor_bi.gif',
+			'filesize': 640,
+			'originalurl': 'http://cfile284.uf.daum.net/original/116E89154AA4F4E2838948',
+			'thumburl': 'http://cfile284.uf.daum.net/P150x100/116E89154AA4F4E2838948'
 		}
-	</script>
-<!-- 샘플 <p><button onclick='loadContent()'>SAMPLE - load contents to editor</button></p> -->
+	});
+
+	attachments['file'] = [];
+	attachments['file'].push({
+		'attacher': 'file', 
+		'data': {
+			'attachurl': 'http://cfile297.uf.daum.net/attach/207C8C1B4AA4F5DC01A644',
+			'filemime': 'image/gif',
+			'filename': 'editor_bi.gif',
+			'filesize': 640
+		}
+	});
+	
+	/* 저장된 컨텐츠를 불러오기 위한 함수 호출 */
+	Editor.modify({
+		"attachments": function() { /* 저장된 첨부가 있을 경우 배열로 넘김, 위의 부분을 수정하고 아래 부분은 수정없이 사용 */
+			var allattachments = [];
+			for(var i in attachments) {
+				allattachments = allattachments.concat(attachments[i]);
+			}
+			return allattachments;
+		}(),
+		"content": $tx("<%=request.getParameter("content")%>") /* 내용 문자열, 주어진 필드(textarea) 엘리먼트 */ 
+	});
+}
+
+</script>
+<%=request.getParameter("content")%>
+
 <!-- End: Loading Contents -->

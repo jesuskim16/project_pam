@@ -20,6 +20,7 @@ public class admBoardDto {
 	private int rp_cnt;
 	private String filename;
 	private MultipartFile upFile;
+	private String board_name;
 	
 	public long getRown() {return rown;}
 	public void setRown(long rown) {this.rown = rown;}	
@@ -53,7 +54,8 @@ public class admBoardDto {
 	public void setFilename(String filename) {this.filename = filename;}
 	public MultipartFile getUpFile() {return upFile;}
 	public void setUpFile(MultipartFile upFile) {this.upFile = upFile;}
-	
+	public String getBoard_name() {return board_name;}
+	public void setBoard_name(String board_name) {this.board_name = board_name;}
 	@Override
 	public String toString() {
 		return "admBoardDto [rown=" + rown + ", seq=" + seq + ", board_chk="
@@ -63,7 +65,7 @@ public class admBoardDto {
 				+ ", brc_id=" + brc_id + ", brc_name=" + brc_name
 				+ ", prev_seq=" + prev_seq + ", next_seq=" + next_seq
 				+ ", rp_cnt=" + rp_cnt + ", filename=" + filename + ", upFile="
-				+ upFile + "]";
+				+ upFile + ", board_name=" + board_name + "]";
 	}
 	
 	

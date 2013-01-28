@@ -1,11 +1,9 @@
-package ITFree.PAM.Admin.Model.AdmClient;
+package ITFree.PAM.Admin.Model.AdmPrice;
 
 import ITFree.PAM.Admin.Controller.AdmClientAct;
 
-public class AdmClientPageDto {
-	private String salesID;
-	
-	private long Cpg; //현재 페이지
+public class AdmPricePageDto {
+	private long pg; //현재 페이지
 	
 	private long TotalCount; // 총 게시물의 갯수
 	private long pageCount; // 총 게시물을 페이지 갯수를 나눈 것.(10개의 게시물이 몇페이지까지 있는지를 나타냄)
@@ -21,32 +19,30 @@ public class AdmClientPageDto {
 	private String UrlName;
 	
 	//기본 생성자(DI주입을 위해 꼭 생성해야함)
-	public AdmClientPageDto() {
+	public AdmPricePageDto() {
 		// TODO Auto-generated constructor stub
 	}
 	
-	public AdmClientPageDto(long Cpg, long TotalCount, String salesID) {
+	public AdmPricePageDto(long pg, long TotalCount) {
 		//넘어온  parameter값을 각 변수에 할당
-		this.Cpg = Cpg;
+		this.pg = pg;
 		this.TotalCount = TotalCount;
-		this.salesID = salesID;
 		
-		startNum = (Cpg - 1) * pageSize + 1; // 시작 페이징 값을 계산
-		endNum = Cpg * pageSize; // 끝 페이징 값을 계산
+		
+		startNum = (pg - 1) * pageSize + 1; // 시작 페이징 값을 계산
+		endNum = (pg * pageSize); // 끝 페이징 값을 계산
 		
 		pageCount = TotalCount / pageSize + (TotalCount % pageSize > 0 ? 1 : 0); // 총 페이징갯수 계산 알고리즘
 		
-		
-	}
 	
-
-
-	public long getCpg() {
-		return Cpg;
 	}
 
-	public void setCpg(long cpg) {
-		Cpg = cpg;
+	public long getPg() {
+		return pg;
+	}
+
+	public void setPg(long pg) {
+		this.pg = pg;
 	}
 
 	public long getTotalCount() {
@@ -113,29 +109,7 @@ public class AdmClientPageDto {
 		UrlName = urlName;
 	}
 	
-	public String getSalesID() {
-		return salesID;
-	}
-
-	public void setSalesID(String salesID) {
-		this.salesID = salesID;
-	}
-
-
-
 	
 	
-	
-	
-
-
-
-
-	
-
-	
-	
-	
-
 	
 }

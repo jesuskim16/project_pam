@@ -3,6 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <jsp:include page="/inc/top1.jsp"/>    
 <jsp:include page="/inc/menu2.jsp"/>  
+
 <script type="text/javascript" src="js/setDate.js"></script>
 <script type="text/javascript">
 
