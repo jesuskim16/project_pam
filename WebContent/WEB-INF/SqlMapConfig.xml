@@ -14,6 +14,7 @@
 	<sqlMap resource="ITFree/PAM/ibatis/Admin/AdmBoard.xml"/>
 	<sqlMap resource="ITFree/PAM/ibatis/Admin/AdmPrice.xml"/>
 	<sqlMap resource="ITFree/PAM/ibatis/Admin/AdmRebate.xml"/>
+	<sqlMap resource="ITFree/PAM/ibatis/Admin/AdmModel.xml"/>
 	
 	<!-- 대리점 부분 -->
 	<sqlMap resource="ITFree/PAM/ibatis/Agent/SaleMgr/SaleMgr.xml"/>	
