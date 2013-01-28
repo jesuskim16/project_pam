@@ -6,4 +6,12 @@ INSERT INTO	BRANCH (            SEQ,    BRC_ID, ATTACH_ID, PASSWORD, BRC_NAME,  
 			 
 			 select * from custominfo;
 			 
-select * from board order by seq desc;			 
+select * from board order by seq desc;
+
+select * from PHONEPRICE
+
+
+update PHONEPRICE set state_chk=2 where price_name like '%커플%';
+SELECT * FROM rebate;
+ 
+

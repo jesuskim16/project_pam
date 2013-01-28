@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+    
+<sqlMap namespace="admRebate">
+
+	<select id="getPriceName"  resultClass="String">
+		SELECT price_name 
+		FROM phoneprice
+		WHERE state_chk=1
+	</select>
+	
+	<select id="rebateTable" resultClass="HashMap" parameterClass="java.util.List" remapResults="true">
+		SELECT seq,model_code,
+		<iterate conjunction=",">
+            $[]$
+        </iterate>
+		FROM rebate  
+	</select>
+</sqlMap>
