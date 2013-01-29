@@ -8,4 +8,12 @@ public interface AdmPriceDao {
 
 	List<AdmPriceDto> AdmPriceList(AdmPricePageDto pPDto);
 
+	boolean AdmPriceInsertAct(AdmPriceDto aPDto);
+
+	boolean AdmPriceDeleteAct(AdmPriceDto aPDto);
+
+	boolean AdmPriceUpdateAct(AdmPriceDto aPDto);
+
+	AdmPriceDto SelectList(long seq);
+
 }

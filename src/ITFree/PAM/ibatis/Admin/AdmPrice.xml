@@ -17,12 +17,52 @@
    	SELECT B.* 
 	FROM (SELECT A.*, rownum AS rnum
 	  FROM (SELECT seq, price_name, price, use_call, use_sms, use_data, memo, to_char(write_date, 'YYYY-MM-DD') AS write_date,
-   	 	   write_ip, state_chk
-	FROM PHONEPRICE) A) B       
+   	 	   		   write_ip, state_chk
+			FROM PHONEPRICE
+			ORDER BY rownum DESC) A) B       
 	<![CDATA[
 	WHERE #startNum# <= rnum AND rnum <= #endNum#
 	ORDER BY rnum ASC
 	]]>
    </select>
+   
+   <select id="SelectList" resultClass="APdto" parameterClass="long">
+    SELECT seq, price_name, price, use_call, use_sms, use_data, memo, 
+    to_char(write_date, 'YYYY-MM-DD') AS write_date, write_ip, state_chk
+    FROM PHONEPRICE
+    WHERE seq=#seq#
+   </select>
 
+   <insert id="AdmPriceInsertAct" parameterClass="APdto">
+   	INSERT INTO	PHONEPRICE (seq, price_name, price, use_call, use_sms, use_data, memo, state_chk)
+	VALUES(BRC_SEQ.nextval, #price_name#,  #price#,  #use_call#, #use_sms#, #use_data#, #memo#, #state_chk#)
+   </insert>
+   
+   <statement  id="AdmPriceInsertActARTER" parameterClass="APdto">
+   ALTER TABLE REBATE
+   ADD($price_name$ NUMBER(8) DEFAULT 0)  
+   </statement>
+   
+   <delete id="AdmPriceDeleteAct" parameterClass="APdto">
+    DELETE FROM PHONEPRICE
+	WHERE seq=#seq#
+   </delete>
+   
+   <statement id="AdmPriceDeleteActARTER" parameterClass="APdto">
+   	ALTER TABLE REBATE
+   	DROP COLUMN $price_name$
+   </statement>
+   
+   <update id="AdmPriceUpdateAct" parameterClass="APdto">
+    UPDATE PHONEPRICE SET
+    price_name=#price_name#, price=#price#, use_call=#use_call#, use_sms=#use_sms#, 
+    use_data=#use_data#, memo=#memo#, state_chk=#state_chk#
+    WHERE seq = #seq#
+   </update>
+   
+   <statement id="AdmPriceUpdateActARTER" parameterClass="APdto">
+    ALTER TABLE REBATE
+	RENAME COLUMN $update_price_name$ TO $price_name$;
+   </statement>
+   
 </sqlMap>

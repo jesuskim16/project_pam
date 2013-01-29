@@ -2,6 +2,8 @@ package ITFree.PAM.Admin.Controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -37,10 +39,12 @@ public class AdmPriceAct {
 		
 		List<AdmPriceDto> list = APdao.AdmPriceList(PPDto);
 		
-		mav.setViewName("/WEB-INF/www/admin/Price/list.jsp");
+		
+		mav.setViewName("/WEB-INF/www/admin/price/list.jsp");
 		
 		mav.addObject("list", list);
 		mav.addObject("page",PPDto);
+		
 		
 		return mav;
 	}
@@ -97,6 +101,60 @@ public class AdmPriceAct {
 			//모든 HTML값 설정이 끝난 뒤 모든 문자열을 리턴~
 			return pageHtml.toString();
 			
+		}
+		
+		
+		@RequestMapping("/admPriceInsertAct.do")
+		public ModelAndView admPriceInsertAct(@ModelAttribute AdmPriceDto APDto, ModelAndView mav,
+				HttpServletRequest request){
+			
+			APDto.setWrite_ip(request.getRemoteAddr());//IP
+			
+			boolean insert = APdao.AdmPriceInsertAct(APDto);
+			
+			mav.setViewName("redirect:admPriceList.do");
+			
+			return mav;
+		}
+		
+		@RequestMapping("/admPriceDeleteAct.do")
+		public ModelAndView admPriceDeleteAct (@ModelAttribute AdmPriceDto APDto, ModelAndView mav,
+				String price_name, long seq){
+			
+			APDto.setPrice_name(price_name);
+			APDto.setSeq(seq);
+			
+			boolean delete = APdao.AdmPriceDeleteAct(APDto);
+			
+			mav.setViewName("redirect:admPriceList.do");
+			
+			return mav;
+		}
+		
+		
+			@RequestMapping("/admPriceUpdate.do")
+		public ModelAndView admPriceUpdate(@ModelAttribute AdmPriceDto APDto, ModelAndView mav, String price_name,
+				 long seq){
+			
+				AdmPriceDto selectlist = APdao.SelectList(seq);
+				
+				mav.setViewName("/WEB-INF/www/admin/price/list.jsp");
+				
+				mav.addObject("Selist", selectlist);
+				
+				return mav;
+		}
+		@RequestMapping("/admPriceUpdateAct.do")
+		public ModelAndView admPriceUpdateAct(@ModelAttribute AdmPriceDto APDto, ModelAndView mav, String price_name){
+			
+			APDto.setUpdate_price_name(price_name);
+			
+			log.debug("확인:"+APDto);
+			boolean update = APdao.AdmPriceUpdateAct(APDto);
+			
+			mav.setViewName("redirect:admPriceList.do");
+			
+			return mav;
 		}
 
 

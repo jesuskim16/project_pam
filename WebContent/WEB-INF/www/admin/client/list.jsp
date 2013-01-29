@@ -136,7 +136,7 @@ function admClientUpdate(hidden, seem){
 <script type="text/javascript">
 window.onload = function(){
 	var Formseq = document.listForm.seq.value;
-	//alert(Formseq+":"+typeof Formseq);
+
 	if (!(Formseq == '0')) {
 	document.getElementById('view').style.display="block";
 	document.getElementById('seem').style.display="none";

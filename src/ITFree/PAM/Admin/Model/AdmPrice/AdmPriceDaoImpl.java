@@ -29,5 +29,56 @@ public class AdmPriceDaoImpl implements AdmPriceDao {
 		}
 		
 	}
+	
+	@Override
+	public AdmPriceDto SelectList(long seq) {
+		try {
+			return (AdmPriceDto) sqlMapClientTemplate.queryForObject("AdmPrice.SelectList", seq);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
+
+	@Override
+	public boolean AdmPriceInsertAct(AdmPriceDto APDto) {
+		try {
+			sqlMapClientTemplate.insert("AdmPrice.AdmPriceInsertAct", APDto);
+			sqlMapClientTemplate.update("AdmPrice.AdmPriceInsertActARTER", APDto);
+			
+			return true;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		}
+		
+	}
+
+	@Override
+	public boolean AdmPriceDeleteAct(AdmPriceDto APDto) {
+		try {
+			sqlMapClientTemplate.delete("AdmPrice.AdmPriceDeleteAct", APDto);
+			sqlMapClientTemplate.update("AdmPrice.AdmPriceDeleteActARTER", APDto);
+			return true;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		}
+		
+	}
+
+	@Override
+	public boolean AdmPriceUpdateAct(AdmPriceDto APDto) {
+		try {
+			sqlMapClientTemplate.update("AdmPrice.AdmPriceUpdateAct", APDto);
+			sqlMapClientTemplate.update("AdmPrice.AdmPriceUpdateActARTER", APDto);
+			return true;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		}
+	}
+
+	
 
 }
