@@ -16,8 +16,8 @@ ArrayList<String> priceName = (ArrayList)request.getAttribute("priceName");
 %>
 <script type="text/javascript">
 var changeInput = function(seq,price){
+	var frm = document.form;
 	var id = seq+'-'+price;
-	var frm = document.form;	
 	var ida = id+'a';
 	var idb = id+'b';
 	var text_id = 'text_'+id;
@@ -30,14 +30,16 @@ var changeInput = function(seq,price){
 	}
 
 }
-var updateVal = function(seq,price){
-	var id = seq+'-'+price;
+var updateVal = function(seq,price,phonePrice){
+	
 	var frm = document.form;
+	var id = seq+'-'+price;
 	var ida = id+'a';
 	var idb = id+'b';
+	var text_id = 'text_'+id;
+	var money = document.getElementById(text_id).value;
 	
-	location.href='';
-	
+	location.href='admRebateUpdate.do?seq='+seq+'&price='+phonePrice+'&money='+money+'';	
 	document.getElementById(ida).style.display='block';
 	document.getElementById(idb).style.display='none';
 	frm.chIpChk.value='0';
@@ -106,13 +108,15 @@ var updateVal = function(seq,price){
 	                                            <td width="30" align="center" class="s_Text_gray2_12px"><%=String.valueOf(price.get("SEQ"))%></td>
 	                                            <td width="100" align="left" class="s_Text_gray2_12px">&nbsp;&nbsp;<%=String.valueOf(price.get("MODEL_CODE"))%></td>
 													<%for(int j=0; j<priceName.size();j++){
-													 String seq = String.valueOf(price.get("SEQ"));%>
+													 String seq = String.valueOf(price.get("SEQ"));
+													 String phonePrice = priceName.get(j);
+													 %>
 	                                            	<td width="80" align="right">
 	                                            	  <div id="<%=seq%>-<%=j%>a" style="display:block">
-	                                            		<a href="#" onclick="javascript:changeInput('<%=seq%>','<%=j%>');"><%=String.valueOf(price.get(priceName.get(j)))%></a>원&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	                                            		<a href="#" onclick="javascript:changeInput('<%=seq%>','<%=j%>');"><%=String.valueOf(price.get(phonePrice))%></a>원&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 	                                            	  </div>	
 	                                            	  <div id="<%=seq%>-<%=j%>b" style="display:none">
-	                                            	    <input class="input_bg_white" id="text_<%=seq%>-<%=j%>" type="text" size="5" style="text-align:right" value="<%=String.valueOf(price.get(priceName.get(j)))%>" onkeydown = "if(event.keyCode==13)updateVal('<%=seq%>','<%=j%>');"/>원&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	                                            	    <input class="input_bg_white" id="text_<%=seq%>-<%=j%>" type="text" size="5" style="text-align:right" value="<%=String.valueOf(price.get(phonePrice))%>" onkeydown = "if(event.keyCode==13)updateVal('<%=seq%>','<%=j%>','<%=phonePrice%>');"/>원&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 	                                            	  </div>
 	                                            	</td>
 													<%}%>

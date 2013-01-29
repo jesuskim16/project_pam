@@ -19,4 +19,11 @@
         JOIN 	phonemodel p USING (model_code)		
 		WHERE 	p.state_chk=1	
 	</select>
+	
+	<update id="updatePrice" parameterClass="HashMap">
+		UPDATE 	rebate 
+		SET     $price$=#money#
+		WHERE 	seq = #seq#
+	</update>
+	
 </sqlMap>
