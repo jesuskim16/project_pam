@@ -26,6 +26,8 @@ public interface SalesDao {
 	
 	long RankTotalCount(SalesRankPageDto srpDto);
 
+	String salesIdCheck(String brc_id);
+
 	
 
 	

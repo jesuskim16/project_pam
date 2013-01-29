@@ -1,8 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
 <jsp:include page="/inc/top1.jsp"/>    
 <jsp:include page="/inc/menu2.jsp"/> 
 <script type="text/javascript" src="js/sales_insert.js" ></script>
+<script type="text/javascript" src="js/jquery-1.8.3.min.js"></script>
 
 <script type="text/javascript">
 	var customInput = function() {
@@ -98,7 +100,40 @@
 		frm.submit();
 	}
 	
+	$(document).ready(function(){
+		//ID중복체크 부분
+		$("#brc_id").focusout(function() {	
+			
+			//ID중복 체크를 Request / Response 및 Action 처리부분
+			$.ajax({	
+				url : "salesIdCheck.do" ,
+				//type : "get",
+				data : ({
+					brc_id : $("input[name=brc_id]").val()
+				}),
+				success : function(data) {
+					if($.trim(data) == "empty"){				
+						$("#idCheck").html("<font color=blue>사용가능한 ID입니다.</font>");
+					}else{
+						$("#idCheck").html("<font color=red>아이디가 이미 존재합니다.</font>");
+						$("input[name=brc_id]").focus();
+						$().toastmessage('showToast', {
+						    text     : '아이디가 이미 존재합니다.',
+						    sticky   : false,
+						    stayTime : 1500,
+						    position : 'middle-center',
+						    type     : 'warning'					    	
+						});
+						$().toastmessage('removeToast', {				    	
+						});
+					}
+				},
+				error : function() {
+					alert("ID값을 얻어오지 못했습니다. 다시입력하세요");
+				}			
+			});
 
+		});
 </script>
 
 
@@ -127,7 +162,10 @@
                                         <tr>
                                           <td class="bullet2"></td>
                                           <td width="200" height="40" class="line_bg_bottom2 pl5 pr10 fb">아이디</td>
-                                          <td class="line_bg_bottom2 pl10"><input name="brc_id" type="text" class="input_gray3" size="15" style="ime-mode:disabled;"  onchange="HangulStrChk(document.forms.username);"></td>
+                                          <td class="line_bg_bottom2 pl10">
+                                          <input name="brc_id" id="brc_id" type="text" class="input_gray3" size="15" style="ime-mode:disabled;">
+                                          <div id="idCheck"></div>
+                                          </td>
                                         </tr>
                                         <tr>
                                           <td class="bullet2"></td>

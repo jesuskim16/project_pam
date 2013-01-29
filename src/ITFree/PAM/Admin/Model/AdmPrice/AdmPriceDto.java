@@ -3,8 +3,10 @@ package ITFree.PAM.Admin.Model.AdmPrice;
 public class AdmPriceDto {
 	private long rnum;
 	private long seq;	//번호
+	
 	private String price_name;	//요금제
 	private String update_price_name;
+	
 	private String price;		//기본료
 	private String use_call;	//음성 통화
 	private String use_sms; 	//문자
@@ -89,15 +91,18 @@ public class AdmPriceDto {
 	public void setUpdate_price_name(String update_price_name) {
 		this.update_price_name = update_price_name;
 	}
-	
 	@Override
 	public String toString() {
 		return "AdmPriceDto [rnum=" + rnum + ", seq=" + seq + ", price_name="
-				+ price_name + ", price=" + price + ", use_call=" + use_call
-				+ ", use_sms=" + use_sms + ", use_data=" + use_data + ", memo="
-				+ memo + ", write_date=" + write_date + ", write_ip="
-				+ write_ip + ", state_chk=" + state_chk + "]";
+				+ price_name + ", update_price_name=" + update_price_name
+				+ ", price=" + price + ", use_call=" + use_call + ", use_sms="
+				+ use_sms + ", use_data=" + use_data + ", memo=" + memo
+				+ ", write_date=" + write_date + ", write_ip=" + write_ip
+				+ ", state_chk=" + state_chk + "]";
 	}
+	
+	
+
 	
 	
 

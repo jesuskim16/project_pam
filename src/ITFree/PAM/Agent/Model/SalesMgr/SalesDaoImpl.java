@@ -95,6 +95,16 @@ public class SalesDaoImpl implements SalesDao {
 	public long RankTotalCount(SalesRankPageDto srpDto) {
 		return (long) sqlMapClientTemplate.queryForObject("SaleMgr.RankTotalCount", srpDto);
 	}
+
+	@Override
+	public String salesIdCheck(String brc_id) {
+		try {
+			return (String) sqlMapClientTemplate.queryForObject("SaleMgr.salesIdCheck", brc_id);
+		} catch (DataAccessException e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
 	
 	//----------------------------------------------------------------------------------------
 

@@ -13,6 +13,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import ITFree.PAM.Agent.Model.SalesMgr.SalesDao;
@@ -81,6 +82,18 @@ public class SalesRegAct {
 		model.addAttribute("list" , list);
 		model.addAttribute("dong",dong);
 		return "/WEB-INF/www/agent/salesMgr/salesZipcode.jsp";
+	}
+	
+	
+	@RequestMapping("salesIdCheck.do")
+	public  @ResponseBody  String salesIdCheck(String brc_id){
+		String idCheck = salesDao.salesIdCheck(brc_id);
+		if(!brc_id.equals(idCheck)){
+			idCheck = "empty";
+		}
+		return idCheck;
+
+				
 	}
 	
 }

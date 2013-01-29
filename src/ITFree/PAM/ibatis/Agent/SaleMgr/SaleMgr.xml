@@ -112,5 +112,11 @@
 	]]>
 	</select>
 	
-
+	<select id="salesIdCheck" parameterClass="String" resultClass="String">
+	SELECT nvl(brc_id , 'empty') as brc_id
+	FROM branch
+	WHERE brc_id like #brc_id#
+	</select>
+	
+	
 </sqlMap>

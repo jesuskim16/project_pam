@@ -818,6 +818,7 @@ window.onload = function(){
                                                       <tr>
                                                         <td height="20" valign="bottom" bgcolor="#FFFFFF">
                                                           <input name="price_name" value="${Selist.getPrice_name()}" type="text" class="input_bg_white" size="20">
+                                                          <input name="update_price_name" value="${Selist.getPrice_name()}" type="hidden" class="input_bg_white" size="20">
                                                         </td>
                                                       </tr>
                                                     </table></td>

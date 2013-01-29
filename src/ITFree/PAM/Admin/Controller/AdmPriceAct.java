@@ -145,11 +145,14 @@ public class AdmPriceAct {
 				return mav;
 		}
 		@RequestMapping("/admPriceUpdateAct.do")
-		public ModelAndView admPriceUpdateAct(@ModelAttribute AdmPriceDto APDto, ModelAndView mav, String price_name){
+		public ModelAndView admPriceUpdateAct(@ModelAttribute AdmPriceDto APDto, ModelAndView mav, String update_price_name){
 			
-			APDto.setUpdate_price_name(price_name);
+			APDto.setUpdate_price_name(update_price_name);
+			
+			log.debug("--"+APDto);
 			
 			boolean update = APdao.AdmPriceUpdateAct(APDto);
+			
 			
 			mav.setViewName("redirect:admPriceList.do");
 			

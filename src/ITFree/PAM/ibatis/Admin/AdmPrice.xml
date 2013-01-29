@@ -62,7 +62,7 @@
    
    <statement id="AdmPriceUpdateActARTER" parameterClass="APdto">
     ALTER TABLE REBATE
-	RENAME COLUMN $update_price_name$ TO $price_name$;
+	RENAME COLUMN $update_price_name$ TO $price_name$
    </statement>
    
 </sqlMap>
