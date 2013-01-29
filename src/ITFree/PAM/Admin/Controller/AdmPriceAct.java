@@ -132,7 +132,7 @@ public class AdmPriceAct {
 		}
 		
 		
-			@RequestMapping("/admPriceUpdate.do")
+		@RequestMapping("/admPriceUpdate.do")
 		public ModelAndView admPriceUpdate(@ModelAttribute AdmPriceDto APDto, ModelAndView mav, String price_name,
 				 long seq){
 			
@@ -141,7 +141,7 @@ public class AdmPriceAct {
 				mav.setViewName("/WEB-INF/www/admin/price/list.jsp");
 				
 				mav.addObject("Selist", selectlist);
-				
+//				
 				return mav;
 		}
 		@RequestMapping("/admPriceUpdateAct.do")
@@ -149,13 +149,15 @@ public class AdmPriceAct {
 			
 			APDto.setUpdate_price_name(price_name);
 			
-			log.debug("확인:"+APDto);
 			boolean update = APdao.AdmPriceUpdateAct(APDto);
 			
 			mav.setViewName("redirect:admPriceList.do");
 			
 			return mav;
 		}
+		
+		
 
-
+			
 }
+

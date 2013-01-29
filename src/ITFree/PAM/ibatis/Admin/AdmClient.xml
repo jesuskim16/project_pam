@@ -42,6 +42,12 @@
 	FROM CUSTOMINFO
 	</select>
 	
+	<select id="ListTotalCountStratum" resultClass="long" parameterClass="ACPdto">
+	SELECT count(*)
+	FROM CUSTOMINFO
+	WHERE BRC_ID=#salesID#
+	</select>
+	
 	
 	<select id="ManagerList" resultClass="ACdto" parameterClass="MCPdto">
 	SELECT B.* 

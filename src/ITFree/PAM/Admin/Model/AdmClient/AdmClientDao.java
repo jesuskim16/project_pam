@@ -10,11 +10,11 @@ public interface AdmClientDao {
 	
 	List<AdmClientDto> SalesList(S_AdmClientPageDto SPDto, String count);
 	
-	long CListTotalCount(AdmClientPageDto CPDto);
+	long CListTotalCount(AdmClientPageDto CPDto, String count);
 
 	long MListTotalCount(M_AdmClientPageDto MPDto);
 
-	long SListTotalCount(S_AdmClientPageDto SPDto);
+	long SListTotalCount(S_AdmClientPageDto SPDto, String count);
 	////////////////////////////////////////////////////////////////////
 	AdmClientDto AdmClientView(long seq);
 

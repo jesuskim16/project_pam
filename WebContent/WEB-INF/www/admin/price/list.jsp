@@ -45,13 +45,17 @@ function priceinsert(){
 	
 }
 
-function listclick(seq, price_name){
+function listclick(seq, price_name, count){
 	document.getElementById('seq').value = seq;
 	document.getElementById('price_name').value = price_name;
 	
-	document.getElementById('listBLOLD_'+seq).style.fontWeight = "bold";
+	alert(count);
 	
-			
+	for(i=0; i < 10; i++){
+		document.getElementById('listBLOLD_'+i).style.fontWeight = "normal";
+	} 
+		document.getElementById('listBLOLD_'+count).style.fontWeight = "bold";
+		
 }
 
 function deletechk(){
@@ -117,7 +121,6 @@ window.onload = function(){
 </script>
 
 <form name="PriceForm" method="get">
-
 <input type="hidden" name="seq" id="seq" value="${Selist.getSeq()}">
 <input type="hidden" name="price_name"  id="price_name" value="${Selist.getPrice_name()}">
 
@@ -173,12 +176,12 @@ window.onload = function(){
                               </tr>
                               </c:if>
                               <!-- 반복문  -->
-                            <c:forEach items="${list}" var="dto">
+                            <c:forEach items="${list}" var="dto" varStatus="count">
                               <tr onMouseOver=style.background='#D2E3F8' onMouseOut=style.background='#ffffff'>
                                 <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
                                   <tr>                                      
                                     <td height="30"><table width="100%" border="0" cellspacing="0" cellpadding="0">        
-                                      <tr id="listBLOLD_${dto.seq}" onclick="javascript:listclick('${dto.seq}','${dto.price_name}')" style="cursor:pointer">
+                                      <tr id="listBLOLD_${count.index}" onclick="javascript:listclick('${dto.seq}','${dto.price_name}','${count.index}')" style="cursor:pointer">
                                       	<td width="50" align="center" class="s_Text_gray2_12px">${dto.rnum}</td>
                                         <td width="200" align="center" class="s_Text_gray2_12px">${dto.price_name}</td>
                                         <td width="100" align="center" class="s_Text_gray2_12px">${dto.price}원</td>

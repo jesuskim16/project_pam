@@ -44,8 +44,8 @@ public class AdmClientAct {
 		countPage = count;
 		
 		M_AdmClientPageDto MPDto = new M_AdmClientPageDto(MpageDto.getMpg(), ACdao.MListTotalCount(MpageDto));
-		S_AdmClientPageDto SPDto = new S_AdmClientPageDto(SpageDto.getSpg(), ACdao.SListTotalCount(SpageDto), managerID);
-		AdmClientPageDto CPDto = new AdmClientPageDto(CpageDto.getCpg(), ACdao.CListTotalCount(CpageDto), salesID);
+		S_AdmClientPageDto SPDto = new S_AdmClientPageDto(SpageDto.getSpg(), ACdao.SListTotalCount(SpageDto, count), managerID);
+		AdmClientPageDto CPDto = new AdmClientPageDto(CpageDto.getCpg(), ACdao.CListTotalCount(CpageDto, count), salesID);
 		
 		MPDto.setpHtml(getMPageHtml(CPDto, MPDto, SPDto));
 		SPDto.setpHtml(getSPageHtml(CPDto, MPDto, SPDto));
