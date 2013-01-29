@@ -97,6 +97,12 @@
 	WHERE BRC_LEV='2'
 	</select>
 	
+	<select id="SListTotalCountStratum" resultClass="long" parameterClass="SCPdto">
+	SELECT count(*)
+	FROM BRANCH
+	WHERE BRC_LEV='2' AND ATTACH_ID=#managerID#
+	</select>
+	
 		<select id="admClientInsertModelList" resultClass="ACdto" >
 	SELECT MODEL_NAME, model_code
 	FROM PHONEMODEL

@@ -59,10 +59,9 @@ public class AdmClientDaoImpl implements AdmClientDao {
 	public long CListTotalCount(AdmClientPageDto CPDto, String count) {
 		try{
 			if(count.equals("1") ){
-				return (long) sqlMapClientTemplate.queryForObject("AdmClient.ListTotalCount", CPDto);
-				
+				return (long) sqlMapClientTemplate.queryForObject("AdmClient.ListTotalCountStratum", CPDto);
 			} else {
-					return (long) sqlMapClientTemplate.queryForObject("AdmClient.ListTotalCountStratum", CPDto);
+				return (long) sqlMapClientTemplate.queryForObject("AdmClient.ListTotalCount", CPDto);	
 			}
 		} catch(Exception e){
 			e.printStackTrace();
@@ -79,7 +78,17 @@ public class AdmClientDaoImpl implements AdmClientDao {
 	
 	@Override
 	public long SListTotalCount(S_AdmClientPageDto SPDto, String count) {
-		return (long) sqlMapClientTemplate.queryForObject("AdmClient.SListTotalCount", SPDto);
+		try{
+			if(count.equals("1") ){
+				return (long) sqlMapClientTemplate.queryForObject("AdmClient.SListTotalCountStratum", SPDto);
+			} else {
+				return (long) sqlMapClientTemplate.queryForObject("AdmClient.SListTotalCount", SPDto);	
+			}
+		} catch(Exception e){
+			e.printStackTrace();
+			return (long) sqlMapClientTemplate.queryForObject("AdmClient.SListTotalCount", SPDto);
+		}
+		
 	}
 	//List//////////////////////////////////////////////////////////////////////////////
 	
