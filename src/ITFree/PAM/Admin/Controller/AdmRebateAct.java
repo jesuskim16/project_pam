@@ -33,14 +33,11 @@ public class AdmRebateAct {
 		return "/WEB-INF/www/admin/rebate/list.jsp";
 	}	
 	@RequestMapping("admRebateUpdate.do")
-	public String admRebateUpdate(Model model, String seq, String price, String money){
+	public String admRebateUpdate(Model model, int seq, String price, int money){
 		log.debug("---start["+"AdmRebateAct."+"admRebateUpdate"+"]");
-		log.debug("--"+seq+":"+price+":"+money);		
-		int iSeq = Integer.parseInt(seq);
-		
-		log.debug("--"+iSeq+":"+price+":"+money);
+		log.debug("--"+seq+":"+price+":"+money);
 		Map<String,Object> updateInfo = new HashMap<String,Object>();
-		updateInfo.put("seq", iSeq);
+		updateInfo.put("seq", seq);
 		updateInfo.put("price", price);
 		updateInfo.put("money", money);
 		boolean updateResult = arbDao.updatePrice(updateInfo);
