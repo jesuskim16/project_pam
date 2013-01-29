@@ -22,7 +22,7 @@
 	
 	<update id="updatePrice" parameterClass="HashMap">
 		UPDATE 	rebate 
-		SET     #price#=#money#
+		SET     $price$=#money#
 		WHERE 	seq = #seq#
 	</update>
 	
