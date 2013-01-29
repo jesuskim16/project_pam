@@ -49,8 +49,6 @@ function listclick(seq, price_name, count){
 	document.getElementById('seq').value = seq;
 	document.getElementById('price_name').value = price_name;
 	
-	alert(count);
-	
 	for(i=0; i < 10; i++){
 		document.getElementById('listBLOLD_'+i).style.fontWeight = "normal";
 	} 
