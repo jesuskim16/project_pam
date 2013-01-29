@@ -157,7 +157,8 @@ window.onload = function(){
                                       <th width="100" align="center"><span class="s_Text_gray2_12px_Bold">음성통화</span></th>
                                       <th width="100" align="center"><span class="s_Text_gray2_12px_Bold">문자</span></th>
                                       <th width="100" align="center"><span class="s_Text_gray2_12px_Bold">데이터</span></th>
-                                      <th width="200" align="center"><span class="s_Text_gray2_12px_Bold">작성일</span></th>
+                                      <th width="100" align="center"><span class="s_Text_gray2_12px_Bold">상태</span></th>
+                                      <th width="150" align="center"><span class="s_Text_gray2_12px_Bold">작성일</span></th>
                                     </tr>
                                 </table></td>
                                 <td width="10"><img src="admin/img/board.bar.right.gif" width="10" height="35"></td>
@@ -186,7 +187,11 @@ window.onload = function(){
                                         <td width="100" align="center" class="s_Text_gray2_12px">${dto.use_call}분</td>
                                         <td width="100" align="center" class="s_Text_gray2_12px">${dto.use_sms}건</td>
                                         <td width="100" align="center" class="s_Text_gray2_12px">${dto.use_data}</td>
-                                        <td width="200" align="center" class="s_Text_gray2_12px">${dto.write_date}</td>
+                                        <td width="100" align="center" class="s_Text_gray2_12px">
+                                        <c:if test="${dto.state_chk == 0}">비활성화</c:if>
+                                        <c:if test="${dto.state_chk == 1}">활성화</c:if> 
+                                        <c:if test="${dto.state_chk == 2}">대기</c:if></td>
+                                        <td width="150" align="center" class="s_Text_gray2_12px">${dto.write_date}</td>
                                         <td width="200" align="center" class="s_Text_gray2_12px" style="display: none;">${dto.state_chk}</td>
                                       </tr>                                        
                                     </table></td>                                      
