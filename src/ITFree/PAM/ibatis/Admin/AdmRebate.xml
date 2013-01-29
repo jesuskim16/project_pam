@@ -13,10 +13,10 @@
 	</select>
 	
 	<select id="rebateTable" resultClass="HashMap" parameterClass="java.util.List" remapResults="true">
-		SELECT seq,model_code,
-		<iterate conjunction=",">
-            $[]$
-        </iterate>
-		FROM rebate  
+		SELECT 	r.seq, model_code,
+		<iterate conjunction=",">r.$[]$</iterate>
+        FROM 	rebate r
+        JOIN 	phonemodel p USING (model_code)		
+		WHERE 	p.state_chk=1	
 	</select>
 </sqlMap>
