@@ -10,8 +10,10 @@ public interface admBoardDao {
 
 	List<admBoardDto> boardList(admPageDto apgDto);
 
-	admBoardDto boardView(int seq);
+	admBoardDto boardView(long iSeq);
 
 	boolean freeBoardInsertAction(BoardDto abdDto);
+
+	boolean boardDel(long seq);
 
 }

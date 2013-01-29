@@ -113,13 +113,23 @@ public class AdmBoardAct {
 	@RequestMapping("admNoticeView.do")
 	public String admNoticeView(Model model, String seq){
 		log.debug("---start["+"AdmBoardAct."+"admNoticeView"+"]");	
-		int iSeq = Integer.parseInt(seq);
+		long iSeq = Long.parseLong(seq);
 		admBoardDto abdDto = new admBoardDto(); 
 		abdDto = abdDao.boardView(iSeq);
 		
 		model.addAttribute("abdDto",abdDto);
 		return "/WEB-INF/www/admin/board/view.jsp";		
-	}	
+	}
+	
+	@RequestMapping("admNoticeDel.do")
+	public String admNoticeDel(Model model, String seq){
+		log.debug("---start["+"AdmBoardAct."+"admNoticeView"+"]");	
+		long iSeq = Long.parseLong(seq);
+		
+		boolean delResult = abdDao.boardDel(iSeq);
+		
+		return "/WEB-INF/www/admin/board/view.jsp";		
+	}
 
 	public String board_name(int board_chk){	//게시판이름
 		String board_name = null;

@@ -40,7 +40,7 @@
 	  WHERE		#startNum# <= rnum AND rnum <= #endNum#
 	  ]]> 
 	</select>
-	<select id="boardView" parameterClass="int" resultClass="abdDto">
+	<select id="boardView" parameterClass="Long" resultClass="abdDto">
 		SELECT 	*
 		FROM 	board
 		WHERE	seq=#seq#

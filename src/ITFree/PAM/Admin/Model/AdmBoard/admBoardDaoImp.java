@@ -26,7 +26,7 @@ public class admBoardDaoImp implements admBoardDao {
 	}
 
 	@Override
-	public admBoardDto boardView(int seq) {
+	public admBoardDto boardView(long seq) {
 		return (admBoardDto) sqlMapClientTemplate.queryForObject("admBoard.boardView",seq);
 	}
 
@@ -39,6 +39,12 @@ public class admBoardDaoImp implements admBoardDao {
 			e.printStackTrace();
 			return false;
 		}	
+	}
+
+	@Override
+	public boolean boardDel(long seq) {
+		sqlMapClientTemplate.delete("admBoard.boardDel",seq);
+		return false;
 	}
 	
 	

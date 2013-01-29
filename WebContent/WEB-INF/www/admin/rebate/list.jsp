@@ -7,7 +7,7 @@
 <%@ page import="java.util.ArrayList" %>
 <%@page import="java.util.List"%>  
 <jsp:include page="/admin/inc/top.jsp"/>
-<jsp:include page="/admin/inc/menu_board.jsp"/>
+
 <br>
 <center> 
 <%
@@ -150,7 +150,7 @@ var updateVal = function(seq,price,phonePrice){
 	                          </td>	                          
 	                        </tr>
 <!-- 	                        <tr> -->
-<%-- 	                          <td height="30" align="right"><a href="#layer" onclick="insertContent('${p.board_chk}')"><img src="admin/img/bts.write.gif"></a> </td> --%>
+	                          <td height="30" align="right"><img src="admin/img/bts.cancle.gif" style="cusor:pointer" onclick="location.reload();"></td>
 <!-- 	                        </tr> -->
 	                    </table> 
 					            
