@@ -86,7 +86,7 @@ var frm = document.forms;
                                             <td width="10">&nbsp;</td>
                                             <td style="width: 600px"><table width="100%" border="0" cellpadding="0" cellspacing="1" bgcolor="cfcfcf">
                                                 <tr>
-                                                  <td bgcolor="#FFFFFF"><input name="filename" type="file" class="form878787" id="textfield" size="20">등록된파일 :  ${boardDto.filename }</td>                                                                        
+                                                  <td bgcolor="#FFFFFF"><input name="upFile" type="file" class="form878787" id="textfield" size="20">등록된파일 :  ${boardDto.filename }</td>                                                                        
                                                 </tr>
                                             </table></td>
                                             <td width="5">&nbsp;</td>

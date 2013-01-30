@@ -93,7 +93,7 @@
                                     [${fdto.rp_cnt}]
                                     </c:if>
                                     </a></td>
-                                    <td height="28" align="center" bgcolor="#FFFFFF"><c:if test="${fdto.filename}"><img src="img/icon.file.gif" alt="첨부파일"/></c:if></td>
+                                    <td height="28" align="center" bgcolor="#FFFFFF"><c:if test="${!empty fdto.filename}"><img src="img/icon.file.gif" alt="첨부파일"/></c:if></td>
                                   </c:otherwise>
                                 </c:choose>
                                 	<td height="28" align="center" bgcolor="#FFFFFF">${fdto.readcount }</td>
