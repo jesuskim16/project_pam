@@ -50,7 +50,7 @@ function reply_insert(){
                             <tr>
                               <td bgcolor="#272727"><table width="100%" border="0" cellspacing="0" cellpadding="0">
                                   <tr>
-                                    <td width="99" class="Text_gray_14px"><img src="img/sub01_category1.gif" width="99" height="60"></td>
+                                    <td width="99" class="Text_gray_14px"><img src="img/sub03_category${board_chk}.gif" width="99" height="60"></td>
                                   </tr>
                               </table></td>
                             </tr>

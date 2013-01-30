@@ -15,7 +15,7 @@
 <script>
 function write_ok(){
 
-var frm = document.tx_editor_form;
+var frm = document.forms;
 
 	if(frm.title.value == ""){
 		alert("제목을 입력하세요");
@@ -138,8 +138,8 @@ var frm = document.tx_editor_form;
                                       <td align="center"><table border="0" cellspacing="4" cellpadding="0">
                                           <tr>
 <!-- {5(확인,취소 버튼)----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->                                          
-                                            <td><img src="img/btn_enter.gif" onClick="write_ok();" style="cursor:hand" width="54" height="25"></td>                                            
-                                            <td><img src="img/btn_cancel.gif" onClick="history.back();" style="cursor:hand" width="54" height="25"></td> 
+                                            <td><img src="img/btn_enter.gif" onClick="write_ok();" style="cursor:pointer" width="54" height="25"></td>                                            
+                                            <td><img src="img/btn_cancel.gif" onClick="history.back();" style="cursor:pointer" width="54" height="25"></td> 
 <!-- {5 )-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------> 
                                           </tr>
                                       </table></td>

@@ -381,8 +381,13 @@
 	
 		EditorJSLoader.ready(function(Editor) {
 			var editor = new Editor(config);
-			Editor.getCanvas().setCanvasSize({height:250});//높이설정추가(tw)
-
+			Editor.getCanvas().setCanvasSize({height:250});		//높이설정추가(tw)
+			var request_content = "<%=request.getParameter("content")%>";
+			
+			if(request_content!='null'){
+				Editor.modify({content:request_content}); 		//수정시 본문삽입(tw)
+			}
+			
 		});
 		
 	</script>
@@ -502,11 +507,9 @@ window.onload = function() {
 			}
 			return allattachments;
 		}(),
-		"content": $tx("<%=request.getParameter("content")%>") /* 내용 문자열, 주어진 필드(textarea) 엘리먼트 */ 
+		"content": $tx("") /* 내용 문자열, 주어진 필드(textarea) 엘리먼트 */ 
 	});
 }
 
 </script>
-<%=request.getParameter("content")%>
-
 <!-- End: Loading Contents -->

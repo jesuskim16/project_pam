@@ -2,30 +2,30 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:choose>
-<c:when test="${brc_lev==1}">
-<jsp:include page="/inc/top1.jsp"/>    
-<jsp:include page="/inc/menu3.jsp"/>
-</c:when>
-<c:when test="${brc_lev==2}">
-<jsp:include page="/inc/top2.jsp"/>    
-<jsp:include page="/inc/menu6.jsp"/>
-</c:when>
+	<c:when test="${brc_lev==1}">
+		<jsp:include page="/inc/top1.jsp"/>    
+		<jsp:include page="/inc/menu3.jsp"/>
+	</c:when>
+	<c:when test="${brc_lev==2}">
+		<jsp:include page="/inc/top2.jsp"/>    
+		<jsp:include page="/inc/menu6.jsp"/>
+	</c:when>
 </c:choose>
 
 <script type="text/javascript">
 <!--
-var search = function(){
-	var f = document.forms;
-	f.action='${board_name}List.do';
-	f.submit();
-}
+	var search = function(){
+		var f = document.forms;
+		f.action='${board_name}List.do';
+		f.submit();
+	}
 //-->
 </script>
                         <td width="1"></td>
                         <td valign="top"><table width="100%" border="0" cellspacing="0" cellpadding="0" >
                           <tr>
 <!-- {1(상단----------------------------------------------------------------------------------------------------------------------------------------->                            
-<form name="forms" method="post" style="margin:0" >                            
+<form name="forms" method="post" style="margin:0" >
                             <td bgcolor="#272727"><table width="100%" border="0" cellspacing="0" cellpadding="0">
                               <tr>
                                 <td width="99" class="Text_gray_14px"><img src="img/sub03_category${board_chk}.gif" width="99" height="60"></td>
@@ -47,7 +47,6 @@ var search = function(){
                                 </table></td>
                               </tr>
                             </table></td>
-                            
 </form>                            
 <!-- {1 )------------------------------------------------------------------------------------------------------------------------------------------>                            
                             </tr>
@@ -107,8 +106,7 @@ var search = function(){
                           <tr>
                             <td height="50"><table width="100%" border="0" cellpadding="0" cellspacing="0">
 <!-- {4(PAGING)------------------------------------------------------------------------------------------------------------------------------------>                              
-                              <tr>                            
-		                        
+                              <tr> 
                                 <td width="300">
                                  <c:if test="${!((board_chk==1||board_chk==3)&&brc_lev==2)}">
                                   <a href="${board_name}Insert.do"><img src="img/btn_write.gif"></a>
@@ -135,7 +133,4 @@ var search = function(){
                             </table></td>
                           </tr>
                         </table></td>
-                        
-
-                        
 <jsp:include page="/inc/bottom.jsp"/>                            

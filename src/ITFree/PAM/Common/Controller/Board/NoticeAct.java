@@ -188,4 +188,57 @@ public class NoticeAct {
 			return mav;
 		}		
 		
+		@RequestMapping("/noticeReplyInsert.do")//댓글입력
+		protected ModelAndView noticeReplyInsert(@ModelAttribute BoardDto boardDto, HttpSession session){
+			log.debug("---start["+"noticeAct.noticeReplyInsert"+"]");
+			long rp_seq = boardDto.getSeq();
+			
+			boardDto.setBoard_chk(board_chk);//게시판분류 추가
+			boolean result = boardDao.freeBoardReplyInsert(boardDto);
+			ModelAndView mav = new ModelAndView();
+			if(result){
+				mav.setViewName("noticeView.do?rp_seq="+rp_seq); //이동주소
+			}else{
+				mav.setViewName("/WEB-INF/www/common/result.jsp");
+				mav.addObject("msg","댓글입력 실패입니다.");
+				mav.addObject("url","javascript:history.back();");
+			}			
+			mav.addObject("title_name",title_name); // 게시판 이름
+			mav.addObject("board_chk",board_chk);             //게시판분류 (2: 자유게시판)
+			mav.addObject("board_name",board_name); //게시판이름
+			mav.addObject("brc_lev",session.getAttribute("brc_lev"));		//레벨(1:대리점, 2:판매점)
+			
+			return mav;
+		}
+		
+		@RequestMapping("noticeReplyDelete.do")//댓글삭제
+		protected ModelAndView noticeReplyDelete(@ModelAttribute BoardDto boardDto, HttpSession session){
+			log.debug("---start["+"noticeAct.noticeReplyDelete"+"]");
+			ModelAndView mav = new ModelAndView();
+			long rp_seq = boardDto.getRp_seq();
+			if(session.getAttribute("brc_id").equals(boardDto.getBrc_id())){
+				boolean result = boardDao.freeBoardReplyDelete(rp_seq);
+				
+				if(result){
+					mav.setViewName("noticeView.do"); //이동주소
+				}else{
+					mav.setViewName("/WEB-INF/www/common/result.jsp");
+					mav.addObject("msg","댓글삭제 실패입니다.");
+					mav.addObject("url","javascript:history.back();");
+				}		
+			}else{
+				mav.setViewName("/WEB-INF/www/common/result.jsp");
+				mav.addObject("msg","댓글삭제 권한이없습니다.");
+				mav.addObject("url","javascript:history.back();");
+			}
+				
+			mav.addObject("title_name",title_name); // 게시판 이름
+			mav.addObject("board_chk",board_chk);             //게시판분류 (2: 자유게시판)
+			mav.addObject("board_name",board_name); //게시판이름
+			mav.addObject("brc_lev",session.getAttribute("brc_lev"));		//레벨(1:대리점, 2:판매점)
+			
+			return mav;
+			
+		}
+		
 }
