@@ -65,7 +65,9 @@
                                         <td width="10" align="center" class="s_Text_gray2_12px"></td>
          	                            <td width="17" align="center" class="s_Text_gray2_12px"><input type="checkbox" name="seq" id="seq" value="${dto.seq}"></td>
                                       	<td width="52" align="center" class="s_Text_gray2_12px">${dto.rown}</td>
-                                      	<td width="130" align="center" class="s_Text_gray2_12px"><img alt="" src="upload/model/${dto.filename}" width="50"></td>
+                                      	<td width="130" align="center" class="s_Text_gray2_12px">
+											<img alt="" src="upload/model/${dto.filename}" width="50">											
+                                      	</td>
                                         <td width="180" align="center" class="s_Text_gray2_12px">${dto.model_code}</td>
                                         <td width="180" align="center" class="s_Text_gray2_12px" onclick="javascript:openContent('${dto.seq}');" onMouseOver=style.background='#D2E3F8' onMouseOut=style.background='#ffffff'>${dto.model_name}</td>                                        
                                         <td width="100" align="center" class="s_Text_gray2_12px">${dto.make_comp}</td>

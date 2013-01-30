@@ -50,6 +50,7 @@ CREATE TABLE BOARD								--[게시판]
 	PRIMARY KEY (SEQ)
 );
 
+select FILENAME from BOARD
 
 CREATE TABLE BRANCH								--[지점]
 (

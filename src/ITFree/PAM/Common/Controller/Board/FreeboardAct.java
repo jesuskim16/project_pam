@@ -49,7 +49,7 @@ public class FreeboardAct {
 			List<BoardDto> fbList = boardDao.freeBoardList(pageDto);       // 리스트를 뿌리기 위해 SQL을 넘기고 값을 받아옴
 			log.debug("--freeBoardList:"+pageDto);
 			ModelAndView mav = new ModelAndView();
-			mav.setViewName("/WEB-INF/www/common/board/boardList.jsp"); // 이동할 페이지
+			mav.setViewName("/WEB-INF/www/common/board/boardList.jsp"); // 이동할 페이지			
 			mav.addObject("title_name",title_name); //게시판 이름
 			mav.addObject("board_chk",board_chk);             //게시판분류 (2: 자유게시판)
 			mav.addObject("board_name",board_name); //게시판이름
