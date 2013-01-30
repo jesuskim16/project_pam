@@ -75,9 +75,9 @@ function RankForm(charthidden){
 <!----- --------------------------------------------------------------------------------------------------------------------------------------------------->
 	                          <tr>
 	                            <td height="100" bgcolor="FFFFFFF"><table width="100%" border="0" cellspacing="0" cellpadding="0">
-	                          	  <tr>
+	                          	  <tr valign="top">
 <!-- 그래프 -------------------------------------------------------------------------------------------------------------------------------------->
-	                          	  	<td>
+	                          	  	<td valign="top">
 	                          	  	<div id="charthidden" style="display:${hidden}">
 	                          	  	<img src="${chart}" >
 	                          	  	</div>
@@ -85,21 +85,23 @@ function RankForm(charthidden){
 	                          	  	<td><table width="100%" border="0" cellspacing="0" cellpadding="0">
 <!-- 그래프 -------------------------------------------------------------------------------------------------------------------------------------->	                          	  	
 <!-- 리스트 -------------------------------------------------------------------------------------------------------------------------------------->	                          	  	
-	                          	  	  <tr align="center">
-		                          	  	<th height="40" width="30" bgcolor="e2e2e2">순위</th>
+	                          	  	  <tr align="center" height="40">
+	                          	  	  	<th width="10"></th>
+		                          	  	<th align="center" bgcolor="e2e2e2">순위</th>
 		                          	  	<th align="center" bgcolor="e2e2e2">판매점 이름</th>
 		                          	  	<th align="center" bgcolor="e2e2e2">판매 개수</th>
 		                          	  	<th align="center" bgcolor="e2e2e2">수익</th>
-		                          	  	<th width="30">
+		                          	  	<th width="10"></th>
 	                          	  	  </tr>
 	                          	  	  <c:if test="${empty list}">
 	                          	  	  <tr>
-	                          	  	  	<td colspan="4" align="center" bgcolor="#FFFFFF" >검색값이 없습니다.</td>
+	                          	  	  	<td colspan="4" height="300" valign="middle" align="center" bgcolor="#FFFFFF" ><h1>검색값이 없습니다.</h1></td>
 	                          	  	  </tr>
 	                          	  	  </c:if>
 	                          	  	  
 	                          	  	  <c:forEach items="${list}" var="rkdto">
-	                          	  	  <tr>
+	                          	  	  <tr height="30">
+	                          	  	  	<td></td>
 	                          	  	    <td align="center" bgcolor="#FFFFFF" >${rkdto.rown}</td>
 	                          	  	  	<td align="center" bgcolor="#FFFFFF" >${rkdto.brc_name}</td>
 	                          	  	  	<td align="center" bgcolor="#FFFFFF" >${rkdto.salesnumber} 대</td>
@@ -108,16 +110,17 @@ function RankForm(charthidden){
 	                          	  	  </c:forEach>
 	                          	  	  
 <!-- {4(PAGING)------------------------------------------------------------------------------------------------------------------------------------>                              
-                              <tr>                            
-		                       <td width="200">&nbsp;</td>
-                                <td align="center"><table border="0" cellspacing="0" s_edate="0">
+                              <tr >                            
+		                       
+                               <td colspan="5" width="800" align="center"><table border="0" cellspacing="0" s_edate="0">
                                     <tr>
                                       <td colspan="4" align="center">
 		                                 	${page.pHtml}  
 									  </td>
                                     </tr>
                                 </table></td>
-                                <td width="200">&nbsp;</td>
+                                
+                                
                               </tr>
 <!-- {4 )-------------------------------------------------------------------------------------------------------------------------------------------->                               	                          	  	  
 								  </table></td>

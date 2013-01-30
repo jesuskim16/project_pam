@@ -15,7 +15,7 @@
 	       			FROM custominfo c join branch b
 					using (brc_id)
 	       			<![CDATA[
-	       			WHERE #s_sdate# <= open_date AND #s_edate# >= open_date AND brc_name = #brc_name#
+	       			WHERE #s_sdate# <= open_date AND #s_edate# >= open_date AND brc_name = #brc_name# 
 	       			]]> 
 	       			ORDER BY rownum DESC
 	       			) A 
@@ -28,6 +28,7 @@
 	<select id="getBranchName" resultClass="srDto">
 	SELECT brc_name
 	FROM branch
+	WHERE brc_lev = '2'
 	</select>
 	
 	<select id="TotalCount" resultClass="Long" parameterClass="srpDto">

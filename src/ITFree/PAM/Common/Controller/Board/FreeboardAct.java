@@ -42,19 +42,26 @@ public class FreeboardAct {
 			//spageDto.getSearchCondition() : 검색 상태를 넘김 (제목인지 내용인지 이름인지 등등....)
 			//spageDto.getSearchKeyword()   : 검색한 단어를 넘김
 			spageDto.setBoard_chk(board_chk);				//TotalCount를 얻기위한 게시판코드(tw)
-			PageDto pageDto = new PageDto(spageDto.getPg(), boardDao.TotalCount(spageDto), spageDto.getSearchCondition(), spageDto.getSearchKeyword());
+			
+			String UrlName = board_name+"List.do";
+			
+			PageDto pageDto = new PageDto(spageDto.getPg(), boardDao.TotalCount(spageDto), spageDto.getSearchCondition(), spageDto.getSearchKeyword(),
+					 UrlName);
+			
+			
 			pageDto.setSearchCondition(spageDto.getSearchCondition()); //값을 유지할 수 있도록 pageDto 객체에 검색상태 넘김
 			pageDto.setSearchKeyword(spageDto.getSearchKeyword()); 	   // 값을 유지할 수 있도록 pageDto 객체에  검색단어를 넘김
 			pageDto.setBoard_chk(board_chk);
 			List<BoardDto> fbList = boardDao.freeBoardList(pageDto);       // 리스트를 뿌리기 위해 SQL을 넘기고 값을 받아옴
 			log.debug("--freeBoardList:"+pageDto);
 			ModelAndView mav = new ModelAndView();
-			mav.setViewName("/WEB-INF/www/common/board/boardList.jsp"); // 이동할 페이지			
+			mav.setViewName("/WEB-INF/www/common/board/boardList.jsp"); // 이동할 페이지
 			mav.addObject("title_name",title_name); //게시판 이름
 			mav.addObject("board_chk",board_chk);             //게시판분류 (2: 자유게시판)
 			mav.addObject("board_name",board_name); //게시판이름
 			mav.addObject("brc_lev",session.getAttribute("brc_lev"));		//레벨(1:대리점, 2:판매점)
 			mav.addObject("fbList",fbList);     // Web으로 리스트를 넘김 
+			log.debug("-2-"+pageDto);
 			mav.addObject("pageDto", pageDto);	// Web으로 pageDto정보를 넘김(검색창을 설정해 주기 위함)
 			mav.addObject("page" ,pageDto.getpHtml());	// 게시판 아래 페이징을 하기위해 페이지정보를 넘김
 			return mav;
@@ -176,6 +183,10 @@ public class FreeboardAct {
 			log.debug("---start["+"FreeboardAct.freeBoardInsertAction"+"]");
 			boardDto.setBoard_chk(board_chk);		//게시판분류코드
 			log.debug("---boardDto"+boardDto);
+			
+			String filename = boardDao.fileupload(boardDto,board_name);	//파일업로드
+			boardDto.setFilename(filename);
+			
 			boolean result = boardDao.freeBoardInsertAction(boardDto);
 			ModelAndView mav = new ModelAndView();
 			if(result){

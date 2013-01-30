@@ -1,5 +1,7 @@
 package ITFree.PAM.Common.Model.Board;
 
+import org.jfree.util.Log;
+
 public class PageDto {
 	
 	private long pg; //현재 페이지
@@ -20,15 +22,18 @@ public class PageDto {
 	
 	private int board_chk;			//게시판 분류
 	
+	private String UrlName;
+	
 	//기본 생성자(DI주입을 위해 꼭 생성해야함)
 	public PageDto() {}
 	
-	public PageDto(long pg, long totalCount ,String searchCondition2, String searchKeyword2) {
+	public PageDto(long pg, long totalCount ,String searchCondition2, String searchKeyword2, String UrlName) {
 		//넘어온  parameter값을 각 변수에 할당
 		this.pg = pg;
 		this.totalCount = totalCount;
 		this.searchCondition = searchCondition2;
 		this.searchKeyword = searchKeyword2;
+		this.UrlName = (String) UrlName;
 		
 		startNum = (pg - 1) * pageSize + 1; // 시작 페이징 값을 계산
 		endNum = pg * pageSize; // 끝 페이징 값을 계산
@@ -50,7 +55,7 @@ public class PageDto {
 		long startPage = ((pg-1) / blockSize) * blockSize + 1; //시작 페이지값 계산
 		long endPage = ((pg-1) / blockSize) * blockSize + blockSize; // 끝 페이지값 계산
 		String search = "&searchCondition=" + searchCondition +"&searchKeyword="+ searchKeyword ; //get방식으로 검색값을 넘겨주기 위해 분리한 변수
-		String UrlName = "freeBoardList.do";
+		 
 		if(pageCount < endPage) endPage = pageCount; //끝 페이지가 총 페이지랑 안맞을 경우 10개 단위의 페이징으로 표시하지 않기 위해 값을 할당하는 것
 		
 		//총 페이징 갯수가 10개 이상일때, 10개 이상 페이지 이동을 했을때 뒤로가기 아이콘을 표시하며, 10개 단위의 이동을 위한 페이지 이동버튼
@@ -161,6 +166,15 @@ public class PageDto {
 		this.board_chk = board_chk;
 	}
 
+	
+	public String getUrlName() {
+		return UrlName;
+	}
+
+	public void setUrlName(String urlName) {
+		UrlName = urlName;
+	}
+
 	@Override
 	public String toString() {
 		return "PageDto [pg=" + pg + ", totalCount=" + totalCount
@@ -168,8 +182,11 @@ public class PageDto {
 				+ ", endNum=" + endNum + ", pageSize=" + pageSize
 				+ ", blockSize=" + blockSize + ", pHtml=" + pHtml
 				+ ", searchCondition=" + searchCondition + ", searchKeyword="
-				+ searchKeyword + ", board_chk=" + board_chk + "]";
+				+ searchKeyword + ", board_chk=" + board_chk + ", UrlName="
+				+ UrlName + "]";
 	}
+
+	
 
 
 }

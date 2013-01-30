@@ -28,6 +28,8 @@ public class SalesInfoAct {
 				ModelAndView mav){
 			if(sipDto.getPg() == 0) sipDto.setPg(1); 
 			
+			sipDto.setAttach_id((String) session.getAttribute("brc_id"));
+			
 			SalesInfoPageDto SIPDto = new SalesInfoPageDto(sipDto.getPg(), salesDao.InfoTotalCount(sipDto));
 			
 			SIPDto.setAttach_id((String) session.getAttribute("brc_id"));

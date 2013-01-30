@@ -17,7 +17,7 @@
 	<![CDATA[
 	WHERE #startNum# <= rnum AND rnum <= #endNum#
 	]]> 
-	ORDER BY rown DESC
+	ORDER BY rown ASC
 	</select>
 	
 	<select id="ModelInfoTotalCount" resultClass="Long">

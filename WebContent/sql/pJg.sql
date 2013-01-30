@@ -105,3 +105,11 @@ RENAME COLUMN LTE TO LTE34; NUMBER(8) DEFAULT 0;
 	
 	ALTER TABLE REBATE
 	RENAME COLUMN 'LTE72' TO 'LTE';
+	
+	
+	SELECT * FROM branch;
+	SELECT row_number()over (ORDER BY c.seq ASC) as rown, c.seq , c.cust_name, c.model_code, c.price_name, c.cont_term, to_char(c.open_date,'YYYY-MM-DD') as open_date, b.brc_lev 
+	       			FROM custominfo c join branch b
+					using (brc_id)
+	       			 
+					ORDER BY rownum DESC;

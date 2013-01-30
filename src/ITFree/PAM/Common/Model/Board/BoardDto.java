@@ -19,7 +19,9 @@ public class BoardDto {
 	private long next_seq;
 	private int rp_cnt;
 	private String filename;
+	
 	private MultipartFile upFile;
+	
 	private String board_name;
 	
 	public long getSeq() {

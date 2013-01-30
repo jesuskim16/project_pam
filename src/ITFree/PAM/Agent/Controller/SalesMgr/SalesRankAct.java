@@ -94,7 +94,7 @@ public class SalesRankAct {
 		//Chart Image Size / output, Chart , width, height /
 		try {
 			JFreeChart chart = createbarChart();
-			ChartUtilities.writeChartAsPNG(out, chart, 500, 340);
+			ChartUtilities.writeChartAsPNG(out, chart, 350, 340);
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {

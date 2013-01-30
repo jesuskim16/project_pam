@@ -98,12 +98,17 @@ function listdelete(seq){
                                <form name="reg_${sdto.seq}" action="salesUpdate.do" method="post">
                                <tr id="seem_${sdto.seq}" style="display:none">
                                
-                                 <td height="28" align="center" bgcolor="#FFFFFF" >${sdto.seq}
+                                 <td height="28" align="center" bgcolor="#FFFFFF" >${sdto.rown}
                                  <input type="hidden" name="seq" value="${sdto.seq}" class="input_gray3"></td>
                                
-                                 <td align="left" bgcolor="#FFFFFF" >
-                                 <input type="text" name="brc_name" value="${sdto.brc_name}" size="7" class="input_gray3">
-                                 <input type="text" name="brc_id" value="${sdto.brc_id}" size="7" class="input_gray3"></td>
+                                 <td align="left" bgcolor="#FFFFFF" ><table>
+                                 <tr>
+                                 <td><input type="text" name="brc_name" value="${sdto.brc_name}" size="10" class="input_gray3"></td>
+                                 </tr>
+                                 <tr>
+                                 <td><input type="text" name="brc_id" value="${sdto.brc_id}" size="10" class="input_gray3"></td></tr>
+                                 </table></td>
+                                 
                                
                                  <td align="center" bgcolor="#FFFFFF" >
                                  <input type="text" name="brc_phone" value="${ sdto.brc_phone}" size="13" class="input_gray3"></td>
@@ -118,10 +123,10 @@ function listdelete(seq){
                                  <input type="text" name="brc_boss" value="${ sdto.brc_boss}" size="5" class="input_gray3"></td>
                                
                                  <td align="center" bgcolor="#FFFFFF" >
-                                 <input type="text" name="boss_phone" value="${ sdto.boss_phone}" size="10" class="input_gray3"></td>
+                                 <input type="text" name="boss_phone" value="${ sdto.boss_phone}" size="12" class="input_gray3"></td>
                                
                                  <td align="center" bgcolor="#FFFFFF" >
-                                 <input type="text" name="write_date" value="${ sdto.write_date}" size="7" class="input_gray3"></td>
+                                 <input type="text" name="write_date" value="${ sdto.write_date}" size="10" class="input_gray3"></td>
                                
                                  <td align="center" bgcolor="#FFFFFF" >
                                  <input type="submit" value="완료">
@@ -140,7 +145,7 @@ function listdelete(seq){
                             
 <!-- {6(PAGING)------------------------------------------------------------------------------------------------------------------------------------>                              
                               <tr>                            
-		                        <td width="200">&nbsp;</td>
+		                        
                                 <td align="center"><table border="0" cellspacing="0" cellpadding="0">
                                     <tr>
                                       <td>
@@ -148,7 +153,7 @@ function listdelete(seq){
 									  </td>
                                     </tr>
                                 </table></td>
-                                <td width=​"15" valign=​"top" background=​"img/box_left.jpg"></td>
+                                
                               </tr>
 <!-- {6 )-------------------------------------------------------------------------------------------------------------------------------------------->                               
                             </table></td>

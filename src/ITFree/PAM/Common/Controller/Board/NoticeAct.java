@@ -35,10 +35,15 @@ public class NoticeAct {
 			
 			if(spageDto.getPg() == 0)spageDto.setPg(1);			
 			spageDto.setBoard_chk(board_chk);				//TotalCount를 얻기위한 게시판코드(tw)
-			PageDto pageDto = new PageDto(spageDto.getPg(), boardDao.TotalCount(spageDto), spageDto.getSearchCondition(), spageDto.getSearchKeyword());
+			
+			String UrlName = board_name+"List.do";
+			
+			PageDto pageDto = new PageDto(spageDto.getPg(), boardDao.TotalCount(spageDto), spageDto.getSearchCondition(), spageDto.getSearchKeyword(),
+					UrlName);
 			pageDto.setSearchCondition(spageDto.getSearchCondition()); //값을 유지할 수 있도록 pageDto 객체에 검색상태 넘김
 			pageDto.setSearchKeyword(spageDto.getSearchKeyword()); 	   // 값을 유지할 수 있도록 pageDto 객체에  검색단어를 넘김
 			pageDto.setBoard_chk(board_chk);
+			
 			List<BoardDto> fbList = boardDao.freeBoardList(pageDto);       // 리스트를 뿌리기 위해 SQL을 넘기고 값을 받아옴
 			
 			ModelAndView mav = new ModelAndView();
@@ -112,6 +117,10 @@ public class NoticeAct {
 			log.debug("---start["+"NoticeAct.noticeInsertAction"+"]");
 			
 			boardDto.setBoard_chk(board_chk);		//게시판분류코드
+			
+			String filename = boardDao.fileupload(boardDto,board_name);	//파일업로드
+			boardDto.setFilename(filename);
+			
 			boolean result = boardDao.freeBoardInsertAction(boardDto);
 			ModelAndView mav = new ModelAndView();
 			if(result){

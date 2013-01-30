@@ -44,7 +44,7 @@
                             </tr>
                             <tr bgcolor="cccccc">
                               <td width="50"></td>
-                              <td height="40" class="line_bg_bottom1"><table width="500" border="0" cellspacing="0" cellpadding="0">
+                              <td height="40" class="line_bg_bottom1"><table width="600" border="0" cellspacing="0" cellpadding="0">
                                 <tr>
                                   <td><input type="date" name="s_sdate" size="10" value="${MRPdto.s_sdate}" />                                          
                                   	  ~
