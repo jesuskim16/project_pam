@@ -16,7 +16,7 @@
     <td>&nbsp;</td>
   </tr>
   <tr>
-    <td align="center"><spna class="Text_gray_18px">P</span>hone<spna class="Text_gray_18px">A</spna>gent<spna class="Text_gray_18px">M</spna>anager<spna class="Text_gray_18px">A</spna>dmin</td>
+    <td align="center"><a href="admMain.do"><spna class="Text_gray_18px">P</span>hone<spna class="Text_gray_18px">A</spna>gent<spna class="Text_gray_18px">M</spna>anager<spna class="Text_gray_18px">A</spna>dmin</a></td>
   </tr>
   <tr>
     <td>&nbsp;</td>

@@ -10,10 +10,14 @@
 		    <tr>
 			  <td><table width="100%" border="0" cellpadding="0" cellspacing="1" bgcolor="eeeeee">
 			    <tr>
-				  <td align="center" height="300">
+				  <td align="center" height="400">
+					<span class="Text_gray3_14px">
 					관리자모드입니다. 아무런동작이없으면 자동 로그아웃처리되오니 이점 유의해주시기 바랍니다.
-					<br>
-					현재 접속하신 아이피는 : <%=request.getRemoteAddr()%> 입니다.									
+					<br/>
+					<br/>
+					현재 접속하신 아이피는 : <%=request.getRemoteAddr()%> 입니다. &nbsp;<a href="logout.do">[로그아웃]</a> 
+				
+					</span>									
 				  </td>
 				</tr>
 			  </table></td>

@@ -18,6 +18,7 @@
 <script type="text/javascript">
 
 function insertContent(){			//insert
+	$('#forms').each(function(){this.reset();});  
 	$('.insert_layer').addClass('open');
 }
 
@@ -61,9 +62,7 @@ jQuery(function($){					//lightbox
 	});
 });
 </script>
-
 <jsp:include page="/admin/inc/menu_board.jsp"/>
-
 <br>
 <center> 
 <table width="800" border="0" align="center" cellpadding="0" cellspacing="0">
@@ -96,6 +95,7 @@ jQuery(function($){					//lightbox
 						<div id="layer">
 						<!-- insert/ -->
 							<form name="forms" id="forms" method="post" action="#" accept-charset="utf-8" enctype="multipart/form-data" style="margin:0">
+							<input type="hidden" name="content">
 							<input type="hidden" name="board_chk">						
 							<table width="600" border="0" align="center" cellpadding="0" cellspacing="0">
 							  <tr>
@@ -335,7 +335,8 @@ jQuery(function($){					//lightbox
 						
 						<!-- /insert -->
 						</div>
-						</div>             
+						</div> 
+<!-- 						            
                         <table border="0" cellspacing="0" cellpadding="0">
                           <tr>
                             <td><img src="admin/img/board.search.img01.gif" width="41" height="42"></td>
@@ -373,6 +374,7 @@ jQuery(function($){					//lightbox
                             <td><img src="admin/img/board.search.img02.gif" width="11" height="42"></td>
                           </tr>
                         </table>
+-->                        
                     </form></td>
                   </tr>
 
@@ -405,38 +407,56 @@ jQuery(function($){					//lightbox
 			}
 		});
 	}
-	
+
 	function insertContentAct(){
 		var frm = document.forms;
 		var board_chk=frm.board_chk.value;
 			if(frm.title.value == ""){
 				alert("제목을 입력하세요");
-				frm.titles.focus();
+				frm.title.focus();
 				return false;
 			}
-			saveContent();			
+			//saveContent();
+			document.forms.content.value=Editor.getContent();
+
 //	 		$.ajax({
 //	 			  type:'post',
 //	 			  url:'admnoticeview.do',
 //	 			  data: ({seq:seq}),
 //	 			  success:function(data){
-//	 				$('#layer').html(data);			
+//	 				$('#layer').html(data);
 //	 			  }
 //	 		});
 
+			alert("시작");
+			$('#forms').ajaxForm({
+			    beforeSend: function() {alert("실행1");},
+			    uploadProgress: function() {alert("실행2");},
+				complete: function(xhr) {alert("결과");}
+			});
+			alert("종료");
 
-// 		$('#forms').ajaxForm({
-// 			dataType:'xml', 
-// 	 	    beforeSend: function() {},
-// 	 	    uploadProgress: function(){},
-// 	 	    complete : function() {
-// // 	 	    	alert(data);
-// // 	 	    	$('#list').append(data.responseText);
+/*
+		$('#forms').ajaxForm({
+	 	    beforeSend: function(){alert("실행1");},
+	 	    uploadProgress: function(){alert("실행2");},
+	 	    complete : function() {
+	 	    	alert("성공");
+// 	 	    	alert(data);
+// 	 	    	$('#list').append(data.responseText);
+// 				$('.insert_layer').removeClass('open');
 //  	 			loadNextPage(1,1);
-// // 	 			eval(xhr.responseText);
-// 	 		}
-// 		});		
-
+// 	 			eval(xhr.responseText);
+	 		},
+		  	error: function(){
+		  		alert("실패");
+		  		$('.insert_layer').removeClass('open');
+				loadNextPage(1,1);
+				return false;
+		  	}
+		});
+		alert("종료");
+*/
 //	 		frm.action = "admNoticeInsert.do";
 //	 		frm.submit();
 }	
