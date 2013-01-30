@@ -3,6 +3,7 @@ package ITFree.PAM.Admin.Model.AdmModel;
 import org.springframework.web.multipart.MultipartFile;
 
 public class AdmModelDto {
+	private long rown;
 	private long seq;
 	private String model_code;
 	private String model_name;
@@ -68,21 +69,25 @@ public class AdmModelDto {
 	public void setState_chk(int state_chk) {
 		this.state_chk = state_chk;
 	}
-	@Override
-	public String toString() {
-		return "AdmModelDto [seq=" + seq + ", model_code=" + model_code
-				+ ", model_name=" + model_name + ", filename=" + filename
-				+ ", open_date=" + open_date + ", write_date=" + write_date
-				+ ", write_ip=" + write_ip + ", make_comp=" + make_comp
-				+ ", state_chk=" + state_chk + "]";
-	}
 	public MultipartFile getFile() {
 		return file;
 	}
 	public void setFile(MultipartFile file) {
 		this.file = file;
 	}
-	
-	
-
+	public long getRown() {
+		return rown;
+	}
+	public void setRown(long rown) {
+		this.rown = rown;
+	}
+	@Override
+	public String toString() {
+		return "AdmModelDto [rown=" + rown + ", seq=" + seq + ", model_code="
+				+ model_code + ", model_name=" + model_name + ", filename="
+				+ filename + ", open_date=" + open_date + ", write_date="
+				+ write_date + ", write_ip=" + write_ip + ", make_comp="
+				+ make_comp + ", state_chk=" + state_chk + ", file=" + file
+				+ "]";
+	}
 }
