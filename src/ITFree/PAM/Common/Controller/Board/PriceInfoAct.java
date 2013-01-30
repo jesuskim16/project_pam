@@ -19,15 +19,15 @@ import ITFree.PAM.Common.Model.Board.BoardDto;
 import ITFree.PAM.Common.Model.Board.PageDto;
 
 @Controller
-public class PriceInfoAct {	
+public class PriceInfoAct {
 	private Logger log = Logger.getLogger(getClass());
 	private int board_chk = 3;
 	private String board_name = "priceInfo";	
 	private String title_name = "PAM::단가표";	
-	
+
 	@Autowired
 	private BoardDao bdDao;		
-	
+
 		@RequestMapping("/priceInfoList.do")	//리스트 폼
 		protected String priceInfoList(Model model, @ModelAttribute PageDto pgDto, HttpSession session){
 			log.debug("---start["+"PriceInfoAct."+"priceInfoList"+"]");
@@ -39,31 +39,31 @@ public class PriceInfoAct {
 			pageDto.setBoard_chk(board_chk);
 			List<BoardDto> fbList = bdDao.freeBoardList(pageDto);			
 			log.debug("--pricdInfoList:"+pageDto);
-			model.addAttribute("title_name",title_name);
-			model.addAttribute("board_chk",board_chk);  					//게시판분류 (3: 단가표)
-			model.addAttribute("board_name",board_name); 					//게시판이름
-			model.addAttribute("brc_lev",session.getAttribute("brc_lev"));	//레벨(1:대리점, 2:판매점)			
-			model.addAttribute("fbList",fbList); 							//리스트
+			model.addAttribute("title_name", title_name);
+			model.addAttribute("board_chk", board_chk);  					//게시판분류 (3: 단가표)
+			model.addAttribute("board_name", board_name); 					//게시판이름
+			model.addAttribute("brc_lev", session.getAttribute("brc_lev"));	//레벨(1:대리점, 2:판매점)			
+			model.addAttribute("fbList", fbList); 							//리스트
 			model.addAttribute("pageDto", pageDto);							//페이지정보
-			model.addAttribute("page" ,pageDto.getpHtml());						// 게시판 아래 페이징을 하기위해 페이지정보를 넘김
+			model.addAttribute("page", pageDto.getpHtml());						// 게시판 아래 페이징을 하기위해 페이지정보를 넘김
 			
-			model.addAttribute("board_name" ,board_name);
+			model.addAttribute("board_name", board_name);
 			
 			return "/WEB-INF/www/common/board/boardList.jsp";
 		}
-		
+
 		@RequestMapping("/priceInfoInsert.do")	//입력 폼
 		protected String priceInfoInsert(Model model, HttpSession session){
 			log.debug("---start["+"PriceInfoAct:"+"priceInfoInsert"+"]");
 			
-			model.addAttribute("title_name",title_name);
-			model.addAttribute("board_chk",board_chk);             			//게시판분류 (3: 단가표)
-			model.addAttribute("board_name",board_name); 					//게시판이름
-			model.addAttribute("brc_lev",session.getAttribute("brc_lev"));	//레벨(세션)
-			model.addAttribute("brc_id",session.getAttribute("brc_id"));	//아이디(세션)			
+			model.addAttribute("title_name", title_name);
+			model.addAttribute("board_chk", board_chk);             			//게시판분류 (3: 단가표)
+			model.addAttribute("board_name", board_name); 					//게시판이름
+			model.addAttribute("brc_lev", session.getAttribute("brc_lev"));	//레벨(세션)
+			model.addAttribute("brc_id", session.getAttribute("brc_id"));	//아이디(세션)			
 			return "/WEB-INF/www/common/board/boardInsert.jsp";
 		}
-		
+
 		@RequestMapping("/priceInfoInsertAction.do")//입력
 		protected String priceInfoInsertAction(@ModelAttribute BoardDto bdDto, Model model, HttpSession session, HttpServletRequest request){			
 			log.debug("---start["+"PriceInfoAct:"+"priceInfoInsertAction"+"]");			
@@ -90,7 +90,7 @@ public class PriceInfoAct {
 				model.addAttribute("url","javascript:history.back();");
 				return "/WEB-INF/www/common/result.jsp";
 			}
-		}	
+		}
 
 		@RequestMapping("/priceInfoUpdate.do")
 		protected ModelAndView priceInfoUpdate(HttpServletRequest requset,

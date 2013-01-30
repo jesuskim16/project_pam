@@ -5,8 +5,7 @@ public class PageDto {
 	private long pg; //현재 페이지
 	
 	private long totalCount; // 총 게시물의 갯수
-	private long pageCount; // 총 게시물을 페이지 갯수를 나눈 것.(10개의 게시물이 몇페이지까지 있는지를 나타냄)
-	
+	private long pageCount; // 총 게시물을 페이지 갯수를 나눈 것.(10개의 게시물이 몇페이지까지 있는지를 나타냄)	
 	
 	private long startNum; // 시작페이징 번호
 	private long endNum; // 끝 페이징 번호
@@ -22,9 +21,7 @@ public class PageDto {
 	private int board_chk;			//게시판 분류
 	
 	//기본 생성자(DI주입을 위해 꼭 생성해야함)
-	public PageDto() {
-		// TODO Auto-generated constructor stub
-	}
+	public PageDto() {}
 	
 	public PageDto(long pg, long totalCount ,String searchCondition2, String searchKeyword2) {
 		//넘어온  parameter값을 각 변수에 할당
