@@ -1,5 +1,10 @@
 package ITFree.PAM.Common.Controller.Board;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -7,11 +12,14 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import net.coobird.thumbnailator.Thumbnails;
+
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import ITFree.PAM.Common.Model.Board.BoardDao;
@@ -42,26 +50,19 @@ public class FreeboardAct {
 			//spageDto.getSearchCondition() : 검색 상태를 넘김 (제목인지 내용인지 이름인지 등등....)
 			//spageDto.getSearchKeyword()   : 검색한 단어를 넘김
 			spageDto.setBoard_chk(board_chk);				//TotalCount를 얻기위한 게시판코드(tw)
-			
-			String UrlName = board_name+"List.do";
-			
-			PageDto pageDto = new PageDto(spageDto.getPg(), boardDao.TotalCount(spageDto), spageDto.getSearchCondition(), spageDto.getSearchKeyword(),
-					 UrlName);
-			
-			
+			PageDto pageDto = new PageDto(spageDto.getPg(), boardDao.TotalCount(spageDto), spageDto.getSearchCondition(), spageDto.getSearchKeyword(),board_name+"List.do");
 			pageDto.setSearchCondition(spageDto.getSearchCondition()); //값을 유지할 수 있도록 pageDto 객체에 검색상태 넘김
 			pageDto.setSearchKeyword(spageDto.getSearchKeyword()); 	   // 값을 유지할 수 있도록 pageDto 객체에  검색단어를 넘김
 			pageDto.setBoard_chk(board_chk);
 			List<BoardDto> fbList = boardDao.freeBoardList(pageDto);       // 리스트를 뿌리기 위해 SQL을 넘기고 값을 받아옴
 			log.debug("--freeBoardList:"+pageDto);
 			ModelAndView mav = new ModelAndView();
-			mav.setViewName("/WEB-INF/www/common/board/boardList.jsp"); // 이동할 페이지
+			mav.setViewName("/WEB-INF/www/common/board/boardList.jsp"); // 이동할 페이지			
 			mav.addObject("title_name",title_name); //게시판 이름
 			mav.addObject("board_chk",board_chk);             //게시판분류 (2: 자유게시판)
 			mav.addObject("board_name",board_name); //게시판이름
 			mav.addObject("brc_lev",session.getAttribute("brc_lev"));		//레벨(1:대리점, 2:판매점)
 			mav.addObject("fbList",fbList);     // Web으로 리스트를 넘김 
-			log.debug("-2-"+pageDto);
 			mav.addObject("pageDto", pageDto);	// Web으로 pageDto정보를 넘김(검색창을 설정해 주기 위함)
 			mav.addObject("page" ,pageDto.getpHtml());	// 게시판 아래 페이징을 하기위해 페이지정보를 넘김
 			return mav;
@@ -184,22 +185,72 @@ public class FreeboardAct {
 			boardDto.setBoard_chk(board_chk);		//게시판분류코드
 			log.debug("---boardDto"+boardDto);
 			
-			String filename = boardDao.fileupload(boardDto,board_name);	//파일업로드
-			boardDto.setFilename(filename);
+			String server_root ="c:\\Documents and Settings\\A\\git\\project_pam\\WebContent";	//서버절대경로
+			String upfolder = server_root+"\\upload\\"+board_name+"\\";							//업로드경로
+			
+			MultipartFile Mfile = boardDto.getUpFile();	// 	MultipartFile Mfile에 Web에서 넘어온 file type 값을 가져온다.
+
+			ModelAndView mav = new ModelAndView();
+			
+			if (!Mfile.isEmpty()) { // Mfile이 비어있지 않다면~
+				//파일 SIZE가 5MB 이상이라면~
+				if(Mfile.getSize() > 5242880){
+					mav.setViewName("/WEB-INF/www/common/result.jsp");
+					mav.addObject("msg" , "5MB 이하의 파일만 업로드 가능합니다.");
+					mav.addObject("url" ,"javascript:history.back();");	
+					return mav;
+				}
+				//Image 파일일경우만 실행~
+				
+					String filename = Mfile.getOriginalFilename(); // 실제 file 이름을 저장
+					boardDto.setFilename(filename);
+					File file = new File("C:/STS/src/project_pam/WebContent/upload/freeboard/"
+							+ filename); // FILE(java.io)에 경로를 넣어줌
+					if(!file.exists()){
+						file.mkdirs();
+					}
+					if(file.exists() && file.isFile()){	// 이미 존재하는 파일일경우 현재시간을 가져와서 리네임
+						filename = System.currentTimeMillis()  +"_"+ Mfile.getOriginalFilename() ;
+						file = new File("C:/STS/src/project_pam/WebContent/upload/freeboard/" + filename);	//리네임된 파일이름으로 재생성
+					}			
+					
+					try {
+						Mfile.transferTo(file); // 실제 경로에 Upload
+					} catch (IllegalStateException e) {
+						e.printStackTrace();								
+						mav.setViewName("/WEB-INF/www/common/result.jsp");
+						mav.addObject("msg" , "업로드 중 에러발생하였습니다. 다시 시도해주세요.");
+						mav.addObject("url" ,"javascript:history.back();");
+						return mav;
+					} catch (IOException e) {
+						e.printStackTrace();
+						mav.setViewName("/WEB-INF/www/common/result.jsp");
+						mav.addObject("msg" , "업로드 중 에러발생하였습니다. 다시 시도해주세요.");
+						mav.addObject("url" ,"javascript:history.back();");
+						return mav;
+					}
+
+			} else {
+				mav.setViewName("/WEB-INF/www/common/result.jsp");
+				mav.addObject("msg" , "파일을 입력해주세요");
+				mav.addObject("url" ,"javascript:history.back();");
+				return mav;
+			}
 			
 			boolean result = boardDao.freeBoardInsertAction(boardDto);
-			ModelAndView mav = new ModelAndView();
 			if(result){
 				mav.setViewName("freeBoardList.do");
 			}else{
 				mav.setViewName("/WEB-INF/www/common/result.jsp");
 				mav.addObject("msg","글 쓰기 실패입니다.");
 				mav.addObject("url","javascript:history.back();");
-			}			
+			}	
+			
 			mav.addObject("title_name",title_name);
 			mav.addObject("board_chk",board_chk);             //게시판분류 (2: 자유게시판)
 			mav.addObject("board_name",board_name); //게시판이름
 			mav.addObject("brc_lev",session.getAttribute("brc_lev"));		//레벨(1:대리점, 2:판매점)
+			
 			return mav;
 		}
 
@@ -259,4 +310,46 @@ public class FreeboardAct {
 			}
 			return mav;
 		}	
+		
+		
+//		@RequestMapping("/freeBoardDelete.do")//파일 업로드 부분
+//		public String fileupload(BoardDto bdDto, String board_name) {
+//
+//			if(bdDto.getUpFile().isEmpty()){													//파일이 없을때
+//				return null;
+//			}
+//			
+//			String filename = bdDto.getUpFile().getName(); 						//컴포넌트명(input 속성)
+//			String originalFilename = bdDto.getUpFile().getOriginalFilename(); 	//파일명
+//			String contentType = bdDto.getUpFile().getContentType(); 			//컨텐트타입
+//			long filesize = bdDto.getUpFile().getSize(); 						//파일크기
+//			
+//			log.debug("--fileupload:"+filename+":"+originalFilename+":"+contentType+":"+filesize);
+//			log.debug("--upfolder+originalFilename:"+upfolder+originalFilename);
+//			
+//			try {
+//				if(filesize>0){					
+//					is=bdDto.getUpFile().getInputStream();					
+//					File realUploadDir = new File(upfolder);//업로드경로
+//						if(!realUploadDir.exists()){
+//							realUploadDir.mkdirs();
+//						}
+//					os = new FileOutputStream(upfolder+originalFilename);
+//					
+//					int readBytes = 0;
+//					byte[] buffer = new byte[8192];    //용량제한 8*1024			     
+//						while ((readBytes = is.read(buffer, 0, 8192))!=-1) {
+//							os.write(buffer, 0, readBytes);					
+//						}
+//				}
+//				return originalFilename;	
+//			} catch (IOException e) {
+//				e.printStackTrace();                   
+//				return null;
+//			} finally{
+//				try{os.close();}catch(IOException e){};
+//				try{is.close();}catch(IOException e){};
+//			}			
+//		}
+
 }

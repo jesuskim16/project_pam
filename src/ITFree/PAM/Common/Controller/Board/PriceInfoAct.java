@@ -33,7 +33,7 @@ public class PriceInfoAct {
 			log.debug("---start["+"PriceInfoAct."+"priceInfoList"+"]");
 			if(pgDto.getPg() == 0)pgDto.setPg(1);
 			pgDto.setBoard_chk(board_chk);				//TotalCount를 얻기위한 게시판코드(tw)
-			PageDto pageDto = new PageDto(pgDto.getPg(), bdDao.TotalCount(pgDto), pgDto.getSearchCondition(), pgDto.getSearchKeyword());
+			PageDto pageDto = new PageDto(pgDto.getPg(), bdDao.TotalCount(pgDto), pgDto.getSearchCondition(), pgDto.getSearchKeyword(),board_name+"List.do");
 			pageDto.setSearchCondition(pgDto.getSearchCondition());
 			pageDto.setSearchKeyword(pgDto.getSearchKeyword());
 			pageDto.setBoard_chk(board_chk);
