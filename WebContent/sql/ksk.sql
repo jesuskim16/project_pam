@@ -297,7 +297,7 @@ FROM branch
 SELECT * 
 FROM branch
 
-select * from rebate
+select * from phonemodel
 
 UPDATE BRANCH
 set brc_state = 1
@@ -322,3 +322,16 @@ WHERE seq = 66
 
 SELECT * FROM CUSTOMINFO
 WHERE brc_id = 'seller9'
+
+SELECT count(*)
+FROM PHONEMODEL
+
+
+
+SELECT B.*
+FROM(SELECT A.* , rownum as rnum
+	 FROM  (SELECT  row_number()over (ORDER BY seq ASC) as rown, seq, model_code, model_name, filename, open_date, to_char(write_date ,'YYYY-MM-DD') AS write_date, write_ip, make_comp, state_chk			  
+		    FROM PHONEMODEL
+		    ORDER BY rown DESC ) A ) B
+WHERE 1 <= rnum AND rnum <= 10
+

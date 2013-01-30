@@ -16,9 +16,9 @@ public class AdmModelDaoImpl implements AdmModelDao {
 	
 	//핸드폰 정보 목록 리스트
 	@Override
-	public List<AdmModelDto> admModelList() {
+	public List<AdmModelDto> admModelList(AdmModelPageDto AMPDto) {
 		try {
-			return sqlMapClientTemplate.queryForList("AdmModel.admModelList");
+			return sqlMapClientTemplate.queryForList("AdmModel.admModelList", AMPDto);
 		} catch (DataAccessException e) {
 			e.printStackTrace();
 			return null;
@@ -47,6 +47,52 @@ public class AdmModelDaoImpl implements AdmModelDao {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 			return false;
+		}
+	}
+	
+	//모델정보 삭제 부분
+	@Override
+	public boolean admModelListDeleteAction(List<String> seqList) {
+		try {
+			sqlMapClientTemplate.delete("AdmModel.admModelListDeleteAction", seqList);
+			return true;
+		} catch (DataAccessException e) {
+			e.printStackTrace();
+			return false;
+		}
+	}
+	
+	//수정페이지 보여지는 부분
+	@Override
+	public AdmModelDto admModelListModify(long seq) {
+		try {
+			return (AdmModelDto) sqlMapClientTemplate.queryForObject("AdmModel.admModelListModify", seq);
+		} catch (DataAccessException e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
+	
+	//수정 완료
+	@Override
+	public boolean admModelListModifyAction(AdmModelDto AMDto) {
+		try {
+			return sqlMapClientTemplate.update("AdmModel.admModelListModifyAction", AMDto) > 0;
+		} catch (DataAccessException e) {
+			e.printStackTrace();
+			return false;
+		}
+	}
+	
+	//모델 총 갯수
+	@Override
+	public long admModelTotalCount() {		
+		try {
+			return (long) sqlMapClientTemplate.queryForObject("AdmModel.admModelTotalCount");
+		} catch (DataAccessException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return 0;
 		}
 	}
 
