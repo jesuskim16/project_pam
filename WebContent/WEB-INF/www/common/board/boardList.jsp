@@ -85,7 +85,7 @@
                                 <c:choose>
                                   <c:when test="${board_chk==3}">
                                     <td height="28" bgcolor="#FFFFFF">&nbsp;&nbsp;${fdto.title}</td>                                    
-                                    <td height="28" align="left" bgcolor="#FFFFFF">&nbsp;&nbsp;<span class="Text_blue_12px_unberline"><a href="download.do?filename=${fdto.filename}?board_name=${board_name}" >${fdto.filename}</a></span></td>
+                                    <td height="28" align="left" bgcolor="#FFFFFF">&nbsp;&nbsp;<span class="Text_blue_12px_unberline"><a href="download.do?filename=${fdto.filename}&board_chk=${fdto.board_chk}">${fdto.filename}</a></span></td>
                                   </c:when>
                                   <c:otherwise>
                                     <td height="28" bgcolor="#FFFFFF">&nbsp;&nbsp;<a href="${board_name}View.do?seq=${fdto.seq}&brc_id=${fdto.brc_id }">${fdto.title }
