@@ -2,6 +2,7 @@ package ITFree.PAM.Admin.Model.AdmBoard;
 
 import java.util.List;
 
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.orm.ibatis.SqlMapClientTemplate;
@@ -11,7 +12,8 @@ import ITFree.PAM.Common.Model.Board.BoardDto;
 
 @Repository
 public class admBoardDaoImp implements admBoardDao {
-
+	private Logger log = Logger.getLogger(getClass());
+	
 	@Autowired
 	private SqlMapClientTemplate sqlMapClientTemplate;
 
@@ -21,19 +23,19 @@ public class admBoardDaoImp implements admBoardDao {
 	}
 
 	@Override
-	public List<admBoardDto> boardList(admPageDto apgDto) {
+	public List<BoardDto> boardList(admPageDto apgDto) {
 		return sqlMapClientTemplate.queryForList("admBoard.boardList",apgDto);
 	}
 
 	@Override
-	public admBoardDto boardView(long seq) {
-		return (admBoardDto) sqlMapClientTemplate.queryForObject("admBoard.boardView",seq);
+	public BoardDto boardView(long seq) {
+		return (BoardDto) sqlMapClientTemplate.queryForObject("admBoard.boardView",seq);
 	}
 
 	@Override
-	public boolean freeBoardInsertAction(BoardDto abdDto) {
+	public boolean boardInsert(BoardDto abdDto) {
 		try {
-			sqlMapClientTemplate.insert("FreeBoard.freeBoardInsertAction",abdDto);
+			sqlMapClientTemplate.insert("admBoard.boardInsert",abdDto);
 			return true;
 		} catch (DataAccessException e) {
 			e.printStackTrace();
@@ -43,8 +45,15 @@ public class admBoardDaoImp implements admBoardDao {
 
 	@Override
 	public boolean boardDel(long seq) {
-		sqlMapClientTemplate.delete("admBoard.boardDel",seq);
-		return false;
+		log.debug("--boardDel:"+seq);
+		try {
+			sqlMapClientTemplate.update("admBoard.boardDel",seq);
+			return true;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		}
+		
 	}
 	
 	

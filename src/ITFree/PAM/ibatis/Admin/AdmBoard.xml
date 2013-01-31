@@ -5,14 +5,15 @@
     "http://ibatis.apache.org/dtd/sql-map-2.dtd">
     
 <sqlMap namespace="admBoard">
-	<typeAlias alias="abdDto" type="ITFree.PAM.Admin.Model.AdmBoard.admBoardDto" />
+	<typeAlias alias="abdDto" type="ITFree.PAM.Common.Model.Board.BoardDto" />
 	<typeAlias alias="apgDto" type="ITFree.PAM.Admin.Model.AdmBoard.admPageDto"/>
-	<typeAlias alias="bdDto" type="ITFree.PAM.Common.Model.Board.BoardDto" />
+	
 	<select id="totalCount" parameterClass="apgDto" resultClass="int">
 	  SELECT count(*) 
 	  FROM board
 	  WHERE board_chk = #board_chk#
 	</select>
+	
 	<select id="boardList" parameterClass="apgDto" resultClass="abdDto">
 	  SELECT B.*
 	  FROM(
@@ -40,13 +41,22 @@
 	  WHERE		#startNum# <= rnum AND rnum <= #endNum#
 	  ]]> 
 	</select>
+	
 	<select id="boardView" parameterClass="Long" resultClass="abdDto">
 		SELECT 	*
 		FROM 	board
 		WHERE	seq=#seq#
 	</select>
-	<insert id="freeBoardInsertAction" parameterClass="bdDto">
+	
+	<insert id="boardInsert" parameterClass="abdDto">
   		INSERT INTO board(seq,board_chk,title,content,filename,brc_id, write_ip)
   		VALUES(board_seq.nextval , #board_chk#, #title#, #content#, #filename#, #brc_id#, #write_ip#)
-  </insert>
+  	</insert>
+  	
+  	<update id="boardDel" parameterClass="long">
+  		DELETE 	board 
+  		WHERE 	seq=#seq# 
+  		OR	rp_seq=#seq#
+  	</update>
+  	
 </sqlMap>
