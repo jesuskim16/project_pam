@@ -18,7 +18,7 @@
       <tr>
         <td width="16" valign="top"><img src="admin/img/sub.body.box.left.gif" width="16"  height="170"></td>
           <td valign="top">
-          <form name="result_forms" method="post" style="margin:0"  ENCTYPE="multipart/form-data">
+          <form name="result_form" method="post" style="margin:0"  ENCTYPE="multipart/form-data">
           <input type="hidden" id="seq" name="seq" value="${ABDto.seq}">
             <table width="100%" border="0" cellspacing="0" cellpadding="0">
               <tr>
