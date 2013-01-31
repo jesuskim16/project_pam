@@ -41,6 +41,7 @@ public class Auth implements Filter{
 	
 	}
 	
+	//특정 URI 를 걸러내는 메소드
 	private boolean excludeUrl(HttpServletRequest request) {		
 		String uri = request.getRequestURI().toString().trim();
 		if (uri.startsWith("/project_pam/login.do")) {
