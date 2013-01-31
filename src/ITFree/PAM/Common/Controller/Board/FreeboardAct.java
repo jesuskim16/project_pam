@@ -107,6 +107,7 @@ public class FreeboardAct {
 			mav.addObject("sessionId", sessionId);
 			mav.addObject("sessionIp", write_ip);
 			mav.addObject("rList",rList); //댓글 파라메터 전송
+			mav.addObject("board_chk",board_chk);
 			return mav;
 		}
 		
@@ -199,19 +200,18 @@ public class FreeboardAct {
 					mav.addObject("msg" , "5MB 이하의 파일만 업로드 가능합니다.");
 					mav.addObject("url" ,"javascript:history.back();");	
 					return mav;
-				}
-				//Image 파일일경우만 실행~
-				
+				}				
 					String filename = Mfile.getOriginalFilename(); // 실제 file 이름을 저장
 					boardDto.setFilename(filename);
-					File file = new File("C:/STS/src/project_pam/WebContent/upload/freeboard/"
+					File file = new File(upfolder
 							+ filename); // FILE(java.io)에 경로를 넣어줌
+					//만약 폴더가 없을 시 폴더를 생설 할 것
 					if(!file.exists()){
 						file.mkdirs();
 					}
 					if(file.exists() && file.isFile()){	// 이미 존재하는 파일일경우 현재시간을 가져와서 리네임
 						filename = System.currentTimeMillis()  +"_"+ Mfile.getOriginalFilename() ;
-						file = new File("C:/STS/src/project_pam/WebContent/upload/freeboard/" + filename);	//리네임된 파일이름으로 재생성
+						file = new File(upfolder + filename);	//리네임된 파일이름으로 재생성
 					}			
 					
 					try {

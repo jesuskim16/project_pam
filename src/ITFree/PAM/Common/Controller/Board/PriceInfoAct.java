@@ -1,5 +1,7 @@
 package ITFree.PAM.Common.Controller.Board;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -12,6 +14,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import ITFree.PAM.Common.Model.Board.BoardDao;
@@ -65,30 +68,76 @@ public class PriceInfoAct {
 		}
 
 		@RequestMapping("/priceInfoInsertAction.do")//입력
-		protected String priceInfoInsertAction(@ModelAttribute BoardDto bdDto, Model model, HttpSession session, HttpServletRequest request){			
+		protected ModelAndView priceInfoInsertAction(@ModelAttribute BoardDto bdDto, HttpSession session, HttpServletRequest request){			
 			log.debug("---start["+"PriceInfoAct:"+"priceInfoInsertAction"+"]");			
 			bdDto.setBoard_chk(board_chk);							//게시판분류코드
 			bdDto.setContent("-");									//내용 NN이므로 임의 입력
 			bdDto.setWrite_ip(request.getRemoteAddr());				//작성아이피
+
+			String server_root ="c:\\Documents and Settings\\A\\git\\project_pam\\WebContent";	//서버절대경로
+			String upfolder = server_root+"\\upload\\"+board_name+"\\";							//업로드경로
 			
-			String filename = bdDao.fileupload(bdDto,board_name);	//파일업로드
-			bdDto.setFilename(filename);
-			boolean result = bdDao.freeBoardInsertAction(bdDto);	//SQL Insert		
+			MultipartFile Mfile = bdDto.getUpFile();	// 	MultipartFile Mfile에 Web에서 넘어온 file type 값을 가져온다.
+
+			ModelAndView mav = new ModelAndView();
 			
-			if(filename==null){
-				model.addAttribute("msg","파일이 존재하지 않습니다.");
-				model.addAttribute("url","javascript:history.back();");
-				return "/WEB-INF/www/common/result.jsp";
-			}else if(result){
-				model.addAttribute("title_name",title_name);
-				model.addAttribute("board_chk",board_chk);          			//게시판분류 (3: 단가표)
-				model.addAttribute("board_name",board_name); 					//게시판이름
-				model.addAttribute("brc_lev",session.getAttribute("brc_lev"));	//레벨(1:대리점, 2:판매점)
-				return "priceInfoList.do";
+			if (!Mfile.isEmpty()) { // Mfile이 비어있지 않다면~
+				//파일 SIZE가 5MB 이상이라면~
+				if(Mfile.getSize() > 5242880){
+					mav.setViewName("/WEB-INF/www/common/result.jsp");
+					mav.addObject("msg" , "5MB 이하의 파일만 업로드 가능합니다.");
+					mav.addObject("url" ,"javascript:history.back();");	
+					return mav;
+				}				
+					String filename = Mfile.getOriginalFilename(); // 실제 file 이름을 저장
+					bdDto.setFilename(filename);
+					File file = new File(upfolder
+							+ filename); // FILE(java.io)에 경로를 넣어줌
+					//만약 폴더가 없을 시 폴더를 생설 할 것
+					if(!file.exists()){
+						file.mkdirs();
+					}
+					if(file.exists() && file.isFile()){	// 이미 존재하는 파일일경우 현재시간을 가져와서 리네임
+						filename = System.currentTimeMillis()  +"_"+ Mfile.getOriginalFilename() ;
+						file = new File(upfolder + filename);	//리네임된 파일이름으로 재생성
+					}			
+					
+					try {
+						Mfile.transferTo(file); // 실제 경로에 Upload
+					} catch (IllegalStateException e) {
+						e.printStackTrace();								
+						mav.setViewName("/WEB-INF/www/common/result.jsp");
+						mav.addObject("msg" , "업로드 중 에러발생하였습니다. 다시 시도해주세요.");
+						mav.addObject("url" ,"javascript:history.back();");
+						return mav;
+					} catch (IOException e) {
+						e.printStackTrace();
+						mav.setViewName("/WEB-INF/www/common/result.jsp");
+						mav.addObject("msg" , "업로드 중 에러발생하였습니다. 다시 시도해주세요.");
+						mav.addObject("url" ,"javascript:history.back();");
+						return mav;
+					}
+
+			} else {
+				mav.setViewName("/WEB-INF/www/common/result.jsp");
+				mav.addObject("msg" , "파일을 입력해주세요");
+				mav.addObject("url" ,"javascript:history.back();");
+				return mav;
+			}
+			
+			boolean result = bdDao.freeBoardInsertAction(bdDto);	//SQL Insert				
+			if(result){
+				mav.addObject("title_name",title_name);
+				mav.addObject("board_chk",board_chk);          			//게시판분류 (3: 단가표)
+				mav.addObject("board_name",board_name); 					//게시판이름
+				mav.addObject("brc_lev",session.getAttribute("brc_lev"));	//레벨(1:대리점, 2:판매점)
+				mav.setViewName("priceInfoList.do");
+				return mav;
 			}else{				
-				model.addAttribute("msg","[Error]관리자에게 문의하세요.");
-				model.addAttribute("url","javascript:history.back();");
-				return "/WEB-INF/www/common/result.jsp";
+				mav.addObject("msg","[Error]관리자에게 문의하세요.");
+				mav.addObject("url","javascript:history.back();");
+				mav.setViewName("/WEB-INF/www/common/result.jsp");
+				return mav;
 			}
 		}
 
