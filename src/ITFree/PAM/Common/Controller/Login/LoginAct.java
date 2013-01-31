@@ -53,7 +53,6 @@ public class LoginAct {
 	
 	@RequestMapping("/logout.do")
 	protected ModelAndView logout(HttpSession session, ModelAndView mav) throws Exception {
-		//HttpSession session=request.getSession();
 		
 		session.removeAttribute("brc_id");
 		session.removeAttribute("brc_name");

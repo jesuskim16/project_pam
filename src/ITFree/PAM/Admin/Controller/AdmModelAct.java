@@ -70,8 +70,7 @@ public class AdmModelAct {
 		AdmModelDto AMto = new AdmModelDto();
 		AMto = AMDao.admModelListModify(seq);
 		List<AdmModelDto> AMCList = AMDao.admCompList();
-		//MatrixTime(2000);
-		//List<AdmModelDto> ABList = AMDao.admModelListModify();
+		MatrixTime(2000);
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("/WEB-INF/www/admin/Model/model_update.jsp");
 		mav.addObject("AMto" , AMto);
