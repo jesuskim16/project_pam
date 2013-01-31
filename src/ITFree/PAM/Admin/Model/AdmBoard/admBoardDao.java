@@ -8,11 +8,11 @@ public interface admBoardDao {
 
 	int totalCount(admPageDto apgDto);
 
-	List<admBoardDto> boardList(admPageDto apgDto);
+	List<BoardDto> boardList(admPageDto apgDto);
 
-	admBoardDto boardView(long iSeq);
+	BoardDto boardView(long iSeq);
 
-	boolean freeBoardInsertAction(BoardDto abdDto);
+	boolean boardInsert(BoardDto abdDto);
 
 	boolean boardDel(long seq);
 

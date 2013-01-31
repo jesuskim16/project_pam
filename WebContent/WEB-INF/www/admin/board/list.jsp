@@ -389,10 +389,10 @@ jQuery(function($){					//lightbox
     </table></td>
   </tr>
 </table>  
+
 <script>
-	window.onload = function(){
-		loadNextPage(1,1);
-	}
+	window.onload = function(){loadNextPage(${p.board_chk},1);}
+	
 	function loadNextPage(bd_chk,page){		
 		document.forms.board_chk.value=bd_chk;		
 		page = parseInt(page);
@@ -417,49 +417,11 @@ jQuery(function($){					//lightbox
 				return false;
 			}
 			//saveContent();
-			document.forms.content.value=Editor.getContent();
-
-//	 		$.ajax({
-//	 			  type:'post',
-//	 			  url:'admnoticeview.do',
-//	 			  data: ({seq:seq}),
-//	 			  success:function(data){
-//	 				$('#layer').html(data);
-//	 			  }
-//	 		});
-
-			alert("시작");
-			$('#forms').ajaxForm({
-			    beforeSend: function() {alert("실행1");},
-			    uploadProgress: function() {alert("실행2");},
-				complete: function(xhr) {alert("결과");}
-			});
-			alert("종료");
-
-/*
-		$('#forms').ajaxForm({
-	 	    beforeSend: function(){alert("실행1");},
-	 	    uploadProgress: function(){alert("실행2");},
-	 	    complete : function() {
-	 	    	alert("성공");
-// 	 	    	alert(data);
-// 	 	    	$('#list').append(data.responseText);
-// 				$('.insert_layer').removeClass('open');
-//  	 			loadNextPage(1,1);
-// 	 			eval(xhr.responseText);
-	 		},
-		  	error: function(){
-		  		alert("실패");
-		  		$('.insert_layer').removeClass('open');
-				loadNextPage(1,1);
-				return false;
-		  	}
-		});
-		alert("종료");
-*/
-//	 		frm.action = "admNoticeInsert.do";
-//	 		frm.submit();
-}	
+			document.forms.content.value=Editor.getContent();//에디터 textarea값을 hidden에 넣는다
+			
+			frm.action ="admNoticeInsert.do";
+			frm.submit();
+	}	
 </script>
 </center> 
 <jsp:include page="/admin/inc/bottom.jsp"/>

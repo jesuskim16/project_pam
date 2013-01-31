@@ -165,11 +165,6 @@ public class NoticeAct {
 						return mav;
 					}
 
-			} else {
-				mav.setViewName("/WEB-INF/www/common/result.jsp");
-				mav.addObject("msg" , "파일을 입력해주세요");
-				mav.addObject("url" ,"javascript:history.back();");
-				return mav;
 			}
 			
 			boolean result = boardDao.freeBoardInsertAction(boardDto);
