@@ -115,7 +115,7 @@ public class AdmModelAct {
 												+ filename))
 								.size(50, 64)
 								.toFile(new File(
-										"C:/STS/src/project_pam/WebContent/upload/thumb/"
+										"C:/STS/src/project_pam/WebContent/upload/model/thumb/"
 												+ "thumb" + filename));
 					} catch (IOException e) {
 						e.printStackTrace();
@@ -218,7 +218,7 @@ public class AdmModelAct {
 												+ filename))
 								.size(50, 64)
 								.toFile(new File(
-										"C:/STS/src/project_pam/WebContent/upload/thumb/"
+										"C:/STS/src/project_pam/WebContent/upload/model/thumb/"
 												+ "thumb" + filename));
 					} catch (IOException e) {
 						e.printStackTrace();
