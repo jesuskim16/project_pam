@@ -4,6 +4,8 @@ public class SalesRcdPageDto {
 	private String brc_name;
 	private String s_sdate;
 	private String s_edate;	
+	private long totalRevenue;
+	
 	
 	private long pg; //현재 페이지
 	
@@ -24,10 +26,11 @@ public class SalesRcdPageDto {
 		// TODO Auto-generated constructor stub
 	}
 	
-	public SalesRcdPageDto(long pg, long totalCount , String brc_name, String s_sdate, String s_edate) {
+	public SalesRcdPageDto(long pg, long totalCount, long totalRevenue ,String brc_name, String s_sdate, String s_edate) {
 		//넘어온  parameter값을 각 변수에 할당
 		this.pg = pg;
 		this.totalCount = totalCount;
+		this.totalRevenue = totalRevenue;
 		this.brc_name = brc_name;
 		this.s_sdate = s_sdate;
 		this.s_edate = s_edate;
@@ -169,14 +172,34 @@ public class SalesRcdPageDto {
 		this.pHtml = pHtml;
 	}
 
+	public long getTotalRevenue() {
+		return totalRevenue;
+	}
+
+	public void setTotalRevenue(long totalRevenue) {
+		this.totalRevenue = totalRevenue;
+	}
+
 	@Override
 	public String toString() {
 		return "SalesRcdPageDto [brc_name=" + brc_name + ", s_sdate=" + s_sdate
-				+ ", s_edate=" + s_edate + ", pg=" + pg + ", totalCount="
-				+ totalCount + ", pageCount=" + pageCount + ", startNum="
-				+ startNum + ", endNum=" + endNum + ", pageSize=" + pageSize
-				+ ", blockSize=" + blockSize + ", pHtml=" + pHtml + "]";
+				+ ", s_edate=" + s_edate + ", totalRevenue=" + totalRevenue
+				+ ", pg=" + pg + ", totalCount=" + totalCount + ", pageCount="
+				+ pageCount + ", startNum=" + startNum + ", endNum=" + endNum
+				+ ", pageSize=" + pageSize + ", blockSize=" + blockSize
+				+ ", pHtml=" + pHtml + "]";
 	}
+
+	
+
+	
+
+	
+
+	
+
+	
+	
 
 	
 

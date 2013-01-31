@@ -11,7 +11,7 @@
 	<select id="salesRcdList" resultClass="srDto" parameterClass="srpDto">
 	SELECT B.* 
 	FROM   (SELECT A.* ,rownum as rnum
-	    	FROM (	SELECT row_number()over (ORDER BY c.seq ASC) as rown, c.seq , c.cust_name, c.model_code, c.price_name, c.cont_term, to_char(c.open_date,'YYYY-MM-DD') as open_date
+	    	FROM (	SELECT row_number()over (ORDER BY c.seq ASC) as rown, c.seq , c.cust_name, c.model_code, c.price_name, c.cont_term, to_char(c.open_date,'YYYY-MM-DD') as open_date, rebate
 	       			FROM custominfo c join branch b
 					using (brc_id)
 	       			<![CDATA[
@@ -32,12 +32,22 @@
 	</select>
 	
 	<select id="TotalCount" resultClass="Long" parameterClass="srpDto">
-	SELECT count(*)
+	SELECT count(*) AS totalCount 
 	FROM custominfo	join branch
 	using (brc_id)
 	<![CDATA[
 	WHERE #s_sdate# <= open_date AND #s_edate# >= open_date AND brc_name = #brc_name#
 	]]> 
+	</select>
+	
+	<select id="TotalRevenue" resultClass="Long" parameterClass="srpDto">
+	SELECT SUM(REBATE) AS totalRevenue 
+	FROM custominfo	join branch
+	using (brc_id)
+	<![CDATA[
+	WHERE #s_sdate# <= open_date AND #s_edate# >= open_date AND brc_name = #brc_name#
+	]]>
+	    
 	</select>
 	
 	

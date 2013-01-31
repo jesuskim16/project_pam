@@ -8,7 +8,19 @@ public interface SalesRcdDao {
 
 	long TotalCount(SalesRcdPageDto pageDto);
 
+	long TotalRevenue(SalesRcdPageDto pageDto);
+	
 	List<SalesRcdDto> salesRcdList(SalesRcdPageDto SRPDto);
+
+	
+	
+	
+
+
+
+
+
+
 
 
 }

@@ -21,7 +21,7 @@ public class ModelRcdAct {
 			
 			if(pageDto.getPg() == 0)pageDto.setPg(1);			
 			ModelRcdPageDto MRPdto = new ModelRcdPageDto(pageDto.getPg(), 
-					MRDao.TotalCount(pageDto),pageDto.getModel_code(),pageDto.getS_sdate(),pageDto.getS_edate());
+					MRDao.TotalCount(pageDto), MRDao.TotalRevenue(pageDto), pageDto.getModel_code(),pageDto.getS_sdate(),pageDto.getS_edate());
 			List<ModelRcdDto> MList = MRDao.getModelName();
 			List<ModelRcdDto> mRList = MRDao.modelRcdList(MRPdto);
 			ModelAndView mav = new ModelAndView();
