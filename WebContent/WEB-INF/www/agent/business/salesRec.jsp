@@ -116,7 +116,7 @@
 							<td height="28" align="center" bgcolor="#FFFFFF">${SRPDto.brc_name}</td>
 							<td height="28" align="center" bgcolor="#FFFFFF">${SRPDto.s_sdate}<br>&nbsp;~${SRPDto.s_edate}</td>
 							<td height="28" align="center" bgcolor="#FFFFFF">${SRPDto.totalCount} 대</td>
-							<td height="28" align="center" bgcolor="#FFFFFF">825,000 원</td>
+							<td height="28" align="center" bgcolor="#FFFFFF">${SRPDto.totalRevenue} 원</td>
 						  </tr>
 					  </c:when>
 					</c:choose>
@@ -151,7 +151,7 @@
 				  <td height="28" align="center" bgcolor="#FFFFFF">${SRList.model_code}</td>
 				  <td height="28" align="center" bgcolor="#FFFFFF">${SRList.price_name}</td>
 				  <td height="28" align="center" bgcolor="#FFFFFF">${SRList.cont_term}</td>
-				  <td height="28" align="center" bgcolor="#FFFFFF">30,000원</td>
+				  <td height="28" align="center" bgcolor="#FFFFFF">${SRList.rebate}</td>
 				  <td height="28" align="center" bgcolor="#FFFFFF">${SRList.open_date}</td>
 				</tr>
 				</c:forEach>

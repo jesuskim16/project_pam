@@ -45,5 +45,20 @@ public class SalesRcdDaooImp implements SalesRcdDao {
 			return 0;
 		}
 	}
+
+	@Override
+	public long TotalRevenue(SalesRcdPageDto pageDto) {
+		try {
+			return (long) sqlMapClientTemplate.queryForObject("salesRcd.TotalRevenue", pageDto);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return 0;
+		}
+		
+	}
+
+
+
+
 	
 }

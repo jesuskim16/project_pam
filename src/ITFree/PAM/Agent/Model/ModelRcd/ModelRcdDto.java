@@ -20,6 +20,7 @@ public class ModelRcdDto {
 	private String s_sdate;
 	private String s_edate;
 	private String model_name;
+	private long rebate;
 	
 	
 	public int getSeq() {
@@ -137,9 +138,16 @@ public class ModelRcdDto {
 	public void setRown(int rown) {
 		this.rown = rown;
 	}
+	
+	public long getRebate() {
+		return rebate;
+	}
+	public void setRebate(long rebate) {
+		this.rebate = rebate;
+	}
 	@Override
 	public String toString() {
-		return "ClientInfoDto [rown=" + rown + ", seq=" + seq + ", cust_name="
+		return "ModelRcdDto [rown=" + rown + ", seq=" + seq + ", cust_name="
 				+ cust_name + ", cust_phone=" + cust_phone + ", cust_phone1="
 				+ cust_phone1 + ", cust_phone2=" + cust_phone2
 				+ ", cust_phone3=" + cust_phone3 + ", cust_birth=" + cust_birth
@@ -148,7 +156,9 @@ public class ModelRcdDto {
 				+ ", write_ip=" + write_ip + ", brc_id=" + brc_id
 				+ ", price_name=" + price_name + ", model_code=" + model_code
 				+ ", s_sdate=" + s_sdate + ", s_edate=" + s_edate
-				+ ", model_name=" + model_name + "]";
+				+ ", model_name=" + model_name + ", rebate=" + rebate + "]";
 	}
+	
+	
 	
 }

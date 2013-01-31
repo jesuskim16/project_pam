@@ -20,7 +20,9 @@ public class SalesRcdDto {
 	private String s_sdate;
 	private String s_edate;
 	private String model_name;      
-	private String brc_name;      //지점명                
+	private String brc_name;      //지점명
+	private long rebate;
+	
 	public int getRown() {
 		return rown;
 	}
@@ -141,6 +143,14 @@ public class SalesRcdDto {
 	public void setBrc_name(String brc_name) {
 		this.brc_name = brc_name;
 	}
+	
+	public long getRebate() {
+		return rebate;
+	}
+	public void setRebate(long rebate) {
+		this.rebate = rebate;
+	}
+	
 	@Override
 	public String toString() {
 		return "SalesRcdDto [rown=" + rown + ", seq=" + seq + ", cust_name="
@@ -152,8 +162,11 @@ public class SalesRcdDto {
 				+ ", write_ip=" + write_ip + ", brc_id=" + brc_id
 				+ ", price_name=" + price_name + ", model_code=" + model_code
 				+ ", s_sdate=" + s_sdate + ", s_edate=" + s_edate
-				+ ", model_name=" + model_name + ", brc_name=" + brc_name + "]";
+				+ ", model_name=" + model_name + ", brc_name=" + brc_name
+				+ ", rebate=" + rebate + "]";
 	}
+	
+	
 	
 	
 }

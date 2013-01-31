@@ -2,6 +2,7 @@ package ITFree.PAM.Agent.Controller.Business;
 
 import java.util.List;
 
+import org.jfree.util.Log;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -19,12 +20,18 @@ public class SalesRcdAct {
 	private SalesRcdDao SRDao;
 			
 		@RequestMapping("/salesRcd.do")
-		protected ModelAndView salesRcd(@ModelAttribute SalesRcdPageDto pageDto) throws Exception {
+		protected ModelAndView salesRcd(@ModelAttribute SalesRcdPageDto pageDto, SalesRcdDto SRdto) throws Exception {
 			if(pageDto.getPg() == 0) pageDto.setPg(1);
+			
 			SalesRcdPageDto SRPDto = new SalesRcdPageDto(pageDto.getPg(), 
-					SRDao.TotalCount(pageDto), pageDto.getBrc_name(), pageDto.getS_sdate(), pageDto.getS_edate());
+					SRDao.TotalCount(pageDto), SRDao.TotalRevenue(pageDto), pageDto.getBrc_name(), pageDto.getS_sdate(), pageDto.getS_edate());
+			
 			List<SalesRcdDto> BNList = SRDao.getBranchName();
-			List<SalesRcdDto> SRList = SRDao.salesRcdList(SRPDto);			
+			List<SalesRcdDto> SRList = SRDao.salesRcdList(SRPDto);	
+			
+//			long TotalRevenue = SRDao.TotalRevenue(SRPDto);
+//			Log.debug("-1-"+SRPDto.getTotalRevenue());
+			
 			ModelAndView mav = new ModelAndView();
 			mav.setViewName("/WEB-INF/www/agent/business/salesRec.jsp");
 			mav.addObject("title_name","PAM::판매점실적");

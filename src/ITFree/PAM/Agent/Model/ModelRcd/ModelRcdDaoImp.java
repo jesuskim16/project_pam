@@ -8,6 +8,8 @@ import org.springframework.dao.DataAccessException;
 import org.springframework.orm.ibatis.SqlMapClientTemplate;
 import org.springframework.stereotype.Repository;
 
+import ITFree.PAM.Agent.Model.SalesRcd.SalesRcdPageDto;
+
 @Repository
 public class ModelRcdDaoImp implements ModelRcdDao {	
 	
@@ -46,6 +48,17 @@ public class ModelRcdDaoImp implements ModelRcdDao {
 			e.printStackTrace();
 			return 0;
 		}
+	}
+	
+	@Override
+	public long TotalRevenue(ModelRcdPageDto pageDto) {
+		try {
+			return (long) sqlMapClientTemplate.queryForObject("modelRcd.TotalRevenue", pageDto);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return 0;
+		}
+		
 	}
 
 }
