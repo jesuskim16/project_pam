@@ -12,7 +12,7 @@ var openZipcode = function() {
 //////////////////////최종 지점 수정/////////////////////
 function br_Modify(){
 	
-	var f = document.result_forms;
+	var f = document.result_form;
 	var brc_boss = trim(f.brc_boss.value);
 	
 	if(brc_boss == ""){
@@ -60,7 +60,7 @@ $(function($){
 ///////////////////CheckBOX 모두체크/////////////////////
 
 function chkAll() {
-	var f = document.result_forms;
+	var f = document.result_form;
 	var check;
 	if (f.all_Check.checked) {
 		check = true;
@@ -78,7 +78,7 @@ function chkAll() {
 // Controller 쪽으로 값 넘기는거부터 확인
 
 function br_del(){
-	var f = document.result_forms;	
+	var f = document.result_form;	
 	var check = 0;
 	for (var i = 0; i < f.elements.length; ++i) {
 		if (f.elements[i].name == 'seq') {
