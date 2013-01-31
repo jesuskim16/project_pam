@@ -19,6 +19,7 @@ public class Auth implements Filter{
 
 	private Logger log = Logger.getLogger(this.getClass());
 	
+	
 	public void destroy() {
 		
 	}
@@ -28,8 +29,8 @@ public class Auth implements Filter{
 		log.debug("############ AuthAction 수행 중!!!!");
 		
 		HttpServletRequest httpRequest = (HttpServletRequest) request;
-		
-	    if(excludeUrl(httpRequest)){
+		HttpSession session = httpRequest.getSession(false);
+	    if(excludeUrl(httpRequest , session)){
 	        chain.doFilter(request, response); //걸러내는 URI일 경우 요청값 그대로 처리
 	      }else{
 	    	    RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/www/common/result.jsp");
@@ -42,13 +43,19 @@ public class Auth implements Filter{
 	}
 	
 	//특정 URI 를 걸러내는 메소드
-	private boolean excludeUrl(HttpServletRequest request) {		
+	private boolean excludeUrl(HttpServletRequest request ,HttpSession session) {
+		
 		String uri = request.getRequestURI().toString().trim();
-		if (uri.startsWith("/project_pam/login.do")) {
+		if(session.getAttribute("brc_lev") == null){
+			if (uri.startsWith("/project_pam/login.do") || uri.startsWith("/project_pam/loginAction.do")) {
+				return true;
+			} else {
+				return false;
+			}
+		}else{
 			return true;
-		} else {
-			return false;
 		}
+
 	}
 
 	public void init(FilterConfig arg0) throws ServletException {
