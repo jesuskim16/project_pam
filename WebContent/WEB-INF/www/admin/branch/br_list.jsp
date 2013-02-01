@@ -81,14 +81,17 @@
                               </c:forEach>
                           </table></td>
                         </tr>
-                        <tr>
+                     <c:if test="${!empty ABDList}"> 
+                      <tr>
                           <td height="30" align="center">
                            ${ABPDto.pHtml} 
                           </td>
-                        </tr>
+                      </tr>
+ 
                         <tr>
                         	<td><a href="javascript:br_del();"><img src="admin/img/bts.del.gif" ></a></td>
                         </tr>
+					 </c:if>
                     </table></td>
                   </tr>
 <!-- 				  <tr> -->
