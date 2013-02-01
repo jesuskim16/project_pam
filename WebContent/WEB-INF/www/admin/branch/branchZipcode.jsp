@@ -10,7 +10,7 @@
 <body>
  <script type="text/javascript">
 	var setZipcode = function (zipcode1 , zipcode2, addr1) {
-		var f = opener.document.result_form;
+		var f = opener.document.branch_form;
 		
 		f.br_post1.value = zipcode1;
 		f.br_post2.value = zipcode2;
