@@ -243,7 +243,7 @@ jQuery(function($){					//lightbox
 							                                                      <tr>
 							                                                        <td><table border="0" cellpadding="0" cellspacing="2" bgcolor="cdcdcd">
 							                                                          <tr>
-							                                                            <td height="20" valign="bottom" bgcolor="#FFFFFF"><input name="upFile" type="file" class="input_bg_white" id="textfield" size="66"></td>
+							                                                            <td height="20" valign="bottom" bgcolor="#FFFFFF"><input name="upFile" type="file" class="input_bg_white" id="textfield" size="66"><span id="filename"></span></td>
 							                                                          </tr>
 							                                                        </table></td>
 							                                                        <td width="5"></td>
@@ -269,7 +269,7 @@ jQuery(function($){					//lightbox
 							                                                      <tr>
 							                                                        <td valign="bottom" bgcolor="#FFFFFF" colspan="2">     
 																					<!-- daumeditor -->
-																					<jsp:include page="/editor/editor.jsp"/>
+																					<jsp:include page="/editor/editor.jsp"></jsp:include>
 							                                                        </td>
 							                                                      </tr>
 							                                                    </table></td>
@@ -331,8 +331,7 @@ jQuery(function($){					//lightbox
 							    </table></td>
 							  </tr>
 							</table>	
-							</form>					
-						
+							</form>
 						<!-- /insert -->
 						</div>
 						</div> 
@@ -377,7 +376,6 @@ jQuery(function($){					//lightbox
 -->                        
                     </form></td>
                   </tr>
-
               </table></td>
             </tr>
             <tr>
@@ -389,13 +387,27 @@ jQuery(function($){					//lightbox
     </table></td>
   </tr>
 </table>
-
+<c:if test="${board_type==2}">
+<form name="edit">
+  <input type="hidden" name="title" value="${abdDto.title}"/>
+  <input type="hidden" name="content" value="${abdDto.content}"/>
+  <input type="hidden" name="filename" value="${abdDto.filename}"/>
+</form>
+</c:if> 
 <script>
 <c:if test="${empty board_type}"><c:set value="1" var="board_type"/></c:if>
 <c:choose><c:when test="${board_type==1}"> 
-	window.onload = function(){loadNextPage('${p.board_chk}',1);}
+	window.onload = function(){
+		loadNextPage('${p.board_chk}',1);
+	}
 </c:when><c:otherwise>
-	window.onload = function(){insertContent('${p.board_chk}');}
+	window.onload = function(){
+		loadNextPage('${p.board_chk}',1);
+		insertContent('${p.board_chk}');
+		document.forms.title.value=document.edit.title.value;
+		document.forms.content.value=document.edit.content.value;
+		document.getElementById('filename').innerHTML='등록된 파일 : '+document.edit.filename.value;
+	}
 </c:otherwise></c:choose>
 	function loadNextPage(bd_chk,page){		
 		document.forms.board_chk.value=bd_chk;		

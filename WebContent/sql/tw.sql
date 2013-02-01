@@ -17,4 +17,24 @@ select * from PHONEPRICE
 update PHONEPRICE set state_chk=2 where price_name like '%커플%';
 SELECT * FROM rebate;
  
+select * from BRANCHLOG;
+
+select * from user_tab_cols where table_name = 'branch'; 
+
+SELECT OBJECT_NAME FROM USER_OBJECTS
+WHERE OBJECT_TYPE ='branch'
+ORDER BY OBJECT_NAME; 
+
+select * from BOARD
+
+
+Select
+table_name, column_name, data_type, nullable, data_length, column_id, owner
+From
+All_tab_columns
+Where
+table_name = 'board'
+
+select * from phoneprice
+select * from BRANCH
 

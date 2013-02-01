@@ -89,7 +89,7 @@ public class AdmBoardAct {
 	public String admNoticeView(Model model, String seq){
 		log.debug("---start["+"AdmBoardAct."+"admNoticeView"+"]");	
 		long iSeq = Long.parseLong(seq);
-		BoardDto abdDto = new BoardDto(); 
+		BoardDto abdDto = new BoardDto();
 		abdDto = abdDao.boardView(iSeq);
 		
 		model.addAttribute("abdDto",abdDto);
@@ -114,14 +114,17 @@ public class AdmBoardAct {
 	}
 	
 	@RequestMapping("admNoticeUpdate.do")
-	public String admNoticeUpdate(HttpServletRequest request, HttpServletResponse response, @ModelAttribute admPageDto apgDto, HttpSession session,Model model){
+	public String admNoticeUpdate(HttpServletRequest request, HttpServletResponse response, @ModelAttribute admPageDto apgDto, HttpSession session,Model model, int seq){
 		log.debug("---start["+"AdmBoardAct."+"admNoticeUpdate"+"]");
 		if (apgDto.getPg()==0)apgDto.setPg(1);	  			//pg초기값설정
+		BoardDto abdDto = abdDao.boardView(seq);
 		log.debug("--p:"+apgDto);
 		model.addAttribute("p",apgDto);
+		model.addAttribute("abdDto",abdDto);
 		model.addAttribute("board_type","2");
+		model.addAttribute("content",abdDto.getContent());
 		return "/WEB-INF/www/admin/board/list.jsp";
-	}	
+	}
 
 	public String board_name(int board_chk){	//게시판이름
 		String board_name = null;

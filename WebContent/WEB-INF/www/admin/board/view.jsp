@@ -103,7 +103,7 @@
 	                                             <td width="20" align="center"><img src="admin/img/icon.arrow02.gif" alt="" width="7" height="7"></td>
 	                                           </tr>
 	                                         </table></td>
-	                                         <td class="Text_blue_12px_unberline"><a href="" target="">${abdDto.filename}</a></td>
+	                                         <td class="Text_blue_12px_unberline"><a href="download.do?filename=${abdDto.filename}&board_chk=${abdDto.board_chk}">${abdDto.filename}</a></td>
 	                                         <td></td>
 	                                         <td width="80"><table border="0" cellspacing="0" cellpadding="0">
                                                <tr>
