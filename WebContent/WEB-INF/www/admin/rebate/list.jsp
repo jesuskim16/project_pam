@@ -47,7 +47,7 @@ var updateVal = function(seq,price,phonePrice){
 </script>
 <form name="form">
 <input type="hidden" name="chIpChk" value="0"/>
-<table width="800" border="0" align="center" cellpadding="0" cellspacing="0">
+<table width="1200" border="0" align="center" cellpadding="0" cellspacing="0">
   <tr>
   <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
       <tr>
