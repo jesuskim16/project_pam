@@ -29,16 +29,23 @@ public class Auth implements Filter{
 		log.debug("############ AuthAction 수행 중!!!!");
 		
 		HttpServletRequest httpRequest = (HttpServletRequest) request;
-		HttpSession session = httpRequest.getSession(false);
-	    if(excludeUrl(httpRequest , session)){
-	        chain.doFilter(request, response); //걸러내는 URI일 경우 요청값 그대로 처리
-	      }else{
-	    	    RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/www/common/result.jsp");
-				request.setAttribute("msg", "로그인 후 사용가능합니다.");
-				request.setAttribute("url", "login.do");
-				
-				dispatcher.forward(request, response);
-	    }
+		try {
+			HttpSession session = httpRequest.getSession(false);
+			if(excludeUrl(httpRequest , session)){
+			    chain.doFilter(request, response); //걸러내는 URI일 경우 요청값 그대로 처리
+			  }else{
+				    RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/www/common/result.jsp");
+					request.setAttribute("msg", "로그인 후 사용가능합니다.");
+					request.setAttribute("url", "login.do");
+					
+					dispatcher.forward(request, response);
+			}
+		} catch (Exception e) {			
+			e.printStackTrace();
+		    RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/www/common/result.jsp");
+			request.setAttribute("msg", "로그인 후 사용가능합니다.");
+			request.setAttribute("url", "login.do");
+		}
 	
 	}
 	
@@ -46,14 +53,19 @@ public class Auth implements Filter{
 	private boolean excludeUrl(HttpServletRequest request ,HttpSession session) {
 		
 		String uri = request.getRequestURI().toString().trim();
-		if(session.getAttribute("brc_lev") == null){
-			if (uri.startsWith("/project_pam/login.do") || uri.startsWith("/project_pam/loginAction.do")) {
+		try {
+			if(session.getAttribute("brc_lev") == null){
+				if (uri.startsWith("/project_pam/login.do") || uri.startsWith("/project_pam/loginAction.do")) {
+					return true;
+				} else {
+					return false;
+				}
+			}else{
 				return true;
-			} else {
-				return false;
 			}
-		}else{
-			return true;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;
 		}
 
 	}

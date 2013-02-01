@@ -16,12 +16,13 @@
 		       			<![CDATA[
 		       			WHERE #s_sdate# <= open_date AND #s_edate# >= open_date AND model_code = #model_code#
 		       			]]> 
-		       			ORDER BY rownum DESC
+		       			
 		       			) A 
 		       	) B
 		<![CDATA[ 	
     	WHERE #startNum# <= rnum AND rnum <= #endNum#
     	]]>
+    	ORDER BY rownum DESC
 	</select>
 
 	<select id="getModelName" resultClass="mrDto">

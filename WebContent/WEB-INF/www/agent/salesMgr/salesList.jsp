@@ -4,43 +4,8 @@
 
 <jsp:include page="/inc/top1.jsp"/>    
 <jsp:include page="/inc/menu2.jsp"/>
+<script type="text/javascript" src="js/agent/salesMgr/salesList.js"></script>
 
-<script type="text/javascript">
-
-//보이기/숨기기 javascript
-function HiddenSeem(hidden,seem) {
-	if(document.count.countvalue.value == '0'){
-	document.getElementById(hidden).style.display="none";
-	document.getElementById(seem).style.display="table-row";
-	document.count.countvalue.value++;
-	}
-}
-
-//우편 번호 추가
-
-var openZipcode = function(reg_seq) {
-	var url = "Zipcode.do";
-	document.count.sendseq.value = reg_seq;
-	open(url, "confirm", 
-		"toolbar=no, location=no, status=no, menubar=no, scrolbar=yes" +
-		"resizeble=no, width=450, height=400");
-	
-	
-}
-
-//삭제 script
-function listdelete(seq){
-	var result = confirm("정말로 삭제하시겠습니까?");
-	
-	if(result == true) {
-		location.href="salesDelete.do?seq="+seq;
-	} else {
-		
-	}
-}
-
-
-</script>
 
 
 
@@ -81,10 +46,16 @@ function listdelete(seq){
                                </tr>
 <!-- {4 )------------------------------------------------------------------------------------------------------------------------------------------>                                  
 <!-- {5(내용)------------------------------------------------------------------------------------------------------------------------------------>                             
+                           		<c:if test="${empty list}">
+	                          	  	  <tr>
+	                          	  	  	<td colspan="7" height="300" valign="middle" align="center" bgcolor="#FFFFFF" ><h1>검색값이 없습니다.</h1></td>
+	                          	  	  </tr>
+	                          	</c:if>
+	                          	  	  
                            		<c:forEach items="${list}" var="sdto">
                            		<tr id="hidden_${sdto.seq}" style="display:table-row">
                                 <td height="28" align="center" bgcolor="#FFFFFF" >${ sdto.rown}</td>
-                                <td align="left" bgcolor="#FFFFFF" >${ sdto.brc_name}/${sdto.brc_id}</td>
+                                <td align="center" bgcolor="#FFFFFF" ><h5>${ sdto.brc_name}</h5>${sdto.brc_id}</td>
                                 <td align="center" bgcolor="#FFFFFF" >${ sdto.brc_phone}</td>
                                 <td align="left" bgcolor="#FFFFFF" >${ sdto.brc_post} ${sdto.brc_addr1} ${sdto.brc_addr2}</td>
                                 <td align="left" bgcolor="#FFFFFF" >${ sdto.brc_boss}</td>
@@ -101,7 +72,7 @@ function listdelete(seq){
                                  <td height="28" align="center" bgcolor="#FFFFFF" >${sdto.rown}
                                  <input type="hidden" name="seq" value="${sdto.seq}" class="input_gray3"></td>
                                
-                                 <td align="left" bgcolor="#FFFFFF" ><table>
+                                 <td align="center" bgcolor="#FFFFFF" ><table>
                                  <tr>
                                  <td><input type="text" name="brc_name" value="${sdto.brc_name}" size="10" class="input_gray3"></td>
                                  </tr>
@@ -114,8 +85,8 @@ function listdelete(seq){
                                  <input type="text" name="brc_phone" value="${ sdto.brc_phone}" size="13" class="input_gray3"></td>
                                
                                  <td align="left" bgcolor="#FFFFFF" >
-                                 <input type="text" name="brc_post" value="${ sdto.brc_post}" size="4" class="input_gray3">
-                                 <input type="text" name="brc_addr1" value="${sdto.brc_addr1}" size="60" class="input_gray3"><br/>
+                                 <input type="text" name="brc_post" value="${ sdto.brc_post}" size="8" class="input_gray3" readonly="readonly">
+                                 <input type="text" name="brc_addr1" value="${sdto.brc_addr1}" size="60" class="input_gray3" readonly="readonly"><br/>
                                  <input type="text" name="brc_addr2" value="${sdto.brc_addr2}" size="53" class="input_gray3">
                                  <input type="button" name="post" value="우편번호 검색" onclick="javascript:openZipcode('reg_${sdto.seq}');" /></td>
                                
@@ -130,10 +101,8 @@ function listdelete(seq){
                                
                                  <td align="center" bgcolor="#FFFFFF" >
                                  <input type="submit" value="완료">
-                                 <input type="button" value="취소" onclick="javascript:location.href='salesList.do?pg=${page.pg}'">
-                                 
+                                 <input type="button" value="취소" onclick="javascript:location.href='salesList.do?pg=${page.pg}'">l
                                  </td>
-                                 
                                </tr>
                                </form>
                                </c:forEach>

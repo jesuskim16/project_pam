@@ -1,3 +1,11 @@
+SELECT * FROM BRANCH;
+SELECT * FROM BOARD;
+SELECT * FROM PHONEMODEL;
+SELECT * FROM PHONEPRICE;
+SELECT * FROM REBATE;
+SELECT * FROM CUSTOMINFO;
+
+
 SELECT B.* 
 FROM (SELECT A.*, rownum AS rnum
 	  FROM (SELECT cust_name, CUST_PHONE, CONT_TERM, OPEN_DATE, MEMO,
@@ -21,14 +29,15 @@ SELECT B.*
 	  		FROM BRANCH) A) B
 ORDER BY rnum ASC;
 
-
+SELECT * FROM BRANCH;
 INSERT INTO	BRANCH (            SEQ,    BRC_ID, ATTACH_ID, PASSWORD, BRC_NAME,        BRC_PHONE, BRC_ADDR1, BRC_ADDR2,  BRC_POST, BRC_BOSS,     BOSS_PHONE, BRC_LEV, WRITE_ID, WRITE_IP )
-VALUES(BRC_SEQ.nextval,'manager2',  'MGR_ID',   '1111',  '대리점1', '02-1234-5678',    '서울시',    '구로구', '123-456',   '김대표', '010-5678-1234',       1,  'ADMIN', '127.0.0.1' );
+VALUES(BRC_SEQ.nextval,'manager1',  'admin',   '1111',  '대리점1', '02-1234-5678',    '서울시',    '구로구', '123-456',   '김대표', '010-5678-1234',       1,  'ADMIN', '127.0.0.1' );
+
 INSERT INTO	BRANCH (            SEQ,    BRC_ID, ATTACH_ID, PASSWORD, BRC_NAME,        BRC_PHONE, BRC_ADDR1, BRC_ADDR2,  BRC_POST, BRC_BOSS,     BOSS_PHONE, BRC_LEV,   WRITE_ID, WRITE_IP )
-			 VALUES(BRC_SEQ.nextval, 'seller21','manager2',   '1111',  '판매점1', '02-1234-5678',    '서울시',    '구로구', '123-456',   '김대표', '010-5678-1234',       2,  'manger2', '127.0.0.1' );
+VALUES(BRC_SEQ.nextval, 'seller1','manager1',   '1111',  '판매점1', '02-1234-5678',    '서울시',    '구로구', '123-456',   '김대표', '010-5678-1234',       2,  'manger2', '127.0.0.1' );
 			 
 			 
-			 
+SELECT * FROM BRANCH;			 
 			SELECT brc_id
 	  		FROM BRANCH
 	  		WHERE BRC_LEV='2' AND ATTACH_ID='manager1';
@@ -42,10 +51,7 @@ FROM CUSTOMINFO;
 SELECT PRICE_NAME
 FROM PHONEPRICE;
 
-SELECT * FROM PHONEMODEL;
-SELECT * FROM PHONEPRICE;
-SELECT * FROM REBATE;
-SELECT * FROM CUSTOMINFO;
+
 
 
 ALTER TABLE REBATE
