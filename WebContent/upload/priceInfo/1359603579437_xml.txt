@@ -1,0 +1,15 @@
+XML
+엘리먼트
+루트엘리먼트(가장상위 엘리먼트)
+
+
+*문서구조생성방법(DTD,스키마)
+-DTD(document type depinition)
+
+<!DOCTYPE 루트엘리먼츠 SYSTEM or Public >
+system : 시스템내부에서만 사용
+public : 외부에 공개된 자원
+
+-스키마(상세한 정의를 하기위해 만들어짐)
+
+

@@ -62,7 +62,7 @@
 	                                    <tr>
 	                                      <td width="30" align="left" class="s_Text_gray2_12px_Bold"><input type="checkbox" name="seq" id="seq" value="${ablist.seq}"></td> 
 										  <td width="40" align="left" class="s_Text_gray2_12px">${ablist.seq}</td>
-	                                      <td width="150" align="left" class="s_Text_gray2_12px" onclick="javascript:openContent('${ablist.seq}');" onMouseOver=style.background='#D2E3F8' onMouseOut=style.background='#ffffff' style="cursor:pointer" >${ablist.brc_name} / ${ablist.brc_id}</td>
+	                                      <td width="150" align="left" class="s_Text_gray2_12px" onclick="javascript:openContent('${ablist.seq}');" onMouseOver=style.background='#D2E3F8' onMouseOut=style.background='#ffffff' style="cursor:pointer" ><h5>${ablist.brc_name}</h5> ${ablist.brc_id}</td>
 	                                      <td width="80" align="center" class="s_Text_gray2_12px">${ablist.brc_phone}</td>
 	                                      <td width="15" align="center"  class="s_Text_gray2_12px"></td>
 	                                      <td width="450" align="left"  class="s_Text_gray2_12px" onclick="javascript:openContent('${ablist.seq}');" onMouseOver=style.background='#D2E3F8' onMouseOut=style.background='#ffffff' style="cursor:pointer" > (${ablist.brc_post})  ${ablist.brc_addr1} ${ablist.brc_addr2}</td>

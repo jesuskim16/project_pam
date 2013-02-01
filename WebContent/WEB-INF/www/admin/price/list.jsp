@@ -56,6 +56,7 @@ function listclick(seq, price_name, count){
 	} 
 		document.getElementById('listBLOLD_'+count).style.fontWeight = "bold";
 		
+		
 }
 
 function deletechk(){

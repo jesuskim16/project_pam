@@ -119,3 +119,11 @@ RENAME COLUMN LTE TO LTE34; NUMBER(8) DEFAULT 0;
 					using (brc_id)
 	       			 
 					ORDER BY rownum DESC;
+					
+					
+					
+					
+					
+					
+INSERT INTO BRANCH (            SEQ,    BRC_ID, ATTACH_ID, PASSWORD, BRC_NAME,        BRC_PHONE, BRC_ADDR1, BRC_ADDR2,  BRC_POST, BRC_BOSS,     BOSS_PHONE, BRC_LEV, WRITE_ID, WRITE_IP )
+    VALUES(BRC_SEQ.nextval,'admin3',  'administrator',   'pass',  '관리자', '00-000-0000',    '-',    '-', '000-000',   '관리자', '000-0000-0000',       0,  'administrator', '0.0.0.0' );
