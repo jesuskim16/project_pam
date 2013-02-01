@@ -1,6 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<jsp:include page="/inc/top1.jsp" />
+<c:choose>
+	<c:when test="${brc_lev==1}">
+		<jsp:include page="/inc/top1.jsp"/> 
+	</c:when>
+	<c:when test="${brc_lev==2}">
+		<jsp:include page="/inc/top2.jsp"/>  
+	</c:when>
+</c:choose>
 <jsp:include page="/inc/menu4.jsp" />
 
 <td width="1"></td>
