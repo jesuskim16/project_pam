@@ -11,7 +11,7 @@ var openZipcode = function() {
 /////////////////////////////////////////////////////////
 //////////////////최종 지점 입력확인/////////////////////
 function br_Insert(){
-	var f = document.result_forms;
+	var f = document.branch_form;
 	var brc_id = trim(f.brc_id.value);
 	var password = trim(f.password.value);
 	var re_password = trim(f.re_password.value);
