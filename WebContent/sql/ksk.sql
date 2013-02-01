@@ -5,10 +5,10 @@ DROP TABLE BOARD;
 DROP TABLE BRANCHLOG;
 DROP TABLE CUSTOMINFO;
 DROP TABLE BRANCH;
-DROP TABLE PHONEMODEL;
+DROP TABLE PHONEMODEL purge;
 DROP TABLE PHONEPRICE;
 
-  
+  select * from PHONEMODEL
 
 /* Drop Sequences */
 
@@ -69,6 +69,8 @@ CREATE TABLE BRANCH								--[지점]
 	PRIMARY KEY (BRC_ID)
 );
 
+select * from BRANCH
+
 ALTER TABLE branch ADD(write_date data DEFAULT SYSDATE)
 select * from BRANCH
 
@@ -81,6 +83,9 @@ CREATE TABLE BRANCHLOG							--[접속기록]
 	BRC_ID 		VARCHAR2(20) 	NOT NULL,			--지점ID(FK)
 	PRIMARY KEY (SEQ)
 );
+
+INSERT INTO BRANCH (            SEQ,    BRC_ID, ATTACH_ID, PASSWORD, BRC_NAME,        BRC_PHONE, BRC_ADDR1, BRC_ADDR2,  BRC_POST, BRC_BOSS,     BOSS_PHONE, BRC_LEV, WRITE_ID, WRITE_IP )
+    VALUES(BRC_SEQ.nextval,'ksk',  'administrator',   '1111',  '관리자', '00-000-0000',    '-',    '-', '000-000',   '관리자', '000-0000-0000',       0,  'administrator', '0.0.0.0' );
 
 
 CREATE TABLE CUSTOMINFO							--[고객]
@@ -130,6 +135,11 @@ CREATE TABLE PHONEPRICE
 	PRIMARY KEY (PRICE_NAME)
 );
 
+ALTER TABLE PHONEMODEL DROP PRIMARY KEY 
+DROP TABLE PHONEMODEL CASCADE CONSTRAINTS PURGE;
+
+SELECT * from PHONEMODEL
+
 
 
 /* Create Foreign Keys */
@@ -166,7 +176,7 @@ INSERT INTO	BRANCH (            SEQ,    BRC_ID, ATTACH_ID, PASSWORD, BRC_NAME,  
 INSERT INTO	BRANCH (            SEQ,    BRC_ID, ATTACH_ID, PASSWORD, BRC_NAME,        BRC_PHONE, BRC_ADDR1, BRC_ADDR2,  BRC_POST, BRC_BOSS,     BOSS_PHONE, BRC_LEV,   WRITE_ID, WRITE_IP )
 			 VALUES(BRC_SEQ.nextval, 'seller1','manager1',   '1111',  '판매점1', '02-1234-5678',    '서울시',    '구로구', '123-456',   '김대표', '010-5678-1234',       2,  'manger1', '127.0.0.1' );
 			 
-DELETE FROM branch;			    
+DELETE FROM phonemodel WHERE seq = 1;			    
 			 
 SELECT * FROM phonemodel;	
 SELECT * FROM custominfo;
@@ -350,4 +360,9 @@ FROM   (SELECT A.* ,rownum as rnum
 			   WHERE '2012-01-01' <= open_date AND '2013-02-01' >= open_date AND brc_name = '판매점1'                          
 			             ) A           ) B         
 WHERE 1 <= rnum AND rnum <= 10 
- ORDER BY rownum DESC 
+ ORDER BY rownum DESC
+
+ select * from BRANCH
+ 	SELECT attach_id, brc_name
+	FROM branch
+	WHERE brc_lev = 1 AND brc_state = 1
