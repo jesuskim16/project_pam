@@ -515,7 +515,7 @@ window.onload = function(){
                                                     <td height="26"><table border="0" cellpadding="0" cellspacing="2" bgcolor="cdcdcd">
                                                       <tr>
                                                         <td height="20" valign="bottom" bgcolor="#FFFFFF">
-                                                          <input name="use_data" type="text" class="input_bg_white" size="20" style="ime-mode:disabled;"> GB
+                                                          <input name="use_data" type="text" class="input_bg_white" size="20" style="ime-mode:disabled;"> 
                                                         </td>
                                                       </tr>
                                                     </table></td>
@@ -893,7 +893,7 @@ window.onload = function(){
                                                     <td height="26"><table border="0" cellpadding="0" cellspacing="2" bgcolor="cdcdcd">
                                                       <tr>
                                                         <td height="20" valign="bottom" bgcolor="#FFFFFF">
-                                                          <input name="use_data" value="${Selist.getUse_data()}" type="text" class="input_bg_white" size="20" style="ime-mode:disabled;"> GB
+                                                          <input name="use_data" value="${Selist.getUse_data()}" type="text" class="input_bg_white" size="20" style="ime-mode:disabled;">
                                                         </td>
                                                       </tr>
                                                     </table></td>

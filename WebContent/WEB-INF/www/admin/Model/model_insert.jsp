@@ -213,6 +213,10 @@
 																<option >애플</option>
 																<option >LG</option>
 																<option >팬텍</option>
+																<option >모토로라</option>
+																<option >HTC</option>
+																<option >팬텍</option>
+																<option >블랙베리</option>
                       									  </select>                                                        
                                                         </td>
                                                       </tr>
