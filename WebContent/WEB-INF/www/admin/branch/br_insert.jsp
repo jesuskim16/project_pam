@@ -13,7 +13,7 @@
       <tr>
         <td width="16" valign="top"><img src="admin/img/sub.body.box.left.gif" width="16" height="170"></td>
           <td valign="top">
-          <form name="result_form" method="post" style="margin:0"  ENCTYPE="multipart/form-data">
+          <form name="branch_form" method="post" style="margin:0"  ENCTYPE="multipart/form-data">
             <table width="100%" border="0" cellspacing="0" cellpadding="0">
               <tr>
                 <td height="5" background="admin/img/sub.body.bg01.gif"></td>

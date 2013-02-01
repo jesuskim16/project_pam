@@ -209,9 +209,10 @@
                                                       <tr>
                                                         <td height="20" valign="bottom" bgcolor="#FFFFFF">
                                                           <select name="make_comp" class="input_bg_white">
-																<c:forEach items="${AMCList}" var="dto">
-																	<option value="${dto.make_comp}">${dto.make_comp}</option>
-																</c:forEach>
+																<option >삼성</option>
+																<option >애플</option>
+																<option >LG</option>
+																<option >팬텍</option>
                       									  </select>                                                        
                                                         </td>
                                                       </tr>
