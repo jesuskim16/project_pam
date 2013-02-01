@@ -187,6 +187,10 @@ public class AdmModelAct {
 	//Model 입력 완료부분
 	@RequestMapping("admModelInsertAction.do")
 	public ModelAndView admModelInsertAction(@ModelAttribute AdmModelDto AMDto){
+		
+		String server_root ="c:\\Documents and Settings\\A\\git\\project_pam\\WebContent";	//서버절대경로
+		String upfolder = server_root+"\\upload\\model\\";							//업로드경로
+		
 		MultipartFile Mfile = AMDto.getFile();	// 	MultipartFile Mfile에 Web에서 넘어온 file type 값을 가져온다.
 		ModelAndView mav = new ModelAndView();
 		
@@ -202,16 +206,14 @@ public class AdmModelAct {
 			if (Mfile.getContentType().equals("image/jpeg")) {
 				String filename = Mfile.getOriginalFilename(); // 실제 file 이름을 저장
 				AMDto.setFilename(filename);
-				File file = new File("C:/STS/src/project_pam/WebContent/upload/model/"
-						+ filename); // FILE(java.io)에 경로를 넣어줌
-				
+				File file = new File(upfolder + filename); // FILE(java.io)에 경로를 넣어줌
 				//만약 폴더가 없을 시 폴더를 생설 할 것
 				if(!file.exists()){
 					file.mkdirs();
 				}
 				if(file.exists() && file.isFile()){	// 이미 존재하는 파일일경우 현재시간을 가져와서 리네임
 					filename = System.currentTimeMillis()  +"_"+ Mfile.getOriginalFilename() ;
-					file = new File("C:/STS/src/project_pam/WebContent/upload/model/" + filename);	//리네임된 파일이름으로 재생성
+					file = new File(upfolder + filename);	//리네임된 파일이름으로 재생성
 				}			
 				
 				try {
@@ -219,18 +221,9 @@ public class AdmModelAct {
 					// iamge를 thumbnail로 변경
 					try {
 						Thumbnails
-								.of(new File(
-										"C:/STS/src/project_pam/WebContent/upload/model/"
-												+ filename))
+								.of(new File( upfolder + filename))
 								.size(50, 64)
-								.toFile(new File(
-										"C:/STS/src/project_pam/WebContent/upload/model/thumb/"
-												+ "thumb" + filename));
-						
-						//만약 폴더가 없을 시 폴더를 생설 할 것
-						if(!file.exists()){
-							file.mkdirs();
-						}
+								.toFile(new File(upfolder + "thumb" + filename));
 					} catch (IOException e) {
 						e.printStackTrace();
 					}
