@@ -150,7 +150,7 @@
                         <td align="right"><table border="0" cellspacing="0" cellpadding="0">
                           <tr>
 <!--                             <td><a href=""><img src="admin/img/bts.reple.gif" width="69" height="33"></a>&nbsp;</td> -->
-                            <td><a href="admNoticeUpdate.do"><img src="admin/img/bts.edit.gif" width="69" height="33"></a>&nbsp;</td>
+                            <td><a href="admNoticeUpdate.do?seq=${abdDto.seq}&board_chk=${abdDto.board_chk}"><img src="admin/img/bts.edit.gif" width="69" height="33"></a>&nbsp;</td>
                             <td><a href="admNoticeDel.do?seq=${abdDto.seq}&board_chk=${abdDto.board_chk}"><img src="admin/img/bts.del.gif" width="69" height="33"></a>&nbsp;</td>
 <!--                             <td><a href="admNoticeList.do"><img src="admin/img/bts.list.gif" width="69" height="33"></a></td> -->
                           </tr>

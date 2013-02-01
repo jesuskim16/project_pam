@@ -58,7 +58,7 @@ public class AdmBoardAct {
 		if (apgDto.getPg()==0)apgDto.setPg(1);	  			//pg초기값설정
 		log.debug("--p:"+apgDto);
 		model.addAttribute("p",apgDto);
-		return "/WEB-INF/www/admin/board/list.jsp";		
+		return "/WEB-INF/www/admin/board/list.jsp";
 	}
 	
 	@RequestMapping("ajaxList.do")
@@ -112,6 +112,16 @@ public class AdmBoardAct {
 			return "/WEB-INF/www/common/result.jsp";
 		}
 	}
+	
+	@RequestMapping("admNoticeUpdate.do")
+	public String admNoticeUpdate(HttpServletRequest request, HttpServletResponse response, @ModelAttribute admPageDto apgDto, HttpSession session,Model model){
+		log.debug("---start["+"AdmBoardAct."+"admNoticeUpdate"+"]");
+		if (apgDto.getPg()==0)apgDto.setPg(1);	  			//pg초기값설정
+		log.debug("--p:"+apgDto);
+		model.addAttribute("p",apgDto);
+		model.addAttribute("board_type","2");
+		return "/WEB-INF/www/admin/board/list.jsp";
+	}	
 
 	public String board_name(int board_chk){	//게시판이름
 		String board_name = null;

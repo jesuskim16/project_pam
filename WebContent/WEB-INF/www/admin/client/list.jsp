@@ -2,159 +2,11 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+
 <jsp:include page="/admin/inc/top.jsp"/>
+<script type="text/javascript" src="js/admin/client/client.js"></script>
 
 
-<script type="text/javascript">
-function modelchange(model_name, model_code){
-	var name_code = document.getElementById(model_name).value;
-	
-	document.getElementById( model_code).value = name_code; 
-}
-
-
-
-function managerhref(managerID, span_brc_id){
-	
-	var count = document.listForm.count.value + 1;	
-	
-	var salesID = document.listForm.sales.value;
-	var Mpg = document.listForm.Mpg.value;
-	var Spg = document.listForm.Spg.value;
-	var Cpg = document.listForm.Cpg.value;
-	var seq = document.listForm.seq.value;
-	
-	location.href="admClientList.do?managerID="+managerID+"&salesID="+salesID+"&count="+count+"&Mpg="+Mpg+"&Spg="+Spg+"&Cpg="+Cpg+"&seq="+seq;
-
-	document.listForm.manager_span_brc_id.value = span_brc_id;  
-	
-}
-
-function saleshref(salesID, span_brc_id){
-	var count = document.listForm.count.value + 1;
-	
-	var managerID = document.listForm.manager.value;
-	var Mpg = document.listForm.Mpg.value;
-	var Spg = document.listForm.Spg.value;
-	var Cpg = document.listForm.Cpg.value;
-	var seq = document.listForm.seq.value;
-	
-	
-	if (!(managerID == "")) {
-		location.href="admClientList.do?managerID="+managerID+"&salesID="+salesID+"&count="+count+"&Mpg="+Mpg+"&Spg="+Spg+"&Cpg="+Cpg+"&seq="+seq;	
-	} else {
-		alert("대리점을 선택하세요.");
-	}
-	
-	
-	document.listForm.sales_span_brc_id.value = span_brc_id;
-	
-}
-
-function clienthref(seq){
-	
-	document.listForm.seq.value = seq;
-	
-	var count = document.listForm.count.value + 1;	
-	var managerID = document.listForm.manager.value;
-	var salesID = document.listForm.sales.value;
-	var Mpg = document.listForm.Mpg.value;
-	var Spg = document.listForm.Spg.value;
-	var Cpg = document.listForm.Cpg.value;
-
-	
-	location.href="admClientList.do?managerID="+managerID+"&salesID="+salesID+"&count="+count+"&Mpg="+Mpg+"&Spg="+Spg+"&Cpg="+Cpg+"&seq="+seq;
-	
-	
-}
-
-
-//Insert div
-function Insert(viewhidden, viewseem){
-	if (!(document.listForm.sales.value == "")) {
-		document.getElementById(viewhidden).style.display="block";
-		document.getElementById(viewseem).style.display="none";
-		
-	} else{
-		alert("대리점과 판매점 목록을 선택해주세요.");
-	}
-	
-}
-//Check
-var customInput = function() {
-	var frm = document.result_forms;
-	
-	if(frm.cust_name.value == ""){
-		alert("고객명을 입력하세요");
-		frm.cust_name.focus();
-		return false;
-	}
-	if(frm.cust_name.value.length < 2){
-		alert("고객명을 2자 이상 입력하세요");
-		frm.cust_name.focus();
-		return false;
-	}
-	if ((frm.cust_phone2.value.length < 3) || (frm.cust_phone2.value == ""))
-	{
-		alert("핸드폰번호 앞번호를 입력해 주세요.");
-		frm.cust_phone2.focus();
-		return false;
-	}
-	if ((frm.cust_phone3.value.length < 4) || (frm.cust_phone3.value == ""))
-	{
-		alert("핸드폰번호 뒷번호를 입력해 주세요.");
-		frm.cust_phone3.focus();
-		return false;
-	}
-
-	frm.action="admClientInsertAct.do";
-	frm.submit();
-}
-
-function admClientDel(seq){
-	var result = confirm("정말로 삭제하시겠습니까?");
-	 
-	if(result == true) {
-		var frm = document.deleteForm;
-		frm.action='admClientDelete.do';
-		frm.submit();
-		//opener.parent.location.href='admClientList.do';
-		opener.parent.location.reload();		
-	}	
-}
-
-
-
-
-function admClientUpdate(hidden, seem){
-	document.getElementById(hidden).style.display="block";
-	document.getElementById(seem).style.display="none";
-}
-
-
-</script>
-<script type="text/javascript">
-window.onload = function(){
-	var Formseq = document.listForm.seq.value;
-
-	if (!(Formseq == '0')) {
-	document.getElementById('view').style.display="block";
-	document.getElementById('seem').style.display="none";
-	}
-	
-	
-	var manager_id = document.listForm.manager.value;
-	var sales_id = document.listForm.sales.value;
-	
-	manager_id = eval("document.getElementById('brc_id_"+manager_id+"')");
-	manager_id.style.fontWeight = "bold";
-	
-	sales_id = eval("document.getElementById('brc_id_"+sales_id+"')");
-	sales_id.style.fontWeight = "bold";	
-}
-
-
-</script>
 <form name="listForm">
 <input type="hidden" name="count">
 <input type="hidden" name="manager" value="${managerID}">
@@ -340,6 +192,104 @@ window.onload = function(){
 </table></td>
 </form>
 <!-------------------------------------------------------------------------------------------------------------------------------->
+<!--div list---------------------------------------------------------------------------------------------------------------------->
+<td><div id="seem" style="display: block;">
+<table width="800" border="0" align="center" cellpadding="0" cellspacing="0">
+  <tr>
+  <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td width="16" valign="top"><img src="admin/img/sub.body.box.left.gif" width="16" height="170"></td>
+        <td valign="top"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+            <tr>
+              <td height="5" background="admin/img/sub.body.bg01.gif"></td>
+            </tr>
+            <tr>
+              <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
+                  <tr>
+                    <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
+                        
+                        <tr>
+                          <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
+                              <tr>
+                                <td width="10"><img src="admin/img/board.bar.left.gif" width="10" height="35"></td>
+                                <td background="admin/img/board.bar.bg.gif"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                    <tr>
+                                      <th width="30" align="center"><span class="s_Text_gray2_12px_Bold">번호</span></th>
+                                      <th width="90" align="center"><span class="s_Text_gray2_12px_Bold">고객이름</span></th>
+                                      <th width="100" align="center"><span class="s_Text_gray2_12px_Bold">고객번호</span></th>
+                                      <th width="90"  align="center"><span class="s_Text_gray2_12px_Bold">약정기간</span></th>
+                                      <th width="90" align="center"><span class="s_Text_gray2_12px_Bold">요금제</span></th>
+                                      <th width="120" align="center"><span class="s_Text_gray2_12px_Bold">모델 코드</span></th>
+                                      <th width="150" align="center"><span class="s_Text_gray2_12px_Bold">작성일</span></th>
+                                    </tr>
+                                </table></td>
+                                <td width="10"><img src="admin/img/board.bar.right.gif" width="10" height="35"></td>
+                              </tr>
+                          </table></td>
+                        </tr>
+                        
+                        <tr height="300" valign="top">
+                          <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
+                              <!-- 게시물없을때 -->
+                              <c:if test="${ empty Clist}">
+                              <tr>
+                                <td colspan="12" Height="200" align="center" bgColor="#ffffff">등록된 내용이 없습니다.</td>
+                              </tr>
+                              </c:if>
+                              <!-- 반복문  -->
+                            <c:forEach items="${Clist}" var="cdto">
+                              <tr onMouseOver=style.background='#D2E3F8' onMouseOut=style.background='#ffffff'>
+                                <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                  <tr>                                      
+                                    <td height="30"><table width="100%" border="0" cellspacing="0" cellpadding="0">        
+                                      <tr onclick="javascript:clienthref('${cdto.seq}');" >
+                                      	<td width="40" align="center" class="s_Text_gray2_12px">${cdto.rnum}</td>
+                                        <td width="90" align="center" class="s_Text_gray2_12px">${cdto.cust_name}</td>
+                                        <td width="100" align="center" class="s_Text_gray2_12px">${cdto.cust_phone}</td>
+                                        <td width="90"  align="center" class="s_Text_gray2_12px">${cdto.cont_term}</td>
+                                        <td width="90" align="center" class="s_Text_gray2_12px">${cdto.price_name}</td>
+                                        <td width="120" align="center" class="s_Text_gray2_12px">${cdto.model_code}</td>
+                                        <td width="150" align="center" class="s_Text_gray2_12px">${cdto.write_date}</td>
+                                      </tr>                                        
+                                    </table></td>                                      
+                                  </tr>                             
+                                </table></td>
+                              </tr>
+                              <tr>
+                                <td height="1" bgcolor="e5e5e5"></td>
+                              </tr>
+                            </c:forEach>
+                              
+       				      </table></td>
+                        </tr>
+                        
+                        <tr>      
+                          <td height="30" align="center"><table>
+                            <tr>
+                              <td>${Cpage.pHtml}</td>
+                            </tr> 
+                          </table></td>
+                        </tr>
+                        
+                        <tr>
+                          <td height="30" align="right"><img src="admin/img/bts.enter.gif" onclick="javascript:Insert('hidden','seem')"></td>
+                        </tr>
+                    </table></td>
+                  </tr>
+				  
+
+              </table></td>
+            </tr>
+            <tr>
+              <td>&nbsp;</td>
+            </tr>
+        </table></td>
+        <td width="16" valign="top"><img src="admin/img/sub.body.box.right.gif" width="16" height="170"></td>
+      </tr>
+    </table></td>
+  </tr>
+</table></div></td>
+<!--div list---------------------------------------------------------------------------------------------------------------------->
 <!--div insert-------------------------------------------------------------------------------------------------------------------->
 <td><form name="result_forms" method="get"  style="margin:0"  ENCTYPE="multipart/form-data">
 <div id="hidden" style="display: none;"><table width="100%" border="0" cellspacing="0" cellpadding="0">
@@ -769,104 +719,7 @@ window.onload = function(){
 </div></form></td>
 <!--div insert-------------------------------------------------------------------------------------------------------------------->
 
-<!--div list---------------------------------------------------------------------------------------------------------------------->
-<td><div id="seem" style="display: block;">
-<table width="800" border="0" align="center" cellpadding="0" cellspacing="0">
-  <tr>
-  <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
-      <tr>
-        <td width="16" valign="top"><img src="admin/img/sub.body.box.left.gif" width="16" height="170"></td>
-        <td valign="top"><table width="100%" border="0" cellspacing="0" cellpadding="0">
-            <tr>
-              <td height="5" background="admin/img/sub.body.bg01.gif"></td>
-            </tr>
-            <tr>
-              <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
-                  <tr>
-                    <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
-                        
-                        <tr>
-                          <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
-                              <tr>
-                                <td width="10"><img src="admin/img/board.bar.left.gif" width="10" height="35"></td>
-                                <td background="admin/img/board.bar.bg.gif"><table width="100%" border="0" cellspacing="0" cellpadding="0">
-                                    <tr>
-                                      <th width="30" align="center"><span class="s_Text_gray2_12px_Bold">번호</span></th>
-                                      <th width="90" align="center"><span class="s_Text_gray2_12px_Bold">고객이름</span></th>
-                                      <th width="100" align="center"><span class="s_Text_gray2_12px_Bold">고객번호</span></th>
-                                      <th width="90"  align="center"><span class="s_Text_gray2_12px_Bold">약정기간</span></th>
-                                      <th width="90" align="center"><span class="s_Text_gray2_12px_Bold">요금제</span></th>
-                                      <th width="120" align="center"><span class="s_Text_gray2_12px_Bold">모델 코드</span></th>
-                                      <th width="150" align="center"><span class="s_Text_gray2_12px_Bold">작성일</span></th>
-                                    </tr>
-                                </table></td>
-                                <td width="10"><img src="admin/img/board.bar.right.gif" width="10" height="35"></td>
-                              </tr>
-                          </table></td>
-                        </tr>
-                        
-                        <tr height="300" valign="top">
-                          <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
-                              <!-- 게시물없을때 -->
-                              <c:if test="${ empty Clist}">
-                              <tr>
-                                <td colspan="12" Height="200" align="center" bgColor="#ffffff">등록된 내용이 없습니다.</td>
-                              </tr>
-                              </c:if>
-                              <!-- 반복문  -->
-                            <c:forEach items="${Clist}" var="cdto">
-                              <tr onMouseOver=style.background='#D2E3F8' onMouseOut=style.background='#ffffff'>
-                                <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
-                                  <tr>                                      
-                                    <td height="30"><table width="100%" border="0" cellspacing="0" cellpadding="0">        
-                                      <tr onclick="javascript:clienthref('${cdto.seq}');" >
-                                      	<td width="40" align="center" class="s_Text_gray2_12px">${cdto.rnum}</td>
-                                        <td width="90" align="center" class="s_Text_gray2_12px">${cdto.cust_name}</td>
-                                        <td width="100" align="center" class="s_Text_gray2_12px">${cdto.cust_phone}</td>
-                                        <td width="90"  align="center" class="s_Text_gray2_12px">${cdto.cont_term}</td>
-                                        <td width="90" align="center" class="s_Text_gray2_12px">${cdto.price_name}</td>
-                                        <td width="120" align="center" class="s_Text_gray2_12px">${cdto.model_code}</td>
-                                        <td width="150" align="center" class="s_Text_gray2_12px">${cdto.write_date}</td>
-                                      </tr>                                        
-                                    </table></td>                                      
-                                  </tr>                             
-                                </table></td>
-                              </tr>
-                              <tr>
-                                <td height="1" bgcolor="e5e5e5"></td>
-                              </tr>
-                            </c:forEach>
-                              
-       				      </table></td>
-                        </tr>
-                        
-                        <tr>      
-                          <td height="30" align="center"><table>
-                            <tr>
-                              <td>${Cpage.pHtml}</td>
-                            </tr> 
-                          </table></td>
-                        </tr>
-                        
-                        <tr>
-                          <td height="30" align="right"><img src="admin/img/bts.enter.gif" onclick="javascript:Insert('hidden','seem')"></td>
-                        </tr>
-                    </table></td>
-                  </tr>
-				  
 
-              </table></td>
-            </tr>
-            <tr>
-              <td>&nbsp;</td>
-            </tr>
-        </table></td>
-        <td width="16" valign="top"><img src="admin/img/sub.body.box.right.gif" width="16" height="170"></td>
-      </tr>
-    </table></td>
-  </tr>
-</table></div></td>
-<!--div list---------------------------------------------------------------------------------------------------------------------->
 <!-- div view ---------------------------------------------------------------------------------------------------------------------->
 
 <form name="deleteForm" method="get">
@@ -1135,6 +988,7 @@ window.onload = function(){
                           <tr>
                             <td><a href="javascript:admClientUpdate('viewhidden', 'viewseem');"><img src="admin/img/bts.edit.gif" width="69" height="33"></a>&nbsp;</td>
                             <td><a href="javascript:admClientDel(${ACDto.getSeq()})"><img src="admin/img/bts.del.gif" width="69" height="33"></a>&nbsp;</td>
+                            <td><a href="javascript:location.href='admClientList.do'"><img src="admin/img/bts.cancle.gif" width="69" height="33"></a>&nbsp;</td>
                           </tr>
                         </table></td>
                       </tr>
