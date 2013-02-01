@@ -9,7 +9,7 @@
 <link href="admin/css/branch.css" rel="stylesheet" type="text/css">
 <br>
 <center>
- <form name="result_forms" method="post" style="margin:0"  ENCTYPE="multipart/form-data">    
+ <form name="result_form" method="post" style="margin:0"  ENCTYPE="multipart/form-data">    
 <table width="1100" border="0" align="center" cellpadding="0" cellspacing="0">
   <tr>
   <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
