@@ -5,16 +5,7 @@
 <jsp:include page="/inc/menu2.jsp"/>  
 
 <script type="text/javascript" src="js/setDate.js"></script>
-<script type="text/javascript">
-
-//차트 
-function RankForm(charthidden){
-	document.result_form.action="salesRank.do";
-	document.result_form.submit();
-	
-}
-
-</script>
+<script type="text/javascript" src="js/agent/salesMgr/salesRank.js"></script>
 
 
 <form name="result_form" method="get" style="margin:0">
