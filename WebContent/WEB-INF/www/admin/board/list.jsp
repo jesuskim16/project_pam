@@ -388,11 +388,15 @@ jQuery(function($){					//lightbox
       </tr>
     </table></td>
   </tr>
-</table>  
+</table>
 
 <script>
-	window.onload = function(){loadNextPage(${p.board_chk},1);}
-	
+<c:if test="${empty board_type}"><c:set value="1" var="board_type"/></c:if>
+<c:choose><c:when test="${board_type==1}"> 
+	window.onload = function(){loadNextPage('${p.board_chk}',1);}
+</c:when><c:otherwise>
+	window.onload = function(){insertContent('${p.board_chk}');}
+</c:otherwise></c:choose>
 	function loadNextPage(bd_chk,page){		
 		document.forms.board_chk.value=bd_chk;		
 		page = parseInt(page);
