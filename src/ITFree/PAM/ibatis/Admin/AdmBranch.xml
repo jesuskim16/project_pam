@@ -44,7 +44,7 @@
 	<select id="admBranchSelectList" resultClass="ABDto">
 	SELECT attach_id, brc_name
 	FROM branch
-	WHERE brc_lev = 1
+	WHERE brc_lev = 1 AND brc_state = 1
 	</select>
 	
 	<select id="admBranchModify" parameterClass="Long" resultClass="ABDto">
