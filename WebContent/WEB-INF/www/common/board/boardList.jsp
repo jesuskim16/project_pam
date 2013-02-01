@@ -57,20 +57,20 @@
                             <td><table width="100%" border="0" cellpadding="0" cellspacing="1" bgcolor="cccccc">
 <!-- {2(게시판 상단)----------------------------------------------------------------------------------------------------------------------------------->                            
                                   <tr>
-                                    <td width="40" width="40" height="30" align="center" bgcolor="e2e2e2" >번호</td>
-                                    <td height="30" align="center" bgcolor="e2e2e2">제 목</td>
+                                    <th width="40" width="40" height="30" align="center" bgcolor="e2e2e2" >번호</th>
+                                    <th height="30" align="center" bgcolor="e2e2e2">제 목</th>
                                 <c:choose>
                                   <c:when test="${board_chk==3}">                                    
-                                    <td width="200" height="30" align="center" bgcolor="e2e2e2">파 일</td>
-                                    <td width="40" height="30" align="center" bgcolor="e2e2e2">다운</td>
+                                    <th width="200" height="30" align="center" bgcolor="e2e2e2">파 일</th>
+                                    <th width="40" height="30" align="center" bgcolor="e2e2e2">다운</th>
                                   </c:when>
                                   <c:otherwise>
-                                    <td width="40" height="30" align="center" bgcolor="e2e2e2">첨부</td>
-                                    <td width="40" height="30" align="center" bgcolor="e2e2e2">조회</td>
+                                    <th width="40" height="30" align="center" bgcolor="e2e2e2">첨부</th>
+                                    <th width="40" height="30" align="center" bgcolor="e2e2e2">조회</th>
                                   </c:otherwise>
                                 </c:choose>
-                                    <td width="140" height="30" align="center" bgcolor="e2e2e2">등록자</td>                                    
-                                    <td width="140" height="30" align="center" bgcolor="e2e2e2">등록일</td>
+                                    <th width="140" height="30" align="center" bgcolor="e2e2e2">등록자</th>                                    
+                                    <th width="140" height="30" align="center" bgcolor="e2e2e2">등록일</th>
                                   </tr>
 <!-- {2 )------------------------------------------------------------------------------------------------------------------------------------------>                                  
 <!-- {3(게시판본문)------------------------------------------------------------------------------------------------------------------------------------>                             
