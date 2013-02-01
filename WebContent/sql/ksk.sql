@@ -185,7 +185,7 @@ SELECT seq, brc_name, brc_id, brc_phone,
 
 		SELECT * FROM BRANCH;
 
-select MODEL_NAME from PHONEMODEL
+select * from PHONEMODEL
 
 	    SELECT 	count(*) as cnt
     	FROM	custominfo
@@ -326,7 +326,11 @@ WHERE brc_id = 'seller9'
 SELECT count(*)
 FROM PHONEMODEL
 
+ALTER TABLE PHONEMODEL 
+ADD(state_chk number default 0)
 
+INSERT INTO PHONEMODEL(make_comp)
+VALUES("");
 
 SELECT B.*
 FROM(SELECT A.* , rownum as rnum
@@ -335,3 +339,15 @@ FROM(SELECT A.* , rownum as rnum
 		    ORDER BY rown DESC ) A ) B
 WHERE 1 <= rnum AND rnum <= 10
 
+
+
+SELECT B.*   
+FROM   (SELECT A.* ,rownum as rnum       
+		FROM ( SELECT row_number()over (ORDER BY c.seq ASC) as rown, c.seq , c.cust_name,
+						c.model_code, c.price_name, c.cont_term, to_char(c.open_date,'YYYY-MM-DD') as open_date, rebate          
+			   FROM custominfo c join branch b      
+			   using (brc_id)                        
+			   WHERE '2012-01-01' <= open_date AND '2013-02-01' >= open_date AND brc_name = '판매점1'                          
+			             ) A           ) B         
+WHERE 1 <= rnum AND rnum <= 10 
+ ORDER BY rownum DESC 
