@@ -93,7 +93,7 @@
                         </tr>
                         
                         <tr>      
-                          <td height="10" align="center"><table>
+                          <td height="30" align="center"><table>
                             <tr>
                               <td>${AMPDto.pHtml}</td>
                             </tr> 
