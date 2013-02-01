@@ -46,7 +46,7 @@
 				brc_addr1, brc_addr2, brc_post, brc_lev,
 				brc_boss, boss_phone, to_char(write_date, 'YYYY-MM-DD') AS write_date
 				FROM BRANCH
-				WHERE attach_id=#attach_id# AND BRC_LEV='2'
+				WHERE attach_id=#attach_id# AND BRC_LEV='2' AND BRC_STATE='1'
 				ORDER BY rownum DESC ) A ) B
 	<![CDATA[
 	WHERE #startNum# <= rown AND rown <= #endNum# 
