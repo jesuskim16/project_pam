@@ -6,6 +6,7 @@ import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.jfree.chart.ChartUtilities;
 import org.jfree.chart.JFreeChart;
@@ -32,20 +33,21 @@ public class ModelInfoAct {
 	private ModelInfoChart MIC;	
 		
 		@RequestMapping("/modelList.do")
-		protected ModelAndView modelList(@ModelAttribute ModelInfoPageDto pageDto) throws Exception {
+		protected ModelAndView modelList(@ModelAttribute ModelInfoPageDto pageDto, HttpSession session) throws Exception {
 			if(pageDto.getPg() == 0)pageDto.setPg(1);
 			ModelInfoPageDto MIPDto = new ModelInfoPageDto(pageDto.getPg() , MIDao.ModelInfoTotalCount());
 			List<ModelInfoDto> MIList = MIDao.modelList(MIPDto);
 			ModelAndView mav = new ModelAndView();
 			mav.setViewName("/WEB-INF/www/common/modelInfo/modelList.jsp");			
 			mav.addObject("title_name","PAM::모델정보");
+			mav.addObject("brc_lev", session.getAttribute("brc_lev"));		//레벨(1:대리점, 2:판매점)
 			mav.addObject("MIList",MIList);
 			mav.addObject("MIPDto",MIPDto);
 			return mav;
 		}
 		
 		@RequestMapping("/modelRank.do")
-		protected ModelAndView modelRank(@ModelAttribute ModelInfoRankPageDto pageRDto, HttpServletResponse response) throws Exception {
+		protected ModelAndView modelRank(@ModelAttribute ModelInfoRankPageDto pageRDto, HttpServletResponse response,HttpSession session) throws Exception {
 			if(pageRDto.getPg() == 0)pageRDto.setPg(1);
 			ModelInfoRankPageDto MIRPDto = new ModelInfoRankPageDto(pageRDto.getPg() , MIDao.ModelInfoRankTotalCount(pageRDto),
 								pageRDto.getS_sdate(), pageRDto.getS_edate());
@@ -55,7 +57,8 @@ public class ModelInfoAct {
 
 			ModelAndView mav = new ModelAndView();
 			mav.setViewName("/WEB-INF/www/common/modelInfo/modelRank.jsp");			
-			mav.addObject("title_name","PAM::모델정보");
+			mav.addObject("title_name","PAM::모델순위");
+			mav.addObject("brc_lev", session.getAttribute("brc_lev"));		//레벨(1:대리점, 2:판매점)
 			mav.addObject("MIRList", MIRList);
 			mav.addObject("MIRPDto", MIRPDto);
 			mav.addObject("chart","mRbarChartCreator.do");

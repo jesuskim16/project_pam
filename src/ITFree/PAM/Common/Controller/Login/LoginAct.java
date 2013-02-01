@@ -32,21 +32,25 @@ public class LoginAct {
 		
 		LoginDto branchDto = new LoginDto();
 		branchDto.setBrc_id(brc_id);
-		branchDto.setPassword(password);		
+		branchDto.setPassword(password);
+		
 		branchDto = branchDao.getLoginInfo(branchDto);
+		
 		if (branchDto != null && branchDto.getBrc_name() != null) {			
 			session.setAttribute("brc_id", branchDto.getBrc_id());
 			session.setAttribute("brc_name", branchDto.getBrc_name());
 			session.setAttribute("brc_lev", branchDto.getBrc_lev());	
 			branchDto.setIp(request.getRemoteAddr());
-			branchDao.setLoginLog(branchDto);
+			branchDao.setLoginLog(branchDto);			
 			if(branchDto.getBrc_lev()==0){
 				mav.setViewName("redirect:admMain.do");
 			}else{
 				mav.setViewName("redirect:main.do");
 			}
 		} else {
-			mav.setViewName("redirect:login.do");			
+			mav.addObject("url", "javascript:history.back();");
+			mav.addObject("msg", "아이디 또는 패스워드를  확인하세요.");
+			mav.setViewName("/WEB-INF/www/common/result.jsp");			
 		}
 		return mav;
 	}
